@@ -1,0 +1,140 @@
+body {margin:5px 5px;
+  width:100%;}
+p {font-size:12px;
+  text-align:left;
+  clear:both;}
+input {margin-left:10px;
+  color:#000000;
+  background-color:#ffffff;}
+input:disabled {background-color:#999;}
+h4 {margin:5px 0;}
+fieldset {margin:0 auto;
+	border: none;}
+textarea {margin-bottom: 10px;
+	padding-bottom:10px;}
+#main_container {margin-left: 85px;
+  width:1000px;}
+#header {margin:5px auto;
+  width:430px;
+  display:table;
+  border: 1px #000 solid;
+  padding: 0 10px;
+  clear:both;}
+#head_text {text-align:center;
+  font-weight:bold;}
+#head_row {margin:5px auto;
+  width:810px;
+  clear:both;}
+#footer_row {margin:0;
+  width:80px;
+  position:fixed;
+  left:5px;
+  top:240px;
+  padding: 5px 3px;
+  border: 1px groove #ff0;
+  background-color: #fc6;}
+#hed_type {margin:0 0;
+  padding:0 0;}
+#footer_row p, #footer_row button {float:none;
+  text-align:left;
+  margin:2px;}
+#head_row select, #head_row option {color:#ffffff;
+  background-color:#000000;}
+#type_img {float:left;
+  border:none;}
+#date_label {font-size:16px;
+	font-weight: bold;
+	color: #e12300;}
+#hed_date {margin-left:5px;}
+#subject_line_label {margin:5px 0 0 5px;
+  padding:0 0;
+  font-size:14px;
+  font-style: bold;}
+#top_section {margin: 10px auto;
+	width:650px;
+	padding:0;
+	border-top:1px dotted #00f;
+	display:table;}	
+.category {margin:0 0 0 20px;
+  padding:5px 5px;
+  width:380px;
+  float:right;}
+.category p {margin:10px 0;
+  padding:0 0;
+  float:left;
+  text-align:left;
+  font-weight:bold;
+  font-size:14px;}
+.section_titles {font-size:18px;
+	clear:both;
+	margin-bottom: 10px;
+}
+/*for ads*/
+#ad_section {margin:5px 5px;
+  width:1000px;}
+#ad_slots {width:430px;
+	float:left;
+	padding: 5px 5px;
+	margin-top: 0;
+	margin-left: 90px;
+	border: 1px solid #000;
+	display: table;}
+#membership_slots{width:430px;
+	float:left;
+	padding: 10px 5px;
+	margin: 0 5px;
+	border: 1px solid #000;
+	display: table;}
+/*end ads*/
+.head_types {width:1024px;}
+.block_hidden {display:none;}
+.block_show {display:block;}
+#items_left, #items_right {margin:10px 0 0 0;
+  /*text-align:right;*/
+  clear:both;}
+.sections {margin:10px 10px;
+  width:425px;
+  padding:5px 10px;
+  border:1px groove #000 !important;}
+.sections legend {font-size: 18px;
+ 	font-weight: bold;}
+.sub_sections {margin:5px auto;
+	width:415px;
+	padding: 5px 5px;
+	border: 2px ridge #099;}
+.sections legend input {width: 300px;
+	font-size: 16px;}
+.sub_sections legend {
+	font-size: 14px;}
+.columns {margin:0 5px;
+  width:450px;
+  float:left;}
+.dek_sect {width:75px;
+  text-align:left;}
+.ad_label {width:380px;
+  float:left;
+  text-align:right;}
+/* warning message classes */
+#wysiwig_msg {margin:5px auto;
+	font-size:1.3em;
+	text-align:center;
+	padding: 5px 5px;
+	font-weight:bold;
+	clear:both;}
+.loading_warning {
+	background-color: #900;
+	color: #fff;
+}
+.loading_done {
+	background-color: #090;
+	color: #fff;
+}
+/*sources section*/
+.sources {margin-top:2px;
+	float:left;}
+.sources legend {font-size: 14px;
+	font-style:italic !important;
+	font-weight:normal !important;}
+/* format specific elements [textarea] */
+#conundrum_lead___Frame, #maindish_lead___Frame, #twmustread_lead___Frame, #topstory_lead___Frame {height:120px !important;}
+#bite_section {display: none;}
