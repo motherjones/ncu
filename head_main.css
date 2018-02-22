@@ -15,9 +15,9 @@ textarea {margin-bottom: 10px;
 #main_container {margin-left: 85px;
   width:1000px;}
 #header {margin:5px auto;
-  width:430px;
+  width:350px;
   display:table;
-  border: 1px #000 solid;
+  border: 1px #ccc solid;
   padding: 0 10px;
   clear:both;}
 #head_text {text-align:center;
