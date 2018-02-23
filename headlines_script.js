@@ -209,8 +209,7 @@ function restoreValues(the_section) {
 
   httpxml.onreadystatechange = function() {
     if(httpxml.readyState == 4) {
-	  var response_text = httpxml.responseText;
-	  var control = response_text.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+	  var response_text = JSON.parse(httpxml.responseText);
       if(response_text !== "not" && response_text !== "" && response_text !== "none") {
         var date_array = new Array();
         date_array = response_text.split("?");

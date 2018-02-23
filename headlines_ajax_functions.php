@@ -33,7 +33,6 @@ function retrieveArchive($arch_type, $arch_date) {
   $db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("Can't connect to DB");
   $qry_string = sprintf("SELECT * FROM %s WHERE hed_date='%s'", $arch_type, $arch_date);
   $arch_qry = mysqli_query($db_con, $qry_string) or die("Can't run query" . mysqli_error($db_con));
-  mysql_query("set names 'utf8'");
   $result = mysqli_fetch_assoc($arch_qry);
   $data_return = json_encode($result);
 
@@ -55,11 +54,13 @@ function checkExisting($section_type) {
 
   if(mysqli_num_rows($run_qry) > 0) {
     $date_array = "";
-    while($get_dates = mysqli_fetch_assoc($run_qry)) {
+    $get_dates = mysqli_fetch_assoc($run_qry);
+    $date_array = json_encode($get_dates);
+    /*while($get_dates = mysqli_fetch_assoc($run_qry)) {
       $date_array .= $get_dates['id'];
       $date_array .= ":" . $get_dates['hed_date'];
       $date_array .= "?";
-    }
+    }*/
   }
   print $date_array;
   mysqli_free_result($run_qry);
