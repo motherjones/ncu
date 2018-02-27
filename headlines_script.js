@@ -144,11 +144,12 @@ function getNextSchedule(date_int) {
 var data_text = "";
 
 //get archives
-function getArchive() {
+function getArchive(hed_type, archives) {
   var httpxml = new getHTTP();
-  var archive_type = document.getElementById('hed_type').value;
-  var date_value = document.getElementById('archives').value;
-  var date_field = document.getElementById('date_label');
+  /*var archive_type = document.getElementById('hed_type').value;
+  var date_value = document.getElementById('archives').value;*/
+  var archive_type = hed_type;
+  var date_value = archives;
   var rand_num = getRandom();
 
   httpxml.onreadystatechange = function() {
@@ -203,33 +204,49 @@ function delayedInsert(json_obj) {
 
 function restoreValues(the_section) {
   var httpxml = new getHTTP();
-  var drop_html = "";
   var the_div = document.getElementById('archives');
   var rand_num = getRandom();
+  var date_obj;
+  var news_type = "";
+  
+  switch(the_section) {
+  	case "breaking_news":
+  		news_type = "Breaking News";
+  		break;
+  	case "econundrums_new":
+  		news_type = "Econundrums";
+  		break;
+  	case "food_for_thought_redesign":
+  		news_type = "Food for Thought";
+  		break;
+  	case "in_the_mix_new":
+  		news_type = "In the Mix";
+  		break;
+  	case "political_mojo_new":
+  		news_type = "Political MoJo";
+  		break;
+  	case "trumpocracy":
+  		news_type = "The Russian Connection";
+  		break;
+  	default:
+  		break;
+  }
+  
+  the_div.innerHTML = "<h3>" + news_type + "</h3>";
 
   httpxml.onreadystatechange = function() {
     if(httpxml.readyState == 4) {
-	  var response_text = JSON.parse(httpxml.responseText);
-      if(response_text !== "not" && response_text !== "" && response_text !== "none") {
-        var date_array = new Array();
-        date_array = response_text.split("?");
+    	  var date_name;
+    	  var news_type_name = "Create new " + news_type + " shell";
+    	  var output_data = "<p><input type='button' value='" + news_type_name + "'></p>";
+	  date_obj = JSON.parse(httpxml.responseText);
 
-        for(i = 0; i < date_array.length; i++) {
-          if(date_array[i] != "") {
-            var each_date = new Array();
-            var temp = "";
-            temp = date_array[i];
-            each_date = temp.split(":");
-            drop_html += "<option id='" + each_date[0] + "' name='" + each_date[1] + "' value='" + each_date[1] + "'>" + each_date[1] + "</option>\n";
-          }
-        }
-		drop_html = "<option value='none' selected>Choose from below</option>" + drop_html;
-        the_div.innerHTML = drop_html;
-      }
-      else {
-    	drop_html = "<option value='none' selected>No Archive</option>";
-    	the_div.innerHTML = drop_html;
-      }
+	  for(date_name in date_obj) {
+		  if(date_obj[date_name] !== undefined || date_obj[date_name] !== "undefined" || date_obj[date_name] !== "") {
+			  output_data += "<p><input type='button' value='" + date_obj[date_name] + " | edit' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'> | <input type='button' value='preview' style='margin:0;padding:1px 2px;'></p>";
+		  }
+	  }
+	  the_div.innerHTML += output_data;
     }
   }
 

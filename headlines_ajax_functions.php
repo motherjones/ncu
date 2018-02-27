@@ -49,20 +49,24 @@ function checkExisting($section_type) {
   $db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb);
   $date_array = "none";
 
-  $check_qry = sprintf("SELECT id, hed_date FROM %s ORDER By hed_date DESC", $section_type);
+  $check_qry = sprintf("SELECT hed_date FROM %s ORDER By hed_date DESC", $section_type);
   $run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
 
   if(mysqli_num_rows($run_qry) > 0) {
-    $date_array = "";
-    $get_dates = mysqli_fetch_assoc($run_qry);
-    $date_array = json_encode($get_dates);
-    /*while($get_dates = mysqli_fetch_assoc($run_qry)) {
-      $date_array .= $get_dates['id'];
-      $date_array .= ":" . $get_dates['hed_date'];
-      $date_array .= "?";
-    }*/
+  	$date_array = "";
+  	while($get_dates = mysqli_fetch_assoc($run_qry)) {
+  		if($get_dates['hed_date'] !== "" || $get_dates['hed_date'] !== null || $get_dates['hed_date'] !== "undefined") {
+  			$date_array .= $get_dates['hed_date'] . "?";
+  		}
+  	}
   }
-  print $date_array;
+  
+  $date_arr = explode("?", $date_array);
+  $date_arr = array_filter($date_arr);
+  $date_json = json_encode($date_arr);
+  
+  //print $return_me;
+  print $date_json;
   mysqli_free_result($run_qry);
   mysqli_close($db_con);
 }

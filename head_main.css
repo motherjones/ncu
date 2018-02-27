@@ -33,8 +33,7 @@ textarea {margin-bottom: 10px;
   padding: 5px 3px;
   border: 1px groove #ff0;
   background-color: #fc6;}
-#hed_type {margin:0 0;
-  padding:0 0;}
+
 #footer_row p, #footer_row button {float:none;
   text-align:left;
   margin:2px;}
@@ -62,8 +61,7 @@ textarea {margin-bottom: 10px;
 .category {margin:0 0 0 20px;
   padding:5px 5px;
   width:380px;
-  float:right;}
-.category p {margin:10px 0;
+  float:right;}.category p {margin:10px 0;
   padding:0 0;
   float:left;
   text-align:left;
@@ -73,6 +71,7 @@ textarea {margin-bottom: 10px;
 	clear:both;
 	margin-bottom: 10px;
 }
+
 .news_btn {margin:5px 10px;
 	float:left;}
 /*for ads*/
