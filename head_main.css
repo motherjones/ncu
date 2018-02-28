@@ -33,7 +33,6 @@ textarea {margin-bottom: 10px;
   padding: 5px 3px;
   border: 1px groove #ff0;
   background-color: #fc6;}
-
 #footer_row p, #footer_row button {float:none;
   text-align:left;
   margin:2px;}
@@ -58,6 +57,11 @@ textarea {margin-bottom: 10px;
 	margin: 5px auto;
 	padding: 5px;
 	display: table;}
+#preview_pane {width:800px;
+	height:1440px;
+	float:right;
+	border: none;}
+#archives {float:left;}
 .category {margin:0 0 0 20px;
   padding:5px 5px;
   width:380px;

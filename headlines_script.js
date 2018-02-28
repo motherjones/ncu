@@ -238,12 +238,13 @@ function restoreValues(the_section) {
     if(httpxml.readyState == 4) {
     	  var date_name;
     	  var news_type_name = "Create new " + news_type + " shell";
-    	  var output_data = "<p><input type='button' value='" + news_type_name + "'></p>";
 	  date_obj = JSON.parse(httpxml.responseText);
-
+	  var output_data = "<p><input type='button' value='" + news_type_name + "' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&new=yes\"'></p>";
+	  var preview_url;
 	  for(date_name in date_obj) {
+		  preview_url = "archives/" + date_obj[date_name] + "-" + the_section + ".html";
 		  if(date_obj[date_name] !== undefined || date_obj[date_name] !== "undefined" || date_obj[date_name] !== "") {
-			  output_data += "<p><input type='button' value='" + date_obj[date_name] + " | edit' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'> | <input type='button' value='preview' style='margin:0;padding:1px 2px;'></p>";
+			  output_data += "<p><input type='button' value='" + date_obj[date_name] + " | edit' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'> | <input type='button' value='preview' style='margin:0;padding:1px 2px;' onclick=\"window.open('" + preview_url + "', '_blank')\"></p>";
 		  }
 	  }
 	  the_div.innerHTML += output_data;

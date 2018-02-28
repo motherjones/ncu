@@ -14,6 +14,7 @@ include "incs/header.inc"
   	<input id="trumpocracy" type="button" value="The Russian Connection" class="news_btn" onclick="restoreValues(this.id)">
   </nav>
   <hr style="width:90%;color:#ccc;">
+  <iframe id="preview_pane" name="preview_pane" src=""></iframe>
   <div id="archives"></div>
 </body>
 </html>

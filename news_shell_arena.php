@@ -7,24 +7,26 @@ $arch_type = $_REQUEST["newsletter_type"];
 $news_date = $_REQUEST["date"];
 $new = $_REQUEST["new"];
 if($new === "yes") {
-	$input_type = "text";
+	$display_date = "<p>Headlines's date for new shell (format:2012-02-29): <input type=\"text\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"\" /></p>";
 }
 else {
-	$input_type = "hidden";
+	$display_date = "<p>Headlines's date: $news_date <input type=\"hidden\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"$news_date\" /></p>";
 }
 ?>
 
   <form id="headlinesForm" action="" method="post" accept-charset="utf-8">
     <div id="head_row">
-    	<div id="top_section">
+    	  <div id="top_section">
         <div style="width:430px;margin:5px auto;border-top:1px dotted #00f;display:table;">
-        	<input type="button" value="View Headlines Archives" onclick="location.href='archives/'" style="margin:5px 20px 5px 10px;padding:5px 5px;float:left;color:#ffffff;background-color:#000000;" />
-        	
+        	<input type="button" value="Back to Main" onclick="location.href='./'" style="margin:5px 20px 5px 10px;padding:5px 5px;float:left;color:#ffffff;background-color:#000000;" />
+        	<!-- refresh data button in case data is lost during the json call -->
         	<input type="button" value="Refresh data" onclick="javascript:getArchive();" style="margin:5px 0 5px 10px;padding:5px 5px;float:left;background-color:#c21;color:#fff;font-weight:bold;" id="refresh_data" />
+        	<input type="hidden" value="<?php print $arch_type; ?>" id="hed_type" name="hed_type">
         </div>
       </div>
     </div>
 	<div style="text-align:center;clear:both;width:600px;margin:0 auto;">
+		<?php print $display_date; ?>
      	<p style="font-size:14px;">Subject line: <input type="text" id="subject_line" name="subject_line" value="" size="75" spellcheck="true" onfocus="checkHedDate()" /></p>
     </div>
   <div id="main_container">
@@ -34,7 +36,7 @@ else {
       <button style="widdth:75px;background-color:#369;color:#fff;font-size:14px;" onclick="checkForm('preview');">Preview</button>
       <button style="width:75px;background-color:#393;color:#fff;font-size:14px;" onclick="checkForm('not');">Submit</button>
     </div>
-  <div id="ad_section" class="block_hidden" style="clear:both;">
+  <div id="ad_section" style="clear:both;">
   	<fieldset id="ad_slots" class="sections">
   		<legend>PAID ADS</legend>
   		<fieldset class="sub_sections">
@@ -78,8 +80,11 @@ else {
   </form>
   <script>
 	$(document).ready(function() {
+		var new_news = "<?php print $new; ?>";
 		createDivs("<?php print $arch_type; ?>");
-		getArchive("<?php print $arch_type; ?>", "<?php print $news_date; ?>");
+		if(new_news !== "yes") {
+			getArchive("<?php print $arch_type; ?>", "<?php print $news_date; ?>");
+		}
 	});
   </script>
 </body>
