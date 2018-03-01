@@ -7,6 +7,10 @@ input {margin-left:10px;
   color:#000000;
   background-color:#ffffff;}
 input:disabled {background-color:#999;}
+h2 {width:250px;
+	max-width:250px;
+	text-align:center;}
+h3#head_text {color:#900;}
 h4 {margin:5px 0;}
 fieldset {margin:0 auto;
 	border: none;}
@@ -57,11 +61,27 @@ textarea {margin-bottom: 10px;
 	margin: 5px auto;
 	padding: 5px;
 	display: table;}
-#preview_pane {width:800px;
-	height:1440px;
-	float:right;
-	border: none;}
-#archives {float:left;}
+#archives {margin: 5px auto;
+	width: 350px;}
+.news_btn {margin:2px 5px;
+	float:left;
+	color:#004;
+	background-color:#eee;
+	font-weight:bold;
+	font-size:.9em;}
+.cr_new_btn {width:230px;
+	padding:1px 2px;
+	color: #004;
+	background-color: #fed;}
+.edit_btn {width: 155px;
+	padding:1px 5px;
+	color:#004;
+	background-color:#eee;}
+.preview_btn {width: 65px;
+	padding:1px 5px;
+	color: #eff;
+	background-color: #aa6100;
+	font-style:italic;}
 .category {margin:0 0 0 20px;
   padding:5px 5px;
   width:380px;
@@ -75,9 +95,19 @@ textarea {margin-bottom: 10px;
 	clear:both;
 	margin-bottom: 10px;
 }
-
-.news_btn {margin:5px 10px;
-	float:left;}
+.current_news {
+	background-color: #ff0;
+	font-weight:bold;
+}
+.future_news {
+	background-color: #0ff;
+	font-weight:bold;
+}
+.test_news {
+	background-color: #000;
+	color: #fff;
+	font-style:italic;
+}
 /*for ads*/
 #ad_section {margin:5px 5px;
   width:1000px;}

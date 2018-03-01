@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: text/html;charset=UTF-8");
-include "credentials.inc";
+include "incs/credentials.inc";
 //ajax functions for headlines app
 
 //get requests from either add section button or the form to submit

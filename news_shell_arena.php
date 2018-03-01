@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: text/html;charset=UTF-8");
-include "credentials.inc";
+include "incs/credentials.inc";
 $today = date("Y-m-d", time());
 include "incs/header.inc";
 $arch_type = $_REQUEST["newsletter_type"];
@@ -17,7 +17,7 @@ else {
   <form id="headlinesForm" action="" method="post" accept-charset="utf-8">
     <div id="head_row">
     	  <div id="top_section">
-        <div style="width:430px;margin:5px auto;border-top:1px dotted #00f;display:table;">
+        <div style="width:430px;margin:5px auto;display:table;">
         	<input type="button" value="Back to Main" onclick="location.href='./'" style="margin:5px 20px 5px 10px;padding:5px 5px;float:left;color:#ffffff;background-color:#000000;" />
         	<!-- refresh data button in case data is lost during the json call -->
         	<input type="button" value="Refresh data" onclick="javascript:getArchive();" style="margin:5px 0 5px 10px;padding:5px 5px;float:left;background-color:#c21;color:#fff;font-weight:bold;" id="refresh_data" />
@@ -81,9 +81,40 @@ else {
   <script>
 	$(document).ready(function() {
 		var new_news = "<?php print $new; ?>";
+		var day_int;
+		var type_of = "<?php print $arch_type; ?>";
+		
+		switch(type_of) {
+		  case "econundrums_new":
+		    day_int = 1;
+		    break;
+		  case "food_for_thought_new":
+		    day_int = 3;
+		    break;
+		  case "food_for_thought_redesign":
+		    day_int = 3;
+		    break;
+		  case "in_the_mix_new":
+		    day_int = 6;
+		    break;
+		  case "political_mojo_new":
+		    day_int = 5;
+		    break;
+		  case "breaking_news":
+		    day_int = 1;
+		    break;
+		  case "trumpocracy":
+		    day_int = 0;
+		    break;
+		  default:
+		    break;
+		}
 		createDivs("<?php print $arch_type; ?>");
 		if(new_news !== "yes") {
 			getArchive("<?php print $arch_type; ?>", "<?php print $news_date; ?>");
+		}
+		else {
+			document.getElementById("hed_date").value = getNextSchedule(day_int)
 		}
 	});
   </script>

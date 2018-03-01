@@ -232,19 +232,43 @@ function restoreValues(the_section) {
   		break;
   }
   
-  the_div.innerHTML = "<h3>" + news_type + "</h3>";
+  the_div.innerHTML = "<h2>" + news_type + "</h2>";
 
   httpxml.onreadystatechange = function() {
     if(httpxml.readyState == 4) {
+    	  var test_dates = Date.parse("2000-1-1");
+    	  var week_start = getWeekStart(new Date());
+    	  var week_end = week_start.addDays(7);
+    	  var ws_complete = week_start.getFullYear() + "-" + (week_start.getMonth() + 1) + "-" + week_start.getDate();
+    	  var we_complete = week_end.getFullYear() + "-" + (week_end.getMonth() + 1) + "-" + week_end.getDate();
+    	  var ws_date = Date.parse(ws_complete);
+    	  var we_date = Date.parse(we_complete);
+    	  var date_class;
     	  var date_name;
     	  var news_type_name = "Create new " + news_type + " shell";
 	  date_obj = JSON.parse(httpxml.responseText);
-	  var output_data = "<p><input type='button' value='" + news_type_name + "' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&new=yes\"'></p>";
+	  var output_data = "<p style='width:340px;text-align:center;margin:10px auto;'><input type='button' value='" + news_type_name + "' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&new=yes\"' class='cr_new_btn'></p>";
 	  var preview_url;
 	  for(date_name in date_obj) {
+		  var compare_date = Date.parse(date_obj[date_name]);
+    	      var current_str = "";
+		  if(compare_date > ws_date && compare_date < we_date) {
+			  date_class = " current_news";
+			  current_str = "<span style='color: #a33;'>Current: </span>";
+		  }
+		  else if(compare_date > we_date) {
+			  date_class = " future_news";
+		  }
+		  else if(compare_date < test_dates) {
+			  date_class = " test_news";
+			  current_str = "<span style='color: #c00;'>Test: </span>";
+		  }
+		  else {
+			  date_class = "";
+		  }
 		  preview_url = "archives/" + date_obj[date_name] + "-" + the_section + ".html";
 		  if(date_obj[date_name] !== undefined || date_obj[date_name] !== "undefined" || date_obj[date_name] !== "") {
-			  output_data += "<p><input type='button' value='" + date_obj[date_name] + " | edit' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'> | <input type='button' value='preview' style='margin:0;padding:1px 2px;' onclick=\"window.open('" + preview_url + "', '_blank')\"></p>";
+			  output_data += "<p style='width:340px;text-align:center;margin:10px auto;'>" + current_str + "<input type='button' class='edit_btn" + date_class + "' value='" + date_obj[date_name] + " | edit' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'> | <input type='button' class='preview_btn' value='preview' style='margin:0;padding:1px 2px;' onclick=\"window.open('" + preview_url + "', '_blank')\"></p>";
 		  }
 	  }
 	  the_div.innerHTML += output_data;
@@ -254,6 +278,21 @@ function restoreValues(the_section) {
   httpxml.open("POST", "headlines_ajax_functions.php?existing="+the_section + "&r=" + rand_num, true);
   httpxml.send("null");
 }
+
+//get week start date
+function getWeekStart(d) {
+    d = new Date(d);
+    var day = d.getDay(),
+    diff = d.getDate() - day + (day == 0 ? -6:0); // adjust when day is sunday
+    return new Date(d.setDate(diff));
+  }
+
+//add days
+Date.prototype.addDays = function(days) {
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+  }
 
 //show/hide Bite section
 function display_bite(show_status) {

@@ -8,7 +8,7 @@ ini_set("display_errors", 1);
 /* include files */
 // for db
 /* database credentials are located in the credentials.inc file */
-include "credentials.inc";
+include "incs/credentials.inc";
 /*for the CSS to be injected into the HTML file (PHP)
  All non-inline CSS is in this file
  */
@@ -30,7 +30,7 @@ else {
 	//run db queries
 	$close_btn = "";
 	$db_run = true;
-	$relocate_me = "<script type=\"text/javascript\">location.href='archives'</script>";
+	$relocate_me = "<script type=\"text/javascript\">location.href='./'</script>";
 }
 /* end check preview section */
 
@@ -72,76 +72,6 @@ else {
 	$advertiser_name2 = "Live Intent";
 }
 
-//small subs section
-$small_sub_ad = "";
-$sub_url = "";
-$sub_image = "";
-$sub_text = "";
-$sub_code = "";
-$membership_area = "";
-$membership_slot = "";
-$membership_area_p = "<p class=\"mobile-format\" style=\"margin: 20px 0; color: #ff6900;font-size: 18px;text-transform: uppercase;\">";
-
-if(isset($_REQUEST['membership_slot']) && $_REQUEST['membership_slot'] != null) {
-	if($headlines_type !== "trumpocracy") {
-		$membership_slot = trim($_REQUEST['membership_slot']);
-		$membership_slot = str_replace("<p>", $membership_area_p, $membership_slot);
-		$membership_slot = str_replace("<a", "<a style=\"color: #000; \"", $membership_slot);
-	}
-	else {
-		$membership_slot = "<div id=\"membership-call-box\" style=\"margin:0 auto;\">\n\t<p style=\"font-weight:bold;font-family:Georgia, serif;color: #000;text-align:center;font-size: 16px; line-height: 21px;\">Support hard-hitting journalism</p>\n\t<p style=\"font-family:Georgia, serif;color:#000;text-align:center;font-size: 16px; line-height: 21px;\"><em>The Russian Connection</em> and all our reporting is made possible by readers like you. Support our investigations with a <a href=\"https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=DON&term_pub=DON&b_country=United+States&list_source=7HEGNF00&term=XX.1.50.00.DON.D.0.7043\" style=\"color: #ff6900;\">tax-deductible donation</a>.</p>\n\t</div>\n";
-	}
-}
-else {
-	if($headlines_type == "trumpocracy") {
-		$membership_slot = "<div id=\"membership-call-box\" style=\"margin:0 auto;\">\n\t<p style=\"font-weight:bold;font-family:Georgia, serif;color: #000;text-align:center;font-size: 16px; line-height: 21px;\">Support hard-hitting journalism</p>\n\t<p style=\"font-family:Georgia, serif;color:#000;text-align:center;font-size: 16px; line-height: 21px;\"><em>The Russian Connection</em> and all our reporting is made possible by readers like you. Support our investigations with a <a href=\"https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=DON&term_pub=DON&b_country=United+States&list_source=7HEGNF00&term=XX.1.50.00.DON.D.0.7043\" style=\"color: #ff6900;\">tax-deductible donation</a>.</p>\n\t</div>\n";
-	}
-	else {
-		$membership_slot = "<p class=\"mobile-format\" style=\"margin: 20px 0; color: #ff6900;font-size: 18px;text-transform: uppercase;\">Support hard-hitting journalism.<br />
-If you value what you read from <em>Mother Jones</em> and want to see more of it, please make a tax-deductible <a href=\"https://secure.motherjones.com/fnx/?action=subscription&pub_code=don&term_pub=don&b_country=united+states&list_source=7H6CNLP2&term=xx.1.50.00.don.d.0.2870\" style=\"color: #000;\">one-time</a> or <a href=\"https://secure.motherjones.com/fnx/?action=subscription&pub_code=sdn&term_pub=sdn&b_country=united+states&list_source=7H6CNLP2&term=xx.1.20.00.sdn.d.0.2872\" style=\"color: #000;\">monthly donation</a> today and help fund our unrelenting, nonprofit journalism.</p>";
-	}
-}
-
-if(isset($_REQUEST['sub_code']) && $_REQUEST['sub_code'] != null) {
-	$sub_code = trim($_REQUEST['sub_code']);
-	$small_sub_ad = $sub_code;
-}
-else {
-	if(isset($_REQUEST['sub_url']) && $_REQUEST['sub_url'] != null) {
-		$sub_url = trim($_REQUEST['sub_url']);
-	}
-	else {
-		$sub_url = "https://store.motherjones.com/collections/recently-added/products/motherjones-facts-mtee?utm_source=newsletter&utm_campaign=2017_facts&utm_medium=newsletter&utm_content=evergreen_facts";
-	}
-	
-	if(isset($_REQUEST['sub_image']) && $_REQUEST['sub_image'] != null) {
-		$sub_image = $_REQUEST['sub_image'];
-	}
-	else {
-		$sub_image = "https://cdn.maropost.com/pro/uploads/account_585/133987/storead_600x250_012417.jpg";
-	}
-	
-	if(isset($_REQUEST['sub_text']) && $_REQUEST['sub_text'] != null) {
-		$sub_text = $_REQUEST['sub_text'];
-	}
-	else {
-		$sub_text = "Mother Jones Store";
-	}
-	
-	if($headlines_type === "trumpocracy") {
-		$small_sub_ad = "<a href=\"$sub_url\"><img id=\"sub_ad\" src=\"$sub_image\" style=\"width:540px;max-width:540px;Margin:0 auto 20px auto;\" width=\"540\" alt=\"$sub_text\" border=\"0\" /></a>";
-		//$small_sub_ad = "<table width=\"540\" height=\"180\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" style=\"max-width:540px;width:540px;\"><tr><td colspan=\"3\" style=\"line-height:1px;\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/191482/storead_Newsletter_540x180_01.jpg\" width=\"540\" height=\"38\" alt=\"\"></td></tr><tr><td style=\"line-height:1px;\"><a href=\"https://store.motherjones.com/?utm_source=NewsletterAd&utm_medium=Holiday_2017\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/191483/storead_Newsletter_540x180_02.jpg\" width=\"132\" height=\"142\" alt=\"\"></a></td><td style=\"line-height:1px;\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/191484/storead_Newsletter_540x180_03.jpg\" width=\"264\" height=\"142\" alt=\"\"></td><td style=\"line-height:1px;\"><a href=\"https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=MJM&term_pub=MJM&list_source=Y7CENL1&sub_type=GIF\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/191485/storead_Newsletter_540x180_04.jpg\" width=\"144\" height=\"142\" alt=\"\"></a></td></tr></table><!--[if (gte mso 9)|(IE)]><br /><![endif]-->";
-	}
-	else {
-		$small_sub_ad = "<a href=\"$sub_url\"><img id=\"sub_ad\" src=\"$sub_image\" style=\"max-width: 600px;width:600px;border: none !important;\" width=\"600\" alt=\"$sub_text\" border=\"0\" /></a>";
-		//$small_sub_ad = "<table width=\"600\" height=\"200\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" style=\"max-width:600px;width:600px;\"><tr><td colspan=\"3\" style=\"line-height:1px;\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/191486/storead_Newsletter_600x200_01.jpg\" width=\"600\" height=\"43\" alt=\"\"></td></tr><tr><td style=\"line-height:1px;\"><a href=\"https://store.motherjones.com/?utm_source=NewsletterAd&utm_medium=Holiday_2017\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/191487/storead_Newsletter_600x200_02.jpg\" width=\"147\" height=\"157\" alt=\"Mother Jones Store\"></a></td><td style=\"line-height:1px;\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/191488/storead_Newsletter_600x200_03.jpg\" width=\"293\" height=\"157\" alt=\"\"></td><td style=\"line-height:1px;\"><a href=\"https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=MJM&term_pub=MJM&list_source=Y7CENL1&sub_type=GIF\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/191489/storead_Newsletter_600x200_04.jpg\" width=\"160\" height=\"157\" alt=\"Subscribe to Mother Jones\"></a></td></tr></table><!--[if (gte mso 9)|(IE)]><br /><![endif]-->";
-	}
-}
-
-//temporary code for subs slot
-
-//end temporary code subs slot section
-
 //lift-note section
 $lift_note = "";
 if(isset($_REQUEST['lift_note']) && $_REQUEST['lift_note'] !== null && $_REQUEST['lift_note'] !== "") {
@@ -149,41 +79,11 @@ if(isset($_REQUEST['lift_note']) && $_REQUEST['lift_note'] !== null && $_REQUEST
 	$lift_note = trim($_REQUEST['lift_note']);
 }
 
-//live intent ads
-$liveintent_billboard = false;
-$liveintent_banner = false;
-$liveintent_billboard2 = false;
-//Econundrum tags
-//billboard 1
-$econundrums_billboard = "<table style=\"margin-top: 20px;width:300px;height:250px;\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" width=\"300\" height=\"250\"><tr><td colspan=\"2\"><a style=\"display: block; width: 300px; height: 250px;\" href=\"http://li.motherjones.com/click?s=153015&sz=300x250&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=153015&sz=300x250&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\" width=\"300\" height=\"250\"/></a></td></tr><tr style=\"display:block; height:1px; line-height:1px;\"><td><img src=\"http://li.motherjones.com/imp?s=153016&sz=1x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td><td><img src=\"http://li.motherjones.com/imp?s=153017&sz=1x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td></tr><tr><td align=\"left\"><a href=\"http://li.motherjones.com/click?s=68884&sz=116x15&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=68884&sz=116x15&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td><td align=\"right\"><a href=\"http://li.motherjones.com/click?s=96569&sz=69x15&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=96569&sz=69x15&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td></tr></table>";
-//billboard 2
-$econundrums_billboard2 = "<table style=\"margin-top: 20px;width:300px;height:250px;\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" width=\"300\" height=\"250\"><tr><td colspan=\"2\"><a style=\"display: block; width: 300px; height: 250px;\" href=\"http://li.motherjones.com/click?s=68930&sz=300x250&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=68930&sz=300x250&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\" width=\"300\" height=\"250\"/></a></td></tr><tr style=\"display:block; height:1px; line-height:1px;\"><td><img src=\"http://li.motherjones.com/imp?s=68931&sz=1x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68932&sz=1x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td></tr><tr><td align=\"left\"><a href=\"http://li.motherjones.com/click?s=68884&sz=116x15&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=68884&sz=116x15&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td><td align=\"right\"><a href=\"http://li.motherjones.com/click?s=96569&sz=69x15&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=96569&sz=69x15&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td></tr></table>";
+//include membership ad templates
+include "incs/membership_ads.inc";
 
-//in the mix
-//billboard 1
-$inthemix_billboard = "<table style=\"margin-top: 20px;width:300px;height:250px;\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" width=\"300\" height=\"250\"><tr><td colspan=\"2\"><a style=\"display: block; width: 300px; height: 250px;\" href=\"http://li.motherjones.com/click?s=68942&sz=300x250&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=68942&sz=300x250&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\" width=\"300\" height=\"250\"/></a></td></tr><tr style=\"display:block; height:1px; line-height:1px;\"><td><img src=\"http://li.motherjones.com/imp?s=68943&sz=1x1&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68944&sz=1x1&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td></tr><tr><td align=\"left\"><a href=\"http://li.motherjones.com/click?s=68884&sz=116x15&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=68884&sz=116x15&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td><td align=\"right\"><a href=\"http://li.motherjones.com/click?s=96569&sz=69x15&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=96569&sz=69x15&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td></tr></table>";
-//billboard 2
-$inthemix_billboard2 = "<table style=\"margin-top: 20px;width:300px;height:250px;\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" width=\"300\" height=\"250\"><tr><td colspan=\"2\"><a style=\"display: block; width: 300px; height: 250px;\" href=\"http://li.motherjones.com/click?s=153009&sz=300x250&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=153009&sz=300x250&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\" width=\"300\" height=\"250\"/></a></td></tr><tr style=\"display:block; height:1px; line-height:1px;\"><td><img src=\"http://li.motherjones.com/imp?s=153010&sz=1x1&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td><td><img src=\"http://li.motherjones.com/imp?s=153011&sz=1x1&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td></tr><tr><td align=\"left\"><a href=\"http://li.motherjones.com/click?s=68884&sz=116x15&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=68884&sz=116x15&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td><td align=\"right\"><a href=\"http://li.motherjones.com/click?s=96569&sz=69x15&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=96569&sz=69x15&li=inthemix&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td></tr></table>";
-
-//political mojo
-//billboard 1
-$politicalmojo_billboard = "<table style=\"margin-top: 20px;width:300px;height:250px;\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" width=\"300\" height=\"250\"><tr><td colspan=\"2\"><a style=\"display: block; width: 300px; height: 250px;\" href=\"http://li.motherjones.com/click?s=68948&sz=300x250&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=68948&sz=300x250&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\" width=\"300\" height=\"250\"/></a></td></tr><tr style=\"display:block; height:1px; line-height:1px;\"><td><img src=\"http://li.motherjones.com/imp?s=68949&sz=1x1&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68950&sz=1x1&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td></tr><tr><td align=\"left\"><a href=\"http://li.motherjones.com/click?s=68884&sz=116x15&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=68884&sz=116x15&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td><td align=\"right\"><a href=\"http://li.motherjones.com/click?s=96569&sz=69x15&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=96569&sz=69x15&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td></tr></table>";
-//billboard 2
-$politicalmojo_billboard2 = "<table style=\"margin-top: 20px;width:300px;height:250px;\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\" width=\"300\" height=\"250\"><tr><td><a style=\"display: block; width: 300px; height: 250px;\" href=\"http://li.motherjones.com/click?s=153006&sz=300x250&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=153006&sz=300x250&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\" width=\"300\" height=\"250\"/></a></td></tr><tr style=\"display:block; height:1px; line-height:1px;\"><td><img src=\"http://li.motherjones.com/imp?s=153007&sz=1x1&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td><td><img src=\"http://li.motherjones.com/imp?s=153008&sz=1x1&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td></tr><tr><td align=\"left\"><a href=\"http://li.motherjones.com/click?s=68884&sz=116x15&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=68884&sz=116x15&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td><td align=\"right\"><a href=\"http://li.motherjones.com/click?s=96569&sz=69x15&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=96569&sz=69x15&li=politicalmojo&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td></tr></table>";
-
-//food for thought redesign
-//billboard 1
-$fft_redesign_billboard1 = "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"  align=\"center\" style=\"max-width: 540px;margin-left:auto; margin-right:auto;margin-bottom: 20px;\"><tr><td colspan=\"2\"><a href=\"http://li.motherjones.com/click?s=142114&layout=marquee&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=142114&layout=marquee&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" border=\"0\" style=\"display: block; width:100%; height:auto;\" width=\"540\" /></a></td></tr><tr style=\"display:block; height:1px; line-height:1px;\"><td><img src=\"http://li.motherjones.com/imp?s=142115&sz=1x1&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" height=\"1\" width=\"10\" /></td><td><img src=\"http://li.motherjones.com/imp?s=142116&sz=1x1&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" height=\"1\" width=\"10\" /></td></tr><tr><td align=\"left\"><a href=\"http://li.motherjones.com/click?s=142117&sz=116x15&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=142117&sz=116x15&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" border=\"0\"/></a></td><td align=\"right\"><a href=\"http://li.motherjones.com/click?s=142118&sz=69x15&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=142118&sz=69x15&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" border=\"0\"/></a></td></tr></table>";
-//billboard 2
-$fft_redesign_billboard2 = "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"  align=\"center\" style=\"max-width: 540px;margin-left:auto; margin-right:auto;margin-bottom: 20px;\"><tr><td colspan=\"2\"><a href=\"http://li.motherjones.com/click?s=142114&layout=marquee&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=142114&layout=marquee&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" border=\"0\" style=\"display: block; width:100%; height:auto;\" width=\"540\" /></a></td></tr><tr style=\"display:block; height:1px; line-height:1px;\"><td><img src=\"http://li.motherjones.com/imp?s=142115&sz=1x1&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" height=\"1\" width=\"10\" /></td><td><img src=\"http://li.motherjones.com/imp?s=142116&sz=1x1&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" height=\"1\" width=\"10\" /></td></tr><tr><td align=\"left\"><a href=\"http://li.motherjones.com/click?s=142117&sz=116x15&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=142117&sz=116x15&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" border=\"0\"/></a></td><td align=\"right\"><a href=\"http://li.motherjones.com/click?s=142118&sz=69x15&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=142118&sz=69x15&li=foodforthought&e={{contact.email}}&p={{campaign.id}}1478636107\" border=\"0\"/></a></td></tr></table>";
-
-//trumpocracy
-//billboard 1
-$trump_billboard1 = "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"  align=\"center\" style=\"margin-left:auto; margin-right:auto;\"><tr><td colspan=\"2\"><a href=\"http://li.motherjones.com/click?s=243153&layout=marquee&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=243153&layout=marquee&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\" style=\"display: block; width:100%; height:auto;\" width=\"540\" /></a></td></tr><tr style=\"display:block; height:1px; line-height:1px;\"><td><img src=\"http://li.motherjones.com/imp?s=243154&sz=1x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td><td><img src=\"http://li.motherjones.com/imp?s=243155&sz=1x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td></tr><tr><td align=\"left\"><a href=\"http://li.motherjones.com/click?s=243156&sz=116x15&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=243156&sz=116x15&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td><td align=\"right\"><a href=\"http://li.motherjones.com/click?s=243157&sz=69x15&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=243157&sz=69x15&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td></tr></table>";
-
-//Breaking News
-//billboard 1
-$breakingnews_billboard1 = "<table style=\"margin: 20px auto;width:300px;height:250px;\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td colspan=\"2\"><a style=\"display: block; width: 300px; height: 250px;\" href=\"http://li.motherjones.com/click?s=244437&sz=300x250&li=breaking-news&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=244437&sz=300x250&li=breaking-news&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\" width=\"300\" height=\"250\"/></a></td></tr><tr style=\"display:block; height:1px; line-height:1px;\"><td><img src=\"http://li.motherjones.com/imp?s=244438&sz=1x1&li=breaking-news&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td><td><img src=\"http://li.motherjones.com/imp?s=244439&sz=1x1&li=breaking-news&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td></tr><tr><td align=\"left\"><a href=\"http://li.motherjones.com/click?s=68884&sz=116x15&li=breaking-news&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=68884&sz=116x15&li=breaking-news&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td><td align=\"right\"><a href=\"http://li.motherjones.com/click?s=96569&sz=69x15&li=breaking-news&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=96569&sz=69x15&li=breaking-news&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td></tr></table>";
+//default ads code
+include "incs/default_ads.inc";
 
 //billboard
 if ((isset($_REQUEST['billboard_url']) && $_REQUEST['billboard_url'] != null) || (isset($_REQUEST['billboard_img']) && $_REQUEST['billboard_img'] != "")) {
@@ -236,7 +136,6 @@ if ((isset($_REQUEST['billboard_url2']) && $_REQUEST['billboard_url2'] != null) 
 	}
 }
 else {
-	//$billboard_url = $house_bill[$randbill_num][1];
 	$liveintent_billboard2 = true;
 	$billboard_url2 = null;
 	$billboard_image2 = null;
@@ -255,8 +154,6 @@ else {
 			break;
 	}
 }
-//banner
-
 /* --------------------end ad section------------------- */
 
 //get headline date and format human readable
@@ -264,14 +161,10 @@ $temp_date = strtotime($headlines_date);
 $get_date = date("F j, Y", $temp_date);
 /* ---------------------------------- */
 
-//call to getEmail function
-//getEmail();
-
 /* section for global items for all headlines */
-//subscription language
 
 //allowed html for conertP function -- not used right now
-$allowed_html = "<a><br /><br><b><i><em><strong><blockquote><table>";
+$allowed_html = "<a><br /><br><b><i><em><strong><blockquote><table><span>";
 //for the archives, generate full HTML file
 $html_title = ucwords($headlines_type);
 //$html_header = "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<head>\n<title>$html_title</title>\n</head>\n<body>";
@@ -289,89 +182,24 @@ if(isset($close_btn) && $close_btn != "") {
 	print "<br style=\"clear:both;\" />";
 	print $close_btn;
 }
-//get the correct template for the headlines
-//get code for the HTML to add to the archives ($html_file)
+/*get the correct template for the headlines
+get code for the HTML to add to the archives ($html_file)*/
 
-/*$separator_format = "<p style=\"margin:0 0 2px 0;border-bottom:1px dotted #000000;\">&nbsp;</p>";*/
-/* <a href=""><img src="http://assets.motherjones.com/newsletters/images/subscribe.png" alt="Subscribe" style="width:200px;min-width:100px;" /></a>*/
-$view_code = "<p style=\"margin:0 auto;width:640px;background-color:#003;border-style: 2px outset #099;border-radius:5px;text-align:center;padding:10px;font-size:16px;\"><a href=\"../\" style=\"color:#FFD700;\">Back to Main Page</a> | <a href=\"index.php\" style=\"color:#FFDF00;\">Back to Archives</a> <br /> <a href=\"#get_code\" style=\"color:#9ff;\">View Code</a></p>";
+$view_code = "<p style=\"margin:0 auto;width:640px;background-color:#003;border-style: 2px outset #099;border-radius:5px;text-align:center;padding:10px;font-size:16px;\"><a href=\"../\" style=\"color:#FFD700;\">Back to Main Page</a> | <a href=\"#get_code\" style=\"color:#9ff;\">View Code</a></p>";
 
+//social media buttons and images
 $facebook_icon = "<img id=\"fb_icon_main\" src=\"http://assets.motherjones.com/newsletters/images/facebook_icon_btm.png\" style=\"$fb_icon_style\" width=\"54\" />";
 $twitter_icon = "<img id=\"tt_icon_main\" src=\"http://assets.motherjones.com/newsletters/images/twitter_icon_btm.png\" alt=\"tweet this\" style=\"$ttr_icon_style\" width=\"54\" />";
 
-switch($headlines_type) {
-	case "econundrums_new":
-		$newsletter_info = "<p class=\"ad_text\" style=\"margin: 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; font-size: 14px; color: #000;\"><em>Econundrums</em> comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976.</p>";
-		break;
-	case "in_the_mix_new":
-		$newsletter_info = "<p class=\"ad_text\" style=\"margin: 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; font-size: 14px; color: #000;\"><em>In the Mix</em> comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976.</p>";
-		break;
-	case "political_mojo_new":
-		$newsletter_info = "<p class=\"ad_text\" style=\"margin: 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; font-size: 14px; color: #000;\"><em>Political MoJo</em> comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976.</p>";
-		break;
-	case "food_for_thought_redesign":
-		$newsletter_info = "<p class=\"ad_text\" style=\"margin: 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; font-size: 14px; color: #000;\"><em>Food for Thought</em> comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976.</p>";
-		break;
-	case "breaking_news":
-		$newsletter_info = "<p class=\"ad_text\" style=\"margin: 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; font-size: 14px; color: #000;\">This news alert comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976.</p>";
-		break;
-	case "trumpocracy":
-		$newsletter_info = "<p class=\"ad_text\" style=\"font-family:Georgia, serif; font-size: 12px; color: #000;text-align:center;font-size: 16px; line-height: 21px;\"><em>The Russian Connection</em> comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976.</p>";
-		break;
-}
+//Newsletter identification language and footer section include
+include "incs/newsletter_footer_identification.inc";
 
-$trumpocracy_footer = <<<TRUMPFOOT
-<table align="center" style="margin:0 auto;width:450px;max-width:450px;">
-	<tr>
-		<td class="no_top_pad" style="padding: 0;text-align:center;" align="center">
-			<a href="https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=DON&term_pub=DON&b_country=United+States&list_source=7HEGNF00&term=XX.1.50.00.DON.D.0.7043&a_first_name={{contact.first_name}}&a_last_name={{contact.last_name}}&a_address_1={{contact.street_1}}&a_city={{contact.city}}&a_state={{contact.state_province}}&a_zip={{contact.zip_code}}&a_email={{contact.email}}&account_no={{contact.icn_account_number}}&rel_rec_no={{contact.wk_sub_rel}}"><img class="news_donate" src="https://cdn.maropost.com/pro/uploads/account_585/206932/20180220_donate.png" alt="Donate" style="width:150px;min-width:100px;"  width="150" hspace="15" vspace="0" /></a>
-		</td>
-		<td style="padding: 0;text-align:center;" align="center">
-			<a href="https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=MJM&term_pub=MJM&list_source=SEGMN"><img class="news_donate" src="https://cdn.maropost.com/pro/uploads/account_585/206921/20180220_suscribe_2.png" alt="Subscribe to Mother Jones" style="width:150px;min-width:100px;margin-top: 10px;margin-bottom:10px;" width="150" hspace="15" vspace="0" /></a>
-		</td>
-	</tr>
-	<tr>
-		<td align="center" style="margin-top: 15px;text-align:center;" colspan="2">
-			<img src="http://assets.motherjones.com/newsletters/newsletter_test/mojo_logo_btm_bw.png" style="width:300px;max-width: 300px;margin: 20px auto;" width="300" />
-		</td>
-	</tr>
-</table>
-TRUMPFOOT;
-
-$global_footer = <<<FOOTER
-<table align="center" style="width:100%;">
-	<tr>
-		<td align="center">
-			<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-			$newsletter_info
-		</td>
-	</tr>
-	<tr>
-		<td align="center">
-			<table align="center" style="margin:0 auto;width:450px;max-width:450px;">
-				<tr>
-					<td class="no_top_pad" style="padding: 0;text-align:center;" align="center">
-							<a href="https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=DON&term_pub=DON&b_country=United+States&list_source=7HEGNF00&term=XX.1.50.00.DON.D.0.7043&a_first_name={{contact.first_name}}&a_last_name={{contact.last_name}}&a_address_1={{contact.street_1}}&a_city={{contact.city}}&a_state={{contact.state_province}}&a_zip={{contact.zip_code}}&a_email={{contact.email}}&account_no={{contact.icn_account_number}}&rel_rec_no={{contact.wk_sub_rel}}"><img class="news_donate" src="https://cdn.maropost.com/pro/uploads/account_585/206932/20180220_donate.png" alt="Donate" style="width:150px;min-width:100px;"  width="150" hspace="15" vspace="0" /></a>
-					</td>
-					<td style="padding: 0;text-align:center;" align="center">
-						<a href="https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=MJM&term_pub=MJM&list_source=SEGMN"><img class="news_donate" src="https://cdn.maropost.com/pro/uploads/account_585/206921/20180220_suscribe_2.png" alt="Mother Jones Store" style="width:150px;min-width:100px;margin-top: 10px;margin-bottom:10px;" width="150" hspace="15" vspace="0" /></a>
-					</td>
-				</tr>
-				<tr>
-					<td align="center" style="margin-top: 15px;text-align:center;" colspan="2">
-						<img src="http://assets.motherjones.com/newsletters/newsletter_test/mojo_logo_btm_bw.png" style="width:300px;max-width: 300px;margin: 10px auto;" width="300" />
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
-FOOTER;
-
+/*--- Prepare preview and get code page ---*/
 $page_name = $headlines_date . " | " . $headlines_type;
 $html_headers = sprintf("<!DOCTYPE html>\n<html>\n<head><title>%s</title><meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\"></head><body>", $page_name);
 $html_footers = "</body>\n</html>";
 
+//Breakdown by newsletter type
 switch($headlines_type) {
 	case "econundrums_new":
 		include "econundrum-template.php";
@@ -452,6 +280,7 @@ fwrite($file_handle, stripslashes($html_file));
 fwrite($file_handle2, stripslashes($html_file));
 print $relocate_me;
 /* end write html file to server section */
+
 /* function to clean html output */
 function cleanChars($wip) {
 	$del_array = Array("/(~‚Äö√†√∂¬¨¬¢)/", "/(‚àö√°¬¨¬Æ¬¨¬®¬¨√Ü~)/","/~(.)(&#160;)(\s)~/","/(‚àö√°¬¨¬Æ¬¨¬®¬¨√Ü‚Äö√†√∂¬¨¬¢)/", "/(~‚Äö√†√∂¬¨¬¢‚Äö√Ñ√∂‚àö√°¬¨¬Æ¬¨¬®¬¨¬©~is)/", "/(~‚Äö√†√∂¬¨¬¢)/", "/(‚àö√°¬¨¬Æ\'\)~)/", "/(~‚Äö√Ñ√∂‚àö√ë‚àö√Ü\?~)/", "/~(\s)(&#160;)(.)~/");
@@ -469,26 +298,6 @@ function cleanChars($wip) {
 	
 	return $wip;
 }
-/* getEmail function which will get the emails for the web team */
-/* not functioning right now */
-function getEmail() {
-	if(isset($_POST['email']) && $_POST['email'] != "") {
-		$email_array = $_POST['email'];
-		$count = count($email_array);
-		if(isset($_POST['liz'])) {
-			$liz = $_POST['liz'];
-			
-			for($e = 0; $e < $count; $e++) {
-				print $email_array[$e];
-				if(isset($liz) && $liz != "") {
-					print $liz;
-				}
-			}
-		}
-	}
-}
-/*end get email section */
-/* --------------------------------------- */
 
 /* this function converts <p> from the wysiwig and places correct styles into them */
 function convertP($text) {
