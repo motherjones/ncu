@@ -185,18 +185,17 @@ if(isset($close_btn) && $close_btn != "") {
 /*get the correct template for the headlines
 get code for the HTML to add to the archives ($html_file)*/
 
-$view_code = "<p style=\"margin:0 auto;width:640px;background-color:#003;border-style: 2px outset #099;border-radius:5px;text-align:center;padding:10px;font-size:16px;\"><a href=\"../\" style=\"color:#FFD700;\">Back to Main Page</a> | <a href=\"#get_code\" style=\"color:#9ff;\">View Code</a></p>";
+$view_code = "<p style=\"margin:0 auto;width:220px;background-color:#765;border-style: 2px inset #33f;border-radius:4px;text-align:center;padding:10px;font-size:16px;\"><button class=\"arch-btn\" onclick='location.href=\"#get_code\"'>View Code</button> | <button class=\"arch-btn\" onclick='close_window()'>Close preview</button></p>";
 
 //social media buttons and images
-$facebook_icon = "<img id=\"fb_icon_main\" src=\"http://assets.motherjones.com/newsletters/images/facebook_icon_btm.png\" style=\"$fb_icon_style\" width=\"54\" />";
-$twitter_icon = "<img id=\"tt_icon_main\" src=\"http://assets.motherjones.com/newsletters/images/twitter_icon_btm.png\" alt=\"tweet this\" style=\"$ttr_icon_style\" width=\"54\" />";
+include "incs/social_media_images.inc";
 
 //Newsletter identification language and footer section include
 include "incs/newsletter_footer_identification.inc";
 
 /*--- Prepare preview and get code page ---*/
 $page_name = $headlines_date . " | " . $headlines_type;
-$html_headers = sprintf("<!DOCTYPE html>\n<html>\n<head><title>%s</title><meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\"></head><body>", $page_name);
+$html_headers = sprintf("<!DOCTYPE html>\n<html>\n<head><title>%s</title><meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\"><style>.arch-btn {background-color: #331; color: #cff;}</style><script src='../headlines_script.js'></script></head><body>", $page_name);
 $html_footers = "</body>\n</html>";
 
 //Breakdown by newsletter type

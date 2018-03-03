@@ -16,6 +16,8 @@ fieldset {margin:0 auto;
 	border: none;}
 textarea {margin-bottom: 10px;
 	padding-bottom:10px;}
+.arch-btn {background-color: #331;
+	color: #cff;}
 #main_container {margin-left: 85px;
   width:1000px;}
 #header {margin:5px auto;

@@ -283,11 +283,21 @@ if($exists) {
 	more_news_2_url = '$more_news_2_url',
 	more_news_3 = '$more_news_3',
 	more_news_3_url = '$more_news_3_url',
+	ad_link_bill='$billboard_url',
+	ad_billboard='$billboard_image',
+	ad_name='$advertiser_name',
+	ad_link_banner='$billboard_url2',
+	ad_banner='$billboard_image2',
+	ad_name2='$advertiser_name2',
+	sub_url = '$sub_url',
+	sub_image = '$sub_image',
+	sub_text = '$sub_text',
+	sub_code = '$sub_code',
 	lift_note = '$lift_note'
 	WHERE hed_date='$headlines_date'";
 }
 else {
-	$run_qry = "INSERT INTO breaking_news(hed_date,subject_line, breaking, breaking_url, main_text,more_news_1,more_news_1_url,more_news_2,more_news_2_url,more_news_3,more_news_3_url lift_note)
+	$run_qry = "INSERT INTO breaking_news(hed_date,subject_line, breaking, breaking_url, main_text,more_news_1,more_news_1_url,more_news_2,more_news_2_url,more_news_3,more_news_3_url, ad_link_bill, ad_billboard, ad_link_banner, ad_name, ad_banner, ad_name2, sub_url, sub_image, sub_text, sub_code, lift_note)
 	VALUES('$headlines_date',
 	'$subject_line',
 	'$breaking_lead_hed',
@@ -299,6 +309,16 @@ else {
 	'$more_news_2_url',
 	'$more_news_3',
 	'$more_news_3_url',
+	'$billboard_url',
+	'$billboard_image',
+	'$advertiser_name',
+	'$billboard_url2',
+	'$billboard_image2',
+	'$advertiser_name2',
+	'$sub_url',
+	'$sub_image',
+	'$sub_text',
+	'$sub_code',
 	'$lift_note')";
 }
 //flush query and close db connections

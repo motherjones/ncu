@@ -201,7 +201,6 @@ function delayedInsert(json_obj) {
 	}
 }
 
-
 function restoreValues(the_section) {
   var httpxml = new getHTTP();
   var the_div = document.getElementById('archives');
@@ -441,6 +440,13 @@ function checkForm(type_submit) {
     }
 	get_form.submit();
 	return true;
+  }
+}
+
+//function to close preview window
+function close_window() {
+  if (confirm("Close preview window?")) {
+    close();
   }
 }
 

@@ -111,7 +111,8 @@ else {
 		}
 		createDivs("<?php print $arch_type; ?>");
 		if(new_news !== "yes") {
-			getArchive("<?php print $arch_type; ?>", "<?php print $news_date; ?>");
+			//var wait_for_me = setTimeout(getArchive("<?php print $arch_type; ?>", "<?php print $news_date; ?>"), 20000);
+			var wait_for_me = setTimeout(getArchive, 2000, "<?php print $arch_type; ?>", "<?php print $news_date; ?>");
 		}
 		else {
 			document.getElementById("hed_date").value = getNextSchedule(day_int)
