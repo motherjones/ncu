@@ -18,8 +18,17 @@ if($_REQUEST['archive'] && $_REQUEST['date']) {
 
 if($_REQUEST['existing']) {
   $get_section = trim($_REQUEST['existing']);
+  $new_news = "no";
+  $news_date = "";
+  
+  if($_REQUEST['check_new']) {
+  	$new_news = trim($_REQUEST['check_new']);
+  }
+  if($_REQUEST['the_date']) {
+  	$news_date = trim($_REQUEST['the_date']);
+  }
 
-  checkExisting($get_section);
+  checkExisting($get_section, $new_news, $news_date);
 }
 
 if($_REQUEST['arch_type'] && $_REQUEST['date']) {
@@ -44,29 +53,42 @@ function retrieveArchive($arch_type, $arch_date) {
   print $data_return;
 }
 
-function checkExisting($section_type) {
+function checkExisting($section_type, $if_new, $news_date) {
   include "credentials.inc";
   $db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb);
-  $date_array = "none";
 
-  $check_qry = sprintf("SELECT hed_date FROM %s ORDER By hed_date DESC", $section_type);
-  $run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
-
-  if(mysqli_num_rows($run_qry) > 0) {
-  	$date_array = "";
-  	while($get_dates = mysqli_fetch_assoc($run_qry)) {
-  		if($get_dates['hed_date'] !== "" || $get_dates['hed_date'] !== null || $get_dates['hed_date'] !== "undefined") {
-  			$date_array .= $get_dates['hed_date'] . "?";
+  if($if_new === "yes") {
+  	$check_qry = sprintf("SELECT hed_date FROM %s WHERE hed_date='%s'", $section_type, $news_date);
+  	$run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
+  	if(mysqli_num_rows($run_qry) > 0) {
+  		print "exists";
+  	}
+  	else {
+  		print $check_qry;
+  	}
+  }
+  else {
+  	$check_qry = sprintf("SELECT hed_date FROM %s ORDER By hed_date DESC", $section_type);
+  	$run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
+  	$date_array = "none";
+  	
+  	if(mysqli_num_rows($run_qry) > 0) {
+  		$date_array = "";
+  		while($get_dates = mysqli_fetch_assoc($run_qry)) {
+  			if($get_dates['hed_date'] !== "" || $get_dates['hed_date'] !== null || $get_dates['hed_date'] !== "undefined") {
+  				$date_array .= $get_dates['hed_date'] . "?";
+  			}
   		}
+  		$date_arr = explode("?", $date_array);
+  		$date_arr = array_filter($date_arr);
+  		$date_json = json_encode($date_arr);
+  		print $date_json;
+  	}
+  	else {
+  		print "no data";
   	}
   }
   
-  $date_arr = explode("?", $date_array);
-  $date_arr = array_filter($date_arr);
-  $date_json = json_encode($date_arr);
-  
-  //print $return_me;
-  print $date_json;
   mysqli_free_result($run_qry);
   mysqli_close($db_con);
 }

@@ -257,6 +257,7 @@ function restoreValues(the_section) {
 		  }
 		  else if(compare_date > we_date) {
 			  date_class = " future_news";
+			  current_str = "<span style='color: #33a;'>Future: </span>";
 		  }
 		  else if(compare_date < test_dates) {
 			  date_class = " test_news";
@@ -274,7 +275,7 @@ function restoreValues(the_section) {
     }
   }
 
-  httpxml.open("POST", "headlines_ajax_functions.php?existing="+the_section + "&r=" + rand_num, true);
+  httpxml.open("POST", "headlines_ajax_functions.php?existing=" + the_section + "&r=" + rand_num, true);
   httpxml.send("null");
 }
 
@@ -409,37 +410,67 @@ function restoreInputs(the_array) {
 }
 
 //check the form for any mistakes before submission
-function checkForm(type_submit) {
+function checkForm(type_submit, is_new, news_type) {
   //process_headlines.php
+  var httpxml = new getHTTP();
   var get_form = document.getElementById('headlinesForm');
   var prefix = "process_";
   var middlefix = "headlines";
   var suffix = ".php";
   var preview_mode = "?preview=true";
   var full_access = "";
+  var the_section = news_type;
+  var rand_num = getRandom();
+  
   full_access = prefix + middlefix + suffix;
-
-  if(type_submit == "preview") {
-	var hedlines = document.getElementById('hed_type').value;
-	var get_date = document.getElementById('hed_date').value;
-	var sub_line = document.getElementById('subject_line').value;
-	full_access = full_access + preview_mode;
-
-	if (!window.focus)return true;
-	get_form.action = full_access;
-	window.open('Preview', hedlines, "toolbar=no,width=1000,scrollbars=yes");
-	get_form.target = hedlines;
-	get_form.submit();
-	return true;
+  
+  if(is_new === "yes") {
+	  var news_date = document.getElementById('hed_date').value;
+	  httpxml.onreadystatechange = function() {
+		if(httpxml.readyState == 4) {
+			var check_if_exists = httpxml.responseText;
+			
+			if(check_if_exists === "exists") {
+				if(!confirm("There already is a shell for this date. If you would like to overwrite the shell click 'OK' to overwrite. Otherwise, please click on 'Cancel'")) {
+					return false;
+				}
+				else {
+					get_form.action = full_access;
+					get_form.target = "_self";
+					get_form.submit();
+					return true;
+				}
+			}
+		}
+	  }
+	  
+	  httpxml.open("POST", "headlines_ajax_functions.php?existing=" + the_section + "&check_new=" + is_new + "&the_date=" + news_date + "&r=" + rand_num, true);
+	  httpxml.send("null");
   }
   else {
-	get_form.action = full_access;
-    get_form.target = "_self";
-    if(!confirm("You'll now be redirected to the archives page\nwhere you can review your entry.\nClick 'OK' to proceed.")) {
-      return false;
-    }
-	get_form.submit();
-	return true;
+    if(type_submit == "preview") {
+	  var hedlines = document.getElementById('hed_type').value;
+	  var get_date = document.getElementById('hed_date').value;
+	  var sub_line = document.getElementById('subject_line').value;
+	  full_access = full_access + preview_mode;
+
+	  if (!window.focus)return true;
+	  get_form.action = full_access;
+	  window.open('Preview', hedlines, "toolbar=no,width=1000,scrollbars=yes");
+	  get_form.target = hedlines;
+	  get_form.submit();
+	  return true;
+	}
+	else {
+	  get_form.action = full_access;
+	  get_form.target = "_self";
+		  
+	  if(!confirm("You'll now be redirected to the archives page\nwhere you can review your entry.\nClick 'OK' to proceed.")){
+	    return false;
+	  }
+	  get_form.submit();
+	  return true;
+	}
   }
 }
 

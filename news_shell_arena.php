@@ -13,7 +13,10 @@ else {
 	$display_date = "<p>Headlines's date: $news_date <input type=\"hidden\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"$news_date\" /></p>";
 }
 ?>
-
+    <div id="footer_row">
+      <!-- <button style="widdth:75px;background-color:#369;color:#fff;font-size:14px;" onclick="checkForm('preview', '<?php print $new; ?>', '<?php print $arch_type ?>');">Preview</button> -->
+      <button style="width:75px;background-color:#393;color:#fff;font-size:14px;" onclick="checkForm('not', '<?php print $new; ?>', '<?php print $arch_type; ?>')">Submit</button>
+    </div>
   <form id="headlinesForm" action="" method="post" accept-charset="utf-8">
     <div id="head_row">
     	  <div id="top_section">
@@ -27,15 +30,11 @@ else {
     </div>
 	<div style="text-align:center;clear:both;width:600px;margin:0 auto;">
 		<?php print $display_date; ?>
-     	<p style="font-size:14px;">Subject line: <input type="text" id="subject_line" name="subject_line" value="" size="75" spellcheck="true" onfocus="checkHedDate()" /></p>
+     	<p style="font-size:14px;">Subject line: <input type="text" id="subject_line" name="subject_line" value="" size="75" spellcheck="true" /></p>
     </div>
   <div id="main_container">
   </div>
     <hr style="100%;clear:both;" />
-    <div id="footer_row">
-      <!-- <button style="widdth:75px;background-color:#369;color:#fff;font-size:14px;" onclick="checkForm('preview');">Preview</button> -->
-      <button style="width:75px;background-color:#393;color:#fff;font-size:14px;" onclick="checkForm('not');">Submit</button>
-    </div>
   <div id="ad_section" style="clear:both;">
   	<fieldset id="ad_slots" class="sections">
   		<legend>PAID ADS</legend>
@@ -111,7 +110,6 @@ else {
 		}
 		createDivs("<?php print $arch_type; ?>");
 		if(new_news !== "yes") {
-			//var wait_for_me = setTimeout(getArchive("<?php print $arch_type; ?>", "<?php print $news_date; ?>"), 20000);
 			var wait_for_me = setTimeout(getArchive, 1500, "<?php print $arch_type; ?>", "<?php print $news_date; ?>");
 		}
 		else {
