@@ -65,6 +65,12 @@ textarea {margin-bottom: 10px;
 	display: table;}
 #archives {margin: 5px auto;
 	width: 350px;}
+.display_date {font-weight:bold;
+	font-size:1.1em;}
+.display_date_p {
+	width:340px;
+	text-align:center;
+	margin:10px auto;}
 .news_btn {margin:2px 5px;
 	float:left;
 	color:#004;
@@ -75,7 +81,7 @@ textarea {margin-bottom: 10px;
 	padding:1px 2px;
 	color: #004;
 	background-color: #fed;}
-.edit_btn {width: 155px;
+.edit_btn {width: 55px;
 	padding:1px 5px;
 	color:#004;
 	background-color:#eee;}
@@ -98,8 +104,11 @@ textarea {margin-bottom: 10px;
 	margin-bottom: 10px;
 }
 .current_news {
-	background-color: #ff0;
+	background-color: #bfd;
 	font-weight:bold;
+	padding: 2px 2px;
+	font-size: 1.4em;
+	border: 2px inset #9ca;
 }
 .future_news {
 	background-color: #0ff;
@@ -109,6 +118,8 @@ textarea {margin-bottom: 10px;
 	background-color: #000;
 	color: #fff;
 	font-style:italic;
+	padding: 2px 2px;
+	border: 2px inset #f99;
 }
 /*for ads*/
 #ad_section {margin:5px 5px;

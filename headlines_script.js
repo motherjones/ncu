@@ -261,14 +261,14 @@ function restoreValues(the_section) {
 		  }
 		  else if(compare_date < test_dates) {
 			  date_class = " test_news";
-			  current_str = "<span style='color: #c00;'>Test: </span>";
+			  current_str = "<span style='color: #ccc;'>Test: </span>";
 		  }
 		  else {
 			  date_class = "";
 		  }
 		  preview_url = "archives/" + date_obj[date_name] + "-" + the_section + ".html";
 		  if(date_obj[date_name] !== undefined || date_obj[date_name] !== "undefined" || date_obj[date_name] !== "") {
-			  output_data += "<p style='width:340px;text-align:center;margin:10px auto;'>" + current_str + "<input type='button' class='edit_btn" + date_class + "' value='" + date_obj[date_name] + " | edit' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'> | <input type='button' class='preview_btn' value='preview' style='margin:0;padding:1px 2px;' onclick=\"window.open('" + preview_url + "', '_blank')\"></p>";
+			  output_data += "<p class='display_date_p" + date_class + "'>" + current_str + date_obj[date_name] + "<input type='button' class='edit_btn' value='edit' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'> | <input type='button' class='preview_btn' value='preview' style='margin:0;padding:1px 2px;' onclick=\"window.open('" + preview_url + "', '_blank')\"></p>";
 		  }
 	  }
 	  the_div.innerHTML += output_data;
