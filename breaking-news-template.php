@@ -204,35 +204,14 @@ $breaking_news = <<<BREAKINGNEWS
 										</td>
 									</tr>
 										$more_news_sec
-									<tr>
-										<td align="center">
-											<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-												<p class="ad_text" style="margin: 10px auto !important; font-family: Verdana, sans-serif; font-size: 14px; color: #000;">This news alert comes to you from <em>Mother Jones</em>, an award-winning, nonprofit investigative journalism organization.</p>
-										</td>
-									</tr>
-									<tr>
-										<td align="center">
-											<table align="center" style="margin:0 auto;width:450px;max-width:450px;">
-												<tr>
-													<td style="padding: 0;text-align:center;" align="center">
-														<a href="https://secure.motherjones.com/fnp/?action=SUBSCRIPTION&list_source=7GNWSF&extra_don=1&abver=A&a_first_name={{contact.first_name}}&a_last_name={{contact.last_name}}&a_address_1={{contact.street_1}}&a_city={{contact.city}}&a_state={{contact.state_province}}&a_zip={{contact.zip_code}}&a_email={{contact.email}}&account_no={{contact.icn_account_number}}&rel_rec_no={{contact.wk_sub_rel}}"><img class="news_donate" src="http://assets.motherjones.com/newsletters/images/donate_btn_orange_240.png" alt="Donate" style="width:150px;min-width:100px;"  width="150" hspace="15" vspace="0" /></a>
-													</td>
-													<td style="padding: 0;text-align:center;" align="center">
-														<a href="http://store.motherjones.com/?utm_source=motherjones&utm_campaign=october_launch&utm_medium=newsletter&utm_content=footerbutton"><img class="news_donate" src="http://assets.motherjones.com/newsletters/images/mojo-store_btn_newsletter.png" alt="Mother Jones Store" style="width:150px;min-width:100px;margin-top: 10px;margin-bottom:10px;" width="150" hspace="15" vspace="0" /></a>
-													</td>
-												</tr>
-											</table>
-										</td>
-									</tr>
-									<tr>
-										<td align="center" style="margin: 0 auto;text-align:center;">
-											<img src="http://assets.motherjones.com/newsletters/newsletter_test/mojo_logo_btm_bw.png" style="width:300px;max-width: 300px;margin: 10px auto;" width="300" />
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr>
+								<tr>
+									<td class="no_top_pad" align="center" style="padding:0;">
+										<br />
+										$global_footer
+										<br />
+									</td>
+								</tr>
+								<tr>
 							<td>
 								$saferbt
 							</td>
@@ -250,6 +229,7 @@ print $breaking_news;
 //db section
 $db_connect = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("Can't connect to database");
 
+$subject_line = addslashes($subject_line);
 $breaking_lead_hed = strip_tags(addslashes($breaking_lead_hed), $allowed_html);
 $breaking_lead_url = addslashes($breaking_lead_url);
 $main_text = strip_tags(addslashes($main_text), $allowed_html);

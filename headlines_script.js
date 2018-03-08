@@ -208,6 +208,8 @@ function restoreValues(the_section) {
   var news_type = "";
   var output_date = "";
   
+  $("#archives").removeClass("hide_me");
+  
   switch(the_section) {
   	case "breaking_news":
   		news_type = "Breaking News";
