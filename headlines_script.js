@@ -146,14 +146,13 @@ var data_text = "";
 //get archives
 function getArchive(hed_type, archives) {
   var httpxml = new getHTTP();
-  /*var archive_type = document.getElementById('hed_type').value;
-  var date_value = document.getElementById('archives').value;*/
   var archive_type = hed_type;
   var date_value = archives;
   var rand_num = getRandom();
 
   httpxml.onreadystatechange = function() {
 		if(httpxml.readyState == 4) {
+			console.log(httpxml.responseText);
 			data_text = JSON.parse(httpxml.responseText);
 			if(data_text == "" || data_text == null){
 				document.getElementById("refresh_data").value = "No data to refresh";
@@ -207,6 +206,7 @@ function restoreValues(the_section) {
   var rand_num = getRandom();
   var date_obj;
   var news_type = "";
+  var output_date = "";
   
   switch(the_section) {
   	case "breaking_news":
@@ -231,9 +231,13 @@ function restoreValues(the_section) {
   		break;
   }
   
-  the_div.innerHTML = "<h2>" + news_type + "</h2>";
+  the_div.innerHTML = "<h2>" + news_type + "</h2>";;
 
   httpxml.onreadystatechange = function() {
+	var news_type_name = "Create new " + news_type + " shell";
+	  
+	output_data = "<p style='width:340px;text-align:center;margin:10px auto;'><input type='button' value='" + news_type_name + "' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&new=yes\"' class='cr_new_btn'></p>";
+	  
     if(httpxml.readyState == 4) {
     	  var test_dates = Date.parse("2000-1-1");
     	  var week_start = getWeekStart(new Date());
@@ -244,30 +248,35 @@ function restoreValues(the_section) {
     	  var we_date = Date.parse(we_complete);
     	  var date_class;
     	  var date_name;
-    	  var news_type_name = "Create new " + news_type + " shell";
+    	  var preview_url;
+    	  
+    	  console.log(httpxml.responseText);
+    	  
 	  date_obj = JSON.parse(httpxml.responseText);
-	  var output_data = "<p style='width:340px;text-align:center;margin:10px auto;'><input type='button' value='" + news_type_name + "' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&new=yes\"' class='cr_new_btn'></p>";
-	  var preview_url;
+	  
+	  
+	  
 	  for(date_name in date_obj) {
 		  var compare_date = Date.parse(date_obj[date_name]);
     	      var current_str = "";
-		  if(compare_date > ws_date && compare_date < we_date) {
-			  date_class = " current_news";
+    	      console.log(date_obj[date_name]);
+    	      	if(compare_date > ws_date && compare_date < we_date) {
+    	      	  date_class = " current_news";
 			  current_str = "<span style='color: #a33;'>Current: </span>";
-		  }
-		  else if(compare_date > we_date) {
+    	      	}
+    	      	else if(compare_date > we_date) {
 			  date_class = " future_news";
 			  current_str = "<span style='color: #33a;'>Future: </span>";
-		  }
-		  else if(compare_date < test_dates) {
+    	      	}
+    	      	else if(compare_date < test_dates) {
 			  date_class = " test_news";
 			  current_str = "<span style='color: #ccc;'>Test: </span>";
-		  }
-		  else {
+    	      	}
+    	      	else {
 			  date_class = "";
-		  }
+    	      	}
 		  preview_url = "archives/" + date_obj[date_name] + "-" + the_section + ".html";
-		  if(date_obj[date_name] !== undefined || date_obj[date_name] !== "undefined" || date_obj[date_name] !== "") {
+		  if(date_obj[date_name] !== undefined && date_obj[date_name] !== "undefined" && date_obj[date_name] !== "" && date_obj[date_name] !== "unknown") {
 			  output_data += "<p class='display_date_p" + date_class + "'>" + current_str + date_obj[date_name] + "<input type='button' class='edit_btn' value='edit' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'> | <input type='button' class='preview_btn' value='preview' style='margin:0;padding:1px 2px;' onclick=\"window.open('" + preview_url + "', '_blank')\"></p>";
 		  }
 	  }
@@ -440,6 +449,16 @@ function checkForm(type_submit, is_new, news_type) {
 					get_form.submit();
 					return true;
 				}
+			}
+			else {
+				get_form.action = full_access;
+				get_form.target = "_self";
+					  
+				if(!confirm("You'll now be redirected to the archives page\nwhere you can review your entry.\nClick 'OK' to proceed.")){
+				  return false;
+				}
+				get_form.submit();
+				return true;
 			}
 		}
 	  }

@@ -38,7 +38,7 @@ if($_REQUEST['arch_type'] && $_REQUEST['date']) {
 }
 
 function retrieveArchive($arch_type, $arch_date) {
-  include "credentials.inc";
+  include "incs/credentials.inc";
   $db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("Can't connect to DB");
   $qry_string = sprintf("SELECT * FROM %s WHERE hed_date='%s'", $arch_type, $arch_date);
   $arch_qry = mysqli_query($db_con, $qry_string) or die("Can't run query" . mysqli_error($db_con));
@@ -54,7 +54,7 @@ function retrieveArchive($arch_type, $arch_date) {
 }
 
 function checkExisting($section_type, $if_new, $news_date) {
-  include "credentials.inc";
+  include "incs/credentials.inc";
   $db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb);
 
   if($if_new === "yes") {
@@ -62,9 +62,6 @@ function checkExisting($section_type, $if_new, $news_date) {
   	$run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
   	if(mysqli_num_rows($run_qry) > 0) {
   		print "exists";
-  	}
-  	else {
-  		print $check_qry;
   	}
   }
   else {
@@ -85,7 +82,9 @@ function checkExisting($section_type, $if_new, $news_date) {
   		print $date_json;
   	}
   	else {
-  		print "no data";
+  		$error->name = "unknown";
+  		$send_error = json_encode($error);
+  		print $send_error;
   	}
   }
   
