@@ -7,15 +7,15 @@ $arch_type = $_REQUEST["newsletter_type"];
 $news_date = $_REQUEST["date"];
 $new = $_REQUEST["new"];
 if($new === "yes") {
-	$display_date = "<p>Headlines's date for new shell (format:2012-02-29): <input type=\"text\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"\" /></p>";
+	$display_date = "<p>Headlines's date for new shell (format:2012-02-29): <input type=\"text\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"\" onchange='checkIfNew(\"$new\", \"$arch_type\")' /></p>";
 }
 else {
 	$display_date = "<p>Headlines's date: $news_date <input type=\"hidden\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"$news_date\" /></p>";
 }
 ?>
     <div id="footer_row">
-      <!-- <button style="widdth:75px;background-color:#369;color:#fff;font-size:14px;" onclick="checkForm('preview', '<?php print $new; ?>', '<?php print $arch_type ?>');">Preview</button> -->
-      <button style="width:75px;background-color:#393;color:#fff;font-size:14px;" onclick="checkForm('not', '<?php print $new; ?>', '<?php print $arch_type; ?>')">Submit</button>
+      <button style="background-color:#369;color:#fff;font-size:14px;" onclick="checkForm('preview', '<?php print $new; ?>', '<?php print $arch_type ?>');">Save and Preview</button>
+      <button style="background-color:#393;color:#fff;font-size:14px;" onclick="checkForm('not', '<?php print $new; ?>', '<?php print $arch_type; ?>')">Submit</button>
     </div>
   <form id="headlinesForm" action="" method="post" accept-charset="utf-8">
     <div id="head_row">
@@ -76,6 +76,7 @@ else {
     	</fieldset>
   	</fieldset>
   </div>
+  <input type="hidden" value="" id="holdmenow" />
   </form>
   <script>
 	$(document).ready(function() {
@@ -109,11 +110,13 @@ else {
 		    break;
 		}
 		createDivs("<?php print $arch_type; ?>");
+		
 		if(new_news !== "yes") {
 			var wait_for_me = setTimeout(getArchive, 1500, "<?php print $arch_type; ?>", "<?php print $news_date; ?>");
 		}
 		else {
 			document.getElementById("hed_date").value = getNextSchedule(day_int)
+			checkIfNew(new_news, type_of);
 		}
 	});
   </script>

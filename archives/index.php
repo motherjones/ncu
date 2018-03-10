@@ -1,65 +1,15 @@
 <?php
 header("Content-Type: text/html;charset=UTF-8");
+include "../incs/credentials.inc";
+$today = date("Y-m-d", time());
+include "../incs/header.inc"
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Newsletter Archives</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta charset="utf-8">
-  <style type="text/css">
-    #header {margin: 5px auto;
-    	width:680px;
-    	text-align:center;
-    	background-color: #ccc;
-    	padding: 5px 0;
-    	border: 3px outset #fff;}
-    p {border:2px outset #ccc;
-    	font-size: 14px;}
-    p a {font-weight: bold;
-    	color: #000;
-    	text-decoration: none;}
-    p a:hover {color:#0099fa;}
-    span {font-size: 14px;
-    	font-weight: bold;
-    	color:#ffff66;}
-    td {border: 3px inset #000;}
-    td#breaking_news {background-color: #aa9979;}
-    td#econundrums {background-color: #33ce08;}
-    td#food, td#fft_red {background-color: #69ccff;}
-    td#politics {background-color: #cfb999;}
-    td#in_the_mix {background-color: #ffb999;}
-    h3 {color: #fff;
-    	text-shadow: 3px 3px 4px black;}
-    p.current_style {margin:3px 0 10px 0;
-    	padding:4px 2px;
-    	background-color:#969696;
-    	font-weight:bold;
-    	text-align:center;
-    	text-decoration:none;}
-    p.current_style a {color:#88ffff;}
-    p.normal_style {margin:3px 0 0 0;
-    	padding:2px 2px;
-    	text-align:center;
-    	text-decoration:none;
-    	color: #000;
-    	background-color: #fff;}
-    p.test, p.test a {margin:3px 0 0 0;
-    	padding:2px 2px;
-    	text-align: center;
-    	text-decoration:none;
-    	background-color: #000 !important;
-    	color: #fff !important;}
-  </style>
-</head>
-<body style="background-color:#000;">
    <div id="header">
-    <h2 id="head_text">Newsletters Archives</h2>
-    <img src="../logo_inside.gif" border="0" style="border: 2px outset #ddd;" />
-    <br />
-    <input style="clear:both;margin:20px auto;" type="button" value="Go to Newsletters Tool" onclick="location.href='../'" />&nbsp;&nbsp;<input style="clear:both;margin:20px auto;" type="button" value="Go to archived newsletter stats" onclick="location.href='../news-stats/'" />
+    <h2 id="head_text">Newsletters Archives (old)</h2>
+    <button onclick="location.href='../'">Go to Newsletters Tool</button>
+    <button onclick="location.href='../news-stats/'">Archived newsletter stats</button>
   </div>
+  
 <?php
 error_reporting(E_ALL);
 ini_set("display_errors", 1);

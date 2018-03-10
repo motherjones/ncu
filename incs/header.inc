@@ -1,13 +1,19 @@
+<?php
+/* test path */
+$path = "https://util.motherjones.com/dev/ncu/";
+/* live path */
+//$paht = "/mojo/www/util/headlines/headlines-new-2015/";
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <title>MoJo Newsletter Curation Utility</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="head_main.css" />
+  <link rel="stylesheet" type="text/css" href="<?php print $path; ?>head_main.css" />
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script type="text/javascript" language="javascript" src="headlines_script.js"></script>
-  <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+  <script type="text/javascript" language="javascript" src="<?php print $path; ?>headlines_script.js"></script>
+  <script type="text/javascript" src="<?php print $path; ?>ckeditor/ckeditor.js"></script>
   <script type="text/javascript">
   CKEDITOR.config.customConfig = 'custom-config.js';
     function makeEditor(numId) {

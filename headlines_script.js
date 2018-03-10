@@ -152,7 +152,6 @@ function getArchive(hed_type, archives) {
 
   httpxml.onreadystatechange = function() {
 		if(httpxml.readyState == 4) {
-			console.log(httpxml.responseText);
 			data_text = JSON.parse(httpxml.responseText);
 			if(data_text == "" || data_text == null){
 				document.getElementById("refresh_data").value = "No data to refresh";
@@ -252,32 +251,30 @@ function restoreValues(the_section) {
     	  var date_name;
     	  var preview_url;
     	  
-    	  console.log(httpxml.responseText);
-    	  
 	  date_obj = JSON.parse(httpxml.responseText);
-	  
-	  
 	  
 	  for(date_name in date_obj) {
 		  var compare_date = Date.parse(date_obj[date_name]);
     	      var current_str = "";
-    	      console.log(date_obj[date_name]);
-    	      	if(compare_date > ws_date && compare_date < we_date) {
-    	      	  date_class = " current_news";
-			  current_str = "<span style='color: #a33;'>Current: </span>";
-    	      	}
-    	      	else if(compare_date > we_date) {
-			  date_class = " future_news";
-			  current_str = "<span style='color: #33a;'>Future: </span>";
-    	      	}
-    	      	else if(compare_date < test_dates) {
-			  date_class = " test_news";
-			  current_str = "<span style='color: #ccc;'>Test: </span>";
-    	      	}
-    	      	else {
-			  date_class = "";
-    	      	}
+
+  	      if(compare_date > ws_date && compare_date < we_date) {
+    	        date_class = " current_news";
+		    current_str = "<span style='color: #a33;'>Current: </span>";
+    	      }
+    	      else if(compare_date > we_date) {
+		    date_class = " future_news";
+			current_str = "<span style='color: #33a;'>Future: </span>";
+    	      }
+    	      else if(compare_date < test_dates) {
+		    date_class = " test_news";
+			current_str = "<span style='color: #ccc;'>Test: </span>";
+    	      }
+    	      else {
+		   date_class = "";
+    	      }
+  	      
 		  preview_url = "archives/" + date_obj[date_name] + "-" + the_section + ".html";
+		  
 		  if(date_obj[date_name] !== undefined && date_obj[date_name] !== "undefined" && date_obj[date_name] !== "" && date_obj[date_name] !== "unknown") {
 			  output_data += "<p class='display_date_p" + date_class + "'>" + current_str + date_obj[date_name] + "<input type='button' class='edit_btn' value='edit' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'> | <input type='button' class='preview_btn' value='preview' style='margin:0;padding:1px 2px;' onclick=\"window.open('" + preview_url + "', '_blank')\"></p>";
 		  }
@@ -422,8 +419,6 @@ function restoreInputs(the_array) {
 
 //check the form for any mistakes before submission
 function checkForm(type_submit, is_new, news_type) {
-  //process_headlines.php
-  var httpxml = new getHTTP();
   var get_form = document.getElementById('headlinesForm');
   var prefix = "process_";
   var middlefix = "headlines";
@@ -431,68 +426,69 @@ function checkForm(type_submit, is_new, news_type) {
   var preview_mode = "?preview=true";
   var full_access = "";
   var the_section = news_type;
-  var rand_num = getRandom();
+  var news_date = document.getElementById('hed_date').value;
+  var check_if_exists = $("#holdmenow").val();
   
   full_access = prefix + middlefix + suffix;
   
-  if(is_new === "yes") {
-	  var news_date = document.getElementById('hed_date').value;
-	  httpxml.onreadystatechange = function() {
-		if(httpxml.readyState == 4) {
-			var check_if_exists = httpxml.responseText;
-			
-			if(check_if_exists === "exists") {
-				if(!confirm("There already is a shell for this date. If you would like to overwrite the shell click 'OK' to overwrite. Otherwise, please click on 'Cancel'")) {
-					return false;
-				}
-				else {
-					get_form.action = full_access;
-					get_form.target = "_self";
-					get_form.submit();
-					return true;
-				}
-			}
-			else {
-				get_form.action = full_access;
-				get_form.target = "_self";
-					  
-				if(!confirm("You'll now be redirected to the archives page\nwhere you can review your entry.\nClick 'OK' to proceed.")){
-				  return false;
-				}
-				get_form.submit();
-				return true;
-			}
-		}
-	  }
-	  
-	  httpxml.open("POST", "headlines_ajax_functions.php?existing=" + the_section + "&check_new=" + is_new + "&the_date=" + news_date + "&r=" + rand_num, true);
-	  httpxml.send("null");
-  }
-  else {
-    if(type_submit == "preview") {
-	  var hedlines = document.getElementById('hed_type').value;
-	  var get_date = document.getElementById('hed_date').value;
-	  var sub_line = document.getElementById('subject_line').value;
-	  full_access = full_access + preview_mode;
-
-	  if (!window.focus)return true;
-	  get_form.action = full_access;
-	  window.open('Preview', hedlines, "toolbar=no,width=1000,scrollbars=yes");
-	  get_form.target = hedlines;
-	  get_form.submit();
-	  return true;
-	}
-	else {
-	  get_form.action = full_access;
-	  get_form.target = "_self";
-		  
-	  if(!confirm("You'll now be redirected to the archives page\nwhere you can review your entry.\nClick 'OK' to proceed.")){
+  if(type_submit == "preview") {
+	var hedlines = document.getElementById('hed_type').value;
+	var get_date = document.getElementById('hed_date').value;
+	var sub_line = document.getElementById('subject_line').value;
+	full_access = full_access + preview_mode;
+	
+	if(check_if_exists === "exists") {
+	  if(!confirm("A shell with the same date exists. Press 'OK' if you want to overwrite existing shell or 'Cancel' if you do not.")) {
 	    return false;
 	  }
-	  get_form.submit();
-	  return true;
 	}
+	
+	if (!window.focus)return true;
+	get_form.action = full_access;
+	window.open('Preview', hedlines, "toolbar=no,width=1000,scrollbars=yes");
+	get_form.target = hedlines;
+	get_form.submit();
+	return true;
   }
+  else {
+	get_form.action = full_access;
+	get_form.target = "_self";
+	
+	if(check_if_exists === "exists") {
+	  if(!confirm("A shell with the same date exists. Press 'OK' if you want to overwrite existing shell or 'Cancel' if you do not.")) {
+	    return false;
+	  }
+	}
+	else {
+	  if(!confirm("You'll now be redirected to the archives page\nwhere you can review your entry.\nClick 'OK' to proceed.")){
+	    return false;
+	  }		
+	}
+	
+	get_form.submit();
+	return true;
+  }
+}
+
+//check for existing newsletter
+function checkIfNew(new_it_is, type_news_be) {
+  var httpxml = new getHTTP();
+  var news_date = document.getElementById('hed_date').value;
+  var send_url = "headlines_ajax_functions.php?existing=" + type_news_be + "&check_new=" + new_it_is + "&the_date=" + news_date;
+  
+  $.ajax({
+	  url: send_url,
+	  cache: false,
+	  type: "GET",
+	  success: function(data) {
+		if(data === "exists") {
+		  $("#holdmenow").val(data);
+		}
+		else {
+		  $("#holdmenow").val("");
+		}
+	  }
+  });
 }
 
 //function to close preview window

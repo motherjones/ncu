@@ -60,8 +60,8 @@ function checkExisting($section_type, $if_new, $news_date) {
   if($if_new === "yes") {
   	$check_qry = sprintf("SELECT hed_date FROM %s WHERE hed_date='%s'", $section_type, $news_date);
   	$run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
-  	if(mysqli_num_rows($run_qry) > 0) {
-  		print "exists";
+  	if(mysqli_num_rows($run_qry) !== 0) {
+  		exit("exists");
   	}
   }
   else {
