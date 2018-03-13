@@ -4,7 +4,8 @@ include "incs/credentials.inc";
 $today = date("Y-m-d", time());
 include "incs/header.inc"
 ?>
-	<p style="width:300px;margin:0 auto;"><input type="button" value="Newsletter Stats" onclick="window.open('news-stats.html', 'Newsletter Stats', 'toolbar=no,width=1200,scrollbars=yes');" style="width:110px;margin: 5px auto;padding: 5px;text-align:center;color:#fff;background-color:#000;" /> &nbsp; | &nbsp; <input type="button" value="Archived newsletter stats" onclick="location.href='news-stats/'" style="width:160px;margin: 5px auto;padding: 5px;text-align:center;color:#fff;background-color:#000;" /></p>
+	<div style="width:300px;margin:0 auto;">
+	<button onclick="window.open('news-stats.html', 'Newsletter Stats', 'toolbar=no,width=1200,scrollbars=yes');" style="margin-right:10px;">Newsletter Stats</button> | <button onclick="location.href='news-stats/'">Archived newsletter stats</button></div>
   <nav id="button_bar">
   	<button id="breaking_news" class="news_btn" onclick="restoreValues(this.id)">Breaking News</button>
   	<button id="econundrums_new" class="news_btn" onclick="restoreValues(this.id)">Econundrums</button>
@@ -17,9 +18,9 @@ include "incs/header.inc"
   <div id="archives" class="hide_me"></div>
   <script type="text/javascript">
   	$(document).ready(function() {
-		$("#breaking_news").click(function() {
-			$("#breaking_news").addClass(".news_btn_selected");
-			$("#breaking_news").removeClass("news_btn");
+		$(".news_btn").click(function() {
+			$(".news_btn").css({"background-color" : "", "color" : "", "border" : ""});
+			$(this).css({"background-color" : "#fff", "color" : "#c22", "border" : "2px inset #000" });
 		});
   	 });
   </script>

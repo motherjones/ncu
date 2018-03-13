@@ -17,20 +17,20 @@ else {
       <button style="background-color:#369;color:#fff;font-size:14px;" onclick="checkForm('preview', '<?php print $new; ?>', '<?php print $arch_type ?>');">Save and Preview</button>
       <button style="background-color:#393;color:#fff;font-size:14px;" onclick="checkForm('not', '<?php print $new; ?>', '<?php print $arch_type; ?>')">Submit</button>
     </div>
-  <form id="headlinesForm" action="" method="post" accept-charset="utf-8">
-    <div id="head_row">
+	<div id="head_row">
     	  <div id="top_section">
-        <div style="width:430px;margin:5px auto;display:table;">
-        	<input type="button" value="Back to Main" onclick="location.href='./'" style="margin:5px 20px 5px 10px;padding:5px 5px;float:left;color:#ffffff;background-color:#000000;" />
+        <div style="width:190px;margin:5px auto;">
+        <button onclick="location.href='./'" style="float:left;">Back to Main</button>
         	<!-- refresh data button in case data is lost during the json call -->
-        	<input type="button" value="Refresh data" onclick="javascript:getArchive();" style="margin:5px 0 5px 10px;padding:5px 5px;float:left;background-color:#c21;color:#fff;font-weight:bold;" id="refresh_data" />
-        	<input type="hidden" value="<?php print $arch_type; ?>" id="hed_type" name="hed_type">
+        	<button onclick="javascript:getArchive();" style="float:left;background-color:#c21;color:#fff;">Refresh data</button>
         </div>
       </div>
     </div>
+  <form id="headlinesForm" action="" method="post" accept-charset="utf-8">
 	<div style="text-align:center;clear:both;width:600px;margin:0 auto;">
 		<?php print $display_date; ?>
      	<p style="font-size:14px;">Subject line: <input type="text" id="subject_line" name="subject_line" value="" size="75" spellcheck="true" /></p>
+     	<input type="hidden" value="<?php print $arch_type; ?>" id="hed_type" name="hed_type">
     </div>
   <div id="main_container">
   </div>

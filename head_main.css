@@ -1,5 +1,6 @@
 body {margin:5px 5px;
-  width:100%;}
+  width:100%;
+  max-width:1024px;}
 p {font-size:12px;
   text-align:left;
   clear:both;}
@@ -82,22 +83,15 @@ header {width:320px;
 .display_date_p {
 	width:340px;
 	text-align:center;
-	margin:10px auto;}
+	margin:5px auto;
+	padding:5px 0;
+	border-top: 1px dotted #073;}
 .news_btn {margin:2px 5px;
 	float:left;
 	color:#004;
 	background-color:#eee;
 	font-weight:bold;
 	font-size:.9em;}
-.news_btn_selected {
-	margin:2px 5px;
-	float:left;
-	color:#004;
-	font-weight:bold;
-	font-size:.9em;
-	border:2px inset #eee;
-	background-color:#ccc;
-}
 .cr_new_btn {width:230px;
 	padding:1px 2px;
 	color: #004;
@@ -108,8 +102,8 @@ header {width:320px;
 	background-color:#eee;}
 .preview_btn {width: 65px;
 	padding:1px 5px;
-	color: #eff;
-	background-color: #aa6100;
+	color: #133;
+	background-color: #ee9;
 	font-style:italic;}
 .category {margin:0 0 0 20px;
   padding:5px 5px;
@@ -132,7 +126,7 @@ header {width:320px;
 	border: 2px inset #9ca;
 }
 .future_news {
-	background-color: #0ff;
+	background-color: #ccc;
 	font-weight:bold;
 	padding: 2px 2px;
 	border: 1px outset #099;

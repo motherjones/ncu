@@ -10,6 +10,7 @@ $path = "https://util.motherjones.com/dev/ncu/";
   <title>MoJo Newsletter Curation Utility</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta charset="utf-8">
+  <link rel="shortcut icon" href="https://util.motherjones.com/dev/ncu/images/mj_cropped-favicon-512x512.png">
   <link rel="stylesheet" type="text/css" href="<?php print $path; ?>head_main.css" />
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script type="text/javascript" language="javascript" src="<?php print $path; ?>headlines_script.js"></script>

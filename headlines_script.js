@@ -237,7 +237,7 @@ function restoreValues(the_section) {
   httpxml.onreadystatechange = function() {
 	var news_type_name = "Create new " + news_type + " shell";
 	  
-	output_data = "<p style='width:340px;text-align:center;margin:10px auto;'><input type='button' value='" + news_type_name + "' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&new=yes\"' class='cr_new_btn'></p>";
+	output_data = "<div style='width:340px;text-align:center;margin:10px auto;'><button onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&new=yes\"' class='cr_new_btn'>" + news_type_name + "</button></div>";
 	  
     if(httpxml.readyState == 4) {
     	  var test_dates = Date.parse("2000-1-1");
@@ -267,7 +267,7 @@ function restoreValues(the_section) {
     	      }
     	      else if(compare_date < test_dates) {
 		    date_class = " test_news";
-			current_str = "<span style='color: #ccc;'>Test: </span>";
+			current_str = "<span style='color: #fde;'>Test: </span>";
     	      }
     	      else {
 		   date_class = "";
@@ -276,7 +276,7 @@ function restoreValues(the_section) {
 		  preview_url = "archives/" + date_obj[date_name] + "-" + the_section + ".html";
 		  
 		  if(date_obj[date_name] !== undefined && date_obj[date_name] !== "undefined" && date_obj[date_name] !== "" && date_obj[date_name] !== "unknown") {
-			  output_data += "<p class='display_date_p" + date_class + "'>" + current_str + date_obj[date_name] + "<input type='button' class='edit_btn' value='edit' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'> | <input type='button' class='preview_btn' value='preview' style='margin:0;padding:1px 2px;' onclick=\"window.open('" + preview_url + "', '_blank')\"></p>";
+			output_data += "<p class='display_date_p" + date_class + "'>" + current_str + date_obj[date_name] + "<button class='edit_btn' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'>edit</button> | <button class='preview_btn' onclick=\"window.open('" + preview_url + "', '_blank')\">preview</button></p>";
 		  }
 	  }
 	  the_div.innerHTML += output_data;
