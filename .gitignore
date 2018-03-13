@@ -3,3 +3,4 @@ archives/*.html
 incs/credentials.inc
 ckeditor/*.*
 *_bak*
+images/*.*
