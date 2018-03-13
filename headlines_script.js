@@ -259,15 +259,15 @@ function restoreValues(the_section) {
 
   	      if(compare_date > ws_date && compare_date < we_date) {
     	        date_class = " current_news";
-		    current_str = "<span style='color: #a33;'>Current: </span>";
+		    current_str = "<span>Current: </span>";
     	      }
     	      else if(compare_date > we_date) {
 		    date_class = " future_news";
-			current_str = "<span style='color: #33a;'>Future: </span>";
+			current_str = "<span>Future: </span>";
     	      }
     	      else if(compare_date < test_dates) {
 		    date_class = " test_news";
-			current_str = "<span style='color: #fde;'>Test: </span>";
+			current_str = "<span>Test: </span>";
     	      }
     	      else {
 		   date_class = "";
