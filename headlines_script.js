@@ -277,7 +277,7 @@ function restoreValues(the_section) {
 		  preview_url = "archives/" + date_obj[date_name] + "-" + the_section + ".html";
 		  
 		  if(date_obj[date_name] !== undefined && date_obj[date_name] !== "undefined" && date_obj[date_name] !== "" && date_obj[date_name] !== "unknown") {
-			output_data += "<div class=\"display_date_p\"><p class=\"" + date_class + "\"><span>" + current_str + date_obj[date_name] + "</span></p><div class=\"date_btns\"><button class=\"edit_btn\" onclick=\"location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\">edit</button> | <button class=\"preview_btn\" onclick=\"window.open(\"" + preview_url + "\", \"_blank\")\">preview</button></div></div>";
+			output_data += "<div class='display_date_p'><p class='" + date_class + "'><span>" + current_str + date_obj[date_name] + "</span></p><div class='date_btns'><button class='edit_btn' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'>edit</button> | <button class='preview_btn' onclick='window.open(\"" + preview_url + "\", \"_blank\")'>preview</button></div></div>";
 			/*output_data += "<p class='display_date_p" + date_class + "'>" + current_str + date_obj[date_name] + "<button class='edit_btn' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'>edit</button> | <button class='preview_btn' onclick=\"window.open('" + preview_url + "', '_blank')\">preview</button></p>";*/
 		  }
 	  }
