@@ -78,6 +78,6 @@ $path = "https://util.motherjones.com/dev/ncu/";
   </div>
   <h3 id="head_text"><em>MoJo</em> Newsletter Curation Utility [<strong>MNCU</strong>]</h3>
   <div id="stat_buttons" style="width:180px;margin:0 auto;float:right;">
-	<button onclick="window.open('news-stats.html', 'Newsletter Stats', 'toolbar=no,width=1200,scrollbars=yes');" style="margin-right:10px;color: #003;background-color:#fff;">Newsletter Stats</button><br /><button onclick="location.href='news-stats/'" style="color: #003;background-color:#fff;">Archived newsletter stats</button></div>
-	<button onclick="location.href='temp'" style="text-align:center;float:right;">Find a lost newsletter</button>
+	<button onclick="window.open('news-stats.html', 'Newsletter Stats', 'toolbar=no,width=1200,scrollbars=yes');" style="color: #003;background-color:#fff;">Newsletter Stats</button><br /><button onclick="location.href='news-stats/'" style="color: #003;background-color:#fff;">Archived newsletter stats</button></div>
+	<button onclick="location.href='temp'" style="text-align:center;float:right;">Lost and Found</button>
   <hr style="width:100%;max-width:100%;border:1px inset #c99;clear:both;">

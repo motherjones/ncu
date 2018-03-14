@@ -20,7 +20,7 @@ include "incs/header.inc"
   	$(document).ready(function() {
 		$(".news_btn").click(function() {
 			$(".news_btn").css({"background-color" : "", "color" : "", "border" : ""});
-			$(this).css({"background-color" : "#fff", "color" : "#c22", "border" : "2px inset #000" });
+			$(this).css({"background-color" : "#fff", "color" : "#c22", "border" : "2px inset #000"});
 		});
   	 });
   </script>

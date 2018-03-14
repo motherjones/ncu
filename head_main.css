@@ -1,7 +1,8 @@
 body {margin:5px 5px;
-  width:100%;
-  max-width:1024px;}
-p {font-size:20px;
+  width:1024;
+  max-width:100%;
+  font-family: 'Times New Roman', serif;}
+p {font-size:16px;
   text-align:right;
   font-weight:bold;
   clear:both;
@@ -10,7 +11,8 @@ button {margin-left:10px;
   color:#fff;
   background-color:#000;
   padding:2px 4px;
-  vertical-align:top;}
+  vertical-align:top;
+  font-family: 'Times New Roman', serif;}
 input {margin-left:10px;
   color:#000000;
   background-color:#ffffff;}
@@ -75,38 +77,49 @@ header {width:320px;
 	padding: 5px;
 	display: inline-block;}
 #archives {margin: 5px auto;
-	width: 650px;
-	padding: 10px;
-	float:left;}
+	width: 650px;}
 #stats_sect {margin: 10px auto;
 	width:640px;}
 .display_date {font-weight:bold;
 	font-size:1.1em;}
 .display_date_p {
-	width:500px;
+	margin:5px auto;
+	padding:5px 0;
+	max-width:640px;
+	width:640px;
+	text-align:center;
+	border-bottom:1px dotted #000;
+	display:table;
+	font-weight:bold;
+	/*width:500px;
 	text-align:right;
 	margin:5px 0;
-	padding:5px 0
+	padding:5px 0;
 	max-width:100%;
-	/*border-bottom: 1px dotted #073;*/}
+	border-bottom: 1px dotted #073;*/}
 .news_btn {margin:2px 5px;
 	float:left;
 	color:#004;
 	background-color:#eee;
 	font-weight:bold;
-	font-size:.9em;}
+	font-style: italic;
+	font-size:1.1em;
+	border-radius: 13px;
+  border-color: #f03;}
 .cr_new_btn {width:230px;
 	padding:1px 2px;
 	color: #004;
 	background-color: #fed;}
-.edit_btn {width: 55px;
+.edit_btn {margin-right:10px;
 	padding:1px 5px;
 	color:#004;
+	font-weight:bold;
 	background-color:#eee;}
 .preview_btn {width: 65px;
 	padding:1px 5px;
 	color: #133;
 	background-color: #ee9;
+	font-weight:600;
 	font-style:italic;}
 .category {margin:0 0 0 20px;
   padding:5px 5px;
@@ -121,30 +134,31 @@ header {width:320px;
 	clear:both;
 	margin-bottom: 10px;
 }
-.current_news {
-	/*background-color: #eee;*/
-	padding: 2px 2px;
-	/*border: 2px inset #9ca;*/
+.current_news, .future_news, .test_news, .normal_news {
+	clear:both;
+	display: table-cell;
+	vertical-align: bottom;
+	text-align:right;
+	width:50%;
+	max-width:50%;
+	padding-right:10px;
+	float:none;
 }
 .current_news span {
-	color: #a33;
-}
-.future_news {
-	/*background-color: #ccc;*/
-	padding: 2px 2px;
+	color: #3c3;
 }
 .future_news span {font-style:italic;
-	color: #229;
+	color: #28d;
 	font-weight:bold;
 }
-.test_news {
-	/*background-color: #000;*/
-	color: #922;
-	padding: 2px 2px;
-	/*border-top: 2px double #922;*/
-}
 .test_news span {font-style:italic;
-	color: #922;font-weight:bold;
+	color: #999;
+}
+.date_btns {
+	float:left;
+	text-align:right;
+	display: table-cell;
+	vertical-align: top;
 }
 /*for ads*/
 #ad_section {margin:5px 5px;
