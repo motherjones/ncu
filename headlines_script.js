@@ -232,12 +232,13 @@ function restoreValues(the_section) {
   		break;
   }
   
-  the_div.innerHTML = "<h2>" + news_type + "</h2>";;
+  //the_div.innerHTML = "<h2>" + news_type + "</h2>";
+  the_div.innerHTML = "";
 
   httpxml.onreadystatechange = function() {
 	var news_type_name = "Create new " + news_type + " shell";
 	  
-	output_data = "<div style='width:340px;text-align:center;margin:10px auto;'><button onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&new=yes\"' class='cr_new_btn'>" + news_type_name + "</button></div>";
+	output_data = "<div style='width:340px;text-align:right;margin:10px 0;float:right;'><button onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&new=yes\"' class='cr_new_btn'>" + news_type_name + "</button></div>";
 	  
     if(httpxml.readyState == 4) {
     	  var test_dates = Date.parse("2000-1-1");

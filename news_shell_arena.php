@@ -27,7 +27,7 @@ else {
       </div>
     </div>
   <form id="headlinesForm" action="" method="post" accept-charset="utf-8">
-	<div style="text-align:center;clear:both;width:600px;margin:0 auto;">
+	<div style="text-align:center;clear:both;max-width:100%;margin-left:150px;">
 		<?php print $display_date; ?>
      	<p style="font-size:14px;">Subject line: <input type="text" id="subject_line" name="subject_line" value="" size="75" spellcheck="true" /></p>
      	<input type="hidden" value="<?php print $arch_type; ?>" id="hed_type" name="hed_type">

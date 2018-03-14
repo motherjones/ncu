@@ -4,8 +4,7 @@ include "incs/credentials.inc";
 $today = date("Y-m-d", time());
 include "incs/header.inc"
 ?>
-	<div style="width:300px;margin:0 auto;">
-	<button onclick="window.open('news-stats.html', 'Newsletter Stats', 'toolbar=no,width=1200,scrollbars=yes');" style="margin-right:10px;">Newsletter Stats</button> | <button onclick="location.href='news-stats/'">Archived newsletter stats</button></div>
+<div style="text-align:center;clear:both;">
   <nav id="button_bar">
   	<button id="breaking_news" class="news_btn" onclick="restoreValues(this.id)">Breaking News</button>
   	<button id="econundrums_new" class="news_btn" onclick="restoreValues(this.id)">Econundrums</button>
@@ -14,7 +13,8 @@ include "incs/header.inc"
 	<button id="political_mojo_new" class="news_btn" onclick="restoreValues(this.id)">Politial MoJo</button>
 	<button id="trumpocracy" class="news_btn" onclick="restoreValues(this.id)">The Russian Connection</button>
   </nav>
-  <hr style="width:90%;color:#ccc;">
+ </div>
+
   <div id="archives" class="hide_me"></div>
   <script type="text/javascript">
   	$(document).ready(function() {

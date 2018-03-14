@@ -6,7 +6,6 @@ include "../incs/header.inc"
 ?>
 <header>
 	<button onclick="location.href='../'" style="text-align:center;">Go to Newsletter Tool</button>
-	<button onclick="location.href='../archives'" style="text-align:center;">Go to Newsletter Archives</button>
 </header>
 
 <h2>Archived Newsletter Statistics</h2>
