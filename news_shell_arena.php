@@ -7,7 +7,8 @@ $arch_type = $_REQUEST["newsletter_type"];
 $news_date = $_REQUEST["date"];
 $new = $_REQUEST["new"];
 if($new === "yes") {
-	$display_date = "<p>Headlines's date for new shell (format:2012-02-29): <input type=\"text\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"\" onchange='checkIfNew(\"$new\", \"$arch_type\")' /></p>";
+	//onchange='checkIfNew(\"$new\", \"$arch_type\")'
+	$display_date = "<p>Headlines's date for new shell (format:2012-02-29): <input type=\"text\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"\" /></p>";
 }
 else {
 	$display_date = "<p>Headlines's date: $news_date <input type=\"hidden\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"$news_date\" /></p>";
@@ -31,6 +32,7 @@ else {
 		<?php print $display_date; ?>
      	<p style="font-size:14px;">Subject line: <input type="text" id="subject_line" name="subject_line" value="" size="75" spellcheck="true" /></p>
      	<input type="hidden" value="<?php print $arch_type; ?>" id="hed_type" name="hed_type">
+     	<input type="hidden" value="<?php print $new; ?>" id="new_it_is" name="new_it_is">
     </div>
   <div id="main_container">
   </div>
@@ -112,11 +114,13 @@ else {
 		createDivs("<?php print $arch_type; ?>");
 		
 		if(new_news !== "yes") {
-			var wait_for_me = setTimeout(getArchive, 1500, "<?php print $arch_type; ?>", "<?php print $news_date; ?>");
+			var wait_for_me = setTimeout(getArchive, 1000, "<?php print $arch_type; ?>", "<?php print $news_date; ?>");
 		}
 		else {
-			document.getElementById("hed_date").value = getNextSchedule(day_int)
-			checkIfNew(new_news, type_of);
+			document.getElementById("hed_date").value = getNextSchedule(day_int);
+			checkIfNew();
+			//$("#hed_date").on("change", checkIfNew);
+			$("#hed_date").on("focusout", checkIfNew);
 		}
 	});
   </script>

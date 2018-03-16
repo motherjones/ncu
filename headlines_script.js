@@ -473,10 +473,14 @@ function checkForm(type_submit, is_new, news_type) {
 }
 
 //check for existing newsletter
-function checkIfNew(new_it_is, type_news_be) {
+function checkIfNew() {
   var httpxml = new getHTTP();
   var news_date = document.getElementById('hed_date').value;
-  var send_url = "headlines_ajax_functions.php?existing=" + type_news_be + "&check_new=" + new_it_is + "&the_date=" + news_date;
+  var type_of = document.getElementById('hed_type').value;
+  var new_news = document.getElementById('new_it_is').value;
+  var send_url = "headlines_ajax_functions.php?existing=" + type_of + "&check_new=" + new_news + "&the_date=" + news_date;
+  console.log(new_news);
+  console.log(type_of);
   
   $.ajax({
 	  url: send_url,
@@ -485,9 +489,11 @@ function checkIfNew(new_it_is, type_news_be) {
 	  success: function(data) {
 		if(data === "exists") {
 		  $("#holdmenow").val(data);
+		  console.log("I exist");
 		}
 		else {
 		  $("#holdmenow").val("");
+		  console.log("I don't exist");
 		}
 	  }
   });
