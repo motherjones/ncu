@@ -119,6 +119,7 @@ else {
 			document.getElementById("hed_date").value = getNextSchedule(day_int);
 			checkIfNew();
 			$("#hed_date").on("focusout", checkIfNew);
+			$("#hed_date").on("mouseout", checkIfNew);
 		}
 	});
   </script>

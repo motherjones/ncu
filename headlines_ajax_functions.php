@@ -9,13 +9,6 @@ if($_REQUEST['section']) {
   createDivs($section);
 }
 
-if($_REQUEST['archive'] && $_REQUEST['date']) {
-  $get_type = $_REQUEST['archive'];
-  $get_date = $_REQUEST['date'];
-
-  getArchives($get_type, $get_date);
-}
-
 if($_REQUEST['existing']) {
   $get_section = trim($_REQUEST['existing']);
   $new_news = "no";
@@ -44,11 +37,6 @@ function retrieveArchive($arch_type, $arch_date) {
   $arch_qry = mysqli_query($db_con, $qry_string) or die("Can't run query" . mysqli_error($db_con));
   $result = mysqli_fetch_assoc($arch_qry);
   $data_return = json_encode($result);
-
-  /*foreach($result as $key=>$value) {
-    $value = stripslashes($value);
-    $data_return .= $key . "~" . $value . "^";
-  }*/
 
   print $data_return;
 }
@@ -741,18 +729,4 @@ TRUMP;
 
 return $trumpocracy;
 }
-
-function getArchives($type, $date) {
-  switch($type) {
-    case "econundrum":
-      break;
-    case "dcdecoder":
-      break;
-    case "drumbeat":
-      break;
-    case "wiretap":
-    	break;
-  }
-}
-
 ?>
