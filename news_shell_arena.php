@@ -7,7 +7,6 @@ $arch_type = $_REQUEST["newsletter_type"];
 $news_date = $_REQUEST["date"];
 $new = $_REQUEST["new"];
 if($new === "yes") {
-	//onchange='checkIfNew(\"$new\", \"$arch_type\")'
 	$display_date = "<p>Headlines's date for new shell (format:2012-02-29): <input type=\"text\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"\" /></p>";
 }
 else {
@@ -119,7 +118,6 @@ else {
 		else {
 			document.getElementById("hed_date").value = getNextSchedule(day_int);
 			checkIfNew();
-			//$("#hed_date").on("change", checkIfNew);
 			$("#hed_date").on("focusout", checkIfNew);
 		}
 	});
