@@ -5,7 +5,7 @@ $today = date("Y-m-d", time());
 include "../incs/header.inc"
 ?>
 <header>
-	<button onclick="location.href='../'" style="text-align:center;">Go to Newsletter Tool</button>
+	<button onclick="location.href='../'" style="text-align:center;">Back to Main</button>
 </header>
 
 <h2>Archived Newsletter Statistics</h2>

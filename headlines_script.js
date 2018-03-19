@@ -238,7 +238,7 @@ function restoreValues(the_section) {
   httpxml.onreadystatechange = function() {
 	var news_type_name = "Create new " + news_type + " shell";
 	  
-	output_data = "<div style='width:640px;text-align:center;margin:10px 0;'><button onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&new=yes\"' class='cr_new_btn'>" + news_type_name + "</button></div>";
+	output_data = "<div style='width:640px;text-align:center;margin:10px 0;padding:10px 0;'><button onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&new=yes\"' class='cr_new_btn'>" + news_type_name + "</button><p>Please check the list of dates below to see if the shell you need has already been created before creating a new shell.</div>";
 	  
     if(httpxml.readyState == 4) {
     	  var test_dates = Date.parse("2000-1-1");

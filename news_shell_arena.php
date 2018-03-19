@@ -18,16 +18,18 @@ else {
       <button style="background-color:#393;color:#fff;font-size:14px;" onclick="checkForm('not', '<?php print $new; ?>', '<?php print $arch_type; ?>')">Submit</button>
     </div>
 	<div id="head_row">
-    	  <div id="top_section">
-        <div style="width:190px;margin:5px auto;">
+    	  <!-- <div id="top_section">  -->
+    	  <header>
+        <div style="width:190px;margin:5px auto;text-align:center;">
         <button onclick="location.href='./'" style="float:left;">Back to Main</button>
         	<!-- refresh data button in case data is lost during the json call -->
         	<button onclick="javascript:getArchive();" style="float:left;background-color:#c21;color:#fff;">Refresh data</button>
         </div>
-      </div>
+      </header>
+      <!-- </div> -->
     </div>
   <form id="headlinesForm" action="" method="post" accept-charset="utf-8">
-	<div style="text-align:center;clear:both;max-width:100%;margin-left:150px;">
+	<div style="text-align:center;clear:both;max-width:100%;">
 		<?php print $display_date; ?>
      	<p style="font-size:14px;">Subject line: <input type="text" id="subject_line" name="subject_line" value="" size="75" spellcheck="true" /></p>
      	<input type="hidden" value="<?php print $arch_type; ?>" id="hed_type" name="hed_type">

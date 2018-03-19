@@ -23,8 +23,10 @@ fieldset {margin:0 auto;
 	border: none;}
 textarea {margin-bottom: 10px;
 	padding-bottom:10px;}
-header {width:320px;
-	margin: 10px auto;}
+header {width:640px;
+	max-width:100%;
+	margin: 10px auto;
+	text-align:center;}
 .arch-btn {background-color: #331;
 	color: #cff;}
 #main_container {margin-left: 85px;
@@ -33,9 +35,9 @@ header {width:320px;
 	display:table;
 	width:100%;
 	margin:0 0;
-	padding:10px 10px;
+	padding:10px 0;
 	border-bottom: 2px inset #933;}
-#logo {margin-left: 75px;
+#logo {margin-left: 50px;
   width:200px;
   padding: 0 10px;
   clear:both;
@@ -43,10 +45,11 @@ header {width:320px;
 #head_text {text-align:center;
   font-weight:bold;
   float:left;}
-#head_row {margin:5px auto;
+#head_row {margin:20px auto;
   max-width:100%;
   text-align:center;
-  clear:both;}
+  clear:both;
+  display:table;}
 #footer_row {margin:0;
   width:80px;
   position:fixed;
