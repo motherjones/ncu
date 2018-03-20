@@ -23,7 +23,7 @@ else {
         <div style="width:190px;margin:5px auto;text-align:center;">
         <button onclick="location.href='./'" style="float:left;">Back to Main</button>
         	<!-- refresh data button in case data is lost during the json call -->
-        	<button onclick="javascript:getArchive();" style="float:left;background-color:#c21;color:#fff;">Refresh data</button>
+        	<button id="refresh_data" onclick="javascript:getArchive();" style="float:left;background-color:#c21;color:#fff;">Refresh data</button>
         </div>
       </header>
       <!-- </div> -->

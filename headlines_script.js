@@ -518,16 +518,62 @@ function cleanstring(dirty){
 }
 
 function fixURL(url_fix) {
+	var newsletter = $("#hed_type").val();
+	var this_news = "utm_source=mj-newsletters&";
+	var this_email = "utm_medium=email&";
+	var this_campaign = "utm_campaign=";
+	var this_date = $("#hed_date").val();
 	var header = "http://";
 	var exists = "";
+	var utm_code_suffix = "";
 	url_fix = url_fix.trim();
 	
 	if(url_fix) {
-		if(!/^https?:\/\//i.test(url_fix)) {
-			return header + url_fix;
+		if(!url_fix.match(/\?/)) {
+			utm_code_suffix = "?";
 		}
 		else {
-			return url_fix;
+			utm_code_suffix = "&";
+		}
+	}
+	
+	switch(newsletter) {
+		case "breaking_news":
+			this_campaign += "breaking-news-" + this_date;
+			break;
+		case "econundrums_new":
+			this_campaign += "econundrums-" + this_date;
+			break;
+		case "food_for_thought_redesign":
+			this_campaign += "food-for-thought-" + this_date;
+			break;
+		case "political_mojo_new":
+			this_campaign += "political-mojo-" + this_date;
+			break;
+		case "trumpocracy":
+			this_campaign += "the-russian-connection-" + this_date;
+			break;
+		default:
+			break;
+	}
+	
+	if(url_fix.match("www.motherjones.com") || url_fix.match("secure.motherjones.com")) {
+		utm_code_suffix += this_news + this_email + this_campaign;
+	}
+	else {
+		utm_code_suffix = "";
+	}
+	
+	if(url_fix.match("utm_source")) {
+		utm_code_suffix = "";
+	}
+	
+	if(url_fix) {
+		if(!/^https?:\/\//i.test(url_fix)) {
+			return header + url_fix + utm_code_suffix;
+		}
+		else {
+			return url_fix + utm_code_suffix;
 		}
 	}
 	else {
