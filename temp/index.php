@@ -69,7 +69,11 @@ print "</div>";
 
 </div>
 
-<iframe style="width:680px;margin-right:20px;float:left;height:1280px;position:fixed;top:150px;border:none;" name="lost_news"></iframe>
+<div id="asgaard">
+
+</div>
+
+<!-- <iframe style="width:680px;margin-right:20px;float:left;height:1280px;position:fixed;top:150px;border:none;" name="lost_news"></iframe> -->
 
 <script type="text/javascript">
 function showMe(the_div) {

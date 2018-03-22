@@ -115,7 +115,8 @@ header {width:640px;
 	color:#004;
 	font-weight:bold;
 	background-color:#eee;}
-.preview_btn {width: 65px;
+.preview_btn {
+	display: inline-block;
 	padding:1px 5px;
 	color: #133;
 	background-color: #ee9;
@@ -219,6 +220,14 @@ header {width:640px;
 }
 .loading_done {
 	background-color: #090;
+	color: #fff;
+}
+#hidden_at_start {width:100%;
+	background-color: #990000;
+	text-align:center;
+	padding: 10px 0;
+	font-size:16px;
+	font-weight: bold;
 	color: #fff;
 }
 /* hide stuff */

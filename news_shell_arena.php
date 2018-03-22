@@ -18,7 +18,6 @@ else {
       <button style="background-color:#393;color:#fff;font-size:14px;" onclick="checkForm('not', '<?php print $new; ?>', '<?php print $arch_type; ?>')">Submit</button>
     </div>
 	<div id="head_row">
-    	  <!-- <div id="top_section">  -->
     	  <header>
         <div style="width:190px;margin:5px auto;text-align:center;">
         <button onclick="location.href='./'" style="float:left;">Back to Main</button>
@@ -26,11 +25,11 @@ else {
         	<button id="refresh_data" onclick="javascript:getArchive();" style="float:left;background-color:#c21;color:#fff;">Refresh data</button>
         </div>
       </header>
-      <!-- </div> -->
     </div>
   <form id="headlinesForm" action="" method="post" accept-charset="utf-8">
 	<div style="text-align:center;clear:both;max-width:100%;">
 		<?php print $display_date; ?>
+      <p id="hidden_at_start">You are creating a new shell. If this is not what you intended, please click on "Back to Main" and choose an existing shell.</p>
      	<p style="font-size:14px;">Subject line: <input type="text" id="subject_line" name="subject_line" value="" size="75" spellcheck="true" /></p>
      	<input type="hidden" value="<?php print $arch_type; ?>" id="hed_type" name="hed_type">
      	<input type="hidden" value="<?php print $new; ?>" id="new_it_is" name="new_it_is">
@@ -116,9 +115,11 @@ else {
 		
 		if(new_news !== "yes") {
 			var wait_for_me = setTimeout(getArchive, 1000, "<?php print $arch_type; ?>", "<?php print $news_date; ?>");
+			$("#hidden_at_start").hide();
 		}
 		else {
 			document.getElementById("hed_date").value = getNextSchedule(day_int);
+			$("#hidden_at_start").show();
 			checkIfNew();
 			$("#hed_date").on("focusout", checkIfNew);
 			$("#hed_date").on("mouseout", checkIfNew);
