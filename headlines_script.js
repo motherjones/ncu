@@ -241,11 +241,20 @@ function restoreValues(the_section) {
 	output_data = "<div style='width:640px;text-align:center;margin:10px 0;padding:10px 0;'><button onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&new=yes\"' class='cr_new_btn'>" + news_type_name + "</button><p style='font-size:16px;font-weight:bold;'>Please check the list of dates below to see if the shell you need has already been created before creating a new shell.</div>";
 	  
     if(httpxml.readyState == 4) {
-    	  var test_dates = Date.parse("2000-1-1");
+    	  var test_dates = Date.parse("2007-4-23");
     	  var week_start = getWeekStart(new Date());
     	  var week_end = week_start.addDays(7);
     	  var ws_complete = week_start.getFullYear() + "-" + (week_start.getMonth() + 1) + "-" + week_start.getDate();
     	  var we_complete = week_end.getFullYear() + "-" + (week_end.getMonth() + 1) + "-" + week_end.getDate();
+    	  
+    	  var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+    	  
+    	  if(isSafari) {
+    		  test_dates = Date.parse("2007/4/23");
+    		  ws_complete = week_start.getFullYear() + "/" + (week_start.getMonth() + 1) + "/" + week_start.getDate();
+    		  we_complete = week_end.getFullYear() + "/" + (week_end.getMonth() + 1) + "/" + week_end.getDate();
+    	  }
+    	  
     	  var ws_date = Date.parse(ws_complete);
     	  var we_date = Date.parse(we_complete);
     	  var date_class;
@@ -257,7 +266,6 @@ function restoreValues(the_section) {
 	  for(date_name in date_obj) {
 		  var compare_date = Date.parse(date_obj[date_name]);
     	      var current_str = "";
-
   	      if(compare_date > ws_date && compare_date < we_date) {
     	        date_class = " current_news";
 		    current_str = "<span>Current: </span>";
@@ -271,14 +279,13 @@ function restoreValues(the_section) {
 			current_str = "<span>Test: </span>";
     	      }
     	      else {
-		   date_class = " normal_news";
+		    date_class = " normal_news";
     	      }
   	      
 		  preview_url = "archives/" + date_obj[date_name] + "-" + the_section + ".html";
 		  
 		  if(date_obj[date_name] !== undefined && date_obj[date_name] !== "undefined" && date_obj[date_name] !== "" && date_obj[date_name] !== "unknown") {
 			output_data += "<div class='display_date_p'><p class='" + date_class + "'><span>" + current_str + date_obj[date_name] + "</span></p><div class='date_btns'><button class='edit_btn' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'>edit</button> | <button class='preview_btn' onclick='window.open(\"" + preview_url + "\", \"_blank\")'>preview and get code</button></div></div>";
-			/*output_data += "<p class='display_date_p" + date_class + "'>" + current_str + date_obj[date_name] + "<button class='edit_btn' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'>edit</button> | <button class='preview_btn' onclick=\"window.open('" + preview_url + "', '_blank')\">preview</button></p>";*/
 		  }
 	  }
 	  the_div.innerHTML += output_data;
