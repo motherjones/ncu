@@ -469,7 +469,7 @@ function checkForm(type_submit, is_new, news_type) {
 	  }
 	}
 	else {
-	  if(!confirm("You'll now be redirected to the archives page\nwhere you can review your entry.\nClick 'OK' to proceed.")){
+	  if(!confirm("You'll now be redirected to the main page.\nClick 'OK' to proceed.")){
 	    return false;
 	  }		
 	}

@@ -240,6 +240,9 @@ $more_news_2_url = strip_tags(addslashes($more_news_2_url), $allowed_html);
 $more_news_3 = strip_tags(addslashes($more_news_3), $allowed_html);
 $more_news_3_url = strip_tags(addslashes($more_news_3_url), $allowed_html);
 $lift_note = addslashes($lift_note);
+$billboard_url = addslashes($billboard_url);
+$billboard_image = addslashes($billboard_image);
+$advertiser_name = addslashes($advertiser_name);
 
 $check_existing = "SELECT id, hed_date FROM breaking_news WHERE hed_date='$headlines_date'";
 $existing_qry = mysqli_query($db_connect, $check_existing) or die("Can't run query now");

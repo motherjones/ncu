@@ -518,6 +518,13 @@ $sub_code = addslashes($sub_code);
 $lift_note = addslashes($lift_note);
 $pixel_tracker = addslashes($pixel_tracker);
 $pixel_tracker2 = addslashes($pixel_tracker2);
+$billboard_url = addslashes($billboard_url);
+$billboard_image = addslashes($billboard_image);
+$advertiser_name = addslashes($advertiser_name);
+$billboard_url2 = addslashes($billboard_url2);
+$billboard_image2 = addslashes($billboard_image2);
+$advertiser_name2 = addslashes($advertiser_name2);
+$advertiser_name = addslashes($advertiser_name);
 
 //check to see if data exists in db
 $check_existing = "SELECT id, hed_date FROM econundrums_new WHERE hed_date='$headlines_date'";

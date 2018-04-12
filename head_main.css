@@ -106,6 +106,8 @@ header {width:640px;
 	font-size:1.1em;
 	border-radius: 5px;
   border-color: #f03;}
+.landf_btn {background-color: #ccc;
+	color: #000;}
 .cr_new_btn {width:230px;
 	padding:1px 2px;
 	color: #004;

@@ -63,11 +63,15 @@ $path = "https://util.motherjones.com/dev/ncu/";
     function checkStatsButton(this_location) {
     		var this_path = this_location;
 
-    		if(this_path.search("news-stats") > -1) {
+    		if(this_path.search("news-stats") > -1 || this_path.search("temp") > -1) {
         		var hide_me = document.getElementById("stat_buttons");
         		var hide_me_too = document.getElementById("lost_found");
             hide_me.style.display = "none";
             hide_me_too.style.display = "none";
+        }
+
+        if(this_path.search("temp") > -1) {
+            $("body").css("background-color", "#cdd");
         }
     }
     </script>

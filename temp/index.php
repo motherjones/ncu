@@ -4,15 +4,16 @@ include "../incs/credentials.inc";
 $today = date("Y-m-d", time());
 include "../incs/header.inc"
 ?>
+<h2>Lost and Found Area</h2>
 <header style="width:100%;text-align:center;">
 	<p><button onclick="window.close();">Close window/tab</button></p>
 	<nav style="margin:0 auto;max-width:760px;display:inline-block;text-align:center;clear:both;">
-  		<button id="breaking_news" class="news_btn" onclick="showMe(this.id)">Breaking News</button>
-  		<button id="econundrums_new" class="news_btn" onclick="showMe(this.id)">Econundrums</button>
-  		<button id="food_for_thought_redesign" class="news_btn" onclick="showMe(this.id)">Food for Thought</button>
-  		<button id="in_the_mix_new" class="news_btn" onclick="showMe(this.id)">In the Mix</button>
-		<button id="political_mojo_new" class="news_btn" onclick="showMe(this.id)">Politial MoJo</button>
-		<button id="trumpocracy" class="news_btn" onclick="showMe(this.id)">The Russian Connection</button>
+  		<button id="breaking_news" class="landf_btn" onclick="showMe(this.id)">Breaking News</button>
+  		<button id="econundrums_new" class="landf_btn" onclick="showMe(this.id)">Econundrums</button>
+  		<button id="food_for_thought_redesign" class="landf_btn" onclick="showMe(this.id)">Food for Thought</button>
+  		<button id="in_the_mix_new" class="landf_btn" onclick="showMe(this.id)">In the Mix</button>
+		<button id="political_mojo_new" class="landf_btn" onclick="showMe(this.id)">Politial MoJo</button>
+		<button id="trumpocracy" class="landf_btn" onclick="showMe(this.id)">The Russian Connection</button>
   	</nav>
 </header>
 <div id="tmp_container" style="float:left;padding-right:10px;">
