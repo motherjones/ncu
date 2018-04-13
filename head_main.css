@@ -243,6 +243,8 @@ header {width:640px;
 /* format specific elements [textarea] */
 #conundrum_lead___Frame, #maindish_lead___Frame, #twmustread_lead___Frame, #topstory_lead___Frame {height:120px !important;}
 #bite_section {display: none;}
+/*lost and found */
+.type_container p button {font-size:16px;}
 /* old archive css */
 td#breaking_news {background-color: #aa9979;}
 td#econundrums {background-color: #33ce08;}
