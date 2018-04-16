@@ -2,7 +2,7 @@
 header("Content-Type: text/html;charset=UTF-8");
 include "incs/credentials.inc";
 $today = date("Y-m-d", time());
-include "incs/header.inc";
+
 $arch_type = $_REQUEST["newsletter_type"];
 $news_date = $_REQUEST["date"];
 $new = $_REQUEST["new"];
@@ -12,6 +12,8 @@ if($new === "yes") {
 else {
 	$display_date = "<p>Headlines's date: $news_date <input type=\"hidden\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"$news_date\" /></p>";
 }
+
+include "incs/header.inc";
 ?>
     <div id="footer_row">
       <button style="background-color:#369;color:#fff;font-size:14px;" onclick="checkForm('preview', '<?php print $new; ?>', '<?php print $arch_type ?>');">Save and Preview</button>
@@ -114,7 +116,11 @@ else {
 		createDivs("<?php print $arch_type; ?>");
 		
 		if(new_news !== "yes") {
-			var wait_for_me = setTimeout(getArchive, 1000, "<?php print $arch_type; ?>", "<?php print $news_date; ?>");
+			CKEDITOR.on('instanceReady', getArchive("<?php print $arch_type; ?>", "<?php print $news_date; ?>"));
+			//CKEDITOR.on('instanceReady', function( evt ) {
+			//	getArchive("<?php print $arch_type; ?>", "<?php print $news_date; ?>");
+			//});
+			//var wait_for_me = setTimeout(getArchive, 3000, "<?php print $arch_type; ?>", "<?php print $news_date; ?>");
 			$("#hidden_at_start").hide();
 		}
 		else {
