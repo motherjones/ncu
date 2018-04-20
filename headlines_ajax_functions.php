@@ -761,7 +761,7 @@ function recharge() {
 	<div class="columns">
 		<div id="items_right">
 			<fieldset class="sections">
-				<legend><input type="text" id="recharge_title" name="recharge_title" value="RECHARGE ARTICLES" /></legend>
+				<legend>RECHARGE ARTICLES</legend>
 				<fieldset class="sub_sections">
 					<legend>Headline 1:</legend>
 					<textarea id="recharge1_dek" name="recharge1_dek" rows="15" cols="45"></textarea>
@@ -847,7 +847,7 @@ function recharge() {
 </div>
 RECHARGE;
 	
-	return $recharge;
+return $recharge;
 
 }
 ?>
