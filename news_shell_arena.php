@@ -108,8 +108,10 @@ include "incs/header.inc";
 		    day_int = 1;
 		    break;
 		  case "trumpocracy":
-		    day_int = 0;
+		    day_int = 4;
 		    break;
+		  case "recharge":
+			day_int = 0;
 		  default:
 		    break;
 		}
