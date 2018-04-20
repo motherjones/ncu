@@ -89,8 +89,8 @@ function createDivs($section) {
       	$get_divs = econundrum();
       	break;
     case "food_for_thought_redesign":
-    	$get_divs = fft_redesign();
-    	break;
+    		$get_divs = fft_redesign();
+    		break;
     case "in_the_mix_new":
   		$get_divs = inthemix();
   		break;
@@ -102,6 +102,10 @@ function createDivs($section) {
 		break;
 	case "trumpocracy":
 		$get_divs = trumpocracy();
+		break;
+	case "recharge":
+		$get_divs = recharge();
+		break;
     default:
   }
 
@@ -532,17 +536,17 @@ return $political;
 }
 
 function trumpocracy() {
-$trumpocracy = <<<TRUMP
+	$trumpocracy = <<<TRUMP
 <div class="head_types">
 	<div class="columns">
 		<div id="items_left">
 			<fieldset class="sections">
 				<legend>MAIN ARTICLE</legend>
-				<p>Headline: <input type="text" id="trump_main_hed" name="trump_main_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value)" spellcheck="true"" /></p>
+				<p>Headline: <input type="text" id="trump_main_hed" name="trump_main_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value)" spellcheck="true" /></p>
 				<p>Url: <input type="text" id="trum_main_url" name="trum_main_url" size="50" onblur="this.value=fixURL(this.value)" /></p>
 				<p>Image url: <input type="text" id="trump_main_img" name="trump_main_img" size="50" onblur="this.value=fixURL(this.value)" /></p>
 				<p class="dek_sect">Dek:</p>
-				<textarea rows="15" cols="45" id="trum_main_dek" name="trum_main_dek""></textarea>
+				<textarea rows="15" cols="45" id="trum_main_dek" name="trum_main_dek"></textarea>
 				<fieldset class="sources" style="float:left;width:50%;clear:both;">
 					<legend>Source name</legend>
 					<input type="text" id="trump_main_source" name="trump_main_source" style="width:95%;" onblur="checkHedDate()">
@@ -552,15 +556,15 @@ $trumpocracy = <<<TRUMP
 					<input type="checkbox" id="trump_main_ital" name="trump_main_ital" style="float:left;">
 				</fieldset>
 			</fieldset>
-
+			
 			<fieldset class="sections">
-				<legend><input type="text" id="topnews_title" name="topnews_title" value="TOP NEWS"" /></legend>
+				<legend><input type="text" id="topnews_title" name="topnews_title" value="TOP NEWS" /></legend>
 				<fieldset class="sub_sections">
 					<legend>Headline 1:</legend>
-					<textarea id="topnews1_dek" name="topnews1_dek" rows="15" cols="45""></textarea>
+					<textarea id="topnews1_dek" name="topnews1_dek" rows="15" cols="45"></textarea>
 					<fieldset class="sources" style="float:left;width:50%;clear:both;">
 						<legend>Source name</legend>
-						<input type="text" id="topnews1_source" name="topnews1_source"" style="float:left;">
+						<input type="text" id="topnews1_source" name="topnews1_source" style="float:left;">
 					</fieldset>
 					<fieldset class="sources" style="float:left;width:25%;">
 						<legend>Italicise source?</legend> <input type="checkbox" id="topnews1_ital" name="topnews1_ital" style="float:left;">
@@ -570,13 +574,13 @@ $trumpocracy = <<<TRUMP
 						<input type="text" id="topnews1_url" name="topnews1_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
 					</fieldset>
 				</fieldset>
-
+				
 				<fieldset class="sub_sections">
 					<legend>Headline 2:</legend>
-					<textarea id="topnews2_dek" name="topnews2_dek" rows="15" cols="45""></textarea>
+					<textarea id="topnews2_dek" name="topnews2_dek" rows="15" cols="45"></textarea>
 					<fieldset class="sources" style="float:left;width:50%;clear:both;">
 						<legend>Source name</legend>
-						<input type="text" id="topnews2_source" name="topnews2_source"" style="float:left;">
+						<input type="text" id="topnews2_source" name="topnews2_source" style="float:left;">
 					</fieldset>
 					<fieldset class="sources" style="float:left;width:25%;">
 						<legend>Italicise source?</legend> <input type="checkbox" id="topnews2_ital" name="topnews2_ital" style="float:left;">
@@ -586,13 +590,13 @@ $trumpocracy = <<<TRUMP
 						<input type="text" id="topnews2_url" name="topnews2_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
 					</fieldset>
 				</fieldset>
-
+				
 				<fieldset class="sub_sections">
 					<legend>Headline 3:</legend>
-					<textarea id="topnews3_dek" name="topnews3_dek" rows="15" cols="45""></textarea>
+					<textarea id="topnews3_dek" name="topnews3_dek" rows="15" cols="45"></textarea>
 					<fieldset class="sources" style="float:left;width:50%;clear:both;">
 						<legend>Source name</legend>
-						<input type="text" id="topnews3_source" name="topnews3_source"" style="float:left;">
+						<input type="text" id="topnews3_source" name="topnews3_source" style="float:left;">
 					</fieldset>
 					<fieldset class="sources" style="float:left;width:25%;">
 						<legend>Italicise source?</legend> <input type="checkbox" id="topnews3_ital" name="topnews3_ital" style="float:left;">
@@ -602,13 +606,13 @@ $trumpocracy = <<<TRUMP
 						<input type="text" id="topnews3_url" name="topnews3_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
 					</fieldset>
 				</fieldset>
-
+				
 				<fieldset class="sub_sections">
 					<legend>Headline 4:</legend>
-					<textarea id="topnews4_dek" name="topnews4_dek" rows="15" cols="45""></textarea>
+					<textarea id="topnews4_dek" name="topnews4_dek" rows="15" cols="45"></textarea>
 					<fieldset class="sources" style="float:left;width:50%;clear:both;">
 						<legend>Source name</legend>
-						<input type="text" id="topnews4_source" name="topnews4_source"" style="float:left;">
+						<input type="text" id="topnews4_source" name="topnews4_source" style="float:left;">
 					</fieldset>
 					<fieldset class="sources" style="float:left;width:25%;">
 						<legend>Italicise source?</legend> <input type="checkbox" id="topnews4_ital" name="topnews4_ital" style="float:left;">
@@ -618,13 +622,13 @@ $trumpocracy = <<<TRUMP
 						<input type="text" id="topnews4_url" name="topnews4_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
 					</fieldset>
 				</fieldset>
-
+				
 				<fieldset class="sub_sections">
 					<legend>Headline 5:</legend>
-					<textarea id="topnews5_dek" name="topnews5_dek" rows="15" cols="45""></textarea>
+					<textarea id="topnews5_dek" name="topnews5_dek" rows="15" cols="45"></textarea>
 					<fieldset class="sources" style="float:left;width:50%;clear:both;">
 						<legend>Source name</legend>
-						<input type="text" id="topnews5_source" name="topnews5_source"" style="float:left;">
+						<input type="text" id="topnews5_source" name="topnews5_source" style="float:left;">
 					</fieldset>
 					<fieldset class="sources" style="float:left;width:25%;">
 						<legend>Italicise source?</legend> <input type="checkbox" id="topnews5_ital" name="topnews5_ital" style="float:left;">
@@ -641,11 +645,11 @@ $trumpocracy = <<<TRUMP
 		<div id="items_right">
 			<fieldset class="sections">
 				<legend>SECOND MAIN ARTICLE</legend>
-				<p>Headline: <input type="text" id="trump_main2_hed" name="trump_main2_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value)" spellcheck="true"" /></p>
-				<p>Url: <input type="text" id="trump_main2_url" name="trump_main2_url" size="50" onblur="this.value=fixURL(this.value)"" /></p>
+				<p>Headline: <input type="text" id="trump_main2_hed" name="trump_main2_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value)" spellcheck="true" /></p>
+				<p>Url: <input type="text" id="trump_main2_url" name="trump_main2_url" size="50" onblur="this.value=fixURL(this.value)" /></p>
 				<p>Image: <input type="text" id="trump_main2_img" name="trump_main2_img" size="50" onblur="this.value=fixURL(this.value)" /></p>
 				<p class="dek_sect">Dek:</p>
-				<textarea rows="15" cols="45" id="trump_main2_dek" name="trump_main2_dek""></textarea>
+				<textarea rows="15" cols="45" id="trump_main2_dek" name="trump_main2_dek"></textarea>
 				<fieldset class="sources" style="float:left;width:50%;clear:both;">
 					<legend>Source name</legend>
 					<input type="text" id="trump_main2_source" name="trump_main2_source" style="width:95%;" onblur="checkHedDate()">
@@ -657,13 +661,13 @@ $trumpocracy = <<<TRUMP
 			</fieldset>
 			
 			<fieldset class="sections">
-				<legend><input type="text" id="wors_title" name="wors_title" value="What Others are Saying"" /></legend>
+				<legend><input type="text" id="wors_title" name="wors_title" value="What Others are Saying" /></legend>
 				<fieldset class="sub_sections">
 					<legend>Headline 1:</legend>
-					<textarea id="wors1_dek" name="wors1_dek" rows="15" cols="45""></textarea>
+					<textarea id="wors1_dek" name="wors1_dek" rows="15" cols="45"></textarea>
 					<fieldset class="sources" style="float:left;width:50%;clear:both;">
 						<legend>Source name</legend>
-						<input type="text" id="wors1_source" name="wors1_source"" style="float:left;">
+						<input type="text" id="wors1_source" name="wors1_source" style="float:left;">
 					</fieldset>
 					<fieldset class="sources" style="float:left;width:25%;">
 						<legend>Italicise source?</legend> <input type="checkbox" id="wors1_ital" name="wors1_ital" style="float:left;">
@@ -673,13 +677,13 @@ $trumpocracy = <<<TRUMP
 						<input type="text" id="wors1_url" name="wors1_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
 					</fieldset>
 				</fieldset>
-
+				
 				<fieldset class="sub_sections">
 					<legend>Headline 2:</legend>
-					<textarea id="wors2_dek" name="wors2_dek" rows="15" cols="45""></textarea>
+					<textarea id="wors2_dek" name="wors2_dek" rows="15" cols="45"></textarea>
 					<fieldset class="sources" style="float:left;width:50%;clear:both;">
 						<legend>Source name</legend>
-						<input type="text" id="wors2_source" name="wors2_source"" style="float:left;">
+						<input type="text" id="wors2_source" name="wors2_source" style="float:left;">
 					</fieldset>
 					<fieldset class="sources" style="float:left;width:25%;">
 						<legend>Italicise source?</legend> <input type="checkbox" id="wors2_ital" name="wors2_ital" style="float:left;">
@@ -689,13 +693,13 @@ $trumpocracy = <<<TRUMP
 						<input type="text" id="wors2_url" name="wors2_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
 					</fieldset>
 				</fieldset>
-
+				
 				<fieldset class="sub_sections">
 					<legend>Headline 3:</legend>
-					<textarea id="wors3_dek" name="wors3_dek" rows="15" cols="45""></textarea>
+					<textarea id="wors3_dek" name="wors3_dek" rows="15" cols="45"></textarea>
 					<fieldset class="sources" style="float:left;width:50%;clear:both;">
 						<legend>Source name</legend>
-						<input type="text" id="wors3_source" name="wors3_source"" style="float:left;">
+						<input type="text" id="wors3_source" name="wors3_source" style="float:left;">
 					</fieldset>
 					<fieldset class="sources" style="float:left;width:25%;">
 						<legend>Italicise source?</legend> <input type="checkbox" id="wors3_ital" name="wors3_ital" style="float:left;">
@@ -705,13 +709,13 @@ $trumpocracy = <<<TRUMP
 						<input type="text" id="wors3_url" name="wors3_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
 					</fieldset>
 				</fieldset>
-
+				
 				<fieldset class="sub_sections">
 					<legend>Headline 4:</legend>
-					<textarea id="wors4_dek" name="wors4_dek" rows="15" cols="45""></textarea>
+					<textarea id="wors4_dek" name="wors4_dek" rows="15" cols="45"></textarea>
 					<fieldset class="sources" style="float:left;width:50%;clear:both;">
 						<legend>Source name</legend>
-						<input type="text" id="wors4_source" name="wors4_source"" style="float:left;">
+						<input type="text" id="wors4_source" name="wors4_source" style="float:left;">
 					</fieldset>
 					<fieldset class="sources" style="float:left;width:25%;">
 						<legend>Italicise source?</legend> <input type="checkbox" id="wors4_ital" name="wors4_ital" style="float:left;">
@@ -726,7 +730,124 @@ $trumpocracy = <<<TRUMP
 	</div>
 </div>
 TRUMP;
-
+	
 return $trumpocracy;
+}
+
+function recharge() {
+	$recharge = <<<RECHARGE
+<div class="head_types">
+	<div class="columns">
+		<div id="items_left">
+			<fieldset class="sections">
+				<legend>MAIN ARTICLE</legend>
+				<p>Headline: <input type="text" id="recharge_main_hed" name="recharge_main_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value)" spellcheck="true" /></p>
+				<p>Url: <input type="text" id="recharge_main_url" name="recharge_main_url" size="50" onblur="this.value=fixURL(this.value)" /></p>
+				<p>Image url: <input type="text" id="recharge_main_img" name="recharge_main_img" size="50" onblur="this.value=fixURL(this.value)" /></p>
+				<p class="dek_sect">Dek:</p>
+				<textarea rows="15" cols="45" id="recharge_main_dek" name="recharge_main_dek"></textarea>
+				<fieldset class="sources" style="float:left;width:50%;clear:both;">
+					<legend>Source name</legend>
+					<input type="text" id="recharge_main_source" name="recharge_main_source" style="width:95%;" onblur="checkHedDate()">
+				</fieldset>
+				<fieldset class="sources" style="float:left;width:25%;">
+					<legend>Italicize source?</legend>
+					<input type="checkbox" id="recharge_main_ital" name="recharge_main_ital" style="float:left;">
+				</fieldset>
+			</fieldset>
+		</div>
+	</div>
+	
+	<div class="columns">
+		<div id="items_right">
+			<fieldset class="sections">
+				<legend><input type="text" id="recharge_title" name="recharge_title" value="RECHARGE ARTICLES" /></legend>
+				<fieldset class="sub_sections">
+					<legend>Headline 1:</legend>
+					<textarea id="recharge1_dek" name="recharge1_dek" rows="15" cols="45"></textarea>
+					<fieldset class="sources" style="float:left;width:50%;clear:both;">
+						<legend>Source name</legend>
+						<input type="text" id="recharge1_source" name="recharge1_source" style="float:left;">
+					</fieldset>
+					<fieldset class="sources" style="float:left;width:25%;">
+						<legend>Italicise source?</legend> <input type="checkbox" id="recharge1_ital" name="recharge1_ital" style="float:left;">
+					</fieldset>
+					<fieldset class="sources">
+						<legend>Url</legend>
+						<input type="text" id="recharge1_url" name="recharge1_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
+					</fieldset>
+				</fieldset>
+				
+				<fieldset class="sub_sections">
+					<legend>Headline 2:</legend>
+					<textarea id="recharge2_dek" name="recharge2_dek" rows="15" cols="45"></textarea>
+					<fieldset class="sources" style="float:left;width:50%;clear:both;">
+						<legend>Source name</legend>
+						<input type="text" id="recharge2_source" name="recharge2_source" style="float:left;">
+					</fieldset>
+					<fieldset class="sources" style="float:left;width:25%;">
+						<legend>Italicise source?</legend> <input type="checkbox" id="recharge2_ital" name="recharge2_ital" style="float:left;">
+					</fieldset>
+					<fieldset class="sources">
+						<legend>Url</legend>
+						<input type="text" id="recharge2_url" name="recharge2_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
+					</fieldset>
+				</fieldset>
+				
+				<fieldset class="sub_sections">
+					<legend>Headline 3:</legend>
+					<textarea id="recharge3_dek" name="recharge3_dek" rows="15" cols="45"></textarea>
+					<fieldset class="sources" style="float:left;width:50%;clear:both;">
+						<legend>Source name</legend>
+						<input type="text" id="recharge3_source" name="recharge3_source" style="float:left;">
+					</fieldset>
+					<fieldset class="sources" style="float:left;width:25%;">
+						<legend>Italicise source?</legend> <input type="checkbox" id="recharge3_ital" name="recharge3_ital" style="float:left;">
+					</fieldset>
+					<fieldset class="sources">
+						<legend>Url</legend>
+						<input type="text" id="recharge3_url" name="recharge3_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
+					</fieldset>
+				</fieldset>
+				
+				<fieldset class="sub_sections">
+					<legend>Headline 4:</legend>
+					<textarea id="recharge4_dek" name="recharge4_dek" rows="15" cols="45"></textarea>
+					<fieldset class="sources" style="float:left;width:50%;clear:both;">
+						<legend>Source name</legend>
+						<input type="text" id="recharge4_source" name="recharge4_source" style="float:left;">
+					</fieldset>
+					<fieldset class="sources" style="float:left;width:25%;">
+						<legend>Italicise source?</legend> <input type="checkbox" id="recharge4_ital" name="recharge4_ital" style="float:left;">
+					</fieldset>
+					<fieldset class="sources">
+						<legend>Url</legend>
+						<input type="text" id="recharge4_url" name="recharge4_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
+					</fieldset>
+				</fieldset>
+				
+				<fieldset class="sub_sections">
+					<legend>Headline 5:</legend>
+					<textarea id="recharge5_dek" name="recharge5_dek" rows="15" cols="45"></textarea>
+					<fieldset class="sources" style="float:left;width:50%;clear:both;">
+						<legend>Source name</legend>
+						<input type="text" id="recharge5_source" name="recharge5_source" style="float:left;">
+					</fieldset>
+					<fieldset class="sources" style="float:left;width:25%;">
+						<legend>Italicise source?</legend> <input type="checkbox" id="recharge5_ital" name="recharge5_ital" style="float:left;">
+					</fieldset>
+					<fieldset class="sources">
+						<legend>Url</legend>
+						<input type="text" id="recharge5_url" name="recharge5_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
+					</fieldset>
+				</fieldset>
+			</fieldset>
+		</div>
+	</div>
+</div>
+RECHARGE;
+	
+	return $recharge;
+
 }
 ?>

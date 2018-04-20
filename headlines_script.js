@@ -4,6 +4,7 @@
   --2/29/2012: update for new newsletters
   --2/10/2016: added functions to clean dirty characters, update newsletter flight 
   --3/15/2017: added refresh data functionality by modifying the getArchive() function.
+  --4/20/2018: added functionality for Recharge newsletter.
 */
 
 //function to print out the section drop down select

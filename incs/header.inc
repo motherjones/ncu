@@ -12,14 +12,15 @@ $path = "https://util.motherjones.com/dev/ncu/";
   <meta charset="utf-8">
   <link rel="shortcut icon" href="https://util.motherjones.com/dev/ncu/images/mj_cropped-favicon-512x512.png">
   <link rel="stylesheet" type="text/css" href="<?php print $path; ?>head_main.css" />
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" language="javascript" src="<?php print $path; ?>headlines_script.js"></script>
   <script type="text/javascript" src="<?php print $path; ?>ckeditor/ckeditor.js"></script>
   <script type="text/javascript">
   CKEDITOR.config.customConfig = 'custom-config.js';
     function makeEditor(numId) {
       var editor_height = 0;
-      if(numId == "conundrum_dek" || numId == "maindish_dek" || numId == "twmustread_dek" || numId == "topstory_dek" || numId == "fft_hidden_kitchen" || numId == "fft_ioe_item1" || numId == "fft_ioe_item2" || numId == "fft_ioe_item3" || numId == "lift_note" || numId == "main_text" || numId == "trum_main_dek" || numId == "trump_main2_dek") {
+      if(numId == "conundrum_dek" || numId == "maindish_dek" || numId == "twmustread_dek" || numId == "topstory_dek" || numId == "fft_hidden_kitchen" || numId == "fft_ioe_item1" || numId == "fft_ioe_item2" || numId == "fft_ioe_item3" || numId == "lift_note" || numId == "main_text" || numId == "trum_main_dek" || numId == "trump_main2_dek" || numId == "recharge_main_dek" || numId == "recharge1_dek" || numId == "recharge2_dek" || numId == "recharge3_dek" || numId == "recharge4_dek" || numId == "recharge5_dek") {
           CKEDITOR.replace(numId, {
               width: 410,
               height: 200
