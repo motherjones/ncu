@@ -123,6 +123,12 @@ else {
 			break;
 		case "breaking_news":
 			$billboard_ad = "\n$breakingnews_billboard1\n";
+			break;
+		case "recharge":
+			$billboard_ad = "\n$recharge_billboard1\n";
+			break;
+		default:
+			break;
 	}
 }
 if ((isset($_REQUEST['billboard_url2']) && $_REQUEST['billboard_url2'] != null) || (isset($_REQUEST['billboard_img2']) && $_REQUEST['billboard_img2'] != "")) {
