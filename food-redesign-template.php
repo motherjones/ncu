@@ -639,6 +639,7 @@ if(isset($fft_ioe_item1) && $fft_ioe_item1 !== "") {
 	}
 }
 else {
+	$bite_special = "";
 	$fft_ioe_item1 = "";
 }
 
