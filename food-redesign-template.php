@@ -596,6 +596,9 @@ else {
 $fft_ioe_item1_content = "";
 $fft_ioe_item2_content = "";
 $fft_ioe_item3_content = "";
+$bite_special = "";
+$bite_anchor_code = "";
+$close_bite_anchor = "";
 
 if(isset($fft_ioe_item1) && $fft_ioe_item1 !== "") {
 	$fft_ioe_item1 = str_replace("<p>", $ioe_sec_p, $fft_ioe_item1);
@@ -627,19 +630,11 @@ if(isset($fft_ioe_item1) && $fft_ioe_item1 !== "") {
 			$bite_anchor_code = "<a href=\"$fft_bite_link\">";
 			$close_bite_anchor = "</a>";
 		}
-		else {
-			$bite_anchor_code = "";
-			$close_bite_anchor = "";
-		}
 		
 		$bite_special = "<table width=\"500\" align=\"center\" style=\"max-width: 500px !important;margin: 20px 0;\">\n<tr>\n<td width=\"125\" align=\"left\">\n$bite_anchor_code<img id=\"bite_logo\" src=\"http://assets.motherjones.com/newsletters/newsletter_test/bite_logo_name.png\" width=\"110\" style=\"max-width: 110px;height: auto;\" />$close_bite_anchor\n</td>\n<td align=\"right\" style=\"text-align:left;\">\n<p class=\"bite-episode-text\" style=\"margin: 0 0 20px 0; padding: 0; font-family: Verdana, sans-serif; color: #767676;font-size: 16px;\">$fft_bite_add</p>\n</td>\n</tr>\n</table>";
 	}
-	else {
-		$bite_special = "";
-	}
 }
 else {
-	$bite_special = "";
 	$fft_ioe_item1 = "";
 }
 
