@@ -757,6 +757,10 @@ function recharge() {
 			</fieldset>
 		</div>
 	</div>
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 4cb4df824266b933257557a3f408e917b0feb611
 	<div class="columns">
 		<div id="items_right">
 			<fieldset class="sections">

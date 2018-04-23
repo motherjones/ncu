@@ -6,6 +6,7 @@
  */
 
 //Post and Request section
+<<<<<<< HEAD
 if(isset($_REQUEST['recharge_main_hed']) && $_REQUEST['recharge_main_hed'] !== "") {
 	$recharge_main_hed = trim($_REQUEST['recharge_main_hed']);
 }
@@ -188,6 +189,8 @@ else {
 	$recharge5_url = "";
 }
 
+=======
+>>>>>>> 4cb4df824266b933257557a3f408e917b0feb611
 if(isset($_REQUEST['lift_note']) && $_REQUEST['lift_note'] != "") {
 	$lift_note = trim($_REQUEST['lift_note']);
 }
@@ -200,6 +203,7 @@ else {
 
 //HTML template
 
+<<<<<<< HEAD
 /* db operations */
 $recharge_main_hed = addslashes($recharge_main_hed);
 $recharge_main_url = addslashes($recharge_main_url);
@@ -227,6 +231,10 @@ $recharge5_dek = addslashes($recharge5_dek);
 $recharge5_source = addslashes($recharge5_source);
 $recharge5_ital = addslashes($recharge5_ital);
 $recharge5_url = addslashes($recharge5_url);
+=======
+//db operations
+
+>>>>>>> 4cb4df824266b933257557a3f408e917b0feb611
 $subject_line = addslashes(str_replace("â€”","–", $subject_line));
 $sub_code = addslashes($sub_code);
 $lift_note = addslashes($lift_note);
@@ -240,6 +248,7 @@ $billboard_image2 = addslashes($billboard_image2);
 $advertiser_name2 = addslashes($advertiser_name2);
 $advertiser_name = addslashes($advertiser_name);
 
+<<<<<<< HEAD
 //check to see if data exists in db
 $check_existing = "SELECT id, hed_date FROM recharge WHERE hed_date='$headlines_date'";
 $existing_qry = mysqli_query($db_connect, $check_existing) or die("Can't run query now");
@@ -335,6 +344,10 @@ else {
 	'$pixel_tracker2');
 }
 /* end db operations
+=======
+
+
+>>>>>>> 4cb4df824266b933257557a3f408e917b0feb611
 
 //flush query and close db connections
 mysqli_query($db_connect, $run_qry) or die("Query did not run correctly". mysqli_error($db_connect));
