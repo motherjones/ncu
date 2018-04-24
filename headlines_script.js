@@ -560,6 +560,9 @@ function fixURL(url_fix) {
 		case "trumpocracy":
 			this_campaign += "the-russian-connection-" + this_date;
 			break;
+		case "in_the_mix_new":
+			this_campaign += "in-the-mix-" + this_date;
+			break;
 		default:
 			break;
 	}
