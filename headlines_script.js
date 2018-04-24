@@ -531,7 +531,7 @@ function fixURL(url_fix) {
 	var this_email = "utm_medium=email&";
 	var this_campaign = "utm_campaign=";
 	var this_date = $("#hed_date").val();
-	var header = "http://";
+	var header = "https://";
 	var exists = "";
 	var utm_code_suffix = "";
 	url_fix = url_fix.trim();
@@ -560,6 +560,12 @@ function fixURL(url_fix) {
 			break;
 		case "trumpocracy":
 			this_campaign += "the-russian-connection-" + this_date;
+			break;
+		case "in_the_mix_new":
+			this_campaign += "in-the-mix-" + this_date;
+			break;
+		case "recharge":
+			this_campaign += "recharge-" + this_date;
 			break;
 		default:
 			break;
