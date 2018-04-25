@@ -863,7 +863,6 @@ $lift_note_section
                 $wors_sec
                 <tr>
                   <td style="border-bottom:1px solid #767676;" align="center">
-                    <p class="ad_text" style="margin-top:0;margin-bottom:10px;color: #767676; text-align: center;font-family:Georgia, serif; font-style:italic;font-size:12px;">&#8212;Advertisement&#8212;</p>
                     $small_sub_ad
                     <br />
                     <!--[if (gte mso 9)|(IE)]>
