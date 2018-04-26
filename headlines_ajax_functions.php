@@ -754,13 +754,10 @@ function recharge() {
 					<legend>Italicize source?</legend>
 					<input type="checkbox" id="recharge_main_ital" name="recharge_main_ital" style="float:left;">
 				</fieldset>
-			</fieldset>
-		</div>
-	</div>
-	<div class="columns">
-		<div id="items_right">
-			<fieldset class="sections">
-				<legend>RECHARGE ARTICLES</legend>
+		</fieldset>
+
+		<fieldset class="sections">
+				<legend>RECHARGE ARTICLES (Above ad)</legend>
 				<fieldset class="sub_sections">
 					<legend>Headline 1:</legend>
 					<textarea id="recharge1_dek" name="recharge1_dek" rows="15" cols="45"></textarea>
@@ -792,7 +789,13 @@ function recharge() {
 						<input type="text" id="recharge2_url" name="recharge2_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
 					</fieldset>
 				</fieldset>
-				
+			</fieldset>
+		</div>
+	</div>
+	<div class="columns">
+		<div id="items_right">
+			<fieldset class="sections">
+				<legend>RECHARGE ARTICLES (below ad)</legend>
 				<fieldset class="sub_sections">
 					<legend>Headline 3:</legend>
 					<textarea id="recharge3_dek" name="recharge3_dek" rows="15" cols="45"></textarea>
