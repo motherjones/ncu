@@ -741,7 +741,7 @@ function recharge() {
 		<div id="items_left">
 			<fieldset class="sections">
 				<legend>MAIN ARTICLE</legend>
-				<p>Headline: <input type="text" id="recharge_main_hed" name="recharge_main_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value)" spellcheck="true" /></p>
+				<p>Headline: <input type="text" id="recharge_main_hed" name="recharge_main_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value);this.value=restoreCurly(this.value)" spellcheck="true" /></p>
 				<p>Url: <input type="text" id="recharge_main_url" name="recharge_main_url" size="50" onblur="this.value=fixURL(this.value)" /></p>
 				<p>Image url: <input type="text" id="recharge_main_img" name="recharge_main_img" size="50" onblur="this.value=fixURL(this.value)" /></p>
 				<p class="dek_sect">Dek:</p>

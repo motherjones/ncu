@@ -10,7 +10,7 @@ ini_set("display_errors", 1);
 /* database credentials are located in the credentials.inc file */
 include "incs/credentials.inc";
 /*for the CSS to be injected into the HTML file (PHP)
- All non-inline CSS is in this file
+ All inline CSS is in this file
  */
 include "styles_includes.php";
 /* end include section */
@@ -85,18 +85,18 @@ include "incs/membership_ads.inc";
 //default ads code
 include "incs/default_ads.inc";
 
-//billboard
+//billboard (meaning 300x250 ads for some newsletters, 540x180 or 600x200 for others)
 if ((isset($_REQUEST['billboard_url']) && $_REQUEST['billboard_url'] != null) || (isset($_REQUEST['billboard_img']) && $_REQUEST['billboard_img'] != "")) {
 	$billboard_url = $_REQUEST['billboard_url'];
 	$billboard_image = $_REQUEST['billboard_img'];
-	
+	//insert proper size for specific newsletters
 	if($headlines_type === "food_for_thought_redesign") {
 		$billboard_ad = "<div style=\"margin-top:10px;margin-bottom:20px;width:100% !important;\"><a href=\"$billboard_url\" name=\"Top Ad - $advertiser_name\"><img id=\"bill_a\" src=\"$billboard_image\" style=\"width:540px;border: none;\" alt=\"$advertiser_name\" width=\"540\" border=\"0\" /></a>$pixel_tracker</div>\n";
 	}
 	elseif ($headlines_type === "trumpocracy" || $headlines_type === "recharge") {
 		$billboard_ad = "<div style=\"margin-top:10px;margin-bottom:0;width:100% !important;text-align:center;\"><a href=\"$billboard_url\" name=\"Top Ad - $advertiser_name\"><img id=\"bill_a\" src=\"$billboard_image\" style=\"width:540px;border: none;\" alt=\"$advertiser_name\" width=\"540\" border=\"0\" /></a>$pixel_tracker</div>\n";
 	}
-	else {
+	else {//default size ads
 		$billboard_ad = "<div style=\"margin-top:7px;width:100% !important;\"><a href=\"$billboard_url\" name=\"Bottom Ad - $advertiser_name\"><img id=\"bill_a\" src=\"$billboard_image\" style=\"width:300px;height:auto;border: none;\" alt=\"$advertiser_name\" width=\"300\" height=\"250\" border=\"0\" /></a>$pixel_tracker</div>\n";
 	}
 }
@@ -131,6 +131,7 @@ else {
 			break;
 	}
 }
+//bottom ad slot if used by newsletter
 if ((isset($_REQUEST['billboard_url2']) && $_REQUEST['billboard_url2'] != null) || (isset($_REQUEST['billboard_img2']) && $_REQUEST['billboard_img2'] != "")) {
 	$billboard_url2 = $_REQUEST['billboard_url2'];
 	$billboard_image2 = $_REQUEST['billboard_img2'];
@@ -145,6 +146,7 @@ else {
 	$liveintent_billboard2 = true;
 	$billboard_url2 = null;
 	$billboard_image2 = null;
+	//list of newsletters that use the bottom ad slot
 	switch($headlines_type) {
 		case "econundrums_new":
 			$billboard_ad2 = "\n$econundrums_billboard2\n";
@@ -173,16 +175,16 @@ $get_date = date("F j, Y", $temp_date);
 $allowed_html = "<a><br /><br><b><i><em><strong><blockquote><table><span>";
 //for the archives, generate full HTML file
 $html_title = ucwords($headlines_type);
-//$html_header = "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<head>\n<title>$html_title</title>\n</head>\n<body>";
-//$html_footer = "</body></html>";
+//replace em dash for subject line display only
 $subject_line_display = str_replace("–","&#8212;", $subject_line);
 $subject_formatting = "<p style=\"text-align:center;\"><em>Subject line:</em> $subject_line_display</p>\n <!-- start headlines code -->";
 //end global items for all headlines
 
 /* headlines template section */
 $html_file = "";
-//print $html_header;
+
 print $subject_formatting;
+
 //if preview mode, print out the close button
 if(isset($close_btn) && $close_btn != "") {
 	print "<br style=\"clear:both;\" />";
@@ -193,7 +195,7 @@ get code for the HTML to add to the archives ($html_file)*/
 
 $view_code = "<p style=\"margin:0 auto;width:220px;background-color:#765;border-style: 2px inset #33f;border-radius:4px;text-align:center;padding:10px;font-size:16px;\"><button class=\"arch-btn\" onclick='location.href=\"#get_code\"'>View Code</button> | <button class=\"arch-btn\" onclick='close_window()'>Close preview</button></p>";
 
-//social media buttons and images
+//social media buttons and images (not used currently)
 include "incs/social_media_images.inc";
 
 //Newsletter identification language and footer section include
@@ -204,7 +206,7 @@ $page_name = $headlines_date . " | " . $headlines_type;
 $html_headers = sprintf("<!DOCTYPE html>\n<html>\n<head><title>%s</title><meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\"><style>.arch-btn {background-color: #331; color: #cff;}</style><script src='../headlines_script.js'></script></head><body>", $page_name);
 $html_footers = "</body>\n</html>";
 
-//Breakdown by newsletter type
+//Call newsletter template, format for view & code retrieval & get correct newsletter information language
 switch($headlines_type) {
 	case "econundrums_new":
 		include "econundrum-template.php";
@@ -285,7 +287,9 @@ switch($headlines_type) {
  7. $recharge
  format for the archive is yyyy-mm-dd-headlinestype.html
  */
+//for temp files
 $random_var = time();
+//get path & format html file for archives and temp files
 $complete_path = $long_path . "archives/$headlines_date" . "-$headlines_type" . ".html";
 $temp_path = $long_path . "temp/$headlines_date" . "-$headlines_type" . "-" . $random_var . ".html";
 /*make sure directory is writeable before you run this piece of code, or it'll generate an error */
@@ -308,6 +312,18 @@ function resizeInlineImg($html_code, $width) {
 		$image->setAttribute('style', 'width:' . $width . ';max-width:' . $width . ';');
 	}
 	/*save snipped along with rest of HTML code*/
+	$html_code = $doc->saveHTML();
+	return $html_code;
+}
+/* add color to anchor tags (future implementation) */
+function colorizeAnchors($html_code, $color) {
+	$doc = new DOMDocument;
+	$doc->loadHTML($html_code);
+	$anchors = $doc->getElementByTagName("a");
+	foreach($anchors as $anchor) {
+		$anchor->setAttribute('style', 'color:' . $color . ';');
+	}
+	/*save snippet along with rest of HTML code*/
 	$html_code = $doc->saveHTML();
 	return $html_code;
 }

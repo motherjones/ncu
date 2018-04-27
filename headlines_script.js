@@ -528,6 +528,16 @@ function cleanstring(dirty){
 	return thestring;
 }
 
+function restoreCurly(the_stuff) {
+	str = the_stuff.replace(/"(?=\w|$)/g, "&#8220;");
+	//str = str.replace(/\b"/g, "&rdquo;"); 
+	str = str.replace(/"/g, "&#8221;");
+	str =  str.replace(/'/g, "&#8217;");
+	//str = str.replace(/(?<=\w|^)"/g, "&rdquo;");
+	
+	return str;
+}
+
 function fixURL(url_fix) {
 	var newsletter = $("#hed_type").val();
 	var this_news = "utm_source=mj-newsletters&";

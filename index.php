@@ -11,7 +11,7 @@ include "incs/header.inc"
   	<button id="food_for_thought_redesign" class="news_btn" onclick="restoreValues(this.id)">Food for Thought</button>
   	<button id="in_the_mix_new" class="news_btn" onclick="restoreValues(this.id)">In the Mix</button>
 	<button id="political_mojo_new" class="news_btn" onclick="restoreValues(this.id)">Political MoJo</button>
-	<button id="recharge" class="news_btn" onclick="restoreValues(this.id)">Re&#x26A1;Charge</button>
+	<button id="recharge" class="news_btn" onclick="restoreValues(this.id)">Re&#x26A1;charge</button>
 	<button id="trumpocracy" class="news_btn" onclick="restoreValues(this.id)">The Russian Connection</button>
   </nav>
  </div>

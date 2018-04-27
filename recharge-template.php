@@ -2,10 +2,11 @@
 /*Template for ReCharge newsletter
  * Author: Young Kim
  * Creation Date: 4/18/2018
- * Version: .1B
+ * Update: 4/27/2018
+ * Version: .9A
  */
 
-//Post and Request section
+//Post and Request section (get all input fields for newsletter)
 if(isset($_REQUEST['recharge_main_hed']) && $_REQUEST['recharge_main_hed'] !== "") {
 	$recharge_main_hed = trim($_REQUEST['recharge_main_hed']);
 }
@@ -213,7 +214,8 @@ else {
 $temp_date = strtotime($headlines_date);
 $get_date = date("F j, Y", $temp_date);
 
-//Main article section
+/*Main article section*/
+//declare variables for the main section and url style
 $main_section = "";
 $url_style = "<a style=\"color: #ff6900;\"";
 
@@ -263,14 +265,17 @@ $recharge_title_format = "<p style=\"margin-top: 0;font-size: 16px; line-height:
 $recharge_p_format_dek = "<p style=\"color: #222; font-family:Georgia, serif;font-size: 16px; line-height: 21px;\">";
 $recharge_bold_format_dek = "<span style=\"font-weight: bold; color: #000;\">";
 $recharge_inline_img = "<img style=\"width:540px;max-width:540px\" width=\"540\" ";
+//don't know why I declared these.
 $recharge_dek_sec1 = "";
 $recharge_dek_sec2 = "";
 
+//check input data and format appropriately
 if($recharge1_dek !== "" || $recharge2_dek !== "") {
-	
+	//first recharge article
 	if($recharge1_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
+		//replace HTML entities
 		$recharge1_dek = str_replace("<p>", $recharge_p_format_dek, $recharge1_dek);
 		$recharge1_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge1_dek);
 		$recharge1_dek = str_replace("</strong>", "</span>", $recharge1_dek);
@@ -279,6 +284,8 @@ if($recharge1_dek !== "" || $recharge2_dek !== "") {
 		//resize inline images
 		$recharge1_dek = resizeInlineImg($recharge1_dek, "540px");
 		
+		//for "source" formatting
+		//find last instance of a paragraph and insert the source and ital if necessary
 		$get_last_p = strripos($recharge1_dek, "</p>");
 		$get_substr = substr($recharge1_dek, 0, $get_last_p);
 		
@@ -300,9 +307,11 @@ if($recharge1_dek !== "" || $recharge2_dek !== "") {
 		$recharge1 = "";
 	}
 	
+	//second recharge article
 	if($recharge2_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
+		//replace HTML entities
 		$recharge2_dek = str_replace("<p>", $recharge_p_format_dek, $recharge2_dek);
 		$recharge2_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge2_dek);
 		$recharge2_dek = str_replace("</strong>", "</span>", $recharge2_dek);
@@ -311,6 +320,8 @@ if($recharge1_dek !== "" || $recharge2_dek !== "") {
 		//resize inline images
 		$recharge2_dek = resizeInlineImg($recharge2_dek, "540px");
 		
+		//for "source" formatting
+		//find last instance of a paragraph and insert the source and ital if necessary
 		$get_last_p = strripos($recharge2_dek, "</p>");
 		$get_substr = substr($recharge2_dek, 0, $get_last_p);
 		
@@ -332,18 +343,21 @@ if($recharge1_dek !== "" || $recharge2_dek !== "") {
 		$recharge2 = "";
 	}
 	
+	//put together html structure of section 1 & 2 above membership ad.
 	$recharge_sec1 = $recharge_opener . $recharge_title_format . $recharge1 . $recharge2 . $recharge_closer;
 }
 //end recharge article 1 & 2 (above ad)
-//recharge article 3 & 4 & 5 (below ad)
 
+//recharge article 3 & 4 & 5 (below ad)
+//sign off text hard coded
 $recharge_signoff = "<p style=\"font-family:Georgia, serif;font-size: 16px; line-height: 21px;font-weight:bold;font-style:italic;\">That's it for this week. We hope that Recharge helps you in the week ahead &#8212; and brings out the hellraiser in you. Have a tip or a link? Email us at <a style=\"color: #ff6900;\" href=\"mailto:recharge@motherjones.com\">recharge@motherjones.com</a>.</p>";
 
 if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
-	
+	//third recharge article
 	if($recharge3_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
+		//replace HTML entities
 		$recharge3_dek = str_replace("<p>", $recharge_p_format_dek, $recharge3_dek);
 		$recharge3_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge3_dek);
 		$recharge3_dek = str_replace("</strong>", "</span>", $recharge3_dek);
@@ -352,6 +366,8 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 		//resize inline images
 		$recharge3_dek = resizeInlineImg($recharge3_dek, "540px");
 		
+		//for "source" formatting
+		//find last instance of a paragraph and insert the source and ital if necessary
 		$get_last_p = strripos($recharge3_dek, "</p>");
 		$get_substr = substr($recharge3_dek, 0, $get_last_p);
 		
@@ -373,9 +389,11 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 		$recharge3 = "";
 	}
 	
+	//fourth recharge article
 	if($recharge4_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
+		//replace HTML entities
 		$recharge4_dek = str_replace("<p>", $recharge_p_format_dek, $recharge4_dek);
 		$recharge4_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge4_dek);
 		$recharge4_dek = str_replace("</strong>", "</span>", $recharge4_dek);
@@ -384,6 +402,8 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 		//resize inline images
 		$recharge4_dek = resizeInlineImg($recharge4_dek, "540px");
 		
+		//for "source" formatting
+		//find last instance of a paragraph and insert the source and ital if necessary
 		$get_last_p = strripos($recharge4_dek, "</p>");
 		$get_substr = substr($recharge4_dek, 0, $get_last_p);
 		
@@ -408,6 +428,7 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 	if($recharge5_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
+		//replace HTML entities
 		$recharge5_dek = str_replace("<p>", $recharge_p_format_dek, $recharge5_dek);
 		$recharge5_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge5_dek);
 		$recharge5_dek = str_replace("</strong>", "</span>", $recharge5_dek);
@@ -416,6 +437,8 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 		//resize inline image
 		$recharge5_dek = resizeInlineImg($recharge5_dek, "540px");
 		
+		//for "source" formatting
+		//find last instance of a paragraph and insert the source and ital if necessary
 		$get_last_p = strripos($recharge5_dek, "</p>");
 		$get_substr = substr($recharge5_dek, 0, $get_last_p);
 		
@@ -437,6 +460,7 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 		$recharge5 = "";
 	}
 	
+	//last section after sign off where the image and text goes
 	if($recharge_image_dek !== "") {
 		$recharge_image_dek = str_replace("<p>", $recharge_p_format_dek, $recharge_image_dek);
 		$recharge_image_dek = str_replace("<a", $url_style, $recharge_image_dek);
@@ -447,6 +471,7 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 		$recharge_image_dek = "";
 	}
 	
+	//image credits at end of newsletter before newsletter info and footer
 	if($recharge_image_credits !== "") {
 		$recharge_image_credits = str_replace("<p>", "<p style=\"text-align:center;font-family:Georgia, serif;font-size: 14px; line-height: 19px;font-style:italic;color: #767676;\">", $recharge_image_credits);
 	}
@@ -459,6 +484,7 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 }
 //end recharge article 3 & 4 & 5 (below ad)
 //ads
+/*blank for now*/
 //lift note section
 $lift_note_section = "";
 if($lift_note !== "") {
@@ -522,14 +548,14 @@ $recharge = <<<RECHARGE
               <table class="spacing" align="center" width="580" cellpadding="0" cellspacing="20" style="max-width:580px;margin:0 auto;">
                 <tr>
                   <td align="center" style="border-bottom: 1px solid #000;">
-                    <p style="Margin-top:0;Margin-bottom: 16px;color: #000 !important;text-decoration: none !important;text-align:center;font-size: 18px;line-height:21px;font-family:Georgia, serif;font-weight:bold;font-style:italic;" id="date_line">Stories that’ll get you through the week. <span style="color: #ff6900;">/</span> <strong>April 6, 2018</strong></p>
+                    <p style="Margin-top:0;Margin-bottom: 16px;color: #000 !important;text-decoration: none !important;text-align:center;font-size: 18px;line-height:21px;font-family:Georgia, serif;font-weight:bold;font-style:italic;" id="date_line">Stories that&rsquo;ll get you through the week. <span style="color: #ff6900;">/</span> <strong>April 6, 2018</strong></p>
                   </td>
                 </tr>
                 $main_section
-								<tr>
+                <tr>
                   <td style="border-bottom: 1px solid #767676;">
                     <p class="ad_text" style="margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;">&#8212;Advertisement&#8212;</p>
-										$billboard_ad
+					$billboard_ad
                     <br />
                     <!--[if (gte mso 9)|(IE)]>
                     <br />
@@ -589,7 +615,7 @@ print $recharge;
 /* db operations */
 //connect to db
 $db_connect = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("Can't connect to database");
-//clean sql strings
+//clean strings for sql queries
 $recharge_main_hed = addslashes($recharge_main_hed);
 $recharge_main_url = addslashes($recharge_main_url);
 $recharge_main_img = addslashes($recharge_main_img);
@@ -628,6 +654,7 @@ $advertiser_name = addslashes($advertiser_name);
 //check to see if data exists in db
 $check_existing = "SELECT id, hed_date FROM recharge WHERE hed_date='$headlines_date'";
 $existing_qry = mysqli_query($db_connect, $check_existing) or die("Can't run query now");
+
 if(mysqli_num_rows($existing_qry) > 0) {
 	$exists = true;
 }
