@@ -843,6 +843,16 @@ function recharge() {
 						<input type="text" id="recharge5_url" name="recharge5_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
 					</fieldset>
 				</fieldset>
+
+				<fieldset class="sub_sections">
+					<legend>Bottom image:</legend>
+					<textarea id="recharge_image_dek" name="recharge_image_dek" rows="15" cols="45"></textarea>
+				</fieldset>
+				
+				<fieldset class="sub_sections">
+					<legend>Image credits:</legend>
+					<textarea id="recharge_image_credits" name="recharge_image_credits" rows="15" cols="45"></textarea>
+				</fieldset>
 			</fieldset>
 		</div>
 	</div>

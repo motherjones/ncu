@@ -150,4 +150,93 @@ $trump_mobile = <<<TRUMPMOBILE
   </style>
 TRUMPMOBILE;
 //end styles
+$recharge_mobile = <<<RECHARGEMOBILE
+<style>
+  body, .wrapper {
+    background-color: #E9E9E9;
+  }
+  .layout {
+    Margin: 0 auto;
+    width:620px !important;
+    max-width: 620px !important;
+    background-color: #fff;
+  }
+  .spacing {
+    Margin: 0 auto;
+    width:85%;
+    }
+  .narrow {
+    width: 33% !important;
+    }
+  .wide {
+    Margin-left: 10px !important;
+    width: 65% !important;
+    }
+  .headers_text {
+    font-size: 10px;
+    line-height: 14px;
+  }
+  p, h3 {
+		font-family: Georgia, serif;
+    Margin: 15px 0;
+  }
+  h3 {
+    font-size: 33px;
+    line-height: 38px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 21px;
+  }
+  #membership-call-box {
+    padding:10px 10px;
+  }
+  #logo {
+    Margin: 10px auto;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  @media screen and (max-width: 480px) {
+    body, .wrapper {background-color: #fff !important;
+    Margin: 0 auto !important;
+    padding: 0;
+    }
+    .layout {
+    background-color: #fff;
+    Margin: 0 auto;
+    width: 100% !important;
+    }
+    .spacing {
+    Margin: 0 auto !important;
+    width: 85% !important;
+    }
+    .wide, .narrow, .even_left, .even_right {
+    width: 100% !important;
+    max-width: 100% !important;
+    }
+    .even_left {
+	margin-top: 0 !important;
+    border-bottom: 1px solid #767676;
+    border-right: none !important;
+    }
+	.even_right {
+	margin-top: 20px !important;
+	}
+    p {
+    font-size: 24px !important;
+    line-height: 28px !important;
+    }
+    .headers_text {
+    font-size: 12px !important;
+    line-height: 16px !important;
+    }
+    }
+
+  @media yahoo {
+    p {margin: 10px 0;}
+    .layout {margin: 0 auto;}
+    }
+  </style>
+RECHARGEMOBILE;
 ?>

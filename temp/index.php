@@ -13,6 +13,7 @@ include "../incs/header.inc"
   		<button id="food_for_thought_redesign" class="landf_btn" onclick="showMe(this.id)">Food for Thought</button>
   		<button id="in_the_mix_new" class="landf_btn" onclick="showMe(this.id)">In the Mix</button>
 		<button id="political_mojo_new" class="landf_btn" onclick="showMe(this.id)">Politial MoJo</button>
+		<button id="recharge" class="landf_btn" onclick="showMe(this.id)">Recharge</button>
 		<button id="trumpocracy" class="landf_btn" onclick="showMe(this.id)">The Russian Connection</button>
   	</nav>
 </header>
@@ -30,6 +31,8 @@ $russ_connect = glob("*trumpocracy*.html");
 rsort($russ_connect);
 $break_news = glob("*breaking_news*.html");
 rsort($break_news);
+$recharge = glob("*recharge*.html");
+rsort($recharge);
 
 print "<div id='tmp_econ' class='type_container' style='display:none;'>";
 for($i = 0; $i < count($econundrums); $i++) {
@@ -52,6 +55,12 @@ print "</div>";
 print "<div id='tmp_pol' class='type_container' style='display:none;'>";
 for($i = 0; $i < count($political); $i++) {
 	print "<p><button onclick=\"window.open('$political[$i]', 'lost_news');\">" . $political[$i] . "</button></p>";
+}
+print "</div>";
+
+print "<div id='tmp_recharge' class='type_container' style='display:none;'>";
+for($i = 0; $i < count($recharge); $i++) {
+	print "<p><button onclick=\"window.open('$recharge[$i]', 'lost_news');\">" . $recharge[$i] . "</button></p>";
 }
 print "</div>";
 

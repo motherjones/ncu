@@ -33,7 +33,7 @@ $trump_billboard1 = "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"  al
 
 //recharge
 //billboard 1
-$recharge_billboard1 = "";
+$recharge_billboard1 = "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"  align=\"center\" style=\"margin-left:auto; margin-right:auto;\"><tr><td colspan=\"2\"><a href=\"http://li.motherjones.com/click?s=243153&layout=marquee&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=243153&layout=marquee&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\" style=\"display: block; width:100%; height:auto;\" width=\"540\" /></a></td></tr><tr style=\"display:block; height:1px; line-height:1px;\"><td><img src=\"http://li.motherjones.com/imp?s=243154&sz=1x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td><td><img src=\"http://li.motherjones.com/imp?s=243155&sz=1x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" height=\"1\" width=\"10\" /></td></tr><tr><td align=\"left\"><a href=\"http://li.motherjones.com/click?s=243156&sz=116x15&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=243156&sz=116x15&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td><td align=\"right\"><a href=\"http://li.motherjones.com/click?s=243157&sz=69x15&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" rel=\"nofollow\"><img src=\"http://li.motherjones.com/imp?s=243157&sz=69x15&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp\" border=\"0\"/></a></td></tr></table>";
 
 //Breaking News
 //billboard 1

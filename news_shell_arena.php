@@ -16,7 +16,7 @@ else {
 include "incs/header.inc";
 ?>
     <div id="footer_row">
-      <button style="background-color:#369;color:#fff;font-size:14px;" onclick="checkForm('preview', '<?php print $new; ?>', '<?php print $arch_type ?>');">Save and Preview</button>
+      <button style="background-color:#369;color:#fff;font-size:14px;" onclick="checkForm('preview', '<?php print $new; ?>', '<?php print $arch_type; ?>');">Save and Preview</button>
       <button style="background-color:#393;color:#fff;font-size:14px;" onclick="checkForm('not', '<?php print $new; ?>', '<?php print $arch_type; ?>')">Submit</button>
     </div>
 	<div id="head_row">

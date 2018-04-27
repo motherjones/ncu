@@ -180,12 +180,12 @@ function delayedInsert(json_obj) {
 	
 	for(index_name in json_obj) {
 		if(document.getElementById(index_name)) {
-			if(index_name.search(/dek/i) != -1 || index_name.search(/lead/i) != -1 || index_name.search(/lift_note/i) != -1 || index_name.search(/article/i) != -1 || index_name.search(/ioe_item/i) != -1 || index_name.search(/bite_add/i) != -1 || index_name.search(/fft_hk_leadin/i) != -1 || index_name.search(/fft_hidden_kitchen/i) != -1 || index_name.search(/fft_snack_box/i) != -1 || index_name.search(/fft_sb_attr/i) != -1 || index_name.search(/membership_slot/i) != -1 || index_name.search(/main_text/i) != -1) {
+			if(index_name.search(/dek/i) != -1 || index_name.search(/lead/i) != -1 || index_name.search(/lift_note/i) != -1 || index_name.search(/article/i) != -1 || index_name.search(/ioe_item/i) != -1 || index_name.search(/bite_add/i) != -1 || index_name.search(/fft_hk_leadin/i) != -1 || index_name.search(/fft_hidden_kitchen/i) != -1 || index_name.search(/fft_snack_box/i) != -1 || index_name.search(/fft_sb_attr/i) != -1 || index_name.search(/membership_slot/i) != -1 || index_name.search(/main_text/i) != -1 || index_name.search(/credits/i) != -1) {
 				CKEDITOR.instances[index_name].setData(json_obj[index_name]);
 			}
 			else {
-				if(index_name.search(/ital/i) != -1) {
-					  if(json_obj[index_name] == 1) {
+				if(index_name.search(/ital/i) !== -1) {
+					  if(json_obj[index_name] === 1) {
 					    document.getElementById(index_name).checked = true;
 					  }
 					  else {
@@ -225,6 +225,9 @@ function restoreValues(the_section) {
   		break;
   	case "political_mojo_new":
   		news_type = "Political MoJo";
+  		break;
+  	case "recharge":
+  		news_type = "Recharge";
   		break;
   	case "trumpocracy":
   		news_type = "The Russian Connection";
@@ -441,7 +444,7 @@ function checkForm(type_submit, is_new, news_type) {
   
   full_access = prefix + middlefix + suffix;
   
-  if(type_submit == "preview") {
+  if(type_submit === "preview") {
 	var hedlines = document.getElementById('hed_type').value;
 	var get_date = document.getElementById('hed_date').value;
 	var sub_line = document.getElementById('subject_line').value;

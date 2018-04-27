@@ -21,7 +21,7 @@ $long_path = getcwd() . "/";
 /* check preview section */
 $close_btn = "";
 $db_run = false;
-if(isset($_REQUEST['preview']) && $_REQUEST['preview'] == "true") {
+if(isset($_REQUEST['preview']) && $_REQUEST['preview'] === "true") {
 	//preview mode, but save file as well
 	$close_btn = "<div style=\"margin:0 auto;width:100px;padding:10px 20px;\"><input type=\"button\" value=\"close preview\" onclick=\"javascript:window.close();\" /></div>";
 	$relocate_me = "";
@@ -90,10 +90,10 @@ if ((isset($_REQUEST['billboard_url']) && $_REQUEST['billboard_url'] != null) ||
 	$billboard_url = $_REQUEST['billboard_url'];
 	$billboard_image = $_REQUEST['billboard_img'];
 	
-	if($headlines_type == "food_for_thought_redesign") {
+	if($headlines_type === "food_for_thought_redesign") {
 		$billboard_ad = "<div style=\"margin-top:10px;margin-bottom:20px;width:100% !important;\"><a href=\"$billboard_url\" name=\"Top Ad - $advertiser_name\"><img id=\"bill_a\" src=\"$billboard_image\" style=\"width:540px;border: none;\" alt=\"$advertiser_name\" width=\"540\" border=\"0\" /></a>$pixel_tracker</div>\n";
 	}
-	elseif ($headlines_type == "trumpocracy") {
+	elseif ($headlines_type === "trumpocracy" || $headlines_type === "recharge") {
 		$billboard_ad = "<div style=\"margin-top:10px;margin-bottom:0;width:100% !important;text-align:center;\"><a href=\"$billboard_url\" name=\"Top Ad - $advertiser_name\"><img id=\"bill_a\" src=\"$billboard_image\" style=\"width:540px;border: none;\" alt=\"$advertiser_name\" width=\"540\" border=\"0\" /></a>$pixel_tracker</div>\n";
 	}
 	else {
@@ -260,6 +260,17 @@ switch($headlines_type) {
 		$html_file = $html_headers . $view_code . $subject_formatting . $trumpocracy . $get_code . $html_footers;
 		$newsletter_info = "<p class=\"ad_text\" style=\"font-family:Georgia, serif; font-size: 12px; color: #000;text-align:center;font-size: 16px; line-height: 21px;\"><em>Trumpocracy: The Russia Connection</em> comes to you from <em>Mother Jones</em>, an award-winning, nonprofit investigative journalism organization.</p>";
 		break;
+	case "recharge":
+		include "recharge-template.php";
+		$recharge = trim(cleanChars($recharge));
+		$recharge_code = htmlspecialchars($recharge);
+		$subj_line_esc = htmlspecialchars(stripslashes($subject_line));
+		$get_code = "<div id=\"get_code\" style=\"clear:both;width:1024px;margin:10px auto;\"><p>Subject line: <input type=\"text\" size=\"120\" value=\"$subj_line_esc\" /></p><p>Newsletter code:</p><textarea cols=\"100\" rows=\"50\">$recharge_code</textarea>";
+		$html_file = $html_headers . $view_code . $subject_formatting . $recharge . $get_code . $html_footers;
+		$newsletter_info = "<p class=\"ad_text\" style=\"font-family:Georgia, serif; font-size: 12px; color: #000;text-align:center;font-size: 16px; line-height: 21px;\"><em>Recharge</em> comes to you from <em>Mother Jones</em>, an award-winning, nonprofit investigative journalism organization.</p>";
+		break;
+	default:
+		break;
 }
 
 //for html file
@@ -271,6 +282,7 @@ switch($headlines_type) {
  4. $fft_redesign
  5. $breaking_news
  6. $trumpocracy
+ 7. $recharge
  format for the archive is yyyy-mm-dd-headlinestype.html
  */
 $random_var = time();

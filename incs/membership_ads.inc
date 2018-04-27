@@ -20,7 +20,7 @@ if(isset($_REQUEST['membership_slot']) && $_REQUEST['membership_slot'] != null) 
 	}
 }
 else {
-	if($headlines_type == "trumpocracy") {
+	if($headlines_type === "trumpocracy") {
 		$membership_slot = "<div id=\"membership-call-box\" style=\"margin:0 auto;\">\n\t<p style=\"font-weight:bold;font-family:Georgia, serif;color: #000;text-align:center;font-size: 16px; line-height: 21px;\">Support hard-hitting journalism</p>\n\t<p style=\"font-family:Georgia, serif;color:#000;text-align:center;font-size: 16px; line-height: 21px;\"><em>The Russian Connection</em> and all our reporting is made possible by readers like you. Support our investigations with a <a href=\"https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=DON&term_pub=DON&b_country=United+States&list_source=7HEGNF00&term=XX.1.50.00.DON.D.0.7043\" style=\"color: #ff6900;\">tax-deductible donation</a>.</p>\n\t</div>\n";
 	}
 	else {
@@ -55,7 +55,7 @@ else {
 		$sub_text = "Mother Jones Store";
 	}
 	
-	if($headlines_type === "trumpocracy") {
+	if($headlines_type === "trumpocracy" || $headlines_type === "recharge") {
 		//$small_sub_ad = "<a href=\"$sub_url\"><img id=\"sub_ad\" src=\"$sub_image\" style=\"width:540px;max-width:540px;Margin:0 auto 20px auto;\" width=\"540\" alt=\"$sub_text\" border=\"0\" /></a>";
 		$small_sub_ad = "<table align=\"center\" width=\"540\" height=\"225\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width: 540px;width:540px;\"><tr><td style=\"line-height:1px;\" colspan=\"4\"><img src=\"
 		https://cdn.maropost.com/pro/uploads/account_585/209328/20180215_NLad-1_540_01.jpg\" width=\"540\" height=\"133\" alt=\"\"></td></tr><tr><td style=\"line-height:1px;\" rowspan=\"4\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/209329/20180215_NLad-1_540_02.jpg\" width=\"99\" height=\"92\" alt=\"\"></td><td style=\"line-height:1px;\"><a href=\"https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=MJM&term_pub=MJM&list_source=SEGMN0\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/209330/20180215_NLad-1_540_03.jpg\" width=\"96\" height=\"23\" alt=\"Subscribe\"></a></td><td style=\"line-height:1px;\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/209331/20180215_NLad-1_540_04.jpg\" width=\"48\" height=\"23\" alt=\"\"></td><td style=\"line-height:1px;\" rowspan=\"4\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/209332/20180215_NLad-1_540_05.jpg\" width=\"297\" height=\"92\" alt=\"\"></td></tr><tr><td style=\"line-height:1px;\" colspan=\"2\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/209333/20180215_NLad-1_540_06.jpg\" width=\"144\" height=\"20\" alt=\"\"></td></tr><tr><td style=\"line-height:1px;\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/209334/20180215_NLad-1_540_07.jpg\" width=\"96\" height=\"22\" alt=\"\"></td><td style=\"line-height:1px;\"><a href=\"https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=MJM&term_pub=MJM&list_source=YEGMN0\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/209335/20180215_NLad-1_540_08.jpg\" width=\"48\" height=\"22\" alt=\"Give\"></a></td></tr><tr><td style=\"line-height:1px;\" colspan=\"2\"><img src=\"https://cdn.maropost.com/pro/uploads/account_585/209336/20180215_NLad-1_540_09.jpg\" width=\"144\" height=\"27\" alt=\"\"></td></tr></table>";

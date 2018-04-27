@@ -20,7 +20,7 @@ $path = "https://util.motherjones.com/dev/ncu/";
   CKEDITOR.config.customConfig = 'custom-config.js';
     function makeEditor(numId) {
       var editor_height = 0;
-      if(numId == "conundrum_dek" || numId == "maindish_dek" || numId == "twmustread_dek" || numId == "topstory_dek" || numId == "fft_hidden_kitchen" || numId == "fft_ioe_item1" || numId == "fft_ioe_item2" || numId == "fft_ioe_item3" || numId == "lift_note" || numId == "main_text" || numId == "trum_main_dek" || numId == "trump_main2_dek" || numId == "recharge_main_dek" || numId == "recharge1_dek" || numId == "recharge2_dek" || numId == "recharge3_dek" || numId == "recharge4_dek" || numId == "recharge5_dek") {
+      if(numId == "conundrum_dek" || numId == "maindish_dek" || numId == "twmustread_dek" || numId == "topstory_dek" || numId == "fft_hidden_kitchen" || numId == "fft_ioe_item1" || numId == "fft_ioe_item2" || numId == "fft_ioe_item3" || numId == "lift_note" || numId == "main_text" || numId == "trum_main_dek" || numId == "trump_main2_dek" || numId == "recharge_main_dek" || numId == "recharge1_dek" || numId == "recharge2_dek" || numId == "recharge3_dek" || numId == "recharge4_dek" || numId == "recharge5_dek" || numId == "recharge_image_dek" || numId == "recharge_image_credits") {
           CKEDITOR.replace(numId, {
               width: 410,
               height: 200
