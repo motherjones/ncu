@@ -20,7 +20,7 @@ switch($headlines_type) {
 		$newsletter_info = "<p class=\"ad_text\" style=\"font-family:Georgia, serif; font-size: 12px; color: #000;text-align:center;font-size: 16px; line-height: 21px;\"><em>The Russian Connection</em> comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976.</p>";
 		break;
 	case "recharge":
-		$newsletter_info = "<p class=\"ad_text\" style=\"font-family:Georgia, serif; font-size: 12px; color: #000;text-align:center;font-size: 16px; line-height: 21px;\"><em>ReCharge</em> comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976.</p>";
+		$newsletter_info = "<p class=\"ad_text\" style=\"font-family:Georgia, serif; font-size: 12px; color: #000;text-align:center;font-size: 16px; line-height: 21px;\"><em>Recharge</em> comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976.</p>";
 		break;
 	default:
 		break;

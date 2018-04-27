@@ -262,6 +262,7 @@ $recharge_closer = "</td>\n\t</tr>\n";
 $recharge_title_format = "<p style=\"margin-top: 0;font-size: 16px; line-height: 21px;font-weight: bold;font-style:italic;text-align:left;font-family:Georgia, serif;\">In this week&rsquo;s Recharge, we&rsquo;ll focus on the helpers, on acts of kindness, and on efforts to make a community a better place. There&rsquo;s a lot of good going on in the world beyond the headlines.</p>";
 $recharge_p_format_dek = "<p style=\"color: #222; font-family:Georgia, serif;font-size: 16px; line-height: 21px;\">";
 $recharge_bold_format_dek = "<span style=\"font-weight: bold; color: #000;\">";
+$recharge_inline_img = "<img style=\"width:540px;max-width:540px\" width=\"540\" ";
 $recharge_dek_sec1 = "";
 $recharge_dek_sec2 = "";
 
@@ -274,6 +275,10 @@ if($recharge1_dek !== "" || $recharge2_dek !== "") {
 		$recharge1_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge1_dek);
 		$recharge1_dek = str_replace("</strong>", "</span>", $recharge1_dek);
 		$recharge1_dek = str_replace("<a", $url_style, $recharge1_dek);
+		
+		//resize inline images
+		$recharge1_dek = resizeInlineImg($recharge1_dek, "540px");
+		
 		$get_last_p = strripos($recharge1_dek, "</p>");
 		$get_substr = substr($recharge1_dek, 0, $get_last_p);
 		
@@ -302,6 +307,10 @@ if($recharge1_dek !== "" || $recharge2_dek !== "") {
 		$recharge2_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge2_dek);
 		$recharge2_dek = str_replace("</strong>", "</span>", $recharge2_dek);
 		$recharge2_dek = str_replace("<a", $url_style, $recharge2_dek);
+		
+		//resize inline images
+		$recharge2_dek = resizeInlineImg($recharge2_dek, "540px");
+		
 		$get_last_p = strripos($recharge2_dek, "</p>");
 		$get_substr = substr($recharge2_dek, 0, $get_last_p);
 		
@@ -339,6 +348,10 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 		$recharge3_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge3_dek);
 		$recharge3_dek = str_replace("</strong>", "</span>", $recharge3_dek);
 		$recharge3_dek = str_replace("<a", $url_style, $recharge3_dek);
+		
+		//resize inline images
+		$recharge3_dek = resizeInlineImg($recharge3_dek, "540px");
+		
 		$get_last_p = strripos($recharge3_dek, "</p>");
 		$get_substr = substr($recharge3_dek, 0, $get_last_p);
 		
@@ -367,6 +380,10 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 		$recharge4_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge4_dek);
 		$recharge4_dek = str_replace("</strong>", "</span>", $recharge4_dek);
 		$recharge4_dek = str_replace("<a", $url_style, $recharge4_dek);
+		
+		//resize inline images
+		$recharge4_dek = resizeInlineImg($recharge4_dek, "540px");
+		
 		$get_last_p = strripos($recharge4_dek, "</p>");
 		$get_substr = substr($recharge4_dek, 0, $get_last_p);
 		
@@ -395,6 +412,10 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 		$recharge5_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge5_dek);
 		$recharge5_dek = str_replace("</strong>", "</span>", $recharge5_dek);
 		$recharge5_dek = str_replace("<a", $url_style, $recharge5_dek);
+		
+		//resize inline image
+		$recharge5_dek = resizeInlineImg($recharge5_dek, "540px");
+		
 		$get_last_p = strripos($recharge5_dek, "</p>");
 		$get_substr = substr($recharge5_dek, 0, $get_last_p);
 		
@@ -419,6 +440,8 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 	if($recharge_image_dek !== "") {
 		$recharge_image_dek = str_replace("<p>", $recharge_p_format_dek, $recharge_image_dek);
 		$recharge_image_dek = str_replace("<a", $url_style, $recharge_image_dek);
+		/*resize inline image code*/
+		resizeInlineImg($recharge_image_dek, "540px");
 	}
 	else {
 		$recharge_image_dek = "";

@@ -298,6 +298,19 @@ fwrite($file_handle2, stripslashes($html_file));
 print $relocate_me;
 /* end write html file to server section */
 
+/* resize inline image function */
+function resizeInlineImg($html_code, $width) {
+	$doc = new DOMDocument;
+	$doc->loadHTML($html_code);
+	$images = $doc->getElementsByTagName("img");
+	foreach($images as $image) {
+		$image->setAttribute('width', $width);
+		$image->setAttribute('style', 'width:' . $width . ';max-width:' . $width . ';');
+	}
+	/*save snipped along with rest of HTML code*/
+	$html_code = $doc->saveHTML();
+	return $html_code;
+}
 /* function to clean html output */
 function cleanChars($wip) {
 	$del_array = Array("/(~‚Äö√†√∂¬¨¬¢)/", "/(‚àö√°¬¨¬Æ¬¨¬®¬¨√Ü~)/","/~(.)(&#160;)(\s)~/","/(‚àö√°¬¨¬Æ¬¨¬®¬¨√Ü‚Äö√†√∂¬¨¬¢)/", "/(~‚Äö√†√∂¬¨¬¢‚Äö√Ñ√∂‚àö√°¬¨¬Æ¬¨¬®¬¨¬©~is)/", "/(~‚Äö√†√∂¬¨¬¢)/", "/(‚àö√°¬¨¬Æ\'\)~)/", "/(~‚Äö√Ñ√∂‚àö√ë‚àö√Ü\?~)/", "/~(\s)(&#160;)(.)~/");
