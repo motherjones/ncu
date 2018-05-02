@@ -92,11 +92,8 @@ include "incs/header.inc";
 		  case "econundrums_new":
 		    day_int = 1;
 		    break;
-		  case "food_for_thought_new":
-		    day_int = 3;
-		    break;
 		  case "food_for_thought_redesign":
-		    day_int = 3;
+		    day_int = 0;
 		    break;
 		  case "in_the_mix_new":
 		    day_int = 6;
@@ -111,7 +108,7 @@ include "incs/header.inc";
 		    day_int = 4;
 		    break;
 		  case "recharge":
-			day_int = 0;
+			day_int = 3;
 		  default:
 		    break;
 		}

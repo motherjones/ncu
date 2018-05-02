@@ -34,17 +34,11 @@ function getTypeImg(type_img) {
       the_link = "http://motherjones.com/authors/kiera-butler";
       day_int = 1;
       break;
-    case "food_for_thought_new":
-      theImg = "images/fft_header_old_news_tool.png";
-      section = "food_for_thought_new";
-      the_link = "http://motherjones.com/tom-philpott";
-      day_int = 3;
-      break;
     case "food_for_thought_redesign":
       theImg = "images/fft_header_new_news_tool_update.png";
       section = "food_for_thought_redesign";
       the_link = "http://motherjones.com/tom-philpott";
-      day_int = 3;
+      day_int = 0;
       break;
     case "in_the_mix_new":
       theImg = "images/inthemix_header_news_tool.png";
@@ -70,6 +64,11 @@ function getTypeImg(type_img) {
       the_link = "http://www.motherjones.com";
       day_int = 0;
       break;
+    case "recharge":
+    	  theImg = "";
+    	  section = "recharge";
+    	  the_link = "https://www.motherjones.com";
+    	  day_int = 3;
     default:
       theImg = "false";
       break;
