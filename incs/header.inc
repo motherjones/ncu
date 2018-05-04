@@ -1,8 +1,8 @@
 <?php
-/* test path */
-$path = "https://util.motherjones.com/dev/ncu/";
-/* live path */
-//$path = "/mojo/www/util/headlines/headlines-new-2015/";
+/* /mojo/www/util/ */
+$current_path = getcwd() . "/";
+$replace_path = str_replace("/mojo/www/util/", "https://util.motherjones.com/", $current_path);
+$path = $replace_path;
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,7 @@ $path = "https://util.motherjones.com/dev/ncu/";
   CKEDITOR.config.customConfig = 'custom-config.js';
     function makeEditor(numId) {
       var editor_height = 0;
-      if(numId == "conundrum_dek" || numId == "maindish_dek" || numId == "twmustread_dek" || numId == "topstory_dek" || numId == "fft_hidden_kitchen" || numId == "fft_ioe_item1" || numId == "fft_ioe_item2" || numId == "fft_ioe_item3" || numId == "lift_note" || numId == "main_text" || numId == "trum_main_dek" || numId == "trump_main2_dek" || numId == "recharge_main_dek" || numId == "recharge1_dek" || numId == "recharge2_dek" || numId == "recharge3_dek" || numId == "recharge4_dek" || numId == "recharge5_dek" || numId == "recharge_image_dek" || numId == "recharge_image_credits") {
+      if(numId == "conundrum_dek" || numId == "maindish_dek" || numId == "twmustread_dek" || numId == "topstory_dek" || numId == "fft_hidden_kitchen" || numId == "fft_ioe_item1" || numId == "fft_ioe_item2" || numId == "fft_ioe_item3" || numId == "lift_note" || numId == "main_text" || numId == "trum_main_dek" || numId == "trump_main2_dek" || numId == "recharge_main_dek" || numId == "recharge1_dek" || numId == "recharge2_dek" || numId == "recharge3_dek" || numId == "recharge4_dek" || numId == "recharge5_dek" || numId == "recharge_image_dek") {
           CKEDITOR.replace(numId, {
               width: 410,
               height: 200
@@ -43,7 +43,7 @@ $path = "https://util.motherjones.com/dev/ncu/";
              CKEDITOR.instances[numId].setData(clean_text);
           });
       }
-      else if(numId == "fft_article_1" || numId == "fft_article_2" || numId == "fft_article_3" || numId == "fft_article_4" || numId == "fft_article_5" || numId == "fft_article_6" || numId == "fft_snack_box" || numId == "fft_sb_attr" || numId == "fft_hk_leadin" || numId == "fft_bite_add" || numId == "membership_slot" || numId == "topnews1_dek" || numId == "topnews2_dek" || numId == "topnews3_dek" || numId == "topnews4_dek" || numId == "topnews5_dek" || numId == "wors1_dek" || numId == "wors2_dek" || numId == "wors3_dek" || numId == "wors4_dek") {
+      else if(numId == "fft_article_1" || numId == "fft_article_2" || numId == "fft_article_3" || numId == "fft_article_4" || numId == "fft_article_5" || numId == "fft_article_6" || numId == "fft_snack_box" || numId == "fft_sb_attr" || numId == "fft_hk_leadin" || numId == "fft_bite_add" || numId == "membership_slot" || numId == "topnews1_dek" || numId == "topnews2_dek" || numId == "topnews3_dek" || numId == "topnews4_dek" || numId == "topnews5_dek" || numId == "wors1_dek" || numId == "wors2_dek" || numId == "wors3_dek" || numId == "wors4_dek"  || numId == "recharge_intro_dek" || numId == "recharge_image_credits") {
           CKEDITOR.replace(numId, {
               width: 410,
               height: 100

@@ -49,6 +49,13 @@ else {
 	$recharge_main_ital = false;
 }
 
+if(isset($_REQUEST['recharge_intro_dek']) && $_REQUEST['recharge_intro_dek'] !== "") {
+	$recharge_intro_dek = trim($_REQUEST['recharge_intro_dek']);
+}
+else {
+	$recharge_intro_dek = "In this week&rsquo;s Recharge, we&rsquo;ll focus on the helpers, on acts of kindness, and on efforts to make a community a better place. There&rsquo;s a lot of good going on in the world beyond the headlines.";
+}
+
 if(isset($_REQUEST['recharge1_dek']) && $_REQUEST['recharge1_dek'] !== "") {
 	$recharge1_dek = trim($_REQUEST['recharge1_dek']);
 }
@@ -270,7 +277,8 @@ $recharge_sec1 = "";
 $recharge_sec2 = "";
 $recharge_opener = "<tr>\n\t<td style=\"border-bottom: 1px solid #767676;\">\n\t";
 $recharge_closer = "</td>\n\t</tr>\n";
-$recharge_title_format = "<p style=\"margin-top: 0;font-size: 16px; line-height: 21px;font-weight: bold;font-style:italic;text-align:left;font-family:Georgia, serif;color:#000;\">In this week&rsquo;s Recharge, we&rsquo;ll focus on the helpers, on acts of kindness, and on efforts to make a community a better place. There&rsquo;s a lot of good going on in the world beyond the headlines.</p>";
+$recharge_title_format = "margin-top: 0;font-size: 16px; line-height: 21px;font-weight: bold;font-style:italic;text-align:left;font-family:Georgia, serif;color:#000;";
+$recharge_intro_dek = modifyHTML($recharge_intro_dek, "p", "style", $recharge_title_format);
 //html replacement code
 $recharge_p_format_dek = "color: #222; font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
 $recharge_bold_format_dek = "font-weight: bold; color: #000;";
@@ -348,7 +356,7 @@ if($recharge1_dek !== "" || $recharge2_dek !== "") {
 	}
 	
 	//put together html structure of section 1 & 2 above membership ad.
-	$recharge_sec1 = $recharge_opener . $recharge_title_format . $recharge1 . $recharge2 . $recharge_closer;
+	$recharge_sec1 = $recharge_opener . $recharge_intro_dek . $recharge1 . $recharge2 . $recharge_closer;
 }
 //end recharge article 1 & 2 (above ad)
 
@@ -619,6 +627,7 @@ $recharge_main_url = addslashes($recharge_main_url);
 $recharge_main_img = addslashes($recharge_main_img);
 $recharge_main_dek = addslashes($recharge_main_dek);
 $recharge_main_source = addslashes($recharge_main_source);
+$recharge_intro_dek = addslashes($recharge_intro_dek);
 $recharge1_dek = addslashes($recharge1_dek);
 $recharge1_source = addslashes($recharge1_source);
 $recharge1_url = addslashes($recharge1_url);
@@ -671,6 +680,7 @@ if($exists) {
 	recharge_main_dek = '$recharge_main_dek',
 	recharge_main_source = '$recharge_main_source',
 	recharge_main_ital = '$recharge_main_ital',
+	recharge_intro_dek = '$recharge_intro_dek',
 	recharge1_dek = '$recharge1_dek',
 	recharge1_source = '$recharge1_source',
 	recharge1_ital = '$recharge1_ital',
@@ -706,7 +716,7 @@ if($exists) {
 	WHERE hed_date='$headlines_date'";
 }
 else {
-	$run_qry = "INSERT INTO recharge(hed_date,subject_line,recharge_main_hed,recharge_main_url,recharge_main_img,recharge_main_dek,recharge_main_source,recharge_main_ital,recharge1_dek,recharge1_source,recharge1_ital,recharge1_url,recharge2_dek,recharge2_source,recharge2_ital,recharge2_url,recharge3_dek,recharge3_source,recharge3_ital,recharge3_url,recharge4_dek,recharge4_source,recharge4_ital,recharge4_url,recharge5_dek,recharge5_source,recharge5_ital,recharge5_url,recharge_image_dek,recharge_image_credits,ad_name,ad_link_bill,ad_billboard,sub_url,sub_image,sub_text,sub_code,lift_note,pixel_tracker,pixel_tracker2)
+	$run_qry = "INSERT INTO recharge(hed_date,subject_line,recharge_main_hed,recharge_main_url,recharge_main_img,recharge_main_dek,recharge_main_source,recharge_main_ital,recharge_intro_dek,recharge1_dek,recharge1_source,recharge1_ital,recharge1_url,recharge2_dek,recharge2_source,recharge2_ital,recharge2_url,recharge3_dek,recharge3_source,recharge3_ital,recharge3_url,recharge4_dek,recharge4_source,recharge4_ital,recharge4_url,recharge5_dek,recharge5_source,recharge5_ital,recharge5_url,recharge_image_dek,recharge_image_credits,ad_name,ad_link_bill,ad_billboard,sub_url,sub_image,sub_text,sub_code,lift_note,pixel_tracker,pixel_tracker2)
 	VALUES('$headlines_date',
 	'$subject_line',
 	'$recharge_main_hed',
@@ -715,6 +725,7 @@ else {
 	'$recharge_main_dek',
 	'$recharge_main_source',
 	'$recharge_main_ital',
+	'$recharge_intro_dek',
 	'$recharge1_dek',
 	'$recharge1_source',
 	'$recharge1_ital',
