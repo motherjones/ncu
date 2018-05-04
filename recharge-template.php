@@ -2,8 +2,8 @@
 /*Template for ReCharge newsletter
  * Author: Young Kim
  * Creation Date: 4/18/2018
- * Update: 4/27/2018
- * Version: .9A
+ * Update: 5/03/2018
+ * Version: .9RC
  */
 
 //Post and Request section (get all input fields for newsletter)
@@ -213,11 +213,20 @@ else {
 //date formatting
 $temp_date = strtotime($headlines_date);
 $get_date = date("F j, Y", $temp_date);
-
+/* use this function to add HTML attributes:
+ * 
+ *  modifyHTML($html_code, $html_tag, $html_attrs, $html_value)
+ *  
+ *  if adding multiple attributes to a single tag, pass associative array in $html_attrs
+ *  holding {attribute name}=>{attribute value} and do not pass anything for $html_value
+ *  if only modifying single html attributes, pass $html_attrs as attribute name with $html_value
+ *  as value for the attribute.
+ */
 /*Main article section*/
 //declare variables for the main section and url style
 $main_section = "";
-$url_style = "<a style=\"color: #ff6900;\"";
+$main_dek_p_styles = "text-align:left;color: #222;font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
+$url_color = "color:#ff6900;";
 
 if($recharge_main_url !== "" || $recharge_main_url !== null) {
 	$main_hed = "<h3 style=\"Margin-bottom: 10px;font-weight: bold; color: #000 !important;font-family:Georgia, serif;font-size: 33px; line-height: 38px;\"><a href=\"$recharge_main_url\"  style=\"text-decoration: none;color: #000;\">$recharge_main_hed</a></h3>\n";
@@ -235,9 +244,9 @@ else {
 	$main_img_sec = "";
 }
 
-$main_dek_p = "<p style=\"text-align:left;color: #222;font-family:Georgia, serif;font-size: 16px; line-height: 21px;\">";
-$recharge_main_dek = str_replace("<p>", $main_dek_p, $recharge_main_dek);
-$recharge_main_dek = str_replace("<a", $url_style, $recharge_main_dek);
+$recharge_main_dek = modifyHTML($recharge_main_dek, "p", "style", $main_dek_p_styles);
+$recharge_main_dek = modifyHTML($recharge_main_dek, "a", "style", $url_color);
+
 //add source name & url
 $get_last_p = strripos($recharge_main_dek, "</p>");
 $get_substr = substr($recharge_main_dek, 0, $get_last_p);
@@ -261,13 +270,12 @@ $recharge_sec1 = "";
 $recharge_sec2 = "";
 $recharge_opener = "<tr>\n\t<td style=\"border-bottom: 1px solid #767676;\">\n\t";
 $recharge_closer = "</td>\n\t</tr>\n";
-$recharge_title_format = "<p style=\"margin-top: 0;font-size: 16px; line-height: 21px;font-weight: bold;font-style:italic;text-align:left;font-family:Georgia, serif;\">In this week&rsquo;s Recharge, we&rsquo;ll focus on the helpers, on acts of kindness, and on efforts to make a community a better place. There&rsquo;s a lot of good going on in the world beyond the headlines.</p>";
-$recharge_p_format_dek = "<p style=\"color: #222; font-family:Georgia, serif;font-size: 16px; line-height: 21px;\">";
-$recharge_bold_format_dek = "<span style=\"font-weight: bold; color: #000;\">";
-$recharge_inline_img = "<img style=\"width:540px;max-width:540px\" width=\"540\" ";
-//don't know why I declared these.
-$recharge_dek_sec1 = "";
-$recharge_dek_sec2 = "";
+$recharge_title_format = "<p style=\"margin-top: 0;font-size: 16px; line-height: 21px;font-weight: bold;font-style:italic;text-align:left;font-family:Georgia, serif;color:#000;\">In this week&rsquo;s Recharge, we&rsquo;ll focus on the helpers, on acts of kindness, and on efforts to make a community a better place. There&rsquo;s a lot of good going on in the world beyond the headlines.</p>";
+//html replacement code
+$recharge_p_format_dek = "color: #222; font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
+$recharge_bold_format_dek = "font-weight: bold; color: #000;";
+$recharge_inline_img["width"] = "540";
+$recharge_inline_img["style"] = "width:540px;max-width:540px;";
 
 //check input data and format appropriately
 if($recharge1_dek !== "" || $recharge2_dek !== "") {
@@ -276,13 +284,11 @@ if($recharge1_dek !== "" || $recharge2_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
 		//replace HTML entities
-		$recharge1_dek = str_replace("<p>", $recharge_p_format_dek, $recharge1_dek);
-		$recharge1_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge1_dek);
-		$recharge1_dek = str_replace("</strong>", "</span>", $recharge1_dek);
-		$recharge1_dek = str_replace("<a", $url_style, $recharge1_dek);
-		
+		$recharge1_dek = modifyHTML($recharge1_dek, "p", "style", $recharge_p_format_dek);
+		$recharge1_dek = modifyHTML($recharge1_dek, "strong", "style", $recharge_bold_format_dek);
+		$recharge1_dek = modifyHTML($recharge1_dek, "a", "style", $url_color);
 		//resize inline images
-		$recharge1_dek = resizeInlineImg($recharge1_dek, "540px");
+		$recharge1_dek = modifyHTML($recharge1_dek, "img", $recharge_inline_img);
 		
 		//for "source" formatting
 		//find last instance of a paragraph and insert the source and ital if necessary
@@ -312,13 +318,11 @@ if($recharge1_dek !== "" || $recharge2_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
 		//replace HTML entities
-		$recharge2_dek = str_replace("<p>", $recharge_p_format_dek, $recharge2_dek);
-		$recharge2_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge2_dek);
-		$recharge2_dek = str_replace("</strong>", "</span>", $recharge2_dek);
-		$recharge2_dek = str_replace("<a", $url_style, $recharge2_dek);
-		
+		$recharge2_dek = modifyHTML($recharge2_dek, "p", "style", $recharge_p_format_dek);
+		$recharge2_dek = modifyHTML($recharge2_dek, "strong", "style", $recharge_bold_format_dek);
+		$recharge2_dek = modifyHTML($recharge2_dek, "a", "style", $url_color);
 		//resize inline images
-		$recharge2_dek = resizeInlineImg($recharge2_dek, "540px");
+		$recharge2_dek = modifyHTML($recharge2_dek, "img", $recharge_inline_img);
 		
 		//for "source" formatting
 		//find last instance of a paragraph and insert the source and ital if necessary
@@ -350,21 +354,19 @@ if($recharge1_dek !== "" || $recharge2_dek !== "") {
 
 //recharge article 3 & 4 & 5 (below ad)
 //sign off text hard coded
-$recharge_signoff = "<p style=\"font-family:Georgia, serif;font-size: 16px; line-height: 21px;font-weight:bold;font-style:italic;\">That's it for this week. We hope that Recharge helps you in the week ahead &#8212; and brings out the hellraiser in you. Have a tip or a link? Email us at <a style=\"color: #ff6900;\" href=\"mailto:recharge@motherjones.com\">recharge@motherjones.com</a>.</p>";
+$recharge_signoff = "<p style=\"font-family:Georgia, serif;font-size: 16px; line-height: 21px;font-weight:bold;font-style:italic;color:#000;\">That&#8217;s it for this week. We hope that Recharge helps you in the week ahead &#8212; and brings out the hellraiser in you. Have a tip or a link? Email us at <a style=\"color: #ff6900;\" href=\"mailto:recharge@motherjones.com\">recharge@motherjones.com</a>.</p>";
 
-if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
+if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "" || $recharge_image_dek !== "" || $recharge_image_credits !== "") {
 	//third recharge article
 	if($recharge3_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
 		//replace HTML entities
-		$recharge3_dek = str_replace("<p>", $recharge_p_format_dek, $recharge3_dek);
-		$recharge3_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge3_dek);
-		$recharge3_dek = str_replace("</strong>", "</span>", $recharge3_dek);
-		$recharge3_dek = str_replace("<a", $url_style, $recharge3_dek);
-		
+		$recharge3_dek = modifyHTML($recharge3_dek, "p", "style", $recharge_p_format_dek);
+		$recharge3_dek = modifyHTML($recharge3_dek, "strong", "style", $recharge_bold_format_dek);
+		$recharge3_dek = modifyHTML($recharge3_dek, "a", "style", $url_color);
 		//resize inline images
-		$recharge3_dek = resizeInlineImg($recharge3_dek, "540px");
+		$recharge3_dek = modifyHTML($recharge3_dek, "img", $recharge_inline_img);
 		
 		//for "source" formatting
 		//find last instance of a paragraph and insert the source and ital if necessary
@@ -394,13 +396,11 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
 		//replace HTML entities
-		$recharge4_dek = str_replace("<p>", $recharge_p_format_dek, $recharge4_dek);
-		$recharge4_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge4_dek);
-		$recharge4_dek = str_replace("</strong>", "</span>", $recharge4_dek);
-		$recharge4_dek = str_replace("<a", $url_style, $recharge4_dek);
-		
+		$recharge4_dek = modifyHTML($recharge4_dek, "p", "style", $recharge_p_format_dek);
+		$recharge4_dek = modifyHTML($recharge4_dek, "strong", "style", $recharge_bold_format_dek);
+		$recharge4_dek = modifyHTML($recharge4_dek, "a", "style", $url_color);
 		//resize inline images
-		$recharge4_dek = resizeInlineImg($recharge4_dek, "540px");
+		$recharge4_dek = modifyHTML($recharge4_dek, "img", $recharge_inline_img);
 		
 		//for "source" formatting
 		//find last instance of a paragraph and insert the source and ital if necessary
@@ -429,13 +429,11 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
 		//replace HTML entities
-		$recharge5_dek = str_replace("<p>", $recharge_p_format_dek, $recharge5_dek);
-		$recharge5_dek = str_replace("<strong>", $recharge_bold_format_dek, $recharge5_dek);
-		$recharge5_dek = str_replace("</strong>", "</span>", $recharge5_dek);
-		$recharge5_dek = str_replace("<a", $url_style, $recharge5_dek);
-		
-		//resize inline image
-		$recharge5_dek = resizeInlineImg($recharge5_dek, "540px");
+		$recharge5_dek = modifyHTML($recharge5_dek, "p", "style", $recharge_p_format_dek);
+		$recharge5_dek = modifyHTML($recharge5_dek, "strong", "style", $recharge_bold_format_dek);
+		$recharge5_dek = modifyHTML($recharge5_dek, "a", "style", $url_color);
+		//resize inline images
+		$recharge5_dek = modifyHTML($recharge5_dek, "img", $recharge_inline_img);
 		
 		//for "source" formatting
 		//find last instance of a paragraph and insert the source and ital if necessary
@@ -462,10 +460,10 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 	
 	//last section after sign off where the image and text goes
 	if($recharge_image_dek !== "") {
-		$recharge_image_dek = str_replace("<p>", $recharge_p_format_dek, $recharge_image_dek);
-		$recharge_image_dek = str_replace("<a", $url_style, $recharge_image_dek);
+		$recharge_image_dek = modifyHTML($recharge_image_dek, "p", "style", $recharge_p_format_dek);
+		$recharge_image_dek = modifyHTML($recharge_image_dek, "a", "style", $url_color);
 		/*resize inline image code*/
-		resizeInlineImg($recharge_image_dek, "540px");
+		$recharge_image_dek = modifyHTML($recharge_image_dek, "img", $recharge_inline_img);
 	}
 	else {
 		$recharge_image_dek = "";
@@ -473,7 +471,7 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "") {
 	
 	//image credits at end of newsletter before newsletter info and footer
 	if($recharge_image_credits !== "") {
-		$recharge_image_credits = str_replace("<p>", "<p style=\"text-align:center;font-family:Georgia, serif;font-size: 14px; line-height: 19px;font-style:italic;color: #767676;\">", $recharge_image_credits);
+		$recharge_image_credits = modifyHTML($recharge_image_credits, "p", "style", "text-align:center;font-family:Georgia, serif;font-size: 14px; line-height: 19px;font-style:italic;color: #767676;");
 	}
 	else {
 		$recharge_image_credits = "";

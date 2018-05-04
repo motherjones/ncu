@@ -378,9 +378,10 @@ $get_date = date("F j, Y", $temp_date);
 $main_section_header = "<table align=\"left\" cellpadding=\"2\" style=\"margin:10px 0;\"><tr><td align=\"left\"><p class=\"headers_text\" style=\"font-family: 'Arial Black', sans-serif; color: #000;font-size:16px;font-weight: bold;text-transform: uppercase;background-color: #e5e5e5;padding: 3px 12px;text-align:left;\">Top Food News</p></td></tr></table>";
 $main_section = "";
 $main_title = "";
-$main_section_p = "<p class=\"mobile-format\" style=\"margin: 0 0 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; color: #767676; font-size: 18px;\">";
-$lead_in_bold = "<span style=\"font-family: Verdana, sans-serif;font-weight: bold; color: #000 !important;\">";
-$url_style = "<a style=\"color: #ff6900;\"";
+$main_section_p["class"] = "mobile-format";
+$main_section_p["style"] = "margin: 0 0 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; color: #767676; font-size: 18px;";
+$lead_in_bold = "font-family: Verdana, sans-serif;font-weight: bold; color: #000 !important;";
+$url_style = "color: #ff6900;";
 
 if(isset($fft_main_hed_url) && $fft_main_hed_url !== "") {
 	$main_title = "<h3 style=\"margin: 0 0 10px 0; padding: 0; font-family: 'Arial Black', sans-serif; font-weight: bold; color: #000;font-size: 38px;line-height:42px;clear:both;\"><a href=\"$fft_main_hed_url\" style=\"text-decoration: none;color: #000;\">$fft_main_hed</a></h3>";
@@ -397,10 +398,9 @@ $fft_article_5_content = "";
 $fft_article_6_content = "";
 
 if(isset($fft_article_1) && $fft_article_1 !== "") {
-	$fft_article_1 = str_replace("<p>", $main_section_p, $fft_article_1);
-	$fft_article_1 = str_replace("<strong>", $lead_in_bold, $fft_article_1);
-	$fft_article_1 = str_replace("</strong>", "</span>", $fft_article_1);
-	$fft_article_1 = str_replace("<a", $url_style, $fft_article_1);
+	$fft_article_1 = modifyHTML($fft_article_1, "p", $main_section_p);
+	$fft_article_1 = modifyHTML($fft_article_1, "strong", "style", $lead_in_bold);
+	$fft_article_1 = modifyHTML($fft_article_1, "a", "style", $url_style);
 	
 	//add sources
 	$get_last_p = strripos($fft_article_1, "</p>");
@@ -420,10 +420,9 @@ if(isset($fft_article_1) && $fft_article_1 !== "") {
 }
 
 if(isset($fft_article_2) && $fft_article_2 !== "") {
-	$fft_article_2 = str_replace("<p>", $main_section_p, $fft_article_2);
-	$fft_article_2 = str_replace("<strong>", $lead_in_bold, $fft_article_2);
-	$fft_article_2 = str_replace("</strong>", "</span>", $fft_article_2);
-	$fft_article_2 = str_replace("<a", $url_style, $fft_article_2);
+	$fft_article_2 = modifyHTML($fft_article_2, "p", $main_section_p);
+	$fft_article_2 = modifyHTML($fft_article_2, "strong", "style", $lead_in_bold);
+	$fft_article_2 = modifyHTML($fft_article_2, "a", "style", $url_style);
 	
 	$get_last_p = strripos($fft_article_2, "</p>");
 	$get_substr = substr($fft_article_2, 0, $get_last_p);
@@ -442,10 +441,9 @@ if(isset($fft_article_2) && $fft_article_2 !== "") {
 }
 
 if(isset($fft_article_3) && $fft_article_3 !== "") {
-	$fft_article_3 = str_replace("<p>", $main_section_p, $fft_article_3);
-	$fft_article_3 = str_replace("<strong>", $lead_in_bold, $fft_article_3);
-	$fft_article_3 = str_replace("</strong>", "</span>", $fft_article_3);
-	$fft_article_3 = str_replace("<a", $url_style, $fft_article_3);
+	$fft_article_3 = modifyHTML($fft_article_3, "p", $main_section_p);
+	$fft_article_3 = modifyHTML($fft_article_3, "strong", "style", $lead_in_bold);
+	$fft_article_3 = modifyHTML($fft_article_3, "a", "style", $url_style);
 	
 	$get_last_p = strripos($fft_article_3, "</p>");
 	$get_substr = substr($fft_article_3, 0, $get_last_p);
@@ -464,10 +462,9 @@ if(isset($fft_article_3) && $fft_article_3 !== "") {
 }
 
 if(isset($fft_article_4) && $fft_article_4 !== "") {
-	$fft_article_4 = str_replace("<p>", $main_section_p, $fft_article_4);
-	$fft_article_4 = str_replace("<strong>", $lead_in_bold, $fft_article_4);
-	$fft_article_4 = str_replace("</strong>", "</span>", $fft_article_4);
-	$fft_article_4 = str_replace("<a", $url_style, $fft_article_4);
+	$fft_article_4 = modifyHTML($fft_article_4, "p", $main_section_p);
+	$fft_article_4 = modifyHTML($fft_article_4, "strong", "style", $lead_in_bold);
+	$fft_article_4 = modifyHTML($fft_article_4, "a", "style", $url_style);
 	
 	$get_last_p = strripos($fft_article_4, "</p>");
 	$get_substr = substr($fft_article_4, 0, $get_last_p);
@@ -487,10 +484,9 @@ if(isset($fft_article_4) && $fft_article_4 !== "") {
 }
 
 if(isset($fft_article_5) && $fft_article_5 !== "") {
-	$fft_article_5 = str_replace("<p>", $main_section_p, $fft_article_5);
-	$fft_article_5 = str_replace("<strong>", $lead_in_bold, $fft_article_5);
-	$fft_article_5 = str_replace("</strong>", "</span>", $fft_article_5);
-	$fft_article_5 = str_replace("<a", $url_style, $fft_article_5);
+	$fft_article_5 = modifyHTML($fft_article_5, "p", $main_section_p);
+	$fft_article_5 = modifyHTML($fft_article_5, "strong", "style", $lead_in_bold);
+	$fft_article_5 = modifyHTML($fft_article_5, "a", "style", $url_style);
 	
 	$get_last_p = strripos($fft_article_5, "</p>");
 	$get_substr = substr($fft_article_5, 0, $get_last_p);
@@ -509,10 +505,9 @@ if(isset($fft_article_5) && $fft_article_5 !== "") {
 }
 
 if(isset($fft_article_6) && $fft_article_6 !== "") {
-	$fft_article_6 = str_replace("<p>", $main_section_p, $fft_article_6);
-	$fft_article_6 = str_replace("<strong>", $lead_in_bold, $fft_article_6);
-	$fft_article_6 = str_replace("</strong>", "</span>", $fft_article_6);
-	$fft_article_6 = str_replace("<a", $url_style, $fft_article_6);
+	$fft_article_6 = modifyHTML($fft_article_6, "p", $main_section_p);
+	$fft_article_6 = modifyHTML($fft_article_6, "strong", "style", $lead_in_bold);
+	$fft_article_6 = modifyHTML($fft_article_6, "a", "style", $url_style);
 	
 	$get_last_p = strripos($fft_article_6, "</p>");
 	$get_substr = substr($fft_article_6, 0, $get_last_p);
@@ -545,10 +540,10 @@ else {
 $ogt_section .= "<table width=\"500\" align=\"center\" style=\"max-width: 500px !important;margin:0 auto !important;\" cellspacing=\"0\" cellpadding=\"0\">\n<tr>\n<td>";
 
 if(isset($fft_snack_box) && $fft_snack_box !== "") {
-	$snack_box_p = "<p class=\"mobile-format\" style=\"margin: 0 0 20px 0; padding: 0; font-family: Verdana, sans-serif; color: #767676;font-size: 18px;\">";
-	$fft_snack_box = str_replace("<p>", $snack_box_p, $fft_snack_box);
-	$fft_snack_box = str_replace("<strong>", $lead_in_bold, $fft_snack_box);
-	$fft_snack_box = str_replace("</strong>", "</span>", $fft_snack_box);
+	$snack_box_p["class"] = "mobile-format";
+	$snack_box_p["style"] = "margin: 0 0 20px 0; padding: 0; font-family: Verdana, sans-serif; color: #767676;font-size: 18px;";
+	$fft_snack_box = modifyHTML($fft_snack_box, "p", $snack_box_p);
+	$fft_snack_box = modifyHTML($fft_snack_box, "strong", "style", $lead_in_bold);
 	$ogt_section .= $fft_snack_box;
 }
 else {
@@ -564,8 +559,8 @@ else {
 }
 
 if(isset($fft_sb_attr) && $fft_sb_attr !== "") {
-	$fft_sb_attr = str_replace("<p>", $main_section_p, $fft_sb_attr);
-	$fft_sb_attr = str_replace("<a", $url_style, $fft_sb_attr);
+	$fft_sb_attr = modifyHTML($fft_sb_attr, "p", $main_section_p);
+	$fft_sb_attr = modifyHTML($fft_sb_attr, "a", "style", $url_style);
 	$ogt_section .= $fft_sb_attr . "\n<!--[if (gte mso 9)|(IE)]><br /><![endif]-->";
 }
 else {
@@ -581,8 +576,9 @@ else {
 
 //in our ears/podcast section
 $ioe_section = "";
-$ioe_sec_p = "<p class=\"mobile-format\" style=\"margin: 0 0 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; color: #767676; font-size: 18px;\">";
-$ioe_lead_bold = "<span style=\"font-family: Verdana, sans-serif;font-weight: bold; color: #000;\">";
+$ioe_sec_p["class"] = "mobile-format";
+$ioe_sec_p["style"] = "margin: 0 0 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; color: #767676; font-size: 18px;";
+$ioe_lead_bold = "font-family: Verdana, sans-serif;font-weight: bold; color: #000;";
 
 if(isset($in_our_ears) && $in_our_ears !== "") {
 	$ioe_p = "<!--[if (gte mso 9)|(IE)]>\n<br />\n<table width=\"540\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" style=\"width: 540px;max-width: 540px;background-color: #fff;margin: 5px auto;padding: 0;\">\n<tr>\n<td align=\"left\">\n<![endif]--><table align=\"left\" cellpadding=\"2\" style=\"margin:10px 0;\"><tr><td><p class=\"headers_text\" style=\"font-family: 'Arial Black', sans-serif; color: #000;font-size:18px;font-weight: bold;text-transform: uppercase;background-color: #e5e5e5;padding: 2px 12px;\">";
@@ -601,10 +597,9 @@ $bite_anchor_code = "";
 $close_bite_anchor = "";
 
 if(isset($fft_ioe_item1) && $fft_ioe_item1 !== "") {
-	$fft_ioe_item1 = str_replace("<p>", $ioe_sec_p, $fft_ioe_item1);
-	$fft_ioe_item1 = str_replace("<strong>", $ioe_lead_bold, $fft_ioe_item1);
-	$fft_ioe_item1 = str_replace("</strong>", "</span>", $fft_ioe_item1);
-	$fft_ioe_item1 = str_replace("<a", "<a style=\"color: #ff6900;\"", $fft_ioe_item1);
+	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "p", $ioe_sec_p);
+	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "strong", "style", $ioe_lead_bold);
+	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "a", "style", $url_style);
 	
 	$get_last_p = strripos($fft_ioe_item1, "</p>");
 	$get_substr = substr($fft_ioe_item1, 0, $get_last_p);
@@ -622,7 +617,7 @@ if(isset($fft_ioe_item1) && $fft_ioe_item1 !== "") {
 	}
 	
 	if(isset($fft_bite_add) && $fft_bite_add !== "") {
-		$fft_bite_add = str_replace("<a", "<a style=\"color: #ff6900;text-decoration: none;\"", $fft_bite_add);
+		$fft_bite_add = modifyHTML($fft_bite_add, "a", "style", "color: #ff6900;text-decoration: none;");
 		$fft_bite_add = str_replace("<p>", "", $fft_bite_add);
 		$fft_bite_add = str_replace("</p>", "", $fft_bite_add);
 		
@@ -639,10 +634,9 @@ else {
 }
 
 if(isset($fft_ioe_item2) && $fft_ioe_item2 !== "") {
-	$fft_ioe_item2 = str_replace("<p>", $ioe_sec_p, $fft_ioe_item2);
-	$fft_ioe_item2 = str_replace("<strong>", $ioe_lead_bold, $fft_ioe_item2);
-	$fft_ioe_item2 = str_replace("</strong>", "</span>", $fft_ioe_item2);
-	$fft_ioe_item2 = str_replace("<a", $url_style, $fft_ioe_item2);
+	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "p", $ioe_sec_p);
+	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "strong", "style", $ioe_lead_bold);
+	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "a", "style", $url_style);
 	
 	$get_last_p = strripos($fft_ioe_item2, "</p>");
 	$get_substr = substr($fft_ioe_item2, 0, $get_last_p);
@@ -661,10 +655,9 @@ if(isset($fft_ioe_item2) && $fft_ioe_item2 !== "") {
 }
 
 if(isset($fft_ioe_item3) && $fft_ioe_item3 !== "") {
-	$fft_ioe_item3 = str_replace("<p>", $ioe_sec_p, $fft_ioe_item3);
-	$fft_ioe_item3 = str_replace("<strong>", $ioe_lead_bold, $fft_ioe_item3);
-	$fft_ioe_item3 = str_replace("</strong>", "</span>", $fft_ioe_item3);
-	$fft_ioe_item3 = str_replace("<a", $url_style, $fft_ioe_item3);
+	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "p", $ioe_sec_p);
+	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "strong", "style", $ioe_lead_bold);
+	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "a", "style", $url_style);
 	
 	$get_last_p = strripos($fft_ioe_item3, "</p>");
 	$get_substr = substr($fft_ioe_item3, 0, $get_last_p);
@@ -1083,7 +1076,6 @@ $advertiser_name2 = strip_tags(addslashes($advertiser_name2), "<a><br /><br><b><
 $ad_name = strip_tags(addslashes($advertiser_name), "<a><br /><br><b><i><em><strong><span><ol><ul><li><blockquote><img><table><tr><td>");
 $pixel_tracker = addslashes($pixel_tracker);
 $pixel_tracker2 = addslashes($pixel_tracker2);
-
 $fft_a1_source = strip_tags(addslashes($fft_a1_source), "<a><br /><br><b><i><em><strong><span><ol><ul><li><blockquote><img><table><tr><td>");
 $fft_a1_url = addslashes($fft_a1_url);
 $fft_a2_source = strip_tags(addslashes($fft_a2_source), "<a><br /><br><b><i><em><strong><span><ol><ul><li><blockquote><img><table><tr><td>");

@@ -7,13 +7,14 @@ $sub_text = "";
 $sub_code = "";
 $membership_area = "";
 $membership_slot = "";
-$membership_area_p = "<p class=\"mobile-format\" style=\"margin: 20px 0; color: #ff6900;font-size: 18px;text-transform: uppercase;\">";
+$membership_area_p["class"] = "mobile-format";
+$membership_area_p["style"] = "margin: 20px 0; color: #ff6900;font-size: 18px;text-transform: uppercase;";
 
 if(isset($_REQUEST['membership_slot']) && $_REQUEST['membership_slot'] != null) {
 	if($headlines_type !== "trumpocracy") {
 		$membership_slot = trim($_REQUEST['membership_slot']);
-		$membership_slot = str_replace("<p>", $membership_area_p, $membership_slot);
-		$membership_slot = str_replace("<a", "<a style=\"color: #000; \"", $membership_slot);
+		$membership_slot = modifyHTML($membership_slot, "p", $membership_area_p);
+		$membership_slot = modifyHTML($membership_slot, "a", "style", "color:#000;");
 	}
 	else {
 		$membership_slot = "<div id=\"membership-call-box\" style=\"margin:0 auto;\">\n\t<p style=\"font-weight:bold;font-family:Georgia, serif;color: #000;text-align:center;font-size: 16px; line-height: 21px;\">Support hard-hitting journalism</p>\n\t<p style=\"font-family:Georgia, serif;color:#000;text-align:center;font-size: 16px; line-height: 21px;\"><em>The Russian Connection</em> and all our reporting is made possible by readers like you. Support our investigations with a <a href=\"https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=DON&term_pub=DON&b_country=United+States&list_source=7HEGNF00&term=XX.1.50.00.DON.D.0.7043\" style=\"color: #ff6900;\">tax-deductible donation</a>.</p>\n\t</div>\n";

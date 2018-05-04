@@ -109,6 +109,7 @@ include "incs/header.inc";
 		    break;
 		  case "recharge":
 			day_int = 3;
+			break;
 		  default:
 		    break;
 		}
@@ -116,10 +117,6 @@ include "incs/header.inc";
 		
 		if(new_news !== "yes") {
 			CKEDITOR.on('instanceReady', getArchive("<?php print $arch_type; ?>", "<?php print $news_date; ?>"));
-			//CKEDITOR.on('instanceReady', function( evt ) {
-			//	getArchive("<?php print $arch_type; ?>", "<?php print $news_date; ?>");
-			//});
-			//var wait_for_me = setTimeout(getArchive, 3000, "<?php print $arch_type; ?>", "<?php print $news_date; ?>");
 			$("#hidden_at_start").hide();
 		}
 		else {

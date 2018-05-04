@@ -225,7 +225,7 @@ $recharge_mobile = <<<RECHARGEMOBILE
 	}
     p {
     font-size: 24px !important;
-    line-height: 28px !important;
+    line-height: 30px !important;
     }
     .headers_text {
     font-size: 12px !important;

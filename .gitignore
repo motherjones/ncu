@@ -1,6 +1,10 @@
 temp/*.html
 archives/*.html
 incs/credentials.inc
-ckeditor/*.*
+ckeditor/
+**/ckeditor
 *_bak*
-images/*.*
+images/
+ckeditor_bak/
+**/ckeditor_bak
+.gitignore.swp

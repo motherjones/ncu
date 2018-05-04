@@ -176,7 +176,6 @@ function getArchive(hed_type, archives) {
 
 function delayedInsert(json_obj) {
 	var index_name;
-	
 	for(index_name in json_obj) {
 		if(document.getElementById(index_name)) {
 			if(index_name.search(/dek/i) != -1 || index_name.search(/lead/i) != -1 || index_name.search(/lift_note/i) != -1 || index_name.search(/article/i) != -1 || index_name.search(/ioe_item/i) != -1 || index_name.search(/bite_add/i) != -1 || index_name.search(/fft_hk_leadin/i) != -1 || index_name.search(/fft_hidden_kitchen/i) != -1 || index_name.search(/fft_snack_box/i) != -1 || index_name.search(/fft_sb_attr/i) != -1 || index_name.search(/membership_slot/i) != -1 || index_name.search(/main_text/i) != -1 || index_name.search(/credits/i) != -1) {
@@ -184,7 +183,7 @@ function delayedInsert(json_obj) {
 			}
 			else {
 				if(index_name.search(/ital/i) !== -1) {
-					  if(json_obj[index_name] === 1) {
+					  if(json_obj[index_name] == 1) {
 					    document.getElementById(index_name).checked = true;
 					  }
 					  else {
