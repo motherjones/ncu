@@ -367,7 +367,8 @@ $get_date = date("F j, Y", $temp_date);
 
 //Main article section
 $main_section = "";
-$url_style = "<a style=\"color: #ff6900;\"";
+$url_style = "color: #ff6900;";
+$main_dek_p = "text-align:left;color: #767676;font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
 
 if($trum_main_url !== "" || $trum_main_url !== null) {
 	$main_hed = "<h3 style=\"Margin-bottom: 10px;font-weight: bold; color: #000 !important;font-family:Georgia, serif;font-size: 33px; line-height: 38px;\"><a href=\"$trum_main_url\" style=\"text-decoration: none;color: #000;\">$trump_main_hed</a></h3>\n";
@@ -385,9 +386,8 @@ else {
 	$main_img_sec = "";
 }
 
-$main_dek_p = "<p style=\"text-align:left;color: #767676;font-family:Georgia, serif;font-size: 16px; line-height: 21px;\">";
-$trum_main_dek = str_replace("<p>", $main_dek_p, $trum_main_dek);
-$trum_main_dek = str_replace("<a", $url_style, $trum_main_dek);
+$trum_main_dek = modifyHTML($trum_main_dek, "p", "style", $main_dek_p);
+$trum_main_dek = modifyHTML($trum_main_dek, "a", "style", $url_style);
 //add source name & url
 $get_last_p = strripos($trum_main_dek, "</p>");
 $get_substr = substr($trum_main_dek, 0, $get_last_p);
@@ -433,9 +433,9 @@ else {
 	$main2_hed = "<h3 style=\"Margin-bottom: 10px;font-weight: bold; color: #000 !important;font-family:Georgia, serif;font-size: 33px; line-height: 38px;\">" . $trump_main2_hed . "</h3>\n";
 }
 
-$main2_p = "<p style=\"text-align:left;color: #767676;font-family:Georgia, serif;font-size: 16px; line-height: 21px;\">";
-$trump_main2_dek = str_replace("<p>", $main2_p, $trump_main2_dek);
-$trump_main2_dek = str_replace("<a", $url_style, $trump_main2_dek);
+$main2_p = "text-align:left;color: #767676;font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
+$trump_main2_dek = modifyHTML($trump_main2_dek, "p", "style", $main2_p);
+$trump_main2_dek = modifyHTML($trump_main2_dek, "a", "style", $url_style);
 //add source name & url
 $get_last_p = strripos($trump_main2_dek, "</p>");
 $get_substr = substr($trump_main2_dek, 0, $get_last_p);
@@ -472,8 +472,8 @@ $topnews_sec = "";
 $topnews_opener = "<tr>\n\t<td style=\"border-bottom: 1px solid #767676;\">\n\t";
 $topnews_closer = "</td>\n\t</tr>\n";
 $topnews_title_format = "";
-$topnews_p_format_dek = "<p style=\"color: #767676; font-family:Georgia, serif;font-size: 16px; line-height: 21px;\">";
-$topnews_bold_format_dek = "<span style=\"font-weight: bold; color: #000 !important;\">";
+$topnews_p_format_dek = "color: #767676; font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
+$topnews_bold_format_dek = "color: #000 !important;";
 $topnews_dek_sec = "";
 
 //format Top News Title
@@ -490,9 +490,11 @@ if($topnews1_dek !== "" || $topnews2_dek !== "" || $topnews3_dek !== "" || $topn
 	if($topnews1_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
-		$topnews1_dek = str_replace("<p>", $topnews_p_format_dek, $topnews1_dek);
-		$topnews1_dek = str_replace("<strong>", $topnews_bold_format_dek, $topnews1_dek);
-		$topnews1_dek = str_replace("</strong>", "</span>", $topnews1_dek);
+		//replace html entities
+		$topnews1_dek = modifyHTML($topnews1_dek, "p", "style", $topnews_p_format_dek);
+		$topnews1_dek = modifyHTML($topnews1_dek, "strong", "style", $topnews_bold_format_dek);
+		
+		//insert source and formatting
 		$get_last_p = strripos($topnews1_dek, "</p>");
 		$get_substr = substr($topnews1_dek, 0, $get_last_p);
 		
@@ -517,13 +519,14 @@ if($topnews1_dek !== "" || $topnews2_dek !== "" || $topnews3_dek !== "" || $topn
 	if($topnews2_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
-		$topnews2_dek = str_replace("<p>", $topnews_p_format_dek, $topnews2_dek);
-		$topnews2_dek = str_replace("<strong>", $topnews_bold_format_dek, $topnews2_dek);
-		$topnews2_dek = str_replace("</strong>", "</span>", $topnews2_dek);
+		//replace html entities
+		$topnews2_dek = modifyHTML($topnews2_dek, "p", "style", $topnews_p_format_dek);
+		$topnews2_dek = modifyHTML($topnews2_dek, "strong", "style", $topnews_bold_format_dek);
+		//insert source and formatting
 		$get_last_p = strripos($topnews2_dek, "</p>");
 		$get_substr = substr($topnews2_dek, 0, $get_last_p);
 		
-		if(isset($topnews2_source) !== "") {
+		if(isset($topnews2_source) && $topnews2_source !== "") {
 			if($topnews2_ital) {
 				$get_substr = $get_substr . " (<em><a href=\"$topnews2_url\" style=\"text-decoration:none;color: #ff6900;\">" . $topnews2_source . "</a></em>)</p>\n";
 			}
@@ -544,9 +547,10 @@ if($topnews1_dek !== "" || $topnews2_dek !== "" || $topnews3_dek !== "" || $topn
 	if($topnews3_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
-		$topnews3_dek = str_replace("<p>", $topnews_p_format_dek, $topnews3_dek);
-		$topnews3_dek = str_replace("<strong>", $topnews_bold_format_dek, $topnews3_dek);
-		$topnews3_dek = str_replace("</strong>", "</span>", $topnews3_dek);
+		//replace html entities
+		$topnews3_dek = modifyHTML($topnews3_dek, "p", "style", $topnews_p_format_dek);
+		$topnews3_dek = modifyHTML($topnews3_dek, "strong", "style", $topnews_bold_format_dek);
+		//insert source and formatting
 		$get_last_p = strripos($topnews3_dek, "</p>");
 		$get_substr = substr($topnews3_dek, 0, $get_last_p);
 		
@@ -571,9 +575,10 @@ if($topnews1_dek !== "" || $topnews2_dek !== "" || $topnews3_dek !== "" || $topn
 	if($topnews4_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
-		$topnews4_dek = str_replace("<p>", $topnews_p_format_dek, $topnews4_dek);
-		$topnews4_dek = str_replace("<strong>", $topnews_bold_format_dek, $topnews4_dek);
-		$topnews4_dek = str_replace("</strong>", "</span>", $topnews4_dek);
+		//replace html entities
+		$topnews4_dek = modifyHTML($topnews4_dek, "p", "style", $topnews_p_format_dek);
+		$topnews4_dek = modifyHTML($topnews4_dek, "strong", "style", $topnews_bold_format_dek);
+		//insert source and formatting
 		$get_last_p = strripos($topnews4_dek, "</p>");
 		$get_substr = substr($topnews4_dek, 0, $get_last_p);
 		
@@ -598,9 +603,10 @@ if($topnews1_dek !== "" || $topnews2_dek !== "" || $topnews3_dek !== "" || $topn
 	if($topnews5_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
-		$topnews5_dek = str_replace("<p>", $topnews_p_format_dek, $topnews5_dek);
-		$topnews5_dek = str_replace("<strong>", $topnews_bold_format_dek, $topnews5_dek);
-		$topnews5_dek = str_replace("</strong>", "</span>", $topnews5_dek);
+		//replace html entities
+		$topnews5_dek = modifyHTML($topnews5_dek, "p", "style", $topnews_p_format_dek);
+		$topnews5_dek = modifyHTML($topnews5_dek, "strong", "style", $topnews_bold_format_dek);
+		//insert source and formatting
 		$get_last_p = strripos($topnews5_dek, "</p>");
 		$get_substr = substr($topnews5_dek, 0, $get_last_p);
 		
@@ -636,8 +642,8 @@ $wors_sec = "";
 $wors_opener = "<tr>\n\t<td style=\"border-bottom: 1px solid #767676;\">\n\t";
 $wors_closer = "</td>\n\t</tr>\n";
 $wors_title_format = "";
-$wors_p_format_dek = "<p style=\"color: #767676; font-family:Georgia, serif;font-size: 16px; line-height: 21px;\">";
-$wors_bold_format_dek = "<span style=\"font-weight: bold; color: #000 !important;\">";
+$wors_p_format_dek = "color: #767676; font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
+$wors_bold_format_dek = "color: #000 !important;";
 $wors_dek_sec = "";
 
 //format Top News Title
@@ -654,9 +660,10 @@ if($wors1_dek !== "" || $wors2_dek !== "" || $wors3_dek !== "" || $wors4_dek !==
 	if($wors1_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
-		$wors1_dek = str_replace("<p>", $wors_p_format_dek, $wors1_dek);
-		$wors1_dek = str_replace("<strong>", $wors_bold_format_dek, $wors1_dek);
-		$wors1_dek = str_replace("</strong>", "</span>", $wors1_dek);
+		//replace html entities
+		$wors1_dek = modifyHTML($wors1_dek, "p", "style", $wors_p_format_dek);
+		$wors1_dek = modifyHTML($wors1_dek, "strong", "style", $wors_bold_format_dek);
+		//insert source and formatting
 		$get_last_p = strripos($wors1_dek, "</p>");
 		$get_substr = substr($wors1_dek, 0, $get_last_p);
 		
@@ -681,9 +688,10 @@ if($wors1_dek !== "" || $wors2_dek !== "" || $wors3_dek !== "" || $wors4_dek !==
 	if($wors2_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
-		$wors2_dek = str_replace("<p>", $wors_p_format_dek, $wors2_dek);
-		$wors2_dek = str_replace("<strong>", $wors_bold_format_dek, $wors2_dek);
-		$wors2_dek = str_replace("</strong>", "</span>", $wors2_dek);
+		//replace html entities
+		$wors2_dek = modifyHTML($wors2_dek, "p", "style", $wors_p_format_dek);
+		$wors2_dek = modifyHTML($wors2_dek, "strong", "style", $wors_bold_format_dek);
+		//insert source and formatting
 		$get_last_p = strripos($wors2_dek, "</p>");
 		$get_substr = substr($wors2_dek, 0, $get_last_p);
 		
@@ -708,9 +716,10 @@ if($wors1_dek !== "" || $wors2_dek !== "" || $wors3_dek !== "" || $wors4_dek !==
 	if($wors3_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
-		$wors3_dek = str_replace("<p>", $wors_p_format_dek, $wors3_dek);
-		$wors3_dek = str_replace("<strong>", $wors_bold_format_dek, $wors3_dek);
-		$wors3_dek = str_replace("</strong>", "</span>", $wors3_dek);
+		//replace html entities
+		$wors3_dek = modifyHTML($wors3_dek, "p", "style", $wors_p_format_dek);
+		$wors3_dek = modifyHTML($wors3_dek, "strong", "style", $wors_bold_format_dek);
+		//insert source and formatting
 		$get_last_p = strripos($wors3_dek, "</p>");
 		$get_substr = substr($wors3_dek, 0, $get_last_p);
 		
@@ -735,9 +744,10 @@ if($wors1_dek !== "" || $wors2_dek !== "" || $wors3_dek !== "" || $wors4_dek !==
 	if($wors4_dek !== "") {
 		$get_last_p = "";
 		$get_substr = "";
-		$wors4_dek = str_replace("<p>", $wors_p_format_dek, $wors4_dek);
-		$wors4_dek = str_replace("<strong>", $wors_bold_format_dek, $wors4_dek);
-		$wors4_dek = str_replace("</strong>", "</span>", $wors4_dek);
+		//replace html entities
+		$wors4_dek = modifyHTML($wors4_dek, "p", "style", $wors_p_format_dek);
+		$wors4_dek = modifyHTML($wors4_dek, "strong", "style", $wors_bold_format_dek);
+		//insert source and formatting
 		$get_last_p = strripos($wors4_dek, "</p>");
 		$get_substr = substr($wors4_dek, 0, $get_last_p);
 		
