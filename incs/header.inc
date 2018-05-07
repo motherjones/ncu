@@ -2,6 +2,8 @@
 /* /mojo/www/util/ */
 $current_path = getcwd() . "/";
 $replace_path = str_replace("/mojo/www/util/", "https://util.motherjones.com/", $current_path);
+$replace_path = str_replace("temp/", "", $replace_path);
+$replace_path = str_replace("archives/", "", $replace_path);
 $path = $replace_path;
 ?>
 <!DOCTYPE html>

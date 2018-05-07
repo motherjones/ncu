@@ -107,6 +107,9 @@ function showMe(the_div) {
 		case "breaking_news":
 			$("#tmp_brnews").show();
 			break;
+		case "recharge":
+			$("#tmp_recharge").show();
+			break;
 		default:
 			break;
 	}

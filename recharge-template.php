@@ -286,7 +286,7 @@ $recharge_inline_img["width"] = "540";
 $recharge_inline_img["style"] = "width:540px;max-width:540px;";
 
 //check input data and format appropriately
-if($recharge1_dek !== "" || $recharge2_dek !== "") {
+if($recharge1_dek !== "" || $recharge2_dek !== "" || $recharge_intro_dek !== "") {
 	//first recharge article
 	if($recharge1_dek !== "") {
 		$get_last_p = "";
