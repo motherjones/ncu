@@ -362,13 +362,6 @@ else {
 }
 //end sources section
 
-if(isset($_REQUEST['lift_note']) && $_REQUEST['lift_note'] != "") {
-	$lift_note = trim($_REQUEST['lift_note']);
-}
-else {
-	$lift_note = "";
-}
-
 //Food for Thought redesign template section
 //date formatting
 $temp_date = strtotime($headlines_date);
@@ -741,17 +734,6 @@ else {
 
 if($fft_hk_leadin == "" && $fft_hidden_kitchen == "") {
 	$hidden_kitchen_sec = "";
-}
-
-//lift note section
-$lift_note_section = "";
-if(isset($lift_note) && $lift_note !== "") {
-	$search_this = "<p>";
-	$replace_code = '<p style="font-family: Verdana, Helvetica, Arial, sans-serif;font-size: 16px;color: #767676;margin: 10px 20px;">';
-	$lift_note = str_ireplace($search_this, $replace_code, $lift_note);
-	$lift_note = str_ireplace("<strong>", "<strong style=\"color: #000;\">", $lift_note);
-	$lift_note = str_ireplace("<a", "<a style=\"color: #ff6900;\"", $lift_note);
-	$lift_note_section = "<tr><td>" . $lift_note . "<hr style=\"border:1px solid #e8e8e8;background-color: #fff;width:100%;\" /></td></tr>";
 }
 
 //live intent section

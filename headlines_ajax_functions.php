@@ -741,9 +741,9 @@ function recharge() {
 		<div id="items_left">
 			<fieldset class="sections">
 				<legend>MAIN ARTICLE</legend>
-				<p>Headline: <input type="text" id="recharge_main_hed" name="recharge_main_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value);this.value=restoreCurly(this.value)" spellcheck="true" /></p>
+				<p>Headline: <input type="text" id="recharge_main_hed" name="recharge_main_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value);" spellcheck="true" /></p>
 				<p>Url: <input type="text" id="recharge_main_url" name="recharge_main_url" size="50" onblur="this.value=fixURL(this.value)" /></p>
-				<p>Image url: <input type="text" id="recharge_main_img" name="recharge_main_img" size="50" onblur="this.value=fixURL(this.value)" /></p>
+				<p>Image url: <input type="text" id="recharge_main_img" name="recharge_main_img" size="50" /></p>
 				<p class="dek_sect">Dek:</p>
 				<textarea rows="15" cols="45" id="recharge_main_dek" name="recharge_main_dek"></textarea>
 				<fieldset class="sources" style="float:left;width:50%;clear:both;">
@@ -846,6 +846,11 @@ function recharge() {
 						<legend>Url</legend>
 						<input type="text" id="recharge5_url" name="recharge5_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
 					</fieldset>
+				</fieldset>
+				
+				<fieldset class="sub_sections">
+					<legend>Recharge sign off:</legend>
+					<textarea id="recharge_sign_off_dek" name="recharge_sign_off_dek" rows="15" cols="45"></textarea>
 				</fieldset>
 
 				<fieldset class="sub_sections">

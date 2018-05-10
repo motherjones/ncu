@@ -79,6 +79,15 @@ if(isset($_REQUEST['lift_note']) && $_REQUEST['lift_note'] !== null && $_REQUEST
 	$lift_note = trim($_REQUEST['lift_note']);
 }
 
+$lift_note_section = "";
+if(isset($lift_note) && $lift_note !== "") {
+	$lift_note_p = "font-family:Georgia, serif;font-size: 16px !important;line-height:20px !important;color: #767676 !important;margin: 10px 20px;";
+	$lift_note_a = "color:#ff6900;";
+	$lift_note = modifyHTML($lift_note, "p", "style", $lift_note_p);
+	$lift_note = modifyHTML($lift_note, "a", "style", $lift_note_a);
+	$lift_note_section = "<tr><td class=\"standard_td\" style=\"padding: 10px 20px !important;\">" . $lift_note . "<hr style=\"border:1px solid #e8e8e8;background-color: #f2eeed;width:100%;\" /></td></tr>";
+}
+
 //include membership ad templates
 include "incs/membership_ads.inc";
 
@@ -171,8 +180,8 @@ $get_date = date("F j, Y", $temp_date);
 
 /* section for global items for all headlines */
 
-//allowed html for conertP function -- not used right now
-$allowed_html = "<a><br /><br><b><i><em><strong><blockquote><table><span>";
+//allowed html for convertP function -- not used right now
+$allowed_html = "<a><br /><br><b><i><em><strong><blockquote><table><span><ol><ul><li><p>";
 //for the archives, generate full HTML file
 $html_title = ucwords($headlines_type);
 //replace em dash for subject line display only
@@ -305,6 +314,9 @@ print $relocate_me;
 /* modify HTML attributes */
 //if $html_attrs is array, make sure it's associative and each key holds the attribute value
 function modifyHTML($html_code, $html_tag, $html_attrs, $html_value="") {
+	//delete html artifacts
+	$allowed_html = "<a><p><table><td><tr><blockquote><strong><em><b><i><ol><li><ul><span><br><br /><u><img><img/><svg><div>";
+	
 	if($html_code !== "") {
 		$doc = new DOMDocument;
 		$doc->loadHTML($html_code);
@@ -321,6 +333,9 @@ function modifyHTML($html_code, $html_tag, $html_attrs, $html_value="") {
 		}
 		$html_code = $doc->saveHTML();
 	}
+	//delete unnecessary html tags
+	$html_code = strip_tags($html_code, $allowed_html);
+	
 	return $html_code;
 }
 

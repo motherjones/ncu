@@ -1,9 +1,9 @@
-<?php 
+<?php
 /*Template for ReCharge newsletter
  * Author: Young Kim
  * Creation Date: 4/18/2018
- * Update: 5/03/2018
- * Version: .9RC
+ * Update: 5/09/2018
+ * Version: 1.02
  */
 
 //Post and Request section (get all input fields for newsletter)
@@ -53,7 +53,7 @@ if(isset($_REQUEST['recharge_intro_dek']) && $_REQUEST['recharge_intro_dek'] !==
 	$recharge_intro_dek = trim($_REQUEST['recharge_intro_dek']);
 }
 else {
-	$recharge_intro_dek = "In this week&rsquo;s Recharge, we&rsquo;ll focus on the helpers, on acts of kindness, and on efforts to make a community a better place. There&rsquo;s a lot of good going on in the world beyond the headlines.";
+	$recharge_intro_dek = "<strong><em>In this week&rsquo;s <span style='font-style:normal;'>Recharge</span>, we&rsquo;ll focus on the helpers, on acts of kindness, and on efforts to make a community a better place. There&rsquo;s a lot of good going on in the world beyond the headlines</em></strong>.";
 }
 
 if(isset($_REQUEST['recharge1_dek']) && $_REQUEST['recharge1_dek'] !== "") {
@@ -196,11 +196,18 @@ else {
 	$recharge5_url = "";
 }
 
+if(isset($_REQUEST['recharge_sign_off_dek']) && $_REQUEST['recharge_sign_off_dek'] !== "") {
+	$recharge_sign_off_dek = trim($_REQUEST['recharge_sign_off_dek']);
+}
+else {
+	$recharge_sign_off_dek = "<strong><em>That’s it for this week. We hope that <span style='font-style:normal;'>Recharge</span> helps you in the week ahead — and brings out the hellraiser in you. Have a tip or a link? Email us at <a href=\"mailto:recharge@motherjones.com\">recharge@motherjones.com</a></em></strong>.";
+}
+
 if(isset($_REQUEST['recharge_image_dek']) && $_REQUEST['recharge_image_dek'] !== "") {
 	$recharge_image_dek = trim($_REQUEST['recharge_image_dek']);
 }
 else {
-	$recharge_image_dek = "";	
+	$recharge_image_dek = "";
 }
 
 if(isset($_REQUEST['recharge_image_credits']) && $_REQUEST['recharge_image_credits'] !== "") {
@@ -210,20 +217,14 @@ else {
 	$recharge_image_credits = "";
 }
 
-if(isset($_REQUEST['lift_note']) && $_REQUEST['lift_note'] != "") {
-	$lift_note = trim($_REQUEST['lift_note']);
-}
-else {
-	$lift_note = "";
-}
 //newsletter sections
 //date formatting
 $temp_date = strtotime($headlines_date);
 $get_date = date("F j, Y", $temp_date);
 /* use this function to add HTML attributes:
- * 
+ *
  *  modifyHTML($html_code, $html_tag, $html_attrs, $html_value)
- *  
+ *
  *  if adding multiple attributes to a single tag, pass associative array in $html_attrs
  *  holding {attribute name}=>{attribute value} and do not pass anything for $html_value
  *  if only modifying single html attributes, pass $html_attrs as attribute name with $html_value
@@ -277,8 +278,10 @@ $recharge_sec1 = "";
 $recharge_sec2 = "";
 $recharge_opener = "<tr>\n\t<td style=\"border-bottom: 1px solid #767676;\">\n\t";
 $recharge_closer = "</td>\n\t</tr>\n";
-$recharge_title_format = "margin-top: 0;font-size: 16px; line-height: 21px;font-weight: bold;font-style:italic;text-align:left;font-family:Georgia, serif;color:#000;";
+
+$recharge_title_format = "margin-top: 0;font-size: 16px; line-height: 21px;text-align:left;font-family:Georgia, serif;color:#000;";
 $recharge_intro_dek = modifyHTML($recharge_intro_dek, "p", "style", $recharge_title_format);
+
 //html replacement code
 $recharge_p_format_dek = "color: #222; font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
 $recharge_bold_format_dek = "font-weight: bold; color: #000;";
@@ -361,10 +364,8 @@ if($recharge1_dek !== "" || $recharge2_dek !== "" || $recharge_intro_dek !== "")
 //end recharge article 1 & 2 (above ad)
 
 //recharge article 3 & 4 & 5 (below ad)
-//sign off text hard coded
-$recharge_signoff = "<p style=\"font-family:Georgia, serif;font-size: 16px; line-height: 21px;font-weight:bold;font-style:italic;color:#000;\">That&#8217;s it for this week. We hope that Recharge helps you in the week ahead &#8212; and brings out the hellraiser in you. Have a tip or a link? Email us at <a style=\"color: #ff6900;\" href=\"mailto:recharge@motherjones.com\">recharge@motherjones.com</a>.</p>";
 
-if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "" || $recharge_image_dek !== "" || $recharge_image_credits !== "") {
+if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "" || $recharge_image_dek !== "" || $recharge_image_credits !== "" || $recharge_sign_off_dek) {
 	//third recharge article
 	if($recharge3_dek !== "") {
 		$get_last_p = "";
@@ -466,6 +467,16 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "" || $r
 		$recharge5 = "";
 	}
 	
+	//sign off section
+	if(isset($recharge_sign_off_dek) && $recharge_sign_off_dek !== "") {
+		$recharge_so_dek_p = "font-family:Georgia, serif;font-size: 16px; line-height: 21px;color:#000;";
+		$recharge_sign_off_dek = modifyHTML($recharge_sign_off_dek, "p", "style", $recharge_so_dek_p);
+		$recharge_sign_off_dek = modifyHTML($recharge_sign_off_dek, "a", "style", $url_color);
+	}
+	else {
+		$recharge_sing_off_dek == "";
+	}
+	
 	//last section after sign off where the image and text goes
 	if($recharge_image_dek !== "") {
 		$recharge_image_dek = modifyHTML($recharge_image_dek, "p", "style", $recharge_p_format_dek);
@@ -485,22 +496,12 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "" || $r
 		$recharge_image_credits = "";
 	}
 	
-	$recharge_sec2 = $recharge_opener . $recharge3 . $recharge4 . $recharge5 . $recharge_signoff . $recharge_image_dek . $recharge_image_credits . $recharge_closer;
+	$recharge_sec2 = $recharge_opener . $recharge3 . $recharge4 . $recharge5 . $recharge_sign_off_dek . $recharge_image_dek . $recharge_image_credits . $recharge_closer;
 	
 }
 //end recharge article 3 & 4 & 5 (below ad)
 //ads
 /*blank for now*/
-//lift note section
-$lift_note_section = "";
-if($lift_note !== "") {
-	$search_this = "<p>";
-	$replace_code = '<p style="font-family: Verdana, Helvetica, Arial, sans-serif;font-size: 16px;color: #767676;margin: 10px 20px;">';
-	$lift_note = str_ireplace($search_this, $replace_code, $lift_note);
-	$lift_note = str_ireplace("<strong>", "<strong style=\"color: #000;\">", $lift_note);
-	$lift_note = str_ireplace("<a", "<a style=\"color: #ff6900;\"", $lift_note);
-	$lift_note_section = "<tr><td>" . $lift_note . "</td></tr>";
-}
 
 //LiveIntent section
 //safe RBT
@@ -554,7 +555,7 @@ $recharge = <<<RECHARGE
               <table class="spacing" align="center" width="580" cellpadding="0" cellspacing="20" style="max-width:580px;margin:0 auto;">
                 <tr>
                   <td align="center" style="border-bottom: 1px solid #000;">
-                    <p style="Margin-top:0;Margin-bottom: 16px;color: #000 !important;text-decoration: none !important;text-align:center;font-size: 18px;line-height:21px;font-family:Georgia, serif;font-weight:bold;font-style:italic;" id="date_line">Stories that&rsquo;ll get you through the week. <span style="color: #ff6900;">/</span> <strong>April 6, 2018</strong></p>
+                    <p style="Margin-top:0;Margin-bottom: 16px;color: #000 !important;text-decoration: none !important;text-align:center;font-size: 18px;line-height:21px;font-family:Georgia, serif;font-weight:bold;font-style:italic;" id="date_line">Stories that&rsquo;ll get you through the week. <span style="color: #ff6900;">/</span> <strong>$get_date</strong></p>
                   </td>
                 </tr>
                 $main_section
@@ -643,6 +644,7 @@ $recharge4_url = addslashes($recharge4_url);
 $recharge5_dek = addslashes($recharge5_dek);
 $recharge5_source = addslashes($recharge5_source);
 $recharge5_url = addslashes($recharge5_url);
+$recharge_sign_off_dek = addslashes($recharge_sign_off_dek);
 $recharge_image_dek = addslashes($recharge_image_dek);
 $recharge_image_credits = addslashes($recharge_image_credits);
 $subject_line = addslashes(str_replace("â€”","–", $subject_line));
@@ -701,6 +703,7 @@ if($exists) {
 	recharge5_source = '$recharge5_source',
 	recharge5_ital = '$recharge5_ital',
 	recharge5_url = '$recharge5_url',
+	recharge_sign_off_dek = '$recharge_sign_off_dek',
 	recharge_image_dek = '$recharge_image_dek',
 	recharge_image_credits = '$recharge_image_credits',
 	ad_link_bill = '$billboard_url',
@@ -716,7 +719,7 @@ if($exists) {
 	WHERE hed_date='$headlines_date'";
 }
 else {
-	$run_qry = "INSERT INTO recharge(hed_date,subject_line,recharge_main_hed,recharge_main_url,recharge_main_img,recharge_main_dek,recharge_main_source,recharge_main_ital,recharge_intro_dek,recharge1_dek,recharge1_source,recharge1_ital,recharge1_url,recharge2_dek,recharge2_source,recharge2_ital,recharge2_url,recharge3_dek,recharge3_source,recharge3_ital,recharge3_url,recharge4_dek,recharge4_source,recharge4_ital,recharge4_url,recharge5_dek,recharge5_source,recharge5_ital,recharge5_url,recharge_image_dek,recharge_image_credits,ad_name,ad_link_bill,ad_billboard,sub_url,sub_image,sub_text,sub_code,lift_note,pixel_tracker,pixel_tracker2)
+	$run_qry = "INSERT INTO recharge(hed_date,subject_line,recharge_main_hed,recharge_main_url,recharge_main_img,recharge_main_dek,recharge_main_source,recharge_main_ital,recharge_intro_dek,recharge1_dek,recharge1_source,recharge1_ital,recharge1_url,recharge2_dek,recharge2_source,recharge2_ital,recharge2_url,recharge3_dek,recharge3_source,recharge3_ital,recharge3_url,recharge4_dek,recharge4_source,recharge4_ital,recharge4_url,recharge5_dek,recharge5_source,recharge5_ital,recharge5_url,recharge_sign_off_dek,recharge_image_dek,recharge_image_credits,ad_name,ad_link_bill,ad_billboard,sub_url,sub_image,sub_text,sub_code,lift_note,pixel_tracker,pixel_tracker2)
 	VALUES('$headlines_date',
 	'$subject_line',
 	'$recharge_main_hed',
@@ -746,6 +749,7 @@ else {
 	'$recharge5_source',
 	'$recharge5_ital',
 	'$recharge5_url',
+	'$recharge_sign_off_dek',
 	'$recharge_image_dek',
 	'$recharge_image_credits',
 	'$advertiser_name',

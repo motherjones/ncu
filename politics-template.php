@@ -203,13 +203,6 @@ else {
 }
 /* end most read */
 
-if(isset($_REQUEST['lift_note']) && $_REQUEST['lift_note'] != "") {
-	$lift_note = trim($_REQUEST['lift_note']);
-}
-else {
-	$lift_note = "";
-}
-
 //section titles
 //In other News
 $inothernews_section = "";
@@ -317,15 +310,6 @@ else {
 	$mostread_section = $mr_title . $mr1_full . $mr2_full;
 }
 //end most read section
-
-//lift note section
-$lift_note_section = "";
-if(isset($lift_note) && $lift_note !== "") {
-	$search_this = "<p>";
-	$replace_code = '<p style="font-family: Verdana, Helvetica, Arial, sans-serif !important;font-size: 16px !important;line-height:20px !important;color: #767676 !important;margin: 10px 20px;">';
-	$lift_note = str_ireplace($search_this, $replace_code, $lift_note);
-	$lift_note_section = "<tr><td class=\"standard_td\" style=\"padding: 10px 20px !important;\">" . $lift_note . "<hr style=\"border:1px solid #e8e8e8;background-color: #f2eeed;width:100%;\" /></td></tr>";
-}
 
 //live intent section
 $liveintent_toptags = "";

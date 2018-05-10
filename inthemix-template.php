@@ -193,12 +193,6 @@ else {
 	$fromarchive_title = "Don't Miss";
 }
 
-if(isset($_REQUEST['lift_note']) && $_REQUEST['lift_note'] != "") {
-	$lift_note = trim($_REQUEST['lift_note']);
-}
-else {
-	$lift_note = "";
-}
 // end from the archive / bottom section
 //template set up
 //More from Mix section
@@ -323,19 +317,6 @@ else {
 	$fromarchive_section = $fa_title . $fa1_full . $fa2_full;
 }
 //end From the Archive
-
-//lift note section
-$lift_note_section = "";
-if(isset($lift_note) && $lift_note !== "") {
-	$search_this = "<p>";
-	$replace_code = '<p style="font-family: Verdana, Helvetica, Arial, sans-serif !important;font-size: 16px !important;line-height:20px !important;color: #767676 !important;margin: 10px 20px;">';
-	$lift_note = str_ireplace($search_this, $replace_code, $lift_note);
-	$lift_note_section = "<tr><td class=\"standard_td\" style=\"padding: 10px 20px !important;\">" . $lift_note . "<hr style=\"border:1px solid #e8e8e8;background-color: #f2eeed;width:100%;\" /></td></tr>";
-}
-
-//text ad section
-/*$text_ad = strip_tags(stripslashes($text_ad_dek), "<br><b><strong><a><map><area><img>");
- $text_ad = "<div style=\"font-size:12px;text-align:left;color:#666666;margin-top:7px !important;margin-right:20px !important;margin-left:20px !important;\">" . $text_ad . "</div>";*/
 
 //live intent section
 $liveintent_toptags = "";
