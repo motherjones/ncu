@@ -8,3 +8,6 @@ images/
 ckeditor_bak/
 **/ckeditor_bak
 .gitignore.swp
+exclude_sync_list.txt
+sync_me.sh
+.gitignore
