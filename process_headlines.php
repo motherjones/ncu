@@ -6,6 +6,8 @@ ini_set("display_errors", 1);
 /* -------------------------- */
 
 /* include files */
+//include ad class
+include "insert_ads.php";
 // for db
 /* database credentials are located in the credentials.inc file */
 include "incs/credentials.inc";
