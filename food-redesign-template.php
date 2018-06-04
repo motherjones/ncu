@@ -992,7 +992,7 @@ $fft_redesign = <<<FOODREDESIGN
                                 	<tr>
                                 		<td>
                                 			<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-                                			<p class="mobile-format" style="margin: 15px 0 10px 0 !important;text-align: center; font-family: Verdana, sans-serif; font-style: italic; color: #a6a6a6;font-size: 26px;">That's all, folks! We'll be back next Wednesday with more.<br />&#8212;<a href="http://www.motherjones.com/authors/maddie-oatman" style="text-decoration: none; color: #ff6900;">Maddie</a> and <a href="http://www.motherjones.com/authors/kiera-butler" style="text-decoration: none; color: #ff6900;">Kiera</a></p>
+                                			<p class="mobile-format" style="margin: 15px 0 10px 0 !important;text-align: center; font-family: Verdana, sans-serif; font-style: italic; color: #a6a6a6;font-size: 26px;">That's all, folks! We'll be back next Sunday with more.<br />&#8212;<a href="http://www.motherjones.com/authors/maddie-oatman" style="text-decoration: none; color: #ff6900;">Maddie</a> and <a href="http://www.motherjones.com/authors/kiera-butler" style="text-decoration: none; color: #ff6900;">Kiera</a></p>
                                 			<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
                                 		</td>
                                 	</tr>
