@@ -234,7 +234,6 @@ function restoreValues(the_section) {
   		break;
   }
   
-  //the_div.innerHTML = "<h2>" + news_type + "</h2>";
   the_div.innerHTML = "";
 
   httpxml.onreadystatechange = function() {
@@ -268,20 +267,24 @@ function restoreValues(the_section) {
 	  for(date_name in date_obj) {
 		  var compare_date = Date.parse(date_obj[date_name]);
     	      var current_str = "";
-  	      if(compare_date > ws_date && compare_date < we_date) {
+  	      if(compare_date > ws_date && compare_date <= we_date) {
     	        date_class = " current_news";
 		    current_str = "<span>Current: </span>";
+		    console.log(we_complete);
     	      }
     	      else if(compare_date > we_date) {
 		    date_class = " future_news";
 			current_str = "<span>Future: </span>";
+			console.log(we_complete);
     	      }
     	      else if(compare_date < test_dates) {
 		    date_class = " test_news";
 			current_str = "<span>Test: </span>";
+			console.log(we_complete);
     	      }
     	      else {
 		    date_class = " normal_news";
+		    console.log(we_complete);
     	      }
   	      
 		  preview_url = "archives/" + date_obj[date_name] + "-" + the_section + ".html";
@@ -302,7 +305,7 @@ function restoreValues(the_section) {
 function getWeekStart(d) {
     d = new Date(d);
     var day = d.getDay(),
-    diff = d.getDate() - day + (day == 0 ? -6:0); // adjust when day is sunday
+    diff = d.getDate() - day + (day == 0 ? -7:0); // adjust when day is sunday
     return new Date(d.setDate(diff));
   }
 

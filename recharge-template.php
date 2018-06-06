@@ -491,6 +491,7 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "" || $r
 	//image credits at end of newsletter before newsletter info and footer
 	if($recharge_image_credits !== "") {
 		$recharge_image_credits = modifyHTML($recharge_image_credits, "p", "style", "text-align:center;font-family:Georgia, serif;font-size: 14px; line-height: 19px;font-style:italic;color: #767676;");
+		$recharge_image_credits = modifyHTML($recharge_image_credits, "a", "style", $url_color);
 	}
 	else {
 		$recharge_image_credits = "";
