@@ -98,7 +98,7 @@ if(isset($_REQUEST['in_our_ears']) && $_REQUEST['in_our_ears'] != "") {
 	$in_our_ears = trim($_REQUEST['in_our_ears']);
 }
 else {
-	$in_our_ears = "This Week in Podcasts";
+	$in_our_ears = "New From Bite Podcast";
 }
 
 if(isset($_REQUEST['fft_ioe_item1']) && $_REQUEST['fft_ioe_item1'] != "") {
@@ -140,7 +140,7 @@ if(isset($_REQUEST['hidden_kitchen']) && $_REQUEST['hidden_kitchen'] != "") {
 	$hidden_kitchen = trim($_REQUEST['hidden_kitchen']);
 }
 else {
-	$hidden_kitchen = "Exclusive for Newsletter Subscribers";
+	$hidden_kitchen = "What's Cooking";
 }
 
 if(isset($_REQUEST['fft_hk_leadin']) && $_REQUEST['fft_hk_leadin'] != "") {

@@ -339,7 +339,7 @@ $fft_redesign = <<<FFTRED
   <div class="columns">
     <div id="items_right">
         <fieldset class="sections">
-            <legend><input type="text" id="in_our_ears" name="in_our_ears" value="This Week in Podcasts" onblur="this.value=cleanstring(this.value)"" /></legend>
+            <legend><input type="text" id="in_our_ears" name="in_our_ears" value="New From Bite Podcast" onblur="this.value=cleanstring(this.value)"" /></legend>
             <fieldset class="sub_sections">
                 <legend>First Item: </legend>
                 <textarea id="fft_ioe_item1" name="fft_ioe_item1""></textarea>
@@ -396,7 +396,7 @@ $fft_redesign = <<<FFTRED
         </fieldset>
 			
 		<fieldset class="sections">
-            <legend><input type="text" id="hidden_kitchen" name="hidden_kitchen" value="Exclusive to Newsletter Subscribers" onblur="this.value=cleanstring(this.value)"" /></legend>
+            <legend><input type="text" id="hidden_kitchen" name="hidden_kitchen" value="What's Cooking" onblur="this.value=cleanstring(this.value)"" /></legend>
             <fieldset class="sub_sections">
                 <p>Lead in:</p>
                 <textarea id="fft_hk_leadin" name="fft_hk_leadin""></textarea>
