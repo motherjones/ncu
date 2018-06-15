@@ -360,6 +360,13 @@ if(isset($_REQUEST["fft_ioe3_url"]) && $_REQUEST["fft_ioe3_url"] != "") {
 else {
 	$fft_ioe3_url = "";
 }
+
+if(isset($_REQUEST["image_creds"]) && $_REQUEST["image_creds"] !== "") {
+	$fft_image_creds = trim($_REQUEST["image_creds"]);
+}
+else {
+	$fft_image_creds = "";
+}
 //end sources section
 
 //Food for Thought redesign template section
@@ -368,19 +375,18 @@ $temp_date = strtotime($headlines_date);
 $get_date = date("F j, Y", $temp_date);
 
 //Main section
-$main_section_header = "<table align=\"left\" cellpadding=\"2\" style=\"margin:10px 0;\"><tr><td align=\"left\"><p class=\"headers_text\" style=\"font-family: 'Arial Black', sans-serif; color: #000;font-size:16px;font-weight: bold;text-transform: uppercase;background-color: #e5e5e5;padding: 3px 12px;text-align:left;\">Top Food News</p></td></tr></table>";
 $main_section = "";
 $main_title = "";
 $main_section_p["class"] = "mobile-format";
-$main_section_p["style"] = "margin: 0 0 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; color: #767676; font-size: 18px;";
-$lead_in_bold = "font-family: Verdana, sans-serif;font-weight: bold; color: #000 !important;";
-$url_style = "color: #ff6900;";
+$main_section_p["style"] = "text-align:left;color: #222;font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
+$lead_in_bold = "font-family: Georgia, serif;font-weight: bold; color: #000 !important;";
+$url_style = "color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;";
 
 if(isset($fft_main_hed_url) && $fft_main_hed_url !== "") {
-	$main_title = "<h3 style=\"margin: 0 0 10px 0; padding: 0; font-family: 'Arial Black', sans-serif; font-weight: bold; color: #000;font-size: 38px;line-height:42px;clear:both;\"><a href=\"$fft_main_hed_url\" style=\"text-decoration: none;color: #000;\">$fft_main_hed</a></h3>";
+	$main_title = "<h3 style=\"Margin-bottom: 10px;font-weight: bold; color: #000 !important;font-family:Georgia, serif;font-size: 33px; line-height: 38px;\"><a href=\"$fft_main_hed_url\" style=\"text-decoration: none;color: #000;\">$fft_main_hed</a></h3>";
 }
 else {
-	$main_title = "<h3 style=\"margin: 0 0 10px 0; padding: 0; font-family: 'Arial Black', sans-serif; font-weight: bold; color: #000;font-size: 38px;line-height:42px;clear:both;\">$fft_main_hed</h3>";
+	$main_title = "<h3 style=\"Margin-bottom: 10px;font-weight: bold; color: #000 !important;font-family:Georgia, serif;font-size: 33px; line-height: 38px;\">$fft_main_hed</h3>";
 }
 
 $fft_article_1_content = "";
@@ -404,10 +410,10 @@ if(isset($fft_article_1) && $fft_article_1 !== "") {
 	
 	if(isset($fft_a1_source) && $fft_a1_source !== "") {
 		if($fft_a1_ital) {
-			$fft_article_1_content = $get_substr . " (<em><a href=\"$fft_main_hed_url\" style=\"color:#ff6900;\">" . $fft_a1_source . "</a></em>)" . "</p>";
+			$fft_article_1_content = $get_substr . " (<em><a href=\"$fft_main_hed_url\" style=\"$url_style\">" . $fft_a1_source . "</a></em>)" . "</p>";
 		}
 		else {
-			$fft_article_1_content = $get_substr . " (<a href=\"$fft_main_hed_url\" style=\"color:#ff6900;\">" . $fft_a1_source . "</a>)" . "</p>";
+			$fft_article_1_content = $get_substr . " (<a href=\"$fft_main_hed_url\" style=\"$url_style\">" . $fft_a1_source . "</a>)" . "</p>";
 		}
 	}
 	else {
@@ -427,10 +433,10 @@ if(isset($fft_article_2) && $fft_article_2 !== "") {
 	
 	if(isset($fft_a2_source) && $fft_a2_source !== "") {
 		if($fft_a2_ital) {
-			$fft_article_2_content = $get_substr . " (<em><a href=\"$fft_a2_url\" style=\"color:#ff6900;\">" . $fft_a2_source . "</a></em>)" . "</p>";
+			$fft_article_2_content = $get_substr . " (<em><a href=\"$fft_a2_url\" style=\"$url_style\">" . $fft_a2_source . "</a></em>)" . "</p>";
 		}
 		else {
-			$fft_article_2_content = $get_substr . " (<a href=\"$fft_a2_url\" style=\"color:#ff6900;\">" . $fft_a2_source . "</a>)" . "</p>";
+			$fft_article_2_content = $get_substr . " (<a href=\"$fft_a2_url\" style=\"$url_style\">" . $fft_a2_source . "</a>)" . "</p>";
 		}
 	}
 	else {
@@ -450,10 +456,10 @@ if(isset($fft_article_3) && $fft_article_3 !== "") {
 	
 	if(isset($fft_a3_source) && $fft_a3_source !== "") {
 		if($fft_a3_ital) {
-			$fft_article_3_content = $get_substr . " (<em><a href=\"$fft_a3_url\" style=\"color:#ff6900;\">" . $fft_a3_source . "</a></em>)" . "</p>";
+			$fft_article_3_content = $get_substr . " (<em><a href=\"$fft_a3_url\" style=\"$url_style\">" . $fft_a3_source . "</a></em>)" . "</p>";
 		}
 		else {
-			$fft_article_3_content = $get_substr . " (<a href=\"$fft_a3_url\" style=\"color:#ff6900;\">" . $fft_a3_source . "</a>)" . "</p>";
+			$fft_article_3_content = $get_substr . " (<a href=\"$fft_a3_url\" style=\"$url_style\">" . $fft_a3_source . "</a>)" . "</p>";
 		}
 	}
 	else {
@@ -473,10 +479,10 @@ if(isset($fft_article_4) && $fft_article_4 !== "") {
 	
 	if(isset($fft_a4_source) && $fft_a4_source !== "") {
 		if($fft_a4_ital) {
-			$fft_article_4_content = $get_substr . " (<em><a href=\"$fft_a4_url\" style=\"color:#ff6900;\">" . $fft_a4_source . "</a></em>)" . "</p>";
+			$fft_article_4_content = $get_substr . " (<em><a href=\"$fft_a4_url\" style=\"$url_style\">" . $fft_a4_source . "</a></em>)" . "</p>";
 		}
 		else {
-			$fft_article_4_content = $get_substr . " (<a href=\"$fft_a4_url\" style=\"color:#ff6900;\">" . $fft_a4_source . "</a>)" . "</p>";
+			$fft_article_4_content = $get_substr . " (<a href=\"$fft_a4_url\" style=\"$url_style\">" . $fft_a4_source . "</a>)" . "</p>";
 		}
 	}
 	else {
@@ -497,10 +503,10 @@ if(isset($fft_article_5) && $fft_article_5 !== "") {
 	
 	if(isset($fft_a5_source) && $fft_a5_source!== "") {
 		if($fft_a5_ital) {
-			$fft_article_5_content = $get_substr . " (<em><a href=\"$fft_a5_url\" style=\"color:#ff6900;\">" . $fft_a5_source . "</a></em>)" . "</p>";
+			$fft_article_5_content = $get_substr . " (<em><a href=\"$fft_a5_url\" style=\"$url_style\">" . $fft_a5_source . "</a></em>)" . "</p>";
 		}
 		else {
-			$fft_article_5_content = $get_substr . " (<a href=\"$fft_a5_url\" style=\"color:#ff6900;\">" . $fft_a5_source . "</a>)" . "</p>";
+			$fft_article_5_content = $get_substr . " (<a href=\"$fft_a5_url\" style=\"$url_style\">" . $fft_a5_source . "</a>)" . "</p>";
 		}
 	}
 	else {
@@ -520,10 +526,10 @@ if(isset($fft_article_6) && $fft_article_6 !== "") {
 	
 	if(isset($fft_a6_source) && $fft_a6_source !== "") {
 		if($fft_a6_ital) {
-			$fft_article_6_content = $get_substr . " (<em><a href=\"$fft_a6_url\" style=\"color:#ff6900;\">" . $fft_a6_source . "</a></em>)" . "</p>";
+			$fft_article_6_content = $get_substr . " (<em><a href=\"$fft_a6_url\" style=\"$url_style\">" . $fft_a6_source . "</a></em>)" . "</p>";
 		}
 		else {
-			$fft_article_6_content = $get_substr . " (<a href=\"$fft_a6_url\" style=\"color:#ff6900;\">" . $fft_a6_source . "</a>)" . "</p>";
+			$fft_article_6_content = $get_substr . " (<a href=\"$fft_a6_url\" style=\"$url_style\">" . $fft_a6_source . "</a>)" . "</p>";
 		}
 	}
 	else {
@@ -536,8 +542,8 @@ $main_section = $fft_article_1_content . $fft_article_2_content . $fft_article_3
 $ogt_section = "";
 
 if(isset($snack_box) && $snack_box !== "") {
-	$sb_p = "<table align=\"left\" cellpadding=\"2\" style=\"margin:10px 0;\"><tr><td><p class=\"headers_text\" style=\"font-family: 'Arial Black', sans-serif; color: #000;font-size:16px;font-weight: bold;text-transform: uppercase;background-color: #e5e5e5;padding: 2px 12px;\">";
-	$ogt_section .= $sb_p . $snack_box . "</p></td></tr></table>";
+	$sb_p = "<p class=\"headers_text\" style=\"margin-top: 0;font-family: Verdana, sans-serif; color: #ff6900;font-size: 10px; line-height: 14px;font-weight: bold;text-transform: uppercase;text-align:left;\">" . $snack_box . "</p>";
+	$ogt_section .= $sb_p;
 }
 else {
 	$sb_p = "";
@@ -547,10 +553,11 @@ $ogt_section .= "<table width=\"500\" align=\"center\" style=\"max-width: 500px 
 
 if(isset($fft_snack_box) && $fft_snack_box !== "") {
 	$snack_box_p["class"] = "mobile-format";
-	$snack_box_p["style"] = "margin: 0 0 20px 0; padding: 0; font-family: Verdana, sans-serif; color: #767676;font-size: 18px;";
+	$snack_box_p["style"] = "margin: 0 0 20px 0; padding: 0; font-family: Georgia, serif; color: #222;font-size: 18px;";
 	$fft_snack_box = modifyHTML($fft_snack_box, "p", $snack_box_p);
 	$fft_snack_box = modifyHTML($fft_snack_box, "strong", "style", $lead_in_bold);
 	$fft_snack_box = modifyHTML($fft_snack_box, "img", $img_styles);
+	$fft_snack_box = modifyHTML($fft_snack_box, "a", "style", $url_style);
 	$ogt_section .= $fft_snack_box;
 }
 else {
@@ -575,23 +582,23 @@ else {
 	$fft_sb_attr = "";
 }
 
-if($fft_snack_box == "" && $image_code == "" && $fft_sb_attr == "") {
+if($fft_snack_box === "" && $image_code === "" && $fft_sb_attr === "") {
 	$ogt_section = "";
 }
 else {
-	$ogt_section = "<tr>\n<td style=\"border-bottom: 1px solid #c8c8c8;\">\n<!--[if (gte mso 9)|(IE)]><br /><![endif]-->" . $ogt_section . "\n</td>\n</tr>\n</table>\n" . "<!--[if (gte mso 9)|(IE)]><br /><![endif]--></td>\n</tr>\n";
+	$ogt_section = "<tr>\n<td style=\"border-bottom: 1px solid #767676;\">\n<!--[if (gte mso 9)|(IE)]><br /><![endif]-->" . $ogt_section . "\n</td>\n</tr>\n</table>\n" . "<!--[if (gte mso 9)|(IE)]><br /><![endif]--></td>\n</tr>\n";
 }
 
-//in our ears/podcast section
+//in our ears/podcast section (New From Bite Podcast)
 $ioe_section = "";
 $ioe_sec_p["class"] = "mobile-format";
-$ioe_sec_p["style"] = "margin: 0 0 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; color: #767676; font-size: 18px;";
-$ioe_lead_bold = "font-family: Verdana, sans-serif;font-weight: bold; color: #000;";
+$ioe_sec_p["style"] = "margin: 0 0 20px 0 !important; padding: 0; font-family:Georgia, serif; color: #222; font-size: 16px;line-height: 21px;";
+$ioe_lead_bold = "font-family: Georgia, serif;font-weight: bold; color: #000;";
 
 if(isset($in_our_ears) && $in_our_ears !== "") {
-	$ioe_p = "<!--[if (gte mso 9)|(IE)]>\n<br />\n<table width=\"540\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" style=\"width: 540px;max-width: 540px;background-color: #fff;margin: 5px auto;padding: 0;\">\n<tr>\n<td align=\"left\">\n<![endif]--><table align=\"left\" cellpadding=\"2\" style=\"margin:10px 0;\"><tr><td><p class=\"headers_text\" style=\"font-family: 'Arial Black', sans-serif; color: #000;font-size:18px;font-weight: bold;text-transform: uppercase;background-color: #e5e5e5;padding: 2px 12px;\">";
-	$ioe_podcast_head = $ioe_p . $in_our_ears . "</p>\n</td>\n</tr>\n</table>\n<!--[if (gte mso 9)|(IE)]>\n<br />\n</td>\n</tr></table><![endif]-->";
-	$ioe_section = $ioe_podcast_head;
+	$ioe_p = "<p class=\"headers_text\" style=\"margin-top: 0;font-family: Verdana, sans-serif; color: #ff6900;font-size: 10px; line-height: 14px;font-weight: bold;text-transform: uppercase;text-align:left;\">" . $in_our_ears . "</p>";
+	$ioe_podcast_head = $ioe_p;
+	//$ioe_section = $ioe_podcast_head;
 }
 else {
 	$ioe_podcast_head = "";
@@ -616,10 +623,10 @@ if(isset($fft_ioe_item1) && $fft_ioe_item1 !== "") {
 	
 	if(isset($fft_ioe1_source) && $fft_ioe1_source !== "") {
 		if($fft_ioe1_ital) {
-			$fft_ioe_item1_content = $get_substr . " (<em><a href=\"$fft_ioe1_url\" style=\"color:#ff6900;\">" . $fft_ioe1_source . "</a></em>)" . "</p>";
+			$fft_ioe_item1_content = $get_substr . " (<em><a href=\"$fft_ioe1_url\" style=\"$url_style\">" . $fft_ioe1_source . "</a></em>)" . "</p>";
 		}
 		else {
-			$fft_ioe_item1_content = $get_substr . " (<a href=\"$fft_ioe1_url\" style=\"color:#ff6900;\">" . $fft_ioe1_source . "</a>)" . "</p>";
+			$fft_ioe_item1_content = $get_substr . " (<a href=\"$fft_ioe1_url\" style=\"$url_style\">" . $fft_ioe1_source . "</a>)" . "</p>";
 		}
 	}
 	else {
@@ -628,7 +635,7 @@ if(isset($fft_ioe_item1) && $fft_ioe_item1 !== "") {
 	
 	if(isset($fft_bite_add) && $fft_bite_add !== "") {
 		//replace html entities
-		$fft_bite_add = modifyHTML($fft_bite_add, "a", "style", "color: #ff6900;text-decoration: none;");
+		$fft_bite_add = modifyHTML($fft_bite_add, "a", "style", $url_style);
 		$fft_sb_attr = modifyHTML($fft_sb_attr, "img", $img_styles);
 		$fft_bite_add = str_replace("<p>", "", $fft_bite_add);
 		$fft_bite_add = str_replace("</p>", "", $fft_bite_add);
@@ -638,7 +645,7 @@ if(isset($fft_ioe_item1) && $fft_ioe_item1 !== "") {
 			$close_bite_anchor = "</a>";
 		}
 		
-		$bite_special = "<table width=\"500\" align=\"center\" style=\"max-width: 500px !important;margin: 20px 0;\">\n<tr>\n<td width=\"125\" align=\"left\">\n$bite_anchor_code<img id=\"bite_logo\" src=\"http://assets.motherjones.com/newsletters/newsletter_test/bite_logo_name.png\" width=\"110\" style=\"max-width: 110px;height: auto;\" />$close_bite_anchor\n</td>\n<td align=\"right\" style=\"text-align:left;\">\n<p class=\"bite-episode-text\" style=\"margin: 0 0 20px 0; padding: 0; font-family: Verdana, sans-serif; color: #767676;font-size: 16px;\">$fft_bite_add</p>\n</td>\n</tr>\n</table>";
+		$fft_ioe_item1_content = "<table width=\"500\" align=\"center\" style=\"max-width: 500px !important;margin: 20px 0;\">\n<tr>\n<td width=\"125\" align=\"left\">\n$bite_anchor_code<img id=\"bite_logo\" src=\"http://assets.motherjones.com/newsletters/newsletter_test/bite_logo_name.png\" width=\"110\" style=\"max-width: 110px;height: auto;\" />$close_bite_anchor\n</td>\n<td align=\"right\" style=\"text-align:left;\">\n$fft_ioe_item1_content<p class=\"bite-episode-text\" style=\"margin: 0 0 20px 0; padding: 0; font-family:Georgia, serif; color: #222;font-size: 16px;line-height: 21px;\">$fft_bite_add</p>\n</td>\n</tr>\n</table>";
 	}
 }
 else {
@@ -680,10 +687,10 @@ if(isset($fft_ioe_item3) && $fft_ioe_item3 !== "") {
 	
 	if(isset($fft_ioe3_source) && $fft_ioe3_source !== "") {
 		if($fft_ioe3_ital) {
-			$fft_ioe_item3_content = $get_substr . " (<em><a href=\"$fft_ioe3_url\" style=\"color:#ff6900;\">" . $fft_ioe3_source . "</a></em>)" . "</p>";
+			$fft_ioe_item3_content = $get_substr . " (<em><a href=\"$fft_ioe3_url\" style=\"$url_style\">" . $fft_ioe3_source . "</a></em>)" . "</p>";
 		}
 		else {
-			$fft_ioe_item3_content = $get_substr . " (<a href=\"$fft_ioe3_url\" style=\"color:#ff6900;\">" . $fft_ioe3_source . "</a>)" . "</p>";
+			$fft_ioe_item3_content = $get_substr . " (<a href=\"$fft_ioe3_url\" style=\"$url_style\">" . $fft_ioe3_source . "</a>)" . "</p>";
 		}
 	}
 	else {
@@ -692,28 +699,28 @@ if(isset($fft_ioe_item3) && $fft_ioe_item3 !== "") {
 }
 
 if($fft_ioe_item1_content != "" || $fft_ioe_item2_content != "" || $fft_ioe_item3_content != "") {
-	$ioe_section .= "<table width=\"500\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" style=\"max-width: 500px !important;margin: 0 auto !important;padding: 0 !important;\">\n<tr>\n<td>" . $fft_ioe_item1_content . $bite_special . $fft_ioe_item2_content . $fft_ioe_item3_content . "</td>\n</tr>\n</table>";
-	$ioe_section = "<tr>\n<td>\n" . $ioe_section . "</td>\n</tr>\n";
+	$ioe_section .= "\n<tr>\n<td style=\"border-bottom: 1px solid #767676;\">" . $ioe_podcast_head .  $fft_ioe_item1_content . "<br>" .  $fft_ioe_item2_content . $fft_ioe_item3_content . "</td></tr>";
 }
 else {
 	$ioe_section = "";
 }
 //end podcast section
 
+//What's Cooking section
 $hidden_kitchen_sec = "";
 
 if(isset($hidden_kitchen) && $hidden_kitchen !== "") {
-	$hidden_kitchen_sec = "<!--[if (gte mso 9)|(IE)]><br /><table width=\"540\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" style=\"width: 540px;max-width: 540px;background-color: #fff;margin: 5px auto;padding: 0;\"><tr><td align=\"left\"><![endif]--><table align=\"left\" cellpadding=\"2\" style=\"margin:10px 0;\"><tr><td><p class=\"headers_text\" style=\"font-family: 'Arial Black', sans-serif; color: #000;font-size:18px;font-weight: bold;text-transform: uppercase;background-color: #e5e5e5;padding: 2px 12px;\">$hidden_kitchen</p></td></tr></table>\n<!--[if (gte mso 9)|(IE)]><br /></td></tr></table><![endif]-->";
+	$hidden_kitchen_title = "<p class=\"headers_text\" style=\"margin-top: 0;font-family: Verdana, sans-serif; color: #ff6900;font-size: 10px; line-height: 14px;font-weight: bold;text-transform: uppercase;text-align:left;\">$hidden_kitchen</p>";
 }
 else {
-	$hidden_kitchen_sec = "<!--[if (gte mso 9)|(IE)]><br /><table width=\"540\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" style=\"width: 540px;max-width: 540px;background-color: #fff;margin: 5px auto;padding: 0;\"><tr><td align=\"left\"><![endif]--><table align=\"left\" cellpadding=\"2\" style=\"background-color: #e5e5e5;margin:10px 0;\"><tr><td><p class=\"headers_text\" style=\"font-family: 'Arial Black', sans-serif; color: #000;font-size:18px;font-weight: bold;text-transform: uppercase;\">Exclusive for Newsletter Subscribers</p></td></tr></table>\n<!--[if (gte mso 9)|(IE)]><br /></td></tr></table><![endif]-->";
+	$hidden_kitchen_title = "<p class=\"headers_text\" style=\"margin-top: 0;font-family: Verdana, sans-serif; color: #ff6900;font-size: 10px; line-height: 14px;font-weight: bold;text-transform: uppercase;text-align:left;\">What's Cooking</p>";
 }
 
 if(isset($fft_hk_leadin) && $fft_hk_leadin !== "") {
 	$fft_hk_p_format["class"] = "hk_leadin";
-	$fft_hk_p_format["style"] = "margin: 10px 0 20px 0; padding: 0; font-family: 'Arial Black', sans-serif; font-weight: bold; color: #000; font-size: 30px;line-height:34px;";
+	$fft_hk_p_format["style"] = "margin: 0 0 20px 0; padding: 0; font-family:Georgia, serif; font-weight: bold; color: #000; font-size: 24px;line-height:28px;";
 	$fft_hk_leadin = modifyHTML($fft_hk_leadin, "p", $fft_hk_p_format);
-	$hidden_kitchen_sec .= "<table width=\"500\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin:0 auto !important; padding: 0 !important;\">\n<tr>\n<td>\n" . $fft_hk_leadin . "\n<!--[if (gte mso 9)|(IE)]><br /><![endif]--></td>\n</tr>\n";
+	//$hidden_kitchen_sec .= $fft_hk_leadin;
 }
 else {
 	$fft_hk_leadin = "";
@@ -721,12 +728,12 @@ else {
 
 if(isset($fft_hidden_kitchen) && $fft_hidden_kitchen !== "") {
 	$fft_hk_p_format_2["class"] = "mobile-format";
-	$fft_hk_p_format_2["style"] = "margin: 0 0 10px 0 !important; padding: 0; font-family: Verdana, sans-serif; color: #767676; font-size: 18px;";
+	$fft_hk_p_format_2["style"] = "color: #222; font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
 	$fft_hidden_kitchen = modifyHTML($fft_hidden_kitchen, "p", $fft_hk_p_format_2);
 	$fft_hidden_kitchen = modifyHTML($fft_hidden_kitchen, "img", $img_styles);
 	
-	$fft_hidden_kitchen = str_replace("<a", "<a style=\"color: #ff6900;text-decoration: none;\"", $fft_hidden_kitchen);
-	$hidden_kitchen_sec .= "<tr>\n<td>$fft_hidden_kitchen</td>\n</tr>\n</table>\n";
+	$fft_hidden_kitchen = str_replace("<a", "<a style=\"$url_style\"", $fft_hidden_kitchen);
+	$hidden_kitchen_sec .= "<tr><td style=\"border-bottom: 1px solid #767676;\">" . $hidden_kitchen_title . $fft_hk_leadin . $fft_hidden_kitchen ."<br></td></tr>";
 }
 else {
 	$fft_hidden_kitchen = "";
@@ -735,6 +742,20 @@ else {
 if($fft_hk_leadin == "" && $fft_hidden_kitchen == "") {
 	$hidden_kitchen_sec = "";
 }
+//end What's Cooking section
+
+//image credits section
+$image_creds_sec = "";
+
+if(isset($fft_image_creds) && $fft_image_creds !== "") {
+	$image_creds_p["class"] = "mobile-format";
+	$image_creds_p["style"] = "margin: 0 0 20px 0; padding: 0;text-align:center; font-family:Georgia, serif; color: #222;font-size: 16px;line-height:21px;";
+	$fft_image_creds = modifyHTML($fft_image_creds, "p", $image_creds_p);
+	$fft_image_creds = modifyHTML($fft_image_creds, "a", "style", $url_style);
+	$image_creds_sec = $fft_image_creds;
+}
+
+//end image credits section
 
 //live intent section
 $liveintent_toptags = "";
@@ -862,162 +883,167 @@ $fft_redesign = <<<FOODREDESIGN
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title></title>
 	</head>
-	<body style="min-width: 100%;background-color: #e5e5e5;margin: 0 auto;">
-		<style>
-			#main_newsletter h3 {font-size: 46px;}
-			#main_newsletter h3 a {color: #000 !important;}
-			p.fft-info-section {font-style: italic;}
-			.fft-info {color: #000;
-				font-style: italic;
-				font-weight: bold;}
-			p.mobile-format {font-size: 32px;}
-			p.ad_text {font-size: 24px;}
-			p.headers_text {font-size: 16px;
-				line-height: 20px;
-				letter-spacing: 3px;}
-			p.hk_leadin {font-size: 38px;}
-			@media screen and (min-device-width: 521px) {
-				#main_newsletter h3 {font-size: 30px !important;
-					line-height: 34px !important;
-					color: #000 !important;}
-				#main_newsletter h3 a {color: #000 !important;}
-				p.mobile-format {font-size: 16px !important;}
-				p.fft-last-section {font-size: 16px !important;}
-				p.ad_text {font-size: 14px !important;}
-				p.headers_text {font-size: 10px !important;
-					line-height: 14px !important;
-					letter-spacing: 3px;}
-				p.hk_leadin {font-size: 24px !important;
-					line-height: 28px !important;}
-				p.foot_id {font-size: 14px !important;}
-				p.bite-episode-text {font-size: 14px !important;}
-    		}
-    		@media screen and (max-device-width: 520px) {
-    			p.mobile-format {font-size: 32px !important;}
-    			#main_newsletter h3 {font-size: 46px !important;
-    				line-height: 50px !important;
-    				color: #000 !important;}
-    			#main_newsletter h3 a {color: #000 !important;}
-    			p span {font-size: 30px !important;}
-    			p.headers_text {font-size: 16px !important;
-    				line-height: 20px !important;
-    				letter-spacing: 3px;}
-    			p.hk_leadin {font-size: 38px !important;
-    				line-height: 42px !important;}
-    			p.black-text {color: #000;
-    				margin-bottom: 0 !important;
-    				padding: 0 !important;}
-    			p.fft-last-section {font-size: 18px !important;}
-    			#date_line {text-align: left !important;}
-    			#bite_logo {max-width: 150% !important;}
-    			p.ad_text {font-size: 18px !important;}
-    			p.foot_id {font-size: 18px !important;}
-    			p.bite-episode-text {font-size: 20px !important;}
-    		}
-    	</style>
-    	<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="margin: 0 auto;border-spacing:0;font-family:Verdana, sans-serif;background-color: #e5e5e5;margin: 0;padding: 0;" id="main_newsletter">
-    		<tr>
-    			<td>
-    				<!--[if (gte mso 9)|(IE)]>
-    				<table width="620" align="center" border="0" cellpadding="0" cellspacing="0" style="background-color: #fff;border-spacing:0;" >
-    					<tr>
-    						<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">
-    				<![endif]-->
-    				<table align-"center" width="620" style="max-width: 620px; margin:0 auto;background-color: #fff;">
-    					$lift_note_section
-                		<tr>
-                			<td>
-                				<div style="max-width: 620px; margin: 0 auto; margin-bottom: 15px;background-color: #fff;">
-                					<img src="http://assets.motherjones.com/newsletters/newsletter_test/fft-header.png" width="620" style="width: 100%;background-color: #000;color: #000;" />
-                				</div>
-                				<table width="580" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 580px;background-color: #fff;margin: 0 auto;padding: 0;text-align: left;">
-                					<tr>
-                						<td>
-                							<table width="540" border="0" cellspacing="0" cellpadding="0" align="center" style="width: 540px;max-width: 540px;background-color: #fff;margin: 5px auto;padding: 0;">
-                								<tr>
-                									<td>
-                										<p style="color: #c8c8c8;text-decoration: none;margin: 0 0 10px 0;font-size: 16px;text-align:right;" id="date_line">$get_date</p>
-                          							</td>
-                          						</tr>
-                          						<tr>
-                          							<td style="border-bottom: 1px solid #c8c8c8;color: #000;" id="main-section">
-                          								<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-                          								<img src="$fft_main_img" style="max-width: 540px; height: auto;margin-bottom: 10px !important;" width="540" alt="" />
-                                						<!--[if (gte mso 9)|(IE)]><br />
-                                						<table width="540" border="0" cellspacing="0" cellpadding="0" align="center" style="width: 540px;max-width: 540px;background-color: #fff;margin: 5px auto;padding: 0;">
-                                							<tr>
-                                							<td align="left">
-                                						<![endif]-->
-                                						$main_section_header
-                                						<!--[if (gte mso 9)|(IE)]><br />
-                                					</td>
-                                				</tr>
-                                			</table>
-                                			<![endif]-->
-                                			<table width="100%" border="0" cellspacing="0">
-                                				<tr>
-                                					<td>
-                                						$main_title
-                                						$main_section
-														<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-													</td>
-												</tr>
-											</table>
-										</td>
-									</tr>
-									<tr>
-										<td style="border-bottom: 1px solid #c8c8c8;" align="center">
-											<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-											<p class="ad_text" style="color: #767676; text-align: center;margin-top:20px;font-size: 14px;">&#8212;ADVERTISEMENT&#8212;</p>
-											$billboard_ad
-                                			<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-                                		</td>
-                                	</tr>
-                                	$ogt_section
-                            		<tr>
-                            			<td style="border-bottom: 1px solid #c8c8c8;" align="center">
-                            				<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-                            				$membership_slot
-                                			<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-                                		</td>
-                                	</tr>
-                                	$ioe_section
-                            		<tr>
-                            			<td>
-                            				<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-                            				$hidden_kitchen_sec
-                                			<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-                                		</td>
-                                	</tr>
-                                	<tr>
-                                		<td>
-                                			<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-                                			<p class="mobile-format" style="margin: 15px 0 10px 0 !important;text-align: center; font-family: Verdana, sans-serif; font-style: italic; color: #a6a6a6;font-size: 26px;">That's all, folks! We'll be back next Sunday with more.<br />&#8212;<a href="http://www.motherjones.com/authors/maddie-oatman" style="text-decoration: none; color: #ff6900;">Maddie</a> and <a href="http://www.motherjones.com/authors/kiera-butler" style="text-decoration: none; color: #ff6900;">Kiera</a></p>
-                                			<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-                                		</td>
-                                	</tr>
-                                </table>
-                            </td>
-                         </tr>
-                      </table>
-                  </td>
-                </tr>
-              </table>
-              <table width="620" border="0" cellspacing="0" cellpadding="0" align="center" style="border-spacing:0;font-family:Verdana, sans-serif;background-color: #fff;padding: 0;max-width:620px;">
+	<body style="min-width: 100%;background-color: #e9e9e9;margin: 0 auto;">
+<div>
+  <style>
+  .wrapper {
+    background-color: #e9e9e9;
+  }
+  .layout {
+    Margin: 0 auto;
+    width:620px !important;
+    max-width: 620px !important;
+    background-color: #fff;
+  }
+  .spacing {
+    Margin: 0 auto;
+    width:85%;
+    }
+  .narrow {
+    width: 33% !important;
+    }
+  .wide {
+    Margin-left: 10px !important;
+    width: 65% !important;
+    }
+  .headers_text {
+    font-size: 10px;
+    line-height: 14px;
+  }
+  #date_line {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  p, h3 {
+    Margin: 15px 0;
+  }
+  h3 {
+    font-size: 33px;
+    line-height: 38px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 21px;
+  }
+  #membership-call-box {
+    padding:10px 10px;
+  }
+  #logo {
+    Margin: 10px auto;
+    width: 100%;
+    max-width: 300px;
+  }
+	p.hk_leadin {font-size: 24px !important;
+		line-height: 28px !important;}
+
+  @media screen and (max-width: 480px) {
+    body, .wrapper {background-color: #fff !important;
+    Margin: 0 auto !important;
+    padding: 0;
+    }
+    .layout {
+    background-color: #fff;
+    Margin: 0 auto;
+    width: 100% !important;
+    }
+    .spacing {
+    Margin: 0 auto !important;
+    width: 85% !important;
+    }
+    .wide, .narrow, .even_left, .even_right {
+    width: 100% !important;
+    max-width: 100% !important;
+    }
+    .even_left {
+	margin-top: 0 !important;
+    border-bottom: 1px solid #767676;
+    border-right: none !important;
+    }
+	.even_right {
+	margin-top: 20px !important;
+	}
+    p {
+    font-size: 24px !important;
+    line-height: 28px !important;
+    }
+    .headers_text {
+    font-size: 12px !important;
+    line-height: 16px !important;
+    }
+    #date_line {
+    font-size: 14px !important;
+    line-height: 18px !important;
+    }
+    }
+
+  @media yahoo {
+    p {margin: 10px 0;}
+    .layout {margin: 0 auto;}
+    }
+  </style>
+  <table width="100%" class="wrapper" align="center" style="Margin:0 auto;padding:0;background-color:#e9e9e9;" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+        <!--[if (gte mso 9)|(IE)]>
+        <table width="620" align="center" border="0" cellpadding="0" cellspacing="0" style="Margin:0 auto;padding:0;background-color: #fff;border-spacing:0;">
+          <tr>
+            <td>
+        <![endif]-->
+        <table class="layout" align="center" cellpadding="0" cellspacing="0" width="620" style="Margin:0 auto;background-color: #fff;max-width:620px;">
+					<tr>
+						<td>
+							<div style="width:145px;text-align:center;margin:10px auto;" align="center">
+								<img src="https://cdn.maropost.com/pro/uploads/account_585/215784/MoJoLoGo.png" style="max-width:145px;width:145px;" width="145">
+							</div>
+						</td>
+					</tr>
+          <tr>
+            <td align="center" style="line-height:0;margin: 0;padding:0;">
+              <img src="https://cdn.maropost.com/pro/uploads/account_585/222761/header_FFT_orange.png" width="620" style="Margin:0 auto;width:100%;max-width:100%;height:auto;line-height:0;" alt="Trumpocracy" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table class="spacing" align="center" width="580" cellpadding="0" cellspacing="20" style="max-width:580px;margin:0 auto;">
                 <tr>
-                  <td align="center" style="border-bottom: 1px solid #c8c8c8;">
-                    <p class="fft-last-section" style="margin: 0 0 10px 0; padding: 0; font-family: Verdana, sans-serif; color: #767676;font-style: italic;font-size: 16px;"><span style="font-family: Verdana, sans-serif;font-weight: bold; color: #000;">Questions/concerns/feedback?</span><br />Email <a style="color: #ff6900; margin: 15px 0;" href="mailto:newsletters@motherjones.com?subject=$anchor_subject_line">newsletters@motherjones.com</a>.</p>
-					<p class="fft-last-section" style="margin: 0 0 10px 0; padding: 0; font-family: Verdana, sans-serif; color: #767676;font-size: 16px;"><span style="font-family: Verdana, sans-serif;font-weight: bold; color: #000;font-style:italic;">Hungry for more food news?</span><br /><em>Follow</em> Mother Jones Food <em>on <a style="color: #ff6900; margin: 15px 0;" href="https://twitter.com/motherjonesfood">Twitter</a> and <a style="color: #ff6900; margin: 15px 0;" href="https://www.facebook.com/motherjonesfood/">Facebook</a>.</em></p>
-                    <p class="fft-last-section" style="margin: 0 0 20px 0; padding: 0; font-family: Verdana, sans-serif; color: #767676;font-size: 16px;"><span style="font-family: Verdana, sans-serif;font-weight: bold; color: #000;"><em>Did someone forward this to you?</em></span><br /><em><a style="color: #ff6900; margin: 15px 0;" href="http://www.motherjones.com/about/interact-engage/free-email-newsletter">Click here</a> to sign up to get more</em> Food for Thought <em>in your inbox</em>!</p>
-                    <!--[if (gte mso 9)|(IE)]><br /><![endif]-->
+                  <td align="right">
+                    <p style="Margin: 0;color: #c8c8c8 !important;text-decoration: none !important;text-align:right;font-size: 12px;line-height:16px;font-family:Georgia, serif;" id="date_line">$get_date</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="border-bottom: 1px solid #c8c8c8;margin-bottom: 20px;" align="center">
-                    <!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-                    <p class="ad_text" style="color: #767676; text-align: center; margin-top:20px;">&#8212;ADVERTISEMENT&#8212;</p>
-                    $billboard_ad2
-                    <!--[if (gte mso 9)|(IE)]><br /><![endif]-->
+									<td style="border-bottom:1px solid #767676;line-height:0;">
+										<center><a href="$fft_main_hed_url"><img src="$fft_main_img" style="Margin: 0 auto 5px auto;width:100%;max-width: 100%; height: auto;" width="540" alt="Food for Thought" border="0" /></a></center>
+										$main_section
+										<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom: 1px solid #767676;">
+                    <p class="ad_text" style="margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;">&#8212;Advertisement&#8212;</p>
+										$billboard_ad
+										<br>
+										<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
+                  </td>
+                </tr>
+								$ogt_section
+								$ioe_section
+								$hidden_kitchen_sec
+								</tr>
+								<tr>
+									<td align="center" style="border-bottom: 1px solid #767676;">
+										<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
+										<p class="mobile-format" style="margin:10px 0 0 0 !important;text-align:center;font-family:Georgia, serif;font-weight:bold;color:#000;font-size:16px;line-height:21px">Hungry for more food news?</p>
+										<p class="mobile-format" style="margin: 5px 0 20px 0 !important;text-align: center; font-family:Georgia, serif; color: #222;font-size: 16px;line-height:21px;">Follow Mother Jones Food on <a href="https://twitter.com/MotherJonesFood" style="color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;">Twitter</a> and <a href="https://www.facebook.com/motherjonesfood/" style="color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;">Facebook</a>, and find all of our food stories at <a href="https://www.motherjones.com/food" style="color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;">www.motherjones.com</a></p>
+										<p class="mobile-format" style="margin: 0 0 20px 0; padding: 0;text-align:center; font-family:Georgia, serif; color: #222;font-size: 16px;line-height:21px;"><span style="font-family:Georgia, serif;font-weight: bold; color: #000;">Did someone forward this to you?</span><br /><a style="color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;margin:15px 0;" href="http://www.motherjones.com/about/interact-engage/free-email-newsletter">Click here</a> to sign up to get more <em>Food for Thought</em> in your inbox</em>!</p>
+										$fft_image_creds
+										<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
+									</td>
+								</tr>
+								<tr>
+									<td style="border-bottom:1px solid #767676;" align="center">
+										<p class="ad_text" style="margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;">&#8212;Advertisement&#8212;</p>
+										$billboard_ad2
+										<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
                   </td>
                 </tr>
                 <tr>
@@ -1025,12 +1051,15 @@ $fft_redesign = <<<FOODREDESIGN
                     $global_footer
                   </td>
                 </tr>
-                <tr>
-                	<td>
-                		$safe_rbt
-                	</td>
-                </tr>
               </table>
+            </td>
+          </tr>
+          <tr>
+          	<td>
+          		$safe_rbt
+          	</td>
+          </tr>
+        </table>
         <!--[if (gte mso 9)|(IE)]>
             </td>
           </tr>
@@ -1039,7 +1068,8 @@ $fft_redesign = <<<FOODREDESIGN
       </td>
     </tr>
   </table>
-</body>
+</div>
+	</body>
 </html>
 FOODREDESIGN;
 
@@ -1105,6 +1135,7 @@ $fft_ioe2_source = strip_tags(addslashes($fft_ioe2_source), "<a><br /><br><b><i>
 $fft_ioe2_url = addslashes($fft_ioe2_url);
 $fft_ioe3_source = strip_tags(addslashes($fft_ioe3_source), "<a><br /><br><b><i><em><strong><span><ol><ul><li><blockquote><img><table><tr><td>");
 $fft_ioe3_url = addslashes($fft_ioe3_url);
+$fft_image_creds = addslashes($fft_image_creds);
 
 //check to see if data exists in db
 $check_existing = "SELECT id, hed_date FROM food_for_thought_redesign WHERE hed_date='$headlines_date'";
@@ -1183,11 +1214,12 @@ if($exists) {
 	fft_ioe2_url = '$fft_ioe2_url',
 	fft_ioe3_source = '$fft_ioe3_source',
 	fft_ioe3_ital = '$fft_ioe3_ital',
-	fft_ioe3_url = '$fft_ioe3_url'
+	fft_ioe3_url = '$fft_ioe3_url',
+	image_creds = '$fft_image_creds'
 	WHERE hed_date='$headlines_date'";
 }
 else {
-	$run_qry = "INSERT INTO food_for_thought_redesign(hed_date,fft_main_hed,fft_main_hed_url,fft_main_img,fft_article_1,fft_article_2,fft_article_3,fft_article_4,fft_article_5,fft_article_6,snack_box,fft_snack_box,fft_sb_image,fft_sb_attr,in_our_ears,fft_ioe_item1,fft_bite_add,fft_bite_link,fft_ioe_item2,fft_ioe_item3,hidden_kitchen,fft_hk_leadin,fft_hidden_kitchen,subject_line,ad_name,ad_billboard,ad_link_bill,ad_name2,ad_link_banner,ad_banner,sub_url,sub_image,sub_text,sub_code,membership_slot,lift_note,pixel_tracker,pixel_tracker2,fft_a1_source,fft_a1_ital,fft_a1_url,fft_a2_source,fft_a2_ital,fft_a2_url,fft_a3_source,fft_a3_ital,fft_a3_url,fft_a4_source,fft_a4_ital,fft_a4_url,fft_a5_source,fft_a5_ital,fft_a5_url,fft_a6_source,fft_a6_ital,fft_a6_url,fft_ioe1_source,fft_ioe1_ital,fft_ioe1_url,fft_ioe2_source,fft_ioe2_ital,fft_ioe2_url,fft_ioe3_source,fft_ioe3_ital,fft_ioe3_url)
+	$run_qry = "INSERT INTO food_for_thought_redesign(hed_date,fft_main_hed,fft_main_hed_url,fft_main_img,fft_article_1,fft_article_2,fft_article_3,fft_article_4,fft_article_5,fft_article_6,snack_box,fft_snack_box,fft_sb_image,fft_sb_attr,in_our_ears,fft_ioe_item1,fft_bite_add,fft_bite_link,fft_ioe_item2,fft_ioe_item3,hidden_kitchen,fft_hk_leadin,fft_hidden_kitchen,subject_line,ad_name,ad_billboard,ad_link_bill,ad_name2,ad_link_banner,ad_banner,sub_url,sub_image,sub_text,sub_code,membership_slot,lift_note,pixel_tracker,pixel_tracker2,fft_a1_source,fft_a1_ital,fft_a1_url,fft_a2_source,fft_a2_ital,fft_a2_url,fft_a3_source,fft_a3_ital,fft_a3_url,fft_a4_source,fft_a4_ital,fft_a4_url,fft_a5_source,fft_a5_ital,fft_a5_url,fft_a6_source,fft_a6_ital,fft_a6_url,fft_ioe1_source,fft_ioe1_ital,fft_ioe1_url,fft_ioe2_source,fft_ioe2_ital,fft_ioe2_url,fft_ioe3_source,fft_ioe3_ital,fft_ioe3_url,image_creds)
 	VALUES('$headlines_date',
 	'$fft_main_hed',
 	'$fft_main_hed_url',
@@ -1252,7 +1284,8 @@ else {
 	'$fft_ioe2_url',
 	'$fft_ioe3_source',
 	'$fft_ioe3_ital',
-	'$fft_ioe3_url')";
+	'$fft_ioe3_url',
+	'$fft_image_creds')";
 }
 //flush query and close db connections
 mysqli_query($db_connect, $run_qry) or die("Query did not run correctly". mysqli_error($db_connect));

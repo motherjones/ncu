@@ -404,6 +404,13 @@ $fft_redesign = <<<FFTRED
                 <textarea id="fft_hidden_kitchen" name="fft_hidden_kitchen""></textarea>
             </fieldset>
         </fieldset>
+
+        <fieldset class="sections">
+            <fieldset class="sub_sections">
+                <p>Image credits:</p>
+                <textarea id="image_creds" name="image_creds""></textarea>
+            </fieldset>
+        </fieldset>
     </div>
   </div>
 </div>
