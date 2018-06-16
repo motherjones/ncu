@@ -141,34 +141,48 @@ else {
 	}
 }
 //bottom ad slot if used by newsletter
-if ((isset($_REQUEST['billboard_url2']) && $_REQUEST['billboard_url2'] != null) || (isset($_REQUEST['billboard_img2']) && $_REQUEST['billboard_img2'] != "")) {
-	$billboard_url2 = $_REQUEST['billboard_url2'];
-	$billboard_image2 = $_REQUEST['billboard_img2'];
-	if($headlines_type == "food_for_thought_redesign") {
-		$billboard_ad2 = "<div style=\"margin-top: 10px;margin-bottom:20px;width:100%;\"><a href=\"$billboard_url2\" name=\"Top Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:540px;border: none !important;\" alt=\"$advertiser_name2\" width=\"540\" border=\"0\" /></a>$pixel_tracker2</div>\n";
+//if fft & small_sub_ad is not blank, apply small_sub_ad to billboard2, otherwise, run ad (default LiveIntent) on billboard2
+if($headlines_type === "food_for_thought_redesign") {
+	if(isset($small_sub_ad) && $small_sub_ad !== "") {
+		$billboard_ad2 = $small_sub_ad;
+		$billboard_url2 = "";
+		$billboard_image2 = "";
 	}
 	else {
-		$billboard_ad2 = "<div style=\"margin-top:7px;width:100%;\"><a href=\"$billboard_url2\" name=\"Bottom Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:300px;border: none;\" alt=\"$advertiser_name2\" width=\"300\" height=\"250\" border=\"0\" /></a>$pixel_tracker2</div>\n";
+		if((isset($_REQUEST['billboard_url2']) && $_REQUEST['billboard_url2'] !== "") || (isset($_REQUEST['billboard_img2']) && $_REQUEST['billboard_img2'] !== "")) {
+			$billboard_url2 = $_REQUEST['billboard_url2'];
+			$billboard_image2 = $_REQUEST['billboard_img2'];
+			$billboard_ad2 = "<div style=\"margin-top: 10px;margin-bottom:20px;width:100%;\"><a href=\"$billboard_url2\" name=\"Bottom Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:540px;border: none !important;\" alt=\"$advertiser_name2\" width=\"540\" border=\"0\" /></a>$pixel_tracker2</div>\n";
+		}
+		else {
+			$billboard_url2 = "";
+			$billboard_image2 = "";
+			$billboard_ad2 = $fft_redesign_billboard2;
+		}
 	}
 }
 else {
-	$liveintent_billboard2 = true;
-	$billboard_url2 = null;
-	$billboard_image2 = null;
-	//list of newsletters that use the bottom ad slot
-	switch($headlines_type) {
-		case "econundrums_new":
-			$billboard_ad2 = "\n$econundrums_billboard2\n";
-			break;
-		case "in_the_mix_new":
-			$billboard_ad2 = "\n$inthemix_billboard2\n";
-			break;
-		case "political_mojo_new":
-			$billboard_ad2 = "\n$politicalmojo_billboard2\n";
-			break;
-		case "food_for_thought_redesign":
-			$billboard_ad2 = "\n$fft_redesign_billboard2\n";
-			break;
+	if ((isset($_REQUEST['billboard_url2']) && $_REQUEST['billboard_url2'] !== "") || (isset($_REQUEST['billboard_img2']) && $_REQUEST['billboard_img2'] != "")) {
+		$billboard_url2 = $_REQUEST['billboard_url2'];
+		$billboard_image2 = $_REQUEST['billboard_img2'];
+		$billboard_ad2 = "<div style=\"margin-top:7px;width:100%;\"><a href=\"$billboard_url2\" name=\"Bottom Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:300px;border: none;\" alt=\"$advertiser_name2\" width=\"300\" height=\"250\" border=\"0\" /></a>$pixel_tracker2</div>\n";
+	}
+	else {
+		$liveintent_billboard2 = true;
+		$billboard_url2 = null;
+		$billboard_image2 = null;
+		//list of newsletters that use the bottom ad slot
+		switch($headlines_type) {
+			case "econundrums_new":
+				$billboard_ad2 = "\n$econundrums_billboard2\n";
+				break;
+			case "in_the_mix_new":
+				$billboard_ad2 = "\n$inthemix_billboard2\n";
+				break;
+			case "political_mojo_new":
+				$billboard_ad2 = "\n$politicalmojo_billboard2\n";
+				break;
+		}
 	}
 }
 /* --------------------end ad section------------------- */

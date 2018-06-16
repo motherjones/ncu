@@ -645,7 +645,7 @@ if(isset($fft_ioe_item1) && $fft_ioe_item1 !== "") {
 			$close_bite_anchor = "</a>";
 		}
 		
-		$fft_ioe_item1_content = "<table width=\"500\" align=\"center\" style=\"max-width: 500px !important;margin: 20px 0;\">\n<tr>\n<td width=\"125\" align=\"left\">\n$bite_anchor_code<img id=\"bite_logo\" src=\"http://assets.motherjones.com/newsletters/newsletter_test/bite_logo_name.png\" width=\"110\" style=\"max-width: 110px;height: auto;\" />$close_bite_anchor\n</td>\n<td align=\"right\" style=\"text-align:left;\">\n$fft_ioe_item1_content<p class=\"bite-episode-text\" style=\"margin: 0 0 20px 0; padding: 0; font-family:Georgia, serif; color: #222;font-size: 16px;line-height: 21px;\">$fft_bite_add</p>\n</td>\n</tr>\n</table>";
+		$fft_ioe_item1_content = "<table width=\"540\" align=\"center\" style=\"max-width: 540px !important;margin: 20px 0;\">\n<tr>\n<td width=\"125\" valign=\"top\" align=\"left\">\n$bite_anchor_code<img id=\"bite_logo\" src=\"http://assets.motherjones.com/newsletters/newsletter_test/bite_logo_name.png\" width=\"110\" style=\"max-width: 110px;height: auto;\" />$close_bite_anchor\n</td>\n<td align=\"right\" style=\"text-align:left;\">\n$fft_ioe_item1_content<p class=\"bite-episode-text\" style=\"margin: 0; padding: 0; font-family:Georgia, serif; color: #222;font-size: 16px;line-height: 21px;\">$fft_bite_add</p>\n</td>\n</tr>\n</table>";
 	}
 }
 else {
@@ -1043,6 +1043,7 @@ $fft_redesign = <<<FOODREDESIGN
 									<td style="border-bottom:1px solid #767676;" align="center">
 										<p class="ad_text" style="margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;">&#8212;Advertisement&#8212;</p>
 										$billboard_ad2
+										<br>
 										<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
                   </td>
                 </tr>

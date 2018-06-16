@@ -69,14 +69,20 @@ include "incs/header.inc";
     </fieldset>
     <fieldset id="membership_slots" class="sections">
     	<legend>MEMBERSHIP SLOT OVERRIDES</legend>
+    	<p><strong>Note</strong>: As noted below, if the HTML (Image Map) section is filled in, that will override anything in the Image and URL only section. For Food for Thought, either section will override anything in the Ad Bottom (2) section (with the same priority as noted before).</p>
     	<fieldset class="sub_sections">
+    		<legend>Image and URL only section</legend>
     		<p><label for="sub_url">Sub url:</label> <input id="sub_url" name="sub_url" type="text" value="" size="40" onblur="this.value=fixURL(this.value)" /></p>
     		<p><label for="sub_image">Sub image:</label> <input type="text" value="" id="sub_image" name="sub_image" size="40"></p>
     		<p><label for="sub_text">Sub alt text:</label> <input type="text" value="" id="sub_text" name="sub_text" size="40"></p>
+    	</fieldset>
+    	<fieldset class="sub_sections">
+    		<legend>HTML (Image Map) section</legend>
+    		<p>Only HTML code here (<strong>This section overrides the Image and URL only section</strong>)</p>
+    		<textarea rows="5" cols="45" id="sub_code" name="sub_code"></textarea>
+    	</fieldset>
     		<p><label for="membership_slot">Membership text section for redesigned newsletter:</label></p>
     		<textarea id="membership_slot" name="membership_slot" rows="5" cols="45"></textarea>
-    		<p>Code field for old newsletter format (for complex HTML ad: This field overrides the Sub url & Sub image fields):</p>
-    	<textarea rows="5" cols="45" id="sub_code" name="sub_code"></textarea>
     	</fieldset>
   	</fieldset>
   </div>
