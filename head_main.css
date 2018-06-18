@@ -187,9 +187,9 @@ header {width:640px;
 #items_left, #items_right {margin:10px 0 0 0;
   /*text-align:right;*/
   clear:both;}
-.sections {margin:10px 10px;
+.sections {margin:10px 5px;
   width:425px;
-  padding:5px 10px;
+  padding:5px 5px;
   border:1px groove #000 !important;}
 .sections legend {font-size: 18px;
  	font-weight: bold;}

@@ -56,11 +56,11 @@ include "incs/header.inc";
     	</fieldset>
     	<fieldset class="sub_sections">
     		<legend style="background:#000;color:#fff;text-align:center;font-size: 12px;padding: 2px 2px;">PIXEL TRACKING CODE (TOP AD):</legend>
-    		<textarea id="pixel_tracker" name="pixel_tracker" type="text" value="" cols="55" rows="4""></textarea>
+    		<textarea id="pixel_tracker" name="pixel_tracker" type="text" value="" cols="49" rows="4""></textarea>
     	</fieldset>
     	<fieldset class="sub_sections">
     		<legend style="background:#000;color:#fff;text-align:center;font-size: 12px;padding 2px 2px;">PIXEL TRACKING CODE (BOTTOM AD):</legend>
-    		<textarea id="pixel_tracker2" name="pixel_tracker2" type="text" value="" cols="55" rows="4"></textarea>
+    		<textarea id="pixel_tracker2" name="pixel_tracker2" type="text" value="" cols="49" rows="4"></textarea>
     	</fieldset>
     	<fieldset class="sub_sections">
     		<legend>Lift-Note Section</legend>

@@ -537,7 +537,7 @@ if(isset($fft_article_6) && $fft_article_6 !== "") {
 	}
 }
 
-$main_section = $fft_article_1_content . $fft_article_2_content . $fft_article_3_content . $fft_article_4_content . $fft_article_5_content . $fft_article_6_content;
+$main_section = $main_title . $fft_article_1_content . $fft_article_2_content . $fft_article_3_content . $fft_article_4_content . $fft_article_5_content . $fft_article_6_content;
 
 $ogt_section = "";
 
@@ -999,7 +999,7 @@ $fft_redesign = <<<FOODREDESIGN
 					</tr>
           <tr>
             <td align="center" style="line-height:0;margin: 0;padding:0;">
-              <img src="https://cdn.maropost.com/pro/uploads/account_585/222761/header_FFT_orange.png" width="620" style="Margin:0 auto;width:100%;max-width:100%;height:auto;line-height:0;" alt="Trumpocracy" />
+              <img src="https://cdn.maropost.com/pro/uploads/account_585/222761/header_FFT_orange.png" width="620" style="Margin:0 auto;width:100%;max-width:100%;height:auto;line-height:0;" alt="Food for Thought" />
             </td>
           </tr>
           <tr>
