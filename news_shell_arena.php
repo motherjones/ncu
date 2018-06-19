@@ -6,11 +6,19 @@ $today = date("Y-m-d", time());
 $arch_type = $_REQUEST["newsletter_type"];
 $news_date = $_REQUEST["date"];
 $new = $_REQUEST["new"];
+$ad_message = "<strong>Note</strong>: ";
 if($new === "yes") {
 	$display_date = "<p>Headlines's date for new shell (format:2012-02-29): <input type=\"text\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"\" /></p>";
 }
 else {
 	$display_date = "<p>Headlines's date: $news_date <input type=\"hidden\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"$news_date\" /></p>";
+}
+
+if($arch_type === "food_for_thought_redesign") {
+	$ad_message .= "For Food for Thought, the <strong>HTML (Image Map) Section</strong> will override the <strong>Image and URL only section</strong>, and either of these sections will override the Ad Bottom(2) section.";
+}
+else {
+	$ad_message .= "The <strong>HTML (Image Map) Section</strong> will override the <strong>Image and Url only section</strong>.";
 }
 
 include "incs/header.inc";
@@ -69,7 +77,7 @@ include "incs/header.inc";
     </fieldset>
     <fieldset id="membership_slots" class="sections">
     	<legend>MEMBERSHIP SLOT OVERRIDES</legend>
-    	<p><strong>Note</strong>: As noted below, if the HTML (Image Map) section is filled in, that will override anything in the Image and URL only section. For Food for Thought, either section will override anything in the Ad Bottom (2) section (with the same priority as noted before).</p>
+    	<p><?php print $ad_message; ?></p>
     	<fieldset class="sub_sections">
     		<legend>Image and URL only section</legend>
     		<p><label for="sub_url">Sub url:</label> <input id="sub_url" name="sub_url" type="text" value="" size="40" onblur="this.value=fixURL(this.value)" /></p>
@@ -78,7 +86,6 @@ include "incs/header.inc";
     	</fieldset>
     	<fieldset class="sub_sections">
     		<legend>HTML (Image Map) section</legend>
-    		<p>Only HTML code here (<strong>This section overrides the Image and URL only section</strong>)</p>
     		<textarea rows="5" cols="45" id="sub_code" name="sub_code"></textarea>
     	</fieldset>
     		<p><label for="membership_slot">Membership text section for redesigned newsletter:</label></p>
