@@ -381,6 +381,8 @@ $main_section_p["class"] = "mobile-format";
 $main_section_p["style"] = "text-align:left;color: #222;font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
 $lead_in_bold = "font-family: Georgia, serif;font-weight: bold; color: #000 !important;";
 $url_style = "color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;";
+$fft_inline_img["width"] = "540";
+$fft_inline_img["style"] = "width:540px;max-width:540px;";
 
 if(isset($fft_main_hed_url) && $fft_main_hed_url !== "") {
 	$main_title = "<h3 style=\"Margin-bottom: 10px;font-weight: bold; color: #000 !important;font-family:Georgia, serif;font-size: 33px; line-height: 38px;\"><a href=\"$fft_main_hed_url\" style=\"text-decoration: none;color: #000;\">$fft_main_hed</a></h3>";
@@ -395,9 +397,6 @@ $fft_article_3_content = "";
 $fft_article_4_content = "";
 $fft_article_5_content = "";
 $fft_article_6_content = "";
-
-$img_styles["style"] = "max-width:540px;width:540px;";
-$img_styles["width"] = "540px";
 
 if(isset($fft_article_1) && $fft_article_1 !== "") {
 	//replace html entities
@@ -426,7 +425,7 @@ if(isset($fft_article_2) && $fft_article_2 !== "") {
 	$fft_article_2 = modifyHTML($fft_article_2, "p", $main_section_p);
 	$fft_article_2 = modifyHTML($fft_article_2, "strong", "style", $lead_in_bold);
 	$fft_article_2 = modifyHTML($fft_article_2, "a", "style", $url_style);
-	$fft_article_2 = modifyHTML($fft_article_2, "img", $img_styles);
+	$fft_article_2 = modifyHTML($fft_article_2, "img", $fft_inline_img);
 	//add sources and formatting
 	$get_last_p = strripos($fft_article_2, "</p>");
 	$get_substr = substr($fft_article_2, 0, $get_last_p);
@@ -449,7 +448,7 @@ if(isset($fft_article_3) && $fft_article_3 !== "") {
 	$fft_article_3 = modifyHTML($fft_article_3, "p", $main_section_p);
 	$fft_article_3 = modifyHTML($fft_article_3, "strong", "style", $lead_in_bold);
 	$fft_article_3 = modifyHTML($fft_article_3, "a", "style", $url_style);
-	$fft_article_3 = modifyHTML($fft_article_3, "img", $img_styles);
+	$fft_article_3 = modifyHTML($fft_article_3, "img", $fft_inline_img);
 	//add sources and formatting
 	$get_last_p = strripos($fft_article_3, "</p>");
 	$get_substr = substr($fft_article_3, 0, $get_last_p);
@@ -472,7 +471,7 @@ if(isset($fft_article_4) && $fft_article_4 !== "") {
 	$fft_article_4 = modifyHTML($fft_article_4, "p", $main_section_p);
 	$fft_article_4 = modifyHTML($fft_article_4, "strong", "style", $lead_in_bold);
 	$fft_article_4 = modifyHTML($fft_article_4, "a", "style", $url_style);
-	$fft_article_4 = modifyHTML($fft_article_4, "img", $img_styles);
+	$fft_article_4 = modifyHTML($fft_article_4, "img", $fft_inline_img);
 	//add sources and formatting
 	$get_last_p = strripos($fft_article_4, "</p>");
 	$get_substr = substr($fft_article_4, 0, $get_last_p);
@@ -496,7 +495,7 @@ if(isset($fft_article_5) && $fft_article_5 !== "") {
 	$fft_article_5 = modifyHTML($fft_article_5, "p", $main_section_p);
 	$fft_article_5 = modifyHTML($fft_article_5, "strong", "style", $lead_in_bold);
 	$fft_article_5 = modifyHTML($fft_article_5, "a", "style", $url_style);
-	$fft_article_5 = modifyHTML($fft_article_5, "img", $img_styles);
+	$fft_article_5 = modifyHTML($fft_article_5, "img", $fft_inline_img);
 	//add sorces and formatting
 	$get_last_p = strripos($fft_article_5, "</p>");
 	$get_substr = substr($fft_article_5, 0, $get_last_p);
@@ -519,7 +518,7 @@ if(isset($fft_article_6) && $fft_article_6 !== "") {
 	$fft_article_6 = modifyHTML($fft_article_6, "p", $main_section_p);
 	$fft_article_6 = modifyHTML($fft_article_6, "strong", "style", $lead_in_bold);
 	$fft_article_6 = modifyHTML($fft_article_6, "a", "style", $url_style);
-	$fft_article_6 = modifyHTML($fft_article_6, "img", $img_styles);
+	$fft_article_6 = modifyHTML($fft_article_6, "img", $fft_inline_img);
 	//add sources and formatting
 	$get_last_p = strripos($fft_article_6, "</p>");
 	$get_substr = substr($fft_article_6, 0, $get_last_p);
@@ -556,7 +555,7 @@ if(isset($fft_snack_box) && $fft_snack_box !== "") {
 	$snack_box_p["style"] = "margin: 0 0 20px 0; padding: 0; font-family: Georgia, serif; color: #222;font-size: 18px;";
 	$fft_snack_box = modifyHTML($fft_snack_box, "p", $snack_box_p);
 	$fft_snack_box = modifyHTML($fft_snack_box, "strong", "style", $lead_in_bold);
-	$fft_snack_box = modifyHTML($fft_snack_box, "img", $img_styles);
+	$fft_snack_box = modifyHTML($fft_snack_box, "img", $fft_inline_img);
 	$fft_snack_box = modifyHTML($fft_snack_box, "a", "style", $url_style);
 	$ogt_section .= $fft_snack_box;
 }
@@ -565,7 +564,7 @@ else {
 }
 
 if(isset($fft_sb_image) && $fft_sb_image !== "") {
-	$image_code = "<img src=\"$fft_sb_image\" alt=\"\" style=\"max-width: 500px; height: auto;margin-bottom: 20px;\" width=\"500\" /><!--[if (gte mso 9)|(IE)]><br /><![endif]-->";
+	$image_code = "<img src=\"$fft_sb_image\" alt=\"\" style=\"max-width: 540px; width:540px; height: auto;margin-bottom: 20px;\" width=\"540\" /><!--[if (gte mso 9)|(IE)]><br><br><![endif]-->";
 	$ogt_section .= $image_code;
 }
 else {
@@ -575,8 +574,8 @@ else {
 if(isset($fft_sb_attr) && $fft_sb_attr !== "") {
 	$fft_sb_attr = modifyHTML($fft_sb_attr, "p", $main_section_p);
 	$fft_sb_attr = modifyHTML($fft_sb_attr, "a", "style", $url_style);
-	$fft_sb_attr = modifyHTML($fft_sb_attr, "img", $img_styles);
-	$ogt_section .= $fft_sb_attr . "\n<!--[if (gte mso 9)|(IE)]><br /><![endif]-->";
+	$fft_sb_attr = modifyHTML($fft_sb_attr, "img", $fft_inline_img);
+	$ogt_section .= $fft_sb_attr . "\n<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->";
 }
 else {
 	$fft_sb_attr = "";
@@ -586,7 +585,7 @@ if($fft_snack_box === "" && $image_code === "" && $fft_sb_attr === "") {
 	$ogt_section = "";
 }
 else {
-	$ogt_section = "<tr>\n<td style=\"border-bottom: 1px solid #767676;\">\n<!--[if (gte mso 9)|(IE)]><br /><![endif]-->" . $ogt_section . "\n</td>\n</tr>\n</table>\n" . "<!--[if (gte mso 9)|(IE)]><br /><![endif]--></td>\n</tr>\n";
+	$ogt_section = "<tr>\n<td style=\"border-bottom: 1px solid #767676;\">\n<!--[if (gte mso 9)|(IE)]><br /><![endif]-->" . $ogt_section . "\n</td>\n</tr>\n</table>\n" . "<!--[if (gte mso 9)|(IE)]><br><br><![endif]--></td>\n</tr>\n";
 }
 
 //in our ears/podcast section (New From Bite Podcast)
@@ -616,7 +615,7 @@ if(isset($fft_ioe_item1) && $fft_ioe_item1 !== "") {
 	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "p", $ioe_sec_p);
 	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "strong", "style", $ioe_lead_bold);
 	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "a", "style", $url_style);
-	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "img", $img_styles);
+	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "img", $fft_inline_img);
 	//add sources and formatting
 	$get_last_p = strripos($fft_ioe_item1, "</p>");
 	$get_substr = substr($fft_ioe_item1, 0, $get_last_p);
@@ -636,7 +635,7 @@ if(isset($fft_ioe_item1) && $fft_ioe_item1 !== "") {
 	if(isset($fft_bite_add) && $fft_bite_add !== "") {
 		//replace html entities
 		$fft_bite_add = modifyHTML($fft_bite_add, "a", "style", $url_style);
-		$fft_sb_attr = modifyHTML($fft_sb_attr, "img", $img_styles);
+		$fft_sb_attr = modifyHTML($fft_sb_attr, "img", $fft_inline_img);
 		$fft_bite_add = str_replace("<p>", "", $fft_bite_add);
 		$fft_bite_add = str_replace("</p>", "", $fft_bite_add);
 		
@@ -657,7 +656,7 @@ if(isset($fft_ioe_item2) && $fft_ioe_item2 !== "") {
 	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "p", $ioe_sec_p);
 	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "strong", "style", $ioe_lead_bold);
 	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "a", "style", $url_style);
-	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "img", $img_styles);
+	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "img", $fft_inline_img);
 	//add source and formatting
 	$get_last_p = strripos($fft_ioe_item2, "</p>");
 	$get_substr = substr($fft_ioe_item2, 0, $get_last_p);
@@ -680,7 +679,7 @@ if(isset($fft_ioe_item3) && $fft_ioe_item3 !== "") {
 	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "p", $ioe_sec_p);
 	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "strong", "style", $ioe_lead_bold);
 	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "a", "style", $url_style);
-	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "img", $img_styles);
+	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "img", $fft_inline_img);
 	//add sources and formatting
 	$get_last_p = strripos($fft_ioe_item3, "</p>");
 	$get_substr = substr($fft_ioe_item3, 0, $get_last_p);
@@ -706,7 +705,7 @@ else {
 }
 //end podcast section
 
-//What's Cooking section
+//What's Cooking section (formerly Hidden Kitchen/For Newsletter Subscribers)
 $hidden_kitchen_sec = "";
 
 if(isset($hidden_kitchen) && $hidden_kitchen !== "") {
@@ -720,7 +719,7 @@ if(isset($fft_hk_leadin) && $fft_hk_leadin !== "") {
 	$fft_hk_p_format["class"] = "hk_leadin";
 	$fft_hk_p_format["style"] = "margin: 0 0 20px 0; padding: 0; font-family:Georgia, serif; font-weight: bold; color: #000; font-size: 24px;line-height:28px;";
 	$fft_hk_leadin = modifyHTML($fft_hk_leadin, "p", $fft_hk_p_format);
-	//$hidden_kitchen_sec .= $fft_hk_leadin;
+	$fft_hk_leadin = modifyHTML($fft_hk_leadin, "img", $fft_inline_img);
 }
 else {
 	$fft_hk_leadin = "";
@@ -730,7 +729,7 @@ if(isset($fft_hidden_kitchen) && $fft_hidden_kitchen !== "") {
 	$fft_hk_p_format_2["class"] = "mobile-format";
 	$fft_hk_p_format_2["style"] = "color: #222; font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
 	$fft_hidden_kitchen = modifyHTML($fft_hidden_kitchen, "p", $fft_hk_p_format_2);
-	$fft_hidden_kitchen = modifyHTML($fft_hidden_kitchen, "img", $img_styles);
+	$fft_hidden_kitchen = modifyHTML($fft_hidden_kitchen, "img", $fft_inline_img);
 	
 	$fft_hidden_kitchen = str_replace("<a", "<a style=\"$url_style\"", $fft_hidden_kitchen);
 	$hidden_kitchen_sec .= "<tr><td style=\"border-bottom: 1px solid #767676;\">" . $hidden_kitchen_title . $fft_hk_leadin . $fft_hidden_kitchen ."<br></td></tr>";
@@ -990,13 +989,13 @@ $fft_redesign = <<<FOODREDESIGN
             <td>
         <![endif]-->
         <table class="layout" align="center" cellpadding="0" cellspacing="0" width="620" style="Margin:0 auto;background-color: #fff;max-width:620px;">
-					<tr>
-						<td>
-							<div style="width:145px;text-align:center;margin:10px auto;" align="center">
-								<img src="https://cdn.maropost.com/pro/uploads/account_585/215784/MoJoLoGo.png" style="max-width:145px;width:145px;" width="145">
-							</div>
-						</td>
-					</tr>
+        	  <tr>
+			<td>
+				<div style="width:145px;text-align:center;margin:10px auto;" align="center">
+					<img src="https://cdn.maropost.com/pro/uploads/account_585/215784/MoJoLoGo.png" style="max-width:145px;width:145px;" width="145">
+				</div>
+			</td>
+		  </tr>
           <tr>
             <td align="center" style="line-height:0;margin: 0;padding:0;">
               <img src="https://cdn.maropost.com/pro/uploads/account_585/222761/header_FFT_orange.png" width="620" style="Margin:0 auto;width:100%;max-width:100%;height:auto;line-height:0;" alt="Food for Thought" />
@@ -1011,41 +1010,41 @@ $fft_redesign = <<<FOODREDESIGN
                   </td>
                 </tr>
                 <tr>
-									<td style="border-bottom:1px solid #767676;line-height:0;">
-										<center><a href="$fft_main_hed_url"><img src="$fft_main_img" style="Margin: 0 auto 5px auto;width:100%;max-width: 100%; height: auto;" width="540" alt="Food for Thought" border="0" /></a></center>
-										$main_section
-										<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
-									</td>
-								</tr>
-								<tr>
-									<td style="border-bottom: 1px solid #767676;">
-                    <p class="ad_text" style="margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;">&#8212;Advertisement&#8212;</p>
-										$billboard_ad
-										<br>
-										<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
+                		<td style="border-bottom:1px solid #767676;line-height:0;">
+						<center><a href="$fft_main_hed_url"><img src="$fft_main_img" style="Margin: 0 auto 5px auto;width:100%;max-width: 100%; height: auto;" width="540" alt="Food for Thought" border="0" /></a></center>
+						$main_section
+						<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
+					</td>
+				</tr>
+				<tr>
+					<td style="border-bottom: 1px solid #767676;">
+						<p class="ad_text" style="margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;">&#8212;Advertisement&#8212;</p>
+						$billboard_ad
+						<br>
+						<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
                   </td>
                 </tr>
-								$ogt_section
-								$ioe_section
-								$hidden_kitchen_sec
-								</tr>
-								<tr>
-									<td align="center" style="border-bottom: 1px solid #767676;">
-										<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
-										<p class="mobile-format" style="margin:10px 0 0 0 !important;text-align:center;font-family:Georgia, serif;font-weight:bold;color:#000;font-size:16px;line-height:21px">Hungry for more food news?</p>
-										<p class="mobile-format" style="margin: 5px 0 20px 0 !important;text-align: center; font-family:Georgia, serif; color: #222;font-size: 16px;line-height:21px;">Follow Mother Jones Food on <a href="https://twitter.com/MotherJonesFood" style="color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;">Twitter</a> and <a href="https://www.facebook.com/motherjonesfood/" style="color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;">Facebook</a>, and find all of our food stories at <a href="https://www.motherjones.com/food" style="color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;">www.motherjones.com</a></p>
-										<p class="mobile-format" style="margin: 0 0 20px 0; padding: 0;text-align:center; font-family:Georgia, serif; color: #222;font-size: 16px;line-height:21px;"><span style="font-family:Georgia, serif;font-weight: bold; color: #000;">Did someone forward this to you?</span><br /><a style="color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;margin:15px 0;" href="http://www.motherjones.com/about/interact-engage/free-email-newsletter">Click here</a> to sign up to get more <em>Food for Thought</em> in your inbox</em>!</p>
-										$fft_image_creds
-										<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
-									</td>
-								</tr>
-								<tr>
-									<td style="border-bottom:1px solid #767676;" align="center">
-										<p class="ad_text" style="margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;">&#8212;Advertisement&#8212;</p>
-										$billboard_ad2
-										<br>
-										<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
-                  </td>
+				$ogt_section
+				$ioe_section
+				$hidden_kitchen_sec
+				</tr>
+				<tr>
+					<td align="center" style="border-bottom: 1px solid #767676;">
+						<!--[if (gte mso 9)|(IE)]><br /><![endif]-->
+						<p class="mobile-format" style="margin:10px 0 0 0 !important;text-align:center;font-family:Georgia, serif;font-weight:bold;color:#000;font-size:16px;line-height:21px">Hungry for more food news?</p>
+						<p class="mobile-format" style="margin: 5px 0 20px 0 !important;text-align: center; font-family:Georgia, serif; color: #222;font-size: 16px;line-height:21px;">Follow Mother Jones Food on <a href="https://twitter.com/MotherJonesFood" style="color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;">Twitter</a> and <a href="https://www.facebook.com/motherjonesfood/" style="color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;">Facebook</a>, and find all of our food stories at <a href="https://www.motherjones.com/food" style="color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;">www.motherjones.com</a></p>
+						<p class="mobile-format" style="margin: 0 0 20px 0; padding: 0;text-align:center; font-family:Georgia, serif; color: #222;font-size: 16px;line-height:21px;"><span style="font-family:Georgia, serif;font-weight: bold; color: #000;">Did someone forward this to you?</span><br /><a style="color: #222;border-bottom: 1px solid #ff6900;text-decoration:none;margin:15px 0;" href="http://www.motherjones.com/about/interact-engage/free-email-newsletter">Click here</a> to sign up to get more <em>Food for Thought</em> in your inbox</em>!</p>
+						$fft_image_creds
+						<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
+					</td>
+				</tr>
+				<tr>
+					<td style="border-bottom:1px solid #767676;" align="center">
+						<p class="ad_text" style="margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;">&#8212;Advertisement&#8212;</p>
+						$billboard_ad2
+						<br>
+						<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->
+					</td>
                 </tr>
                 <tr>
                   <td align="center">
