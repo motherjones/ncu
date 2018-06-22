@@ -2,6 +2,7 @@
 class insertAds {
 	//private variables
 	private $var_array;
+	private $db_connect;
 	
 	//accessors
 	//get individual values from array
@@ -25,13 +26,33 @@ class insertAds {
 		foreach($req_array as $key => $value) {
 			if(isset($value) && $value !== "") {
 				$this::setVars($key, $value);
-				//$this->var_array[$key] = trim($req_array[$key]);
 			}
 			else {
 				$this::setVars($key);
-				//$this->var_array[$key] = "";
 			}
 		}
+	}
+	
+	public function writeToDB($host, $user, $psswd, $db) {
+		$query_str = "INSERT INTO newsletter_ads(";
+		$values = "VALUES(";
+		$this->db_connect = mysqli_connect($host, $user, $psswd, $db) or die("Can't connect to database");
+		
+		foreach($this->getArray as $key => $value) {
+			$query_str .= $key . ",";
+			$values .= "'" . $value . "'" . ",";
+		}
+		
+		$query_str = rtrim(trim($query_str), ",");
+		$values = rtrim(trim($values), ",");
+		
+		$query_str .= ")";
+		$values .= ");";
+		
+		$query_str .= $values;
+		
+		mysqli_query($this->db_connect, $query_str) or die("Query did not run correctly". mysqli_error($this->db_connect));
+		mysqli_close($this->db_connect);
 	}
 }
 ?>
