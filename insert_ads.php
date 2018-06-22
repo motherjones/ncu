@@ -10,7 +10,7 @@ class insertAds {
 	}
 	
 	//set individual values in array
-	public function setVars($the_key, $value) {
+	private static function setVars($the_key, $value="") {
 		$this->var_array[$the_key] = $value;
 	}
 	
@@ -24,10 +24,12 @@ class insertAds {
 	public function __construct($req_array) {
 		foreach($req_array as $key => $value) {
 			if(isset($value) && $value !== "") {
-				$this->var_array[$key] = trim($req_array[$key]);
+				$this::setVars($key, $value);
+				//$this->var_array[$key] = trim($req_array[$key]);
 			}
 			else {
-				$this->var_array[$key] = "";
+				$this::setVars($key);
+				//$this->var_array[$key] = "";
 			}
 		}
 	}
