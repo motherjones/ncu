@@ -807,7 +807,7 @@ $trump_mobile
 $lift_note_section
           <tr>
             <td align="center" style="line-height:0;margin: 0;padding:0;">
-              <img src="http://assets.motherjones.com/newsletters/images/russian_connection_banner-061217.png" width="620" style="Margin:0 auto;width:100%;max-width:100%;height:auto;line-height:0;" alt="Trumpocracy" />
+              <a href="https://www.motherjones.com"><img src="http://assets.motherjones.com/newsletters/images/russian_connection_banner-061217.png" width="620" style="Margin:0 auto;width:100%;max-width:100%;height:auto;line-height:0;" alt="Trumpocracy" /></a>
             </td>
           </tr>
           <tr>

@@ -414,7 +414,7 @@ $mobile_styles
 	$lift_note_section
     <tr>
         <td style="$news_main_logo" align="center">
-            <img src="http://assets.motherjones.com/newsletters/images/econ_header_3.png" alt="Econundrums" style="width:600px;border: none !important;" width="600" border="0" />
+            <a href="https://www.motherjones.com"><img src="http://assets.motherjones.com/newsletters/images/econ_header_3.png" alt="Econundrums" style="width:600px;border: none !important;" width="600" border="0" /></a>
 		</td>
     </tr>
     <tr>

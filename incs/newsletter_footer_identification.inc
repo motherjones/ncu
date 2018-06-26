@@ -40,7 +40,7 @@ $trumpocracy_footer = <<<TRUMPFOOT
 	</tr>
 	<tr>
 		<td align="center" style="margin-top: 15px;text-align:center;" colspan="2">
-			<img src="http://assets.motherjones.com/newsletters/newsletter_test/mojo_logo_btm_bw.png" style="width:300px;max-width: 300px;margin: 20px auto;" width="300" />
+			<a href="https://www.motherjones.com"><img src="http://assets.motherjones.com/newsletters/newsletter_test/mojo_logo_btm_bw.png" style="width:300px;max-width: 300px;margin: 20px auto;" width="300" /></a>
 		</td>
 	</tr>
 </table>
@@ -68,7 +68,7 @@ $global_footer = <<<FOOTER
 				</tr>
 				<tr>
 					<td align="center" style="margin-top: 15px;text-align:center;" colspan="2">
-						<img src="http://assets.motherjones.com/newsletters/newsletter_test/mojo_logo_btm_bw.png" style="width:300px;max-width: 300px;margin: 10px auto;" width="300" />
+						<a href="https://www.motherjones.com><img src="http://assets.motherjones.com/newsletters/newsletter_test/mojo_logo_btm_bw.png" style="width:300px;max-width: 300px;margin: 10px auto;" width="300" /></a>
 					</td>
 				</tr>
 			</table>

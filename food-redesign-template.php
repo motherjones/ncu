@@ -992,7 +992,7 @@ $fft_redesign = <<<FOODREDESIGN
         	  <tr>
 			<td>
 				<div style="width:145px;text-align:center;margin:10px auto;" align="center">
-					<img src="https://cdn.maropost.com/pro/uploads/account_585/215784/MoJoLoGo.png" style="max-width:145px;width:145px;" width="145">
+					<a href="https://www.motherjones.com"><img src="https://cdn.maropost.com/pro/uploads/account_585/215784/MoJoLoGo.png" style="max-width:145px;width:145px;" width="145"></a>
 				</div>
 			</td>
 		  </tr>
