@@ -14,8 +14,8 @@ else {
 	$display_date = "<p>Headlines's date: $news_date <input type=\"hidden\" id=\"hed_date\" name=\"date_today\" size=\"10\" value=\"$news_date\" /></p>";
 }
 
-if($arch_type === "food_for_thought_redesign") {
-	$ad_message .= "For Food for Thought, the <strong>HTML (Image Map) Section</strong> will override the <strong>Image and URL only section</strong>, and either of these sections will override the Ad Bottom(2) section.";
+if($arch_type === "food_for_thought_redesign" || $arch_type === "recharge") {
+	$ad_message .= "For <em>Food for Thought</em> and <em>Recharge</em>, the <strong>HTML (Image Map) Section</strong> will override the <strong>Image and URL only section</strong>, and either of these sections will override the Ad Bottom(2) section.";
 }
 else {
 	$ad_message .= "The <strong>HTML (Image Map) Section</strong> will override the <strong>Image and Url only section</strong>.";

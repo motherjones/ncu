@@ -1040,7 +1040,6 @@ $fft_redesign = <<<FOODREDESIGN
 				</tr>
 				<tr>
 					<td style="border-bottom:1px solid #767676;" align="center">
-						<p class="ad_text" style="margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;">&#8212;Advertisement&#8212;</p>
 						$billboard_ad2
 						<br>
 						<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->

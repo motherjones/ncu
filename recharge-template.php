@@ -573,7 +573,7 @@ $recharge = <<<RECHARGE
                 $recharge_sec1
                 <tr>
                   <td style="border-bottom:1px solid #767676;" align="center">
-                    $small_sub_ad
+                  	$billboard_ad2
                     <br />
                     <!--[if (gte mso 9)|(IE)]>
                     <br />

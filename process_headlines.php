@@ -5,6 +5,13 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 /* -------------------------- */
 
+// get headlines type, the date, and subject line
+$headlines_type = $_REQUEST['hed_type'];
+$headlines_date = $_REQUEST['date_today'];
+$subject_line = $_REQUEST['subject_line'];
+$timestamp = time();
+/* -----------------ads section-------------------- */
+
 /* include files */
 // for db
 /* database credentials are located in the credentials.inc file */
@@ -13,6 +20,15 @@ include "incs/credentials.inc";
  All inline CSS is in this file
  */
 include "styles_includes.php";
+
+//include membership ad templates
+include "incs/membership_ads.inc";
+
+//include ad class
+//include "insert_ads.php";
+
+//default ads code
+include "incs/default_ads.inc";
 /* end include section */
 
 /* file path variable for writing out html file */
@@ -33,14 +49,6 @@ else {
 	$relocate_me = "<script type=\"text/javascript\">location.href='./'</script>";
 }
 /* end check preview section */
-
-// get headlines type, the date, and subject line
-$headlines_type = $_REQUEST['hed_type'];
-$headlines_date = $_REQUEST['date_today'];
-$subject_line = $_REQUEST['subject_line'];
-
-/* -----------------ads section-------------------- */
-$timestamp = time();
 
 //pixel tracker section
 if(isset($_REQUEST["pixel_tracker"]) && $_REQUEST["pixel_tracker"] != "") {
@@ -87,12 +95,6 @@ if(isset($lift_note) && $lift_note !== "") {
 	$lift_note = modifyHTML($lift_note, "a", "style", $lift_note_a);
 	$lift_note_section = "<tr><td class=\"standard_td\" style=\"padding: 10px 20px !important;\">" . $lift_note . "<hr style=\"border:1px solid #e8e8e8;background-color: #f2eeed;width:100%;\" /></td></tr>";
 }
-
-//include membership ad templates
-include "incs/membership_ads.inc";
-
-//default ads code
-include "incs/default_ads.inc";
 
 //billboard (meaning 300x250 ads for some newsletters, 540x180 or 600x200 for others)
 if ((isset($_REQUEST['billboard_url']) && $_REQUEST['billboard_url'] != null) || (isset($_REQUEST['billboard_img']) && $_REQUEST['billboard_img'] != "")) {
@@ -142,7 +144,7 @@ else {
 }
 //bottom ad slot if used by newsletter
 //if fft & small_sub_ad is not blank, apply small_sub_ad to billboard2, otherwise, run ad (default LiveIntent) on billboard2
-if($headlines_type === "food_for_thought_redesign") {
+if($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge") {
 	if(isset($small_sub_ad) && $small_sub_ad !== "") {
 		$billboard_ad2 = $small_sub_ad;
 		$billboard_url2 = "";
@@ -152,12 +154,17 @@ if($headlines_type === "food_for_thought_redesign") {
 		if((isset($_REQUEST['billboard_url2']) && $_REQUEST['billboard_url2'] !== "") || (isset($_REQUEST['billboard_img2']) && $_REQUEST['billboard_img2'] !== "")) {
 			$billboard_url2 = $_REQUEST['billboard_url2'];
 			$billboard_image2 = $_REQUEST['billboard_img2'];
-			$billboard_ad2 = "<div style=\"margin-top: 10px;margin-bottom:20px;width:100%;\"><a href=\"$billboard_url2\" name=\"Bottom Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:540px;border: none !important;\" alt=\"$advertiser_name2\" width=\"540\" border=\"0\" /></a>$pixel_tracker2</div>\n";
+			$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p><div style=\"margin-top: 10px;margin-bottom:20px;width:100%;\"><a href=\"$billboard_url2\" name=\"Bottom Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:540px;border: none !important;\" alt=\"$advertiser_name2\" width=\"540\" border=\"0\" /></a>$pixel_tracker2</div>\n";
 		}
 		else {
 			$billboard_url2 = "";
 			$billboard_image2 = "";
-			$billboard_ad2 = $fft_redesign_billboard2;
+			if($headlines_type === "food_for_thought_redesign") {
+				$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p>" . $fft_redesign_billboard2;
+			}
+			else {
+				$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p>" . $recharge_billboard2;
+			}
 		}
 	}
 }

@@ -39,7 +39,7 @@ else {
 		$sub_url = trim($_REQUEST['sub_url']);
 	}
 	else {
-		if($headlines_type === "food_for_thought_redesign") {
+		if($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge") {
 			$sub_url = "";
 		}
 		else {
@@ -51,7 +51,7 @@ else {
 		$sub_image = $_REQUEST['sub_image'];
 	}
 	else {
-		if($headlines_type === "food_for_thought_redesign") {
+		if($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge") {
 			$sub_image = "";
 		}
 		else {
@@ -66,10 +66,10 @@ else {
 		$sub_text = "Mother Jones Store";
 	}
 	
-	if($headlines_type === "trumpocracy" || $headlines_type === "recharge") {
+	if($headlines_type === "trumpocracy") {
 		$small_sub_ad = "<a href=\"$sub_url\"><img id=\"sub_ad\" src=\"$sub_image\" style=\"width:540px;max-width:540px;Margin:0 auto 20px auto;\" width=\"540\" alt=\"$sub_text\" border=\"0\" /></a>";
 	}
-	elseif($headlines_type === "food_for_thought_redesign") {
+	elseif($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge") {
 		if($sub_url === "" || $sub_image === "") {
 			$small_sub_ad = "";
 		}
