@@ -730,15 +730,15 @@ if(isset($fft_hidden_kitchen) && $fft_hidden_kitchen !== "") {
 	$fft_hk_p_format_2["style"] = "color: #222; font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
 	$fft_hidden_kitchen = modifyHTML($fft_hidden_kitchen, "p", $fft_hk_p_format_2);
 	$fft_hidden_kitchen = modifyHTML($fft_hidden_kitchen, "img", $fft_inline_img);
+	$fft_hidden_kitchen = modifyHTML($fft_hidden_kitchen, "a", "style", $url_style);
 	
-	$fft_hidden_kitchen = str_replace("<a", "<a style=\"$url_style\"", $fft_hidden_kitchen);
 	$hidden_kitchen_sec .= "<tr><td style=\"border-bottom: 1px solid #767676;\">" . $hidden_kitchen_title . $fft_hk_leadin . $fft_hidden_kitchen ."<br></td></tr>";
 }
 else {
 	$fft_hidden_kitchen = "";
 }
 
-if($fft_hk_leadin == "" && $fft_hidden_kitchen == "") {
+if($fft_hk_leadin === "" && $fft_hidden_kitchen === "") {
 	$hidden_kitchen_sec = "";
 }
 //end What's Cooking section
