@@ -54,5 +54,13 @@ class insertAds {
 		mysqli_query($this->db_connect, $query_str) or die("Query did not run correctly". mysqli_error($this->db_connect));
 		mysqli_close($this->db_connect);
 	}
+				//$this->var_array[$key] = trim($req_array[$key]);
+			}
+			else {
+				$this::setVars($key);
+				//$this->var_array[$key] = "";
+			}
+		}
+	}
 }
 ?>
