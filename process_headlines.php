@@ -25,7 +25,7 @@ include "styles_includes.php";
 include "incs/membership_ads.inc";
 
 //include ad class
-//include "insert_ads.php";
+include "insert_ads.php";
 
 //default ads code
 include "incs/default_ads.inc";
