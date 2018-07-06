@@ -24,8 +24,8 @@ else {
 include "incs/header.inc";
 ?>
     <div id="footer_row">
-      <button style="background-color:#369;color:#fff;font-size:14px;" onclick="checkForm('preview', '<?php print $new; ?>', '<?php print $arch_type; ?>');">Save and Preview</button>
-      <button style="background-color:#393;color:#fff;font-size:14px;" onclick="checkForm('not', '<?php print $new; ?>', '<?php print $arch_type; ?>')">Submit</button>
+      <button style="background-color:#369;color:#fff;font-size:14px;" onclick="checkForm('preview', '<?php print $new; ?>', '<?php print $arch_type; ?>');">Save and Preview Newsletter</button>
+      <button style="background-color:#393;color:#fff;font-size:14px;" onclick="checkForm('not', '<?php print $new; ?>', '<?php print $arch_type; ?>')">Submit Newsletters</button>
     </div>
 	<div id="head_row">
     	  <header>
@@ -46,7 +46,9 @@ include "incs/header.inc";
     </div>
   <div id="main_container">
   </div>
+  </form>
     <hr style="100%;clear:both;" />
+  <form id="ads_form" action="" method="post" accept-charset="utf-8">
   <div id="ad_section" style="clear:both;">
   	<fieldset id="ad_slots" class="sections">
   		<legend>PAID ADS</legend>
