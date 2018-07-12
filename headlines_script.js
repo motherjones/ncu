@@ -544,7 +544,7 @@ function fixURL(url_fix) {
 	var header = "https://";
 	var exists = "";
 	var utm_code_suffix = "";
-	url_fix = url_fix.trim();
+	url_fix = url_fix.replace(/\s/g,'');
 	
 	if(url_fix) {
 		if(!url_fix.match(/\?/)) {
@@ -583,6 +583,7 @@ function fixURL(url_fix) {
 	
 	if(url_fix.match("www.motherjones.com") || url_fix.match("secure.motherjones.com")) {
 		utm_code_suffix += this_news + this_email + this_campaign;
+		utm_code_suffix = utm_code_suffix.trim();
 	}
 	else {
 		utm_code_suffix = "";
@@ -594,15 +595,21 @@ function fixURL(url_fix) {
 	
 	if(url_fix) {
 		if(!/^https?:\/\//i.test(url_fix)) {
-			return header + url_fix + utm_code_suffix;
+			var temp_url = header + url_fix + utm_code_suffix;
+			return temp_url.replace(/\s/g,''); 
 		}
 		else {
-			return url_fix + utm_code_suffix;
+			var temp_url = url_fix + utm_code_suffix; 
+			return temp_url.replace(/\s/g,'');
 		}
 	}
 	else {
 		return "";
 	}
+}
+
+function deleteSpaces(url_in) {
+	return url_in.replace(/\s/g,'');
 }
 
 function preview(the_type) {

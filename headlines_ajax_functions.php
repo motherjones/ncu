@@ -225,7 +225,7 @@ $fft_redesign = <<<FFTRED
             <legend>MAIN SECTION</legend>
             <p>Main hed: <input type="text" id="fft_main_hed" name="fft_main_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value)"" /></p>
             <p>Main url: <input type="text" id="fft_main_hed_url" name="fft_main_hed_url" size="50" maxlength="512" onblur="this.value=fixURL(this.value)" /></p>
-            <p>Main image (url to image): <input type="text" id="fft_main_img" name="fft_main_img" size="50"" /></p>
+            <p>Main image (url to image): <input type="text" id="fft_main_img" name="fft_main_img" size="50" onblur="this.value=deleteSpaces(this.value)" /></p>
             
             <fieldset class="sub_sections">
                 <legend>Article 1:</legend>
@@ -357,7 +357,7 @@ $fft_redesign = <<<FFTRED
                 </fieldset>
                 
                 <p><strong>(If this item is not a Bite plug, please leave blank)</strong>.</p>
-                <p>Bite episode link: <input type="text" id="fft_bite_link" name="fft_bite_link" size="50" maxlength="512"" /></p>
+                <p>Bite episode link: <input type="text" id="fft_bite_link" name="fft_bite_link" size="50" maxlength="512" onblur="this.value=deleteSpaces(this.value)" /></p>
                 <p>Bite episode description:</p>
                 <textarea id="fft_bite_add" name="fft_bite_add""></textarea>
             </fieldset>
@@ -551,7 +551,7 @@ function trumpocracy() {
 				<legend>MAIN ARTICLE</legend>
 				<p>Headline: <input type="text" id="trump_main_hed" name="trump_main_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value)" spellcheck="true" /></p>
 				<p>Url: <input type="text" id="trum_main_url" name="trum_main_url" size="50" onblur="this.value=fixURL(this.value)" /></p>
-				<p>Image url: <input type="text" id="trump_main_img" name="trump_main_img" size="50" onblur="this.value=fixURL(this.value)" /></p>
+				<p>Image url: <input type="text" id="trump_main_img" name="trump_main_img" size="50" onblur="this.value=deleteSpaces(this.value)" /></p>
 				<p class="dek_sect">Dek:</p>
 				<textarea rows="15" cols="45" id="trum_main_dek" name="trum_main_dek"></textarea>
 				<fieldset class="sources" style="float:left;width:50%;clear:both;">
@@ -654,7 +654,7 @@ function trumpocracy() {
 				<legend>SECOND MAIN ARTICLE</legend>
 				<p>Headline: <input type="text" id="trump_main2_hed" name="trump_main2_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value)" spellcheck="true" /></p>
 				<p>Url: <input type="text" id="trump_main2_url" name="trump_main2_url" size="50" onblur="this.value=fixURL(this.value)" /></p>
-				<p>Image: <input type="text" id="trump_main2_img" name="trump_main2_img" size="50" onblur="this.value=fixURL(this.value)" /></p>
+				<p>Image url: <input type="text" id="trump_main2_img" name="trump_main2_img" size="50" onblur="this.value=deleteSpaces(this.value)" /></p>
 				<p class="dek_sect">Dek:</p>
 				<textarea rows="15" cols="45" id="trump_main2_dek" name="trump_main2_dek"></textarea>
 				<fieldset class="sources" style="float:left;width:50%;clear:both;">
@@ -750,7 +750,7 @@ function recharge() {
 				<legend>MAIN ARTICLE</legend>
 				<p>Headline: <input type="text" id="recharge_main_hed" name="recharge_main_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value);" spellcheck="true" /></p>
 				<p>Url: <input type="text" id="recharge_main_url" name="recharge_main_url" size="50" onblur="this.value=fixURL(this.value)" /></p>
-				<p>Image url: <input type="text" id="recharge_main_img" name="recharge_main_img" size="50" /></p>
+				<p>Image url: <input type="text" id="recharge_main_img" name="recharge_main_img" size="50" onblur="this.value=deleteSpaces(this.value)" /></p>
 				<p class="dek_sect">Dek:</p>
 				<textarea rows="15" cols="45" id="recharge_main_dek" name="recharge_main_dek"></textarea>
 				<fieldset class="sources" style="float:left;width:50%;clear:both;">
