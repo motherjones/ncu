@@ -709,6 +709,8 @@ if($exists) {
 	recharge_image_credits = '$recharge_image_credits',
 	ad_link_bill = '$billboard_url',
 	ad_billboard = '$billboard_image',
+    ad_link_banner ='$billboard_url2',
+	ad_banner = '$billboard_image2',
 	ad_name = '$advertiser_name',
 	ad_name2 = '$advertiser_name2',
 	sub_url = '$sub_url',
@@ -721,7 +723,7 @@ if($exists) {
 	WHERE hed_date='$headlines_date'";
 }
 else {
-	$run_qry = "INSERT INTO recharge(hed_date,subject_line,recharge_main_hed,recharge_main_url,recharge_main_img,recharge_main_dek,recharge_main_source,recharge_main_ital,recharge_intro_dek,recharge1_dek,recharge1_source,recharge1_ital,recharge1_url,recharge2_dek,recharge2_source,recharge2_ital,recharge2_url,recharge3_dek,recharge3_source,recharge3_ital,recharge3_url,recharge4_dek,recharge4_source,recharge4_ital,recharge4_url,recharge5_dek,recharge5_source,recharge5_ital,recharge5_url,recharge_sign_off_dek,recharge_image_dek,recharge_image_credits,ad_name,ad_name2,ad_link_bill,ad_billboard,sub_url,sub_image,sub_text,sub_code,lift_note,pixel_tracker,pixel_tracker2)
+	$run_qry = "INSERT INTO recharge(hed_date,subject_line,recharge_main_hed,recharge_main_url,recharge_main_img,recharge_main_dek,recharge_main_source,recharge_main_ital,recharge_intro_dek,recharge1_dek,recharge1_source,recharge1_ital,recharge1_url,recharge2_dek,recharge2_source,recharge2_ital,recharge2_url,recharge3_dek,recharge3_source,recharge3_ital,recharge3_url,recharge4_dek,recharge4_source,recharge4_ital,recharge4_url,recharge5_dek,recharge5_source,recharge5_ital,recharge5_url,recharge_sign_off_dek,recharge_image_dek,recharge_image_credits,ad_name,ad_name2,ad_link_bill,ad_billboard,ad_link_banner,ad_banner,sub_url,sub_image,sub_text,sub_code,lift_note,pixel_tracker,pixel_tracker2)
 	VALUES('$headlines_date',
 	'$subject_line',
 	'$recharge_main_hed',
@@ -758,6 +760,8 @@ else {
 	'$advertiser_name2',
 	'$billboard_url',
 	'$billboard_image',
+	'$billboard_url2',
+	'$billboard_image2',
 	'$sub_url',
 	'$sub_image',
 	'$sub_text',

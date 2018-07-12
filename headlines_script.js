@@ -270,21 +270,17 @@ function restoreValues(the_section) {
   	      if(compare_date > ws_date && compare_date <= we_date) {
     	        date_class = " current_news";
 		    current_str = "<span>Current: </span>";
-		    console.log(we_complete);
     	      }
     	      else if(compare_date > we_date) {
 		    date_class = " future_news";
 			current_str = "<span>Future: </span>";
-			console.log(we_complete);
     	      }
     	      else if(compare_date < test_dates) {
 		    date_class = " test_news";
 			current_str = "<span>Test: </span>";
-			console.log(we_complete);
     	      }
     	      else {
 		    date_class = " normal_news";
-		    console.log(we_complete);
     	      }
   	      
 		  preview_url = "archives/" + date_obj[date_name] + "-" + the_section + ".html";
