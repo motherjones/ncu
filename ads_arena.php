@@ -12,6 +12,7 @@ include "incs/header.inc";
       </header>
     </div>
 <form id="ads_form" action="" method="post" accept-charset="utf-8">
+	<div id="recent_newsletters"></div>
   <div id="ad_section" style="clear:both;">
   	<fieldset id="ad_slots" class="sections">
   		<legend>PAID ADS</legend>
@@ -59,3 +60,26 @@ include "incs/header.inc";
   	</fieldset>
   </div>
   </form>
+  <script>
+  getStuff();
+  function getStuff() {
+	  var httpxml = new getHTTP();
+	  httpxml.onreadystatechange = function() {
+			if(httpxml.readyState == 4) {
+				data_text = JSON.parse(httpxml.responseText);
+				for(index_name in data_text) {
+					document.getElementById("recent_newsletters").innerHTML += "<div style=\"border:1px solid #000;width:250px;float:left;margin:5px auto;display:table;\">" + index_name; 
+					for(elem in data_text[index_name]) {
+						document.getElementById("recent_newsletters").innerHTML += "<p style=\"width:250px;\"><input type=\"checkbox\" value=\"" + elem  + "\"> " + data_text[index_name][elem] + "</p>";
+					}
+					document.getElementById("recent_newsletters").innerHTML += "</div>";
+				}
+			}
+	  }
+
+	  httpxml.open("POST", "ad_ajax_calls.php");
+	  httpxml.send("null");
+  }
+  </script>
+  </body>
+  </html>
