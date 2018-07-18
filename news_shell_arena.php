@@ -46,6 +46,12 @@ include "incs/header.inc";
     </div>
   <div id="main_container">
   </div>
+  <div id="ad_section" style="clear:both;">
+  <fieldset class="sub_sections">
+    		<legend>Lift-Note Section</legend>
+    		<textarea rows="5" cols="50" id="lift_note" name="lift_note"></textarea>
+    	</fieldset>
+    	</div>
     <input type="hidden" value="" id="holdmenow" />
   </form>
   <script>
