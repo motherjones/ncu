@@ -5,9 +5,8 @@ ini_set("display_errors", 1);
 include "incs/credentials.inc";
 include "insert_ads.php";
 
-print "Attempting to add ads to NCU";
+//create new add object and pass it the super global variable
 $new_ad = new insertAds($_REQUEST);
-print "<br>created insert ad object";
 
 $is_default = 0;
 
