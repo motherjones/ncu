@@ -31,27 +31,5 @@ class insertAds {
 			}
 		}
 	}
-	
-	public static function writeToDB($host, $user, $psswd, $db) {
-		$query_str = "INSERT INTO newsletter_ads(";
-		$values = "VALUES(";
-		$db_connect = mysqli_connect($host, $user, $psswd, $db) or die("Can't connect to database");
-		
-		foreach($this->var_array as $key => $value) {
-			$query_str .= $key . ",";
-			$values .= "'" . $value . "'" . ",";
-		}
-		
-		$query_str = rtrim(trim($query_str), ",");
-		$values = rtrim(trim($values), ",");
-		
-		$query_str .= ")";
-		$values .= ");";
-		
-		$query_str .= $values;
-		
-		mysqli_query($this->db_connect, $query_str) or die("Query did not run correctly". mysqli_error($this->db_connect));
-		mysqli_close($this->db_connect);
-	}
 }
 ?>

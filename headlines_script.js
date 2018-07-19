@@ -480,6 +480,11 @@ function checkForm(type_submit, is_new, news_type) {
   }
 }
 
+function getAllAds() {
+	var httpxml = new getHTTP();
+	
+}
+
 //check for existing newsletter
 function checkIfNew() {
   var httpxml = new getHTTP();
