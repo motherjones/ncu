@@ -9,14 +9,29 @@ print "Attempting to add ads to NCU";
 $new_ad = new insertAds($_REQUEST);
 print "<br>created insert ad object";
 
+$is_default = 0;
+
+$table_name = $_REQUEST["table_name"];
+if(isset($_REQUEST["is_default"])) {
+	$is_default = 1;
+	print "<br>default value set: " . $is_default;
+}
+
+die();
+
 $db_connect = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die ("Can't connect to database");
 
-$query_str = "INSERT INTO newsletter_ads(";
+$query_str = "INSERT INTO $table_name(";
 $values = "VALUES(";
 
 foreach($new_ad->getArray() as $key => $value) {
-	$query_str .= $key . ",";
-	$values .= "'" . $value . "'" . ",";
+	if($key === "is_default") {
+		print $value;
+	}
+	if($key !== "table_name") {
+		$query_str .= $key . ",";
+		$values .= "'" . $value . "'" . ",";
+	}
 }
 
 $query_str = rtrim(trim($query_str), ",");

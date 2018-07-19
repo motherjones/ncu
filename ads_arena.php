@@ -12,6 +12,7 @@ include "incs/header.inc";
       </header>
     </div>
 <form id="ads_form" action="process_ads.php" method="post" accept-charset="utf-8">
+	<input type="hidden" name="table_name" id="table_ad" value="newsletter_ads">
 	<div id="recent_newsletters"></div>
   <div id="ad_section" style="clear:both;">
   	<fieldset id="ad_slots" class="sections">
@@ -39,8 +40,15 @@ include "incs/header.inc";
     	<fieldset class="sub_sections"><input type="submit" value="Enter ad"></fieldset>
     </fieldset>
   </form>
-  <form>
+  <form id="memb_form" action="process_ads.php" method="post" accept-charset="utf-8">
+  <input type="hidden" name="table_name" id="table_memb" value="membership_ads">
     <fieldset id="membership_slots" class="sections">
+    		<fieldset class="sub_sections">
+    			<legend>Schedule and default membership ads</legend>
+    			<p><label for="start_date">Start date:</label> <input type="date" value="" id="start_date" name="start_date"> &nbsp;
+    			<label for="end_date">End date:</label> <input type="date" value="" id="end_date" name="end_date"></p>
+    			<p><input type="checkbox" id="is_default" name="is_default" value=""> <lable for="is_default">Is this the default membership ad?</lable></p>
+    		</fieldset>
     		<legend>MEMBERSHIP SLOT OVERRIDES</legend>
     		<p><?php print $ad_message; ?></p>
     		<fieldset class="sub_sections">
