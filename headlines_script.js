@@ -482,7 +482,40 @@ function checkForm(type_submit, is_new, news_type) {
 
 function getAllAds() {
 	var httpxml = new getHTTP();
+	var div_entry = document.getElementById("ads_archives");
+	var index_name = "";
+	var rand_num = getRandom();
+	div_entry.innerHTML = "";
 	
+	httpxml.onreadystatechange = function() {
+		if(httpxml.readyState == 4) {
+			var ad_entries = JSON.parse(httpxml.responseText);
+			var obj_len = countProperties(ad_entries);
+			
+			for(i = 0; i <= obj_len; i++) {
+				for(index_name in ad_entries[i]) {
+					console.log(ad_entries[i][index_name]);
+					div_entry.innerHTML += "<button>" + ad_entries[i]["ad_name"] + "</button>";
+					div_entry.innerHTML += index_name + " = " + ad_entries[i][index_name] + "<br>";
+				}
+			}
+		}
+	}
+	
+	httpxml.open("POST", "ad_ajax_calls.php?ad_type=ads&r=" + rand_num, true);
+	httpxml.send("null");
+}
+
+//auxiliary function for testing
+function countProperties(obj) {
+    var count = 0;
+
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop))
+            ++count;
+    }
+
+    return count;
 }
 
 //check for existing newsletter

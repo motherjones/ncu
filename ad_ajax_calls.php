@@ -32,16 +32,19 @@ function fetchRecentNewsletters($db_con) {
 		mysqli_free_result($query_run);
 	}
 	print json_encode($data_return);
-	mysqli_close($db_con);
 }
 
 function fetchAllAds($db_con) {
 	$return_ads = "";
-	$query_run = "SELECT * FROM newsletter_ads";
+	$query_run = "SELECT id, ad_name, ad_name2 FROM newsletter_ads";
+	$the_query = mysqli_query($db_con, $query_run);
 	
-	$results = mysqli_fetch_assoc($query_run);
-	$return_ads = json_encode($results);
+	while($results = mysqli_fetch_assoc($the_query)) {
+		if($results !== null) {
+			$return_ads[$results["id"]] = $results;
+		}
+	}
 	
-	print $return_ads;
+	print json_encode($return_ads);
 }
 ?>
