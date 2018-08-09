@@ -485,19 +485,33 @@ function getAllAds() {
 	var div_entry = document.getElementById("ads_archives");
 	var index_name = "";
 	var rand_num = getRandom();
-	div_entry.innerHTML = "";
 	
 	httpxml.onreadystatechange = function() {
 		if(httpxml.readyState == 4) {
 			var ad_entries = JSON.parse(httpxml.responseText);
 			var obj_len = countProperties(ad_entries);
-			
+			var temp_bag_holding = "";
+			div_entry.innerHTML = "";
 			for(i = 0; i <= obj_len; i++) {
+				//div_entry.innerHTML += "<div style=\"width:200px;float:left;border:1px solid #000;display:table;\">";
 				for(index_name in ad_entries[i]) {
-					console.log(ad_entries[i][index_name]);
-					div_entry.innerHTML += "<button>" + ad_entries[i]["ad_name"] + "</button>";
-					div_entry.innerHTML += index_name + " = " + ad_entries[i][index_name] + "<br>";
+					if(index_name === "id") {
+						temp_bag_holding += "<p><input type=\"hidden\" value=\"" + ad_entries[i][index_name] + "\" id=\"" + index_name + "\" name=\"" + index_name + "\"></p>";
+					}
+					if(index_name === "ad_link_bill" || index_name === "ad_link_banner") {
+						temp_bag_holding += "<p>" + index_name + " <input type=\"text\" value=\"" + ad_entries[i][index_name] + "\" id=\"" + index_name + "\" name=\"" + index_name + "\"></p>";
+					}
+					if(index_name === "ad_billboard" || index_name === "ad_banner") {
+						temp_bag_holding += "<p>" + index_name + " <img src=\"" + ad_entries[i][index_name] + "\" id=\"" + index_name + "\" name=\"" + index_name + "\" width=\"100\"></p>";
+					}
+					if(index_name === "ad_name" || index_name === "ad_name2") {
+						temp_bag_holding += "<p>" + index_name + " <input type=\"text\" value=\"" + ad_entries[i][index_name] + "\" id=\"" + index_name + "\" name=\"" + index_name + "\"></p>";
+					}
+					if(index_name === "pixel_tracker" || index_name === "pixel_tracker2") {
+						temp_bag_holding += "<p>" + index_name + " <input type=\"text\" value=\"" + ad_entries[i][index_name] + "\" id=\"" + index_name + "\" name=\"" + index_name + "\"></p>";
+					}
 				}
+				div_entry.innerHTML += "<div style=\"width:350px;float:left;border:1px solid #000;display:inline-block;\">" + temp_bag_holding + "</div>";
 			}
 		}
 	}

@@ -36,7 +36,7 @@ function fetchRecentNewsletters($db_con) {
 
 function fetchAllAds($db_con) {
 	$return_ads = "";
-	$query_run = "SELECT id, ad_name, ad_name2 FROM newsletter_ads";
+	$query_run = "SELECT * FROM newsletter_ads";
 	$the_query = mysqli_query($db_con, $query_run);
 	
 	while($results = mysqli_fetch_assoc($the_query)) {
