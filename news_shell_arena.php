@@ -96,24 +96,10 @@ include "incs/header.inc";
   </div>
   <input type="hidden" value="" id="holdmenow" />
   </form>
-  <fieldset class="sections">
-  	<form id="membership_default" action="" method="post" accept-charset="utf-8">
-    		<legend>Default membership ads section</legend>
-    		<fieldset class="sub_sections">
-    			<legend>Image and URL only section</legend>
-    			<p><label for="sub_url">Sub url:</label> <input id="sub_url" name="sub_url" type="text" value="" size="40" onblur="this.value=fixURL(this.value)" /></p>
-    			<p><label for="sub_image">Sub image:</label> <input type="text" value="" id="sub_image" name="sub_image" size="40"></p>
-    			<p><label for="sub_text">Sub alt text:</label> <input type="text" value="" id="sub_text" name="sub_text" size="40"></p>
-    		</fieldset>
-    		<fieldset class="sub_sections">
-    			<legend>HTML (Image Map) section</legend>
-    			<textarea rows="5" cols="45" id="sub_code" name="sub_code"></textarea>
-    		</fieldset>
-    	</form>
-    	<fieldset class="sub_sections" style="text-align:center;">
-    				<button style="background-color: #26b;">Add default membership ad</button>
-    	</fieldset>
+  <fieldset class="sections" style="text-align:center;">
+    	<button style="background-color: #26b;" onclick="document.location.href='default_membership_ad.php'">Add default membership ad</button>
   </fieldset>
+  
   <script>
 	$(document).ready(function() {
 		var new_news = "<?php print $new; ?>";
