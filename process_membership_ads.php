@@ -38,9 +38,14 @@ else {
 	$sub_text = trim($sub_text);
 	$sub_code = trim($sub_code);
 	
-	//db operations
+/* db operations */
+	//open db connection
 	$db_connect = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("Can't connect to database");
+	//set is_default to 0 for all rows
 	$restore_qry = "UPDATE membership_ads SET is_default = 0 WHERE is_default = 1";
 	mysqli_query($db_connect, $restore_qry);
+	//write new default ad to db
+	$update_default = "INSERT INTO membership_ads(start_date,end_date,sub_url,sub_image,sub_text,sub_code,is_default) VALUES($start_date,$end_date,$sub_url,$sub_image,$sub_text,$sub_code,$is_default)";
+	
 }
 ?>
