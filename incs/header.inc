@@ -99,6 +99,7 @@ $path = $replace_path;
     </div>
   <h3 id="head_text"><em>MoJo</em> Newsletter Curation Utility [<strong>MNCU</strong>]</h3>
   <div id="stat_buttons" style="width:180px;margin:0 auto;float:right;padding:0;">
-	<button onclick="window.open('news-stats.html', 'Newsletter Stats', 'toolbar=no,width=1200,scrollbars=yes');" style="color: #003;background-color:#fff;">Statistics</button><br /><button onclick="location.href='news-stats/'" style="color: #003;background-color:#fff;">Archived Statistics</button></div>
-	<button id="lost_found" onclick="window.open('temp','_new');" style="text-align:center;float:right;">Lost and Found</button>
+    <button id="lost_found" onclick="window.open('temp','_new');" style="text-align:center;">Lost and Found</button>
+	<button onclick="location.href='news-stats/'" style="color: #003;background-color:#fff;">Newsletter Statistics</button>
+  </div>
 </div>
