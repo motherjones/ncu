@@ -14,9 +14,12 @@ $path = $replace_path;
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta charset="utf-8">
   <link rel="shortcut icon" href="https://util.motherjones.com/dev/ncu/images/mj_cropped-favicon-512x512.png">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="<?php print $path; ?>head_main.css" />
   <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/color/jquery.color-2.1.2.min.js" integrity="sha256-H28SdxWrZ387Ldn0qogCzFiUDDxfPiNIyJX7BECQkDE=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
   <script type="text/javascript" language="javascript" src="<?php print $path; ?>headlines_script.js"></script>
   <script type="text/javascript" src="<?php print $path; ?>ckeditor/ckeditor.js"></script>
   <script type="text/javascript">
@@ -90,6 +93,16 @@ $path = $replace_path;
             $("body").css("background-color", "#cdd");
         }
     }
+    /*var checkScrollBars = function(){
+        var b = $('body');
+        var normalw = 0;
+        var scrollw = 0;
+        if(b.prop('scrollHeight')>b.height()){
+            normalw = window.innerWidth;
+            scrollw = normalw - b.width();
+            $('header').css({marginRight:'-'+scrollw+'px'});
+        }
+    }*/
     </script>
 </head>
 <body>
@@ -99,7 +112,8 @@ $path = $replace_path;
     </div>
   <h3 id="head_text"><em>MoJo</em> Newsletter Curation Utility [<strong>MNCU</strong>]</h3>
   <div id="stat_buttons" style="width:180px;margin:0 auto;float:right;padding:0;">
-    <button id="lost_found" onclick="window.open('temp','_new');" style="text-align:center;">Lost and Found</button>
-	<button onclick="location.href='news-stats/'" style="color: #003;background-color:#fff;">Newsletter Statistics</button>
+    <button id="lost_found" onclick="window.open('temp','_new');" class="header_btns ui-button ui-corner-all">Lost and Found</button>
+	<button id="news_stats" onclick="location.href='news-stats/'" class="header_btns ui-button ui-corner-all">Newsletter Statistics</button>
+	<button id="default_memb" onclick="location.href='default_membership_ad.php'" class="header_btns ui-button ui-corner-all">Default Membership Ad</button>
   </div>
 </div>

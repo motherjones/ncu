@@ -15,8 +15,7 @@ include "incs/header.inc";
 	<form id="membership_default" action="" method="post" accept-charset="utf-8">
   		<legend>Default membership ads section</legend>
   		<fieldset class="sub_sections">
-  			<label for="start_date">Start Date</label><input type="date" id="start_date" name="start_date">&nbsp;&nbsp;
-  			<label for="end_date">End Date</label><input type="date" id="end_date" name="end_date">
+  			<label for="start_date">Start Date</label><input type="date" id="start_date" name="start_date">
   		</fieldset>
   		<fieldset class="sub_sections">
   			<legend>Image and URL only section</legend>

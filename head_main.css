@@ -79,13 +79,18 @@ header {width:640px;
 	display:inline-block;
 	clear:both;}	
 #button_bar {max-width:100%;
-	margin: 10px auto;
-	padding: 15px 0;
+	margin: 20px auto;
+	padding: 10px 0;
 	display: inline-block;}
 #archives {margin: 5px auto;
 	width: 650px;}
 #stats_sect {margin: 10px auto;
 	width:640px;}
+#lost_found{color:#e33;}
+#news_stats {color:#296;}
+#default_memb {color:#269;}
+.header_btns {border-color:#eee;
+	/*background-color: #eee;*/}
 .display_date {font-weight:bold;
 	font-size:1.1em;}
 .display_date_p {
@@ -97,14 +102,14 @@ header {width:640px;
 	border-bottom:1px dotted #000;
 	display:table;
 	font-weight:bold;}
-.news_btn {margin:2px 5px;
+.news_btn {margin:2px 6px;
 	float:left;
 	color:#004;
 	background-color:#eee;
 	font-weight:bold;
 	font-style: italic;
 	font-size:1.1em;
-	border-radius: 5px;
+	border-radius: 3px;
   border-color: #f03;}
 .landf_btn {background-color: #ccc;
 	color: #000;}
@@ -251,3 +256,4 @@ td#econundrums {background-color: #33ce08;}
 td#food, td#fft_red {background-color: #69ccff;}
 td#politics {background-color: #cfb999;}
 td#in_the_mix {background-color: #ffb999;}
+//jquery.ui css
