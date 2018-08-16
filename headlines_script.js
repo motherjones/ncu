@@ -673,3 +673,47 @@ else  {
   }
   return xmlhttp;
 }
+
+//function for members default ad input
+function callMom(call_type) {
+	var the_url;
+	$("#membership_default").preventDefault;
+	
+	switch(call_type) {
+		case "ad":
+			//do something here with ads
+			break;
+		case "membership":
+			//do something here with membership ads
+			var memb_data = $("#membership_default").serialize();
+			the_url = "process_membership_ads.php";
+			console.log(memb_data);
+			break;
+		default:
+			//maybe do something here also
+	}
+	
+	$.ajax({
+		url: the_url,
+		data: memb_data,
+		method: 'POST',
+		success: function(data) {
+			if(data === "Success") {
+				$("#memb_mssg").html("Ad added successfully");
+				$("#memb_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
+			}
+			else if(data === "Exists") {
+				$("#memb_mssg").html("An entry with that start date exists. Please choose another start date.");
+				$("#memb_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
+			}
+			else {
+				$("#memb_mssg").html(data.toString());
+				$("#memb_mssg").animate({backgroundColor:"#ff0000",color:"#000000",width:200}, 2000);
+			}
+		},
+		error: function(data) {
+			$("#memb_mssg").html(data.toString());
+			$("#memb_mssg").animate({backgroundColor:"#ff0000",color:"#000000",width:200}, 2000);
+		}
+	});
+}

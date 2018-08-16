@@ -11,6 +11,7 @@ include "incs/header.inc";
 		</header>
 	</div>
 </div>
+<div id="memb_mssg" style="margin-left:10px;min-width:20%;max-width:33%;float:left;height:50px;text-align:center;vertical-align:middle;padding-top:20px;">&nbsp;</div>
 <fieldset class="sections">
 	<form id="membership_default" action="" method="post" accept-charset="utf-8">
   		<legend>Default membership ads section</legend>
@@ -29,6 +30,6 @@ include "incs/header.inc";
   		</fieldset>
   	</form>
   	<fieldset class="sub_sections" style="text-align:center;">
-  		<button>Add default membership ad</button>
+  		<button onclick="callMom('membership')">Add default membership ad</button>
   	</fieldset>
 </fieldset>

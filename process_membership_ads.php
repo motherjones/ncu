@@ -12,10 +12,6 @@ else {
 		$start_date = $_REQUEST["start_date"];
 	}
 	
-	if(isset($_REQUEST["end_date"]) && $_REQUEST !== "") {
-		$end_date = $_REQUEST["end_date"];
-	}
-	
 	if(isset($_REQUEST["sub_url"]) && $_REQUEST !== "") {
 		$sub_url = $_REQUEST["sub_url"];
 	}
@@ -33,19 +29,34 @@ else {
 	}
 	
 	//prepare data for db write
-	$sub_url = trim($sub_url);
-	$sub_image = trim($sub_image);
-	$sub_text = trim($sub_text);
-	$sub_code = trim($sub_code);
+	$sub_url = addslashes(trim($sub_url));
+	$sub_image = addslashes(trim($sub_image));
+	$sub_text = addslashes(trim($sub_text));
+	$sub_code = addslashes(trim($sub_code));
 	
 /* db operations */
 	//open db connection
 	$db_connect = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("Can't connect to database");
-	//set is_default to 0 for all rows
-	$restore_qry = "UPDATE membership_ads SET is_default = 0 WHERE is_default = 1";
-	mysqli_query($db_connect, $restore_qry);
+	//check for entry with same start date
+	$find_qry = "SELECT start_date FROM membership_ads WHERE start_date = '$start_date'";
+	if($count = mysqli_num_rows(mysqli_query($db_connect, $find_qry))) {
+		if($count > 0) {
+			print "Exists";
+			mysqli_free_results($)
+			exit();
+		}
+	}
+	else {
+		print mysqli_error($db_connet);
+		exit();
+	}
 	//write new default ad to db
-	$update_default = "INSERT INTO membership_ads(start_date,end_date,sub_url,sub_image,sub_text,sub_code,is_default) VALUES($start_date,$end_date,$sub_url,$sub_image,$sub_text,$sub_code,$is_default)";
-	
+	$update_default = "INSERT INTO membership_ads(start_date,sub_url,sub_image,sub_text,sub_code) VALUES('$start_date','$sub_url','$sub_image','$sub_text','$sub_code')";
+	if(mysqli_query($db_connect, $update_default)) {
+		print "Success";
+	}
+	else {
+		print mysqli_error($db_connect);
+	}
 }
 ?>

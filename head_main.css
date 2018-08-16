@@ -10,6 +10,7 @@ button {margin-left:10px;
   padding:2px 4px;
   vertical-align:top;
   font-family: 'Times New Roman', serif;}
+button:hover {cursor:pointer;}
 input {margin-left:10px;
   color:#000000;
   background-color:#ffffff;}
