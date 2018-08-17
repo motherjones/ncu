@@ -24,8 +24,9 @@ fieldset {margin:0 auto;
 	border: none;}
 textarea {margin-bottom: 10px;
 	padding-bottom:10px;}
-header {width:640px;
-	max-width:100%;
+header {max-width:100%;
+	width:640px;
+	text-align:center;
 	margin: 10px auto;
 	text-align:center;}
 .arch-btn {background-color: #331;
@@ -48,6 +49,7 @@ header {width:640px;
   float:left;}
 #head_row {margin:20px auto;
   max-width:100%;
+  width:640px;
   text-align:center;
   clear:both;
   display:table;}

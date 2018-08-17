@@ -676,6 +676,7 @@ else  {
 
 //function for members default ad input
 function callMom(call_type) {
+	var ad_data;
 	var the_url;
 	$("#membership_default").preventDefault;
 	
@@ -684,10 +685,11 @@ function callMom(call_type) {
 			//do something here with ads
 			break;
 		case "membership":
-			//do something here with membership ads
-			var memb_data = $("#membership_default").serialize();
-			the_url = "process_membership_ads.php";
-			console.log(memb_data);
+			//do something here with regular membership ads
+		case "membership_d":
+			//do something here with default membership ads
+			ad_data = $("#membership_default").serialize();
+			the_url = "process_ads.php";
 			break;
 		default:
 			//maybe do something here also
@@ -695,7 +697,49 @@ function callMom(call_type) {
 	
 	$.ajax({
 		url: the_url,
-		data: memb_data,
+		data: ad_data,
+		method: 'POST',
+		success: function(data) {
+			if(data === "Success") {
+				$("#memb_mssg").html("Ad added successfully");
+				$("#memb_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
+			}
+			else if(data === "Exists") {
+				$("#memb_mssg").html("An entry with that start date exists. Please choose another start date.");
+				$("#memb_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
+			}
+			else {
+				$("#memb_mssg").html(data.toString());
+				$("#memb_mssg").animate({backgroundColor:"#ff0000",color:"#000000",width:200}, 2000);
+			}
+		},
+		error: function(data) {
+			$("#memb_mssg").html(data.toString());
+			$("#memb_mssg").animate({backgroundColor:"#ff0000",color:"#000000",width:200}, 2000);
+		}
+	});
+}
+
+//get all ads based on input
+function getAllAds(information_retrieval) {
+	var the_url;
+	
+	switch(ad_type) {
+		case "ads":
+			//do something here
+			break;
+		case "membership":
+			//do something here
+			break;
+		case "membership_d":
+			the_url = "process_ads.php?information_retrieval='membership_d'";
+			//do something here
+			break;
+		default:
+			//maybe do something here
+	}
+	$.ajax({
+		url: the_url,
 		method: 'POST',
 		success: function(data) {
 			if(data === "Success") {
