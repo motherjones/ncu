@@ -723,8 +723,9 @@ function callMom(call_type) {
 //get all ads based on input
 function getAllAds(information_retrieval) {
 	var the_url;
+	var data_dispersal;
 	
-	switch(ad_type) {
+	switch(information_retrieval) {
 		case "ads":
 			//do something here
 			break;
@@ -742,22 +743,35 @@ function getAllAds(information_retrieval) {
 		url: the_url,
 		method: 'POST',
 		success: function(data) {
-			if(data === "Success") {
-				$("#memb_mssg").html("Ad added successfully");
-				$("#memb_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
-			}
-			else if(data === "Exists") {
-				$("#memb_mssg").html("An entry with that start date exists. Please choose another start date.");
-				$("#memb_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
+			var content_data = "";
+			$("#archive_container").html("");
+			console.log(data);
+			if(data === "None") {
+				$("#ads_mssg").html("There are no ads in the database");
+				$("#ads_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
 			}
 			else {
-				$("#memb_mssg").html(data.toString());
-				$("#memb_mssg").animate({backgroundColor:"#ff0000",color:"#000000",width:200}, 2000);
+				//content_data = data;
+				//$("#archive_container").html(content_data);
+				
+				data_dispersal = JSON.parse(data);
+				
+				for(disperse in data_dispersal) {
+					content_data += "<input type=\"hidden\" id=\"id\" name=\"id\" value=\"" + disperse["id"] + "\">";
+					content_data += "<input type=\"date\" id=\"start_date\" name=\"start_date\"" + disperse["start_date"] + "\">";
+					content_data += "<textarea id=\"membership_slot\" name=\"membership_slot\">" + disperse["membership_slot"] + "</textarea>";
+					content_data += "<input type=\"text\" id=\"sub_url\" name=\"sub_url\" value=\"" + disperse["sub_url"] + "\">";
+					content_data += "<input type=\"text\" id=\"sub_image\" name=\"sub_image\" value=\"" + disperse["sub_image"] + "\">";
+					content_data += "<input type=\"text\" id=\"sub_text\" name=\"sub_text\" value=\"" + disperse["sub_text"] + "\">";
+					content_data += "<textarea id=\"sub_code\" name=\"sub_code\">" + disperse["sub_code"] + "</textarea>";
+				}
+				
+				$("#archive_container").html(content_data);
 			}
 		},
 		error: function(data) {
-			$("#memb_mssg").html(data.toString());
-			$("#memb_mssg").animate({backgroundColor:"#ff0000",color:"#000000",width:200}, 2000);
+			$("#ads_mssg").html(data.toString());
+			$("#ads_mssg").animate({backgroundColor:"#ff0000",color:"#000000",width:200}, 2000);
 		}
 	});
 }
