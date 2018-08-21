@@ -188,6 +188,9 @@ header {max-width:100%;
 	margin: 0 5px;
 	border: 1px solid #000;
 	display: table;}
+.ads_holder {width:250px;
+	margin: 10px auto;
+	border:1px solid #000;}
 /*end ads*/
 .head_types {width:1024px;}
 .block_hidden {display:none;}

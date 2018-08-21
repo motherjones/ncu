@@ -751,24 +751,32 @@ function getAllAds(information_retrieval) {
 				$("#ads_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
 			}
 			else {
-				data_dispersal = JSON.parse(data);
-				
-				console.log(data_dispersal);				
+				data_dispersal = JSON.parse(data);		
 				
 				for(disperse in data_dispersal) {
+					content_data += "<div class=\"ads_holder\">";
 					for(information in data_dispersal[disperse]) {
-						if(data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null) {
-							if(information === "id") {
+						console.log(typeof data_dispersal[disperse][information]);
+						if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null || typeof data_dispersal[disperse][information] !== 'undefined')) {
+							if(information === "id" && (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null)) {
 								content_data += "<input type=\"hidden\" id=\"id\" name=\"id\" value=\"" + data_dispersal[disperse][information] + "\">";
 							}
-							else if(information === "sub_code") {
-								content_data += data_dispersal[disperse][information];
+							else if(information === "sub_code" && typeof data_dispersal[disperse][information] !== 'object' &&  (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null)) {
+								content_data += "<p>HTML coded ad:&nbsp;" + data_dispersal[disperse][information] + "</p>";
 							}
 							else {
-								content_data += "<input type=\"text\" id=\"" + information + "\" name=\"" + information + "\" value=\"" + data_dispersal[disperse][information] + "\">";
+								if(information === "sub_image" && typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null)) {
+									content_data += "<img src=\"" + data_dispersal[disperse][information] + "\" style=\"max-width:200px;\">";
+								}
+								else {
+									if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null)) {
+										content_data += "<input type=\"text\" id=\"" + information + "\" name=\"" + information + "\" value=\"" + data_dispersal[disperse][information] + "\">";
+									}
+								}
 							}
 						}
 					}
+					content_data += "</div>";
 				}
 			}
 			$("#archive_container").html(content_data);
