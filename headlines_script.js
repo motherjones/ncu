@@ -751,23 +751,27 @@ function getAllAds(information_retrieval) {
 				$("#ads_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
 			}
 			else {
-				//content_data = data;
-				//$("#archive_container").html(content_data);
-				
 				data_dispersal = JSON.parse(data);
 				
-				for(disperse in data_dispersal) {
-					content_data += "<input type=\"hidden\" id=\"id\" name=\"id\" value=\"" + disperse["id"] + "\">";
-					content_data += "<input type=\"date\" id=\"start_date\" name=\"start_date\"" + disperse["start_date"] + "\">";
-					content_data += "<textarea id=\"membership_slot\" name=\"membership_slot\">" + disperse["membership_slot"] + "</textarea>";
-					content_data += "<input type=\"text\" id=\"sub_url\" name=\"sub_url\" value=\"" + disperse["sub_url"] + "\">";
-					content_data += "<input type=\"text\" id=\"sub_image\" name=\"sub_image\" value=\"" + disperse["sub_image"] + "\">";
-					content_data += "<input type=\"text\" id=\"sub_text\" name=\"sub_text\" value=\"" + disperse["sub_text"] + "\">";
-					content_data += "<textarea id=\"sub_code\" name=\"sub_code\">" + disperse["sub_code"] + "</textarea>";
-				}
+				console.log(data_dispersal);				
 				
-				$("#archive_container").html(content_data);
+				for(disperse in data_dispersal) {
+					for(information in data_dispersal[disperse]) {
+						if(data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null) {
+							if(information === "id") {
+								content_data += "<input type=\"hidden\" id=\"id\" name=\"id\" value=\"" + data_dispersal[disperse][information] + "\">";
+							}
+							else if(information === "sub_code") {
+								content_data += data_dispersal[disperse][information];
+							}
+							else {
+								content_data += "<input type=\"text\" id=\"" + information + "\" name=\"" + information + "\" value=\"" + data_dispersal[disperse][information] + "\">";
+							}
+						}
+					}
+				}
 			}
+			$("#archive_container").html(content_data);
 		},
 		error: function(data) {
 			$("#ads_mssg").html(data.toString());

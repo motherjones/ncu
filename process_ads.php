@@ -80,6 +80,7 @@ function defaultMembership() {
 }
 
 function retrieveAllAds($info_disp) {
+	$return_array;
 	include "incs/credentials.inc";
 	$db_connect = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("there is an error " . mysqli_connect_error());
 	
@@ -98,8 +99,11 @@ function retrieveAllAds($info_disp) {
 					exit();
 				}
 				
-				$data_dispersal = mysqli_fetch_assoc($qry_runs);
-				$disperse = json_encode($data_dispersal);
+				while($data_dispersal = mysqli_fetch_assoc($qry_runs)) {
+					$return_array[$data_dispersal["id"]] = $data_dispersal;
+				}
+				//$data_dispersal = mysqli_fetch_assoc($qry_runs);
+				$disperse = json_encode($return_array);
 				print $disperse;
 			}
 			else {
