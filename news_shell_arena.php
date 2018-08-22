@@ -56,17 +56,18 @@ include "incs/header.inc";
     		<p><label for="ad_link_bill">Billboard Url:</label> <input id="ad_link_bill" name="billboard_url" type="text" value="" size="40" onblur="this.value=fixURL(this.value)"></p>
     		<p><label for="ad_billboard">Billboard Image:</label> <input id="ad_billboard" name="billboard_img" type="text" value="" size="40" onblur="this.value=fixURL(this.value)"></p>
 		</fieldset>
-		<fieldset class="sub_sections">
+		<fieldset class="sub_sections bottom_ad">
   			<legend>Ad Bottom (2)</legend>
-    		<p><label for="ad_name2">Advertiser 2:</label> <input id="ad_name2" name="advertiser_name2" type="text" value="" size="40"></p>
-    		<p><label for="ad_link_banner">Billboard Url 2:</label> <input id="ad_link_banner" name="billboard_url2" type="text" value="" size="40" onblur="this.value=fixURL(this.value)" /></p>
-    		<p><label for="ad_banner">Billboard Image 2:</label> <input id="ad_banner" name="billboard_img2" type="text" value="" size="40" onblur="this.value=fixURL(this.value)"></p>
+  			<div id="switch_ad"><div class="ui-button ui-corner-all" onclick="changeType('go_memb')">Switch to membership ad</div></div>
+    			<p><label for="ad_name2">Advertiser 2:</label> <input id="ad_name2" name="advertiser_name2" type="text" value="" size="40"></p>
+    			<p><label for="ad_link_banner">Billboard Url 2:</label> <input id="ad_link_banner" name="billboard_url2" type="text" value="" size="40" onblur="this.value=fixURL(this.value)" /></p>
+    			<p><label for="ad_banner">Billboard Image 2:</label> <input id="ad_banner" name="billboard_img2" type="text" value="" size="40" onblur="this.value=fixURL(this.value)"></p>
     		</fieldset>
     		<fieldset class="sub_sections">
     			<legend style="background:#000;color:#fff;text-align:center;font-size: 12px;padding: 2px 2px;">PIXEL TRACKING CODE (TOP AD):</legend>
     			<textarea id="pixel_tracker" name="pixel_tracker" type="text" value="" cols="49" rows="4""></textarea>
     		</fieldset>
-    		<fieldset class="sub_sections">
+    		<fieldset class="sub_sections bottom_ad">
     			<legend style="background:#000;color:#fff;text-align:center;font-size: 12px;padding 2px 2px;">PIXEL TRACKING CODE (BOTTOM AD):</legend>
     			<textarea id="pixel_tracker2" name="pixel_tracker2" type="text" value="" cols="49" rows="4"></textarea>
     		</fieldset>
@@ -77,6 +78,7 @@ include "incs/header.inc";
     </fieldset>
     <fieldset id="membership_slots" class="sections">
     		<legend>MEMBERSHIP SLOT OVERRIDES</legend>
+    		<div id="switch_memb"><div class="ui-button ui-corner-all" onclick="changeType('go_ad')">Switch to paid ad</div></div>
     		<p><?php print $ad_message; ?></p>
     		<fieldset class="sub_sections">
     			<legend>Image and URL only section</legend>
@@ -105,27 +107,43 @@ include "incs/header.inc";
 		var new_news = "<?php print $new; ?>";
 		var day_int;
 		var type_of = "<?php print $arch_type; ?>";
+
+		if(type_of !== "trumpocracy") {
+			$("#membership_slot").hide();
+			$("#membership_slot").siblings().hide();
+			$("#membership_slot").parent(".sub_sections").hide();
+		}
 		
 		switch(type_of) {
 		  case "econundrums_new":
+			$("#switch_ad").hide();
+			$("#switch_memb").hide();
 		    day_int = 1;
 		    break;
 		  case "food_for_thought_redesign":
+			changeType("go_ad");
 		    day_int = 0;
 		    break;
 		  case "in_the_mix_new":
+			$("#switch_ad").hide();
+			$("#switch_memb").hide();
 		    day_int = 6;
 		    break;
 		  case "political_mojo_new":
-		    day_int = 5;
+			$("#switch_ad").hide();
+			$("#switch_memb").hide();
+			day_int = 5;
 		    break;
 		  case "breaking_news":
 		    day_int = 1;
 		    break;
 		  case "trumpocracy":
+			$("#switch_ad").hide();
+			$("#switch_memb").hide();
 		    day_int = 4;
 		    break;
 		  case "recharge":
+			changeType("go_ad");
 			day_int = 3;
 			break;
 		  default:
@@ -145,6 +163,33 @@ include "incs/header.inc";
 			$("#hed_date").on("mouseout", checkIfNew);
 		}
 	});
+
+	function changeType(which_type) {
+		//$("#headlinesForm").preventDefault();
+		//go_ad, go_memb
+		if(which_type === "go_ad") {
+			$("#membership_slots").hide();
+			$("#sub_image").prop('disabled', true);
+			$("#sub_url").prop('disabled', true);
+			$("#sub_text").prop('disabled', true);
+			$("#sub_code").prop('disabled', true);
+			$(".bottom_ad").show();
+			$("#ad_name2").prop('disabled', false);
+			$("#ad_link_banner").prop('disabled', false);
+			$("#ad_banner").prop('disabled', false);
+		}
+		else {
+			$(".bottom_ad").hide();
+			$("#ad_name2").prop('disabled', true);
+			$("#ad_link_banner").prop('disabled', true);
+			$("#ad_banner").prop('disabled', true);
+			$("#membership_slots").show();
+			$("#sub_image").prop('disabled', false);
+			$("#sub_url").prop('disabled', false);
+			$("#sub_text").prop('disabled', false);
+			$("#sub_code").prop('disabled', false);
+		}
+	}
   </script>
 </body>
 </html>
