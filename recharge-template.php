@@ -1,9 +1,11 @@
 <?php
-/*Template for ReCharge newsletter
+/*Template for Recharge newsletter
  * Author: Young Kim
  * Creation Date: 4/18/2018
  * Update: 5/09/2018
  * Version: 1.02
+ * Update: 8/22/2018
+ * Version: 1.03 -- abbreviate month names
  */
 
 //Post and Request section (get all input fields for newsletter)
@@ -220,7 +222,7 @@ else {
 //newsletter sections
 //date formatting
 $temp_date = strtotime($headlines_date);
-$get_date = date("F j, Y", $temp_date);
+$get_date = date("M. j, Y", $temp_date);
 /* use this function to add HTML attributes:
  *
  *  modifyHTML($html_code, $html_tag, $html_attrs, $html_value)
