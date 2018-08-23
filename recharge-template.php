@@ -5,7 +5,7 @@
  * Update: 5/09/2018
  * Version: 1.02
  * Update: 8/22/2018
- * Version: 1.03 -- abbreviate month names
+ * Version: 1.03 -- Reduced font size for Recharge tag line
  */
 
 //Post and Request section (get all input fields for newsletter)
