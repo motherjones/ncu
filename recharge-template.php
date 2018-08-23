@@ -222,7 +222,7 @@ else {
 //newsletter sections
 //date formatting
 $temp_date = strtotime($headlines_date);
-$get_date = date("M. j, Y", $temp_date);
+$get_date = date("F j, Y", $temp_date);
 /* use this function to add HTML attributes:
  *
  *  modifyHTML($html_code, $html_tag, $html_attrs, $html_value)
@@ -558,7 +558,7 @@ $recharge = <<<RECHARGE
               <table class="spacing" align="center" width="580" cellpadding="0" cellspacing="20" style="max-width:580px;margin:0 auto;">
                 <tr>
                   <td align="center" style="border-bottom: 1px solid #000;">
-                    <p style="Margin-top:0;Margin-bottom: 16px;color: #000 !important;text-decoration: none !important;text-align:center;font-size: 18px;line-height:21px;font-family:Georgia, serif;font-weight:bold;font-style:italic;" id="date_line">Stories that&rsquo;ll get you through the week. <span style="color: #ff6900;">/</span> <strong>$get_date</strong></p>
+                    <p style="Margin-top:0;Margin-bottom: 20px;color: #000 !important;text-decoration: none !important;text-align:center;font-size: 16px;line-height:19px;font-family:Georgia, serif;font-weight:bold;font-style:italic;" id="date_line">Stories that&rsquo;ll get you through the week. <span style="color: #ff6900;">/</span> <strong>$get_date</strong></p>
                   </td>
                 </tr>
                 $main_section
