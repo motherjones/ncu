@@ -10,7 +10,11 @@ $membership_slot = "";
 $membership_area_p["class"] = "mobile-format";
 $membership_area_p["style"] = "margin: 20px 0; color: #ff6900;font-size: 18px;text-transform: uppercase;";
 
-if(isset($_REQUEST['membership_slot']) && $_REQUEST['membership_slot'] !== null) {
+if($headlines_type === "trumpocracy") {
+	$membership_slot = "<div id=\"membership-call-box\" style=\"margin:0 auto;\">\n\t<p style=\"font-weight:bold;font-family:Georgia, serif;color: #000;text-align:center;font-size: 16px; line-height: 21px;\">Support hard-hitting journalism</p>\n\t<p style=\"font-family:Georgia, serif;color:#000;text-align:center;font-size: 16px; line-height: 21px;\"><em>The Russian Connection</em> and all our reporting is made possible by readers like you. Support our investigations with a <a href=\"https://secure.motherjones.com/fnx/?action=SUBSCRIPTION&pub_code=DON&term_pub=DON&b_country=United+States&list_source=7HEGNF00&term=XX.1.50.00.DON.D.0.7043\" style=\"color: #ff6900;\">tax-deductible donation</a>.</p>\n\t</div>\n";
+}
+
+/*if(isset($_REQUEST['membership_slot']) && $_REQUEST['membership_slot'] !== null) {
 	if($headlines_type !== "trumpocracy") {
 		$membership_slot = trim($_REQUEST['membership_slot']);
 		$membership_slot = modifyHTML($membership_slot, "p", $membership_area_p);
@@ -28,8 +32,16 @@ else {
 		$membership_slot = "<p class=\"mobile-format\" style=\"margin: 20px 0; color: #ff6900;font-size: 18px;text-transform: uppercase;\">Support hard-hitting journalism.<br />
 If you value what you read from <em>Mother Jones</em> and want to see more of it, please make a tax-deductible <a href=\"https://secure.motherjones.com/fnx/?action=subscription&pub_code=don&term_pub=don&b_country=united+states&list_source=7H6CNLP2&term=xx.1.50.00.don.d.0.2870\" style=\"color: #000;\">one-time</a> or <a href=\"https://secure.motherjones.com/fnx/?action=subscription&pub_code=sdn&term_pub=sdn&b_country=united+states&list_source=7H6CNLP2&term=xx.1.20.00.sdn.d.0.2872\" style=\"color: #000;\">monthly donation</a> today and help fund our unrelenting, nonprofit journalism.</p>";
 	}
-}
+}*/
 
+//this is where I need to connect the default membership function
+/*
+ * if newsletter is Food for Thought or Recharge:
+ * 	check to see if there's a paid ad in the bottom slot
+ * 		yes: Normal ad processing
+ * 		no: Run default membership ad function
+ * 	then: Reassign all variables with the appropriate values
+ */
 if(isset($_REQUEST['sub_code']) && $_REQUEST['sub_code'] !== "") {
 	$sub_code = trim($_REQUEST['sub_code']);
 	$small_sub_ad = $sub_code;

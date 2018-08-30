@@ -15,7 +15,7 @@ else {
 }
 
 if($arch_type === "food_for_thought_redesign" || $arch_type === "recharge") {
-	$ad_message .= "For <em>Food for Thought</em> and <em>Recharge</em>, the <strong>HTML (Image Map) Section</strong> will override the <strong>Image and URL only section</strong>, and either of these sections will override the Ad Bottom(2) section.";
+	$ad_message .= "For <em>Food for Thought</em> and <em>Recharge</em>, the <strong>HTML (Image Map) Section</strong> will override the <strong>Image and URL only section</strong>, and either of these sections will override the Ad Bottom(2) section if there is no paid ad..";
 }
 else {
 	$ad_message .= "The <strong>HTML (Image Map) Section</strong> will override the <strong>Image and Url only section</strong>.";
@@ -98,9 +98,6 @@ include "incs/header.inc";
   </div>
   <input type="hidden" value="" id="holdmenow" />
   </form>
-  <fieldset class="sections" style="text-align:center;">
-    	<button style="background-color: #26b;" onclick="document.location.href='default_membership_ad.php'">Add default membership ad</button>
-  </fieldset>
   
   <script>
 	$(document).ready(function() {
