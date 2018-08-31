@@ -21,14 +21,13 @@ include "incs/credentials.inc";
  */
 include "styles_includes.php";
 
+//default ads code
+include "incs/default_ads.inc";
 //include membership ad templates
 include "incs/membership_ads.inc";
 
 //include ad class
 //include "insert_ads.php";
-
-//default ads code
-include "incs/default_ads.inc";
 /* end include section */
 
 /* file path variable for writing out html file */
@@ -144,7 +143,24 @@ else {
 }
 //bottom ad slot if used by newsletter
 //if fft & small_sub_ad is not blank, apply small_sub_ad to billboard2, otherwise, run ad (default LiveIntent) on billboard2
+//this is where I need to connect the default membership function
+/*
+ * if newsletter is Food for Thought or Recharge:
+ * 	check to see if there's a paid ad in the bottom slot
+ * 		yes: Normal ad processing
+ * 		no: Run default membership ad function
+ * 	then: Reassign all variables with the appropriate values
+ * 	getDefaultAd($headlines_date)
+ */
+
 if($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge") {
+	if(isset($_REQUEST["advertiser_name2"]) && (strtolower($_REQUEST["advertiser_name2"]) === "liveintent" || $_REQUEST["advertiser_name2"] === "")) {
+		
+	}
+	else {
+		
+	}
+	
 	if(isset($small_sub_ad) && $small_sub_ad !== "") {
 		$billboard_ad2 = $small_sub_ad;
 		$billboard_url2 = "";
@@ -331,6 +347,26 @@ fwrite($file_handle, stripslashes($html_file));
 fwrite($file_handle2, stripslashes($html_file));
 print $relocate_me;
 /* end write html file to server section */
+
+//check default membership ad function
+function getDefaultAd($headlines_date) {
+	$comp_date = strtotime($headlines_date);
+	
+	$db_connect = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("Can't connect to database");
+	$query_test = "SELECT * FROM membership_ads ORDER BY start_date DESC";
+	
+	if($get_dates = mysqli_query($db_connect, $query_test)){
+		//variable when condition is met shouldn't be empty.
+		$trip = "";
+		while($results = mysqli_fetch_assoc($get_dates)) {
+			if($comp_date >= strtotime($results["start_date"]) && $trip === "") {
+				$trip = "yes";
+				print( json_encode($results) );
+				exit();
+			}
+		}
+	}
+}
 
 /* modify HTML attributes */
 //if $html_attrs is array, make sure it's associative and each key holds the attribute value
