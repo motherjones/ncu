@@ -23,31 +23,21 @@ else {
 		$sub_url = trim($_REQUEST['sub_url']);
 	}
 	else {
-		if($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge") {
-			$sub_url = "";
-		}
-		else {
-			$sub_url = "https://store.motherjones.com/collections/recently-added/products/motherjones-facts-mtee?utm_source=newsletter&utm_campaign=2017_facts&utm_medium=newsletter&utm_content=evergreen_facts";
-		}
+		$sub_url = "";
 	}
 	
 	if(isset($_REQUEST['sub_image']) && $_REQUEST['sub_image'] != null) {
 		$sub_image = $_REQUEST['sub_image'];
 	}
 	else {
-		if($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge") {
-			$sub_image = "";
-		}
-		else {
-			$sub_image = "https://cdn.maropost.com/pro/uploads/account_585/133987/storead_600x250_012417.jpg";
-		}
+		$sub_image = "";
 	}
 	
 	if(isset($_REQUEST['sub_text']) && $_REQUEST['sub_text'] != null) {
 		$sub_text = $_REQUEST['sub_text'];
 	}
 	else {
-		$sub_text = "Mother Jones Store";
+		$sub_text = "";
 	}
 	
 	if($headlines_type === "trumpocracy") {

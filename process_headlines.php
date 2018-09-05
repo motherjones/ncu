@@ -150,17 +150,28 @@ else {
  * 		yes: Normal ad processing
  * 		no: Run default membership ad function
  * 	then: Reassign all variables with the appropriate values
- * 	getDefaultAd($headlines_date)
+ * 	getDefaultAd($headlines_date) -- returns assoc array
+ *  membership ad variables from membership_ads.inc
+ * 	$sub_url = ""; $sub_image = ""; $sub_text = ""; $sub_code = "";
  */
 
+if(isset($_REQUEST["advertiser_name2"]) && (strtolower($_REQUEST["advertiser_name2"]) !== "liveintent" || $_REQUEST["advertiser_name2"] !== "")) {
+	$billboard_url2 = $_REQUEST['billboard_url2'];
+	$billboard_image2 = $_REQUEST['billboard_img2'];
+	$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p><div style=\"margin-top: 10px;margin-bottom:20px;width:100%;\"><a href=\"$billboard_url2\" name=\"Bottom Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:540px;border: none !important;\" alt=\"$advertiser_name2\" width=\"540\" border=\"0\" /></a>$pixel_tracker2</div>\n";
+}
+else {
+	
+}
+
 if($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge") {
-	if(isset($_REQUEST["advertiser_name2"]) && (strtolower($_REQUEST["advertiser_name2"]) === "liveintent" || $_REQUEST["advertiser_name2"] === "")) {
+	if(isset($_REQUEST["advertiser_name2"]) && (strtolower($_REQUEST["advertiser_name2"]) !== "liveintent" || $_REQUEST["advertiser_name2"] !== "")) {
 		
 	}
 	else {
 		
-	}
-	
+	}	
+dlines_type === "recharge") {
 	if(isset($small_sub_ad) && $small_sub_ad !== "") {
 		$billboard_ad2 = $small_sub_ad;
 		$billboard_url2 = "";
@@ -361,8 +372,7 @@ function getDefaultAd($headlines_date) {
 		while($results = mysqli_fetch_assoc($get_dates)) {
 			if($comp_date >= strtotime($results["start_date"]) && $trip === "") {
 				$trip = "yes";
-				print( json_encode($results) );
-				exit();
+				return $results;
 			}
 		}
 	}
