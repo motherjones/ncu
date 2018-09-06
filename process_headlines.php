@@ -155,68 +155,51 @@ else {
  * 	$sub_url = ""; $sub_image = ""; $sub_text = ""; $sub_code = "";
  */
 
-if(isset($_REQUEST["advertiser_name2"]) && (strtolower($_REQUEST["advertiser_name2"]) !== "liveintent" || $_REQUEST["advertiser_name2"] !== "")) {
-	$billboard_url2 = $_REQUEST['billboard_url2'];
-	$billboard_image2 = $_REQUEST['billboard_img2'];
-	$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p><div style=\"margin-top: 10px;margin-bottom:20px;width:100%;\"><a href=\"$billboard_url2\" name=\"Bottom Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:540px;border: none !important;\" alt=\"$advertiser_name2\" width=\"540\" border=\"0\" /></a>$pixel_tracker2</div>\n";
-}
-else {
-	
-}
-
-if($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge") {
-	if(isset($_REQUEST["advertiser_name2"]) && (strtolower($_REQUEST["advertiser_name2"]) !== "liveintent" || $_REQUEST["advertiser_name2"] !== "")) {
-		
+if(isset($_REQUEST["advertiser_name2"]) && ($_REQUEST["advertiser_name2"] !== "Live Intent" && $_REQUEST["advertiser_name2"] !== "")) {
+	if($headlines_type === "food_for_thought_redesign" || $headlines_type === "Recharge" || $headlines_type === "trumpocracy") {
+		$billboard_url2 = $_REQUEST['billboard_url2'];
+		$billboard_image2 = $_REQUEST['billboard_img2'];
+		$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p><div style=\"margin-top: 10px;margin-bottom:20px;width:100%;\"><a href=\"$billboard_url2\" name=\"Bottom Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:540px;border: none !important;\" alt=\"$advertiser_name2\" width=\"540\" border=\"0\" /></a>$pixel_tracker2</div>\n";
 	}
 	else {
-		
-	}	
-dlines_type === "recharge") {
-	if(isset($small_sub_ad) && $small_sub_ad !== "") {
-		$billboard_ad2 = $small_sub_ad;
-		$billboard_url2 = "";
-		$billboard_image2 = "";
-	}
-	else {
-		if((isset($_REQUEST['billboard_url2']) && $_REQUEST['billboard_url2'] !== "") || (isset($_REQUEST['billboard_img2']) && $_REQUEST['billboard_img2'] !== "")) {
-			$billboard_url2 = $_REQUEST['billboard_url2'];
-			$billboard_image2 = $_REQUEST['billboard_img2'];
-			$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p><div style=\"margin-top: 10px;margin-bottom:20px;width:100%;\"><a href=\"$billboard_url2\" name=\"Bottom Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:540px;border: none !important;\" alt=\"$advertiser_name2\" width=\"540\" border=\"0\" /></a>$pixel_tracker2</div>\n";
-		}
-		else {
-			$billboard_url2 = "";
-			$billboard_image2 = "";
-			if($headlines_type === "food_for_thought_redesign") {
-				$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p>" . $fft_redesign_billboard2;
-			}
-			else {
-				$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p>" . $recharge_billboard2;
-			}
-		}
-	}
-}
-else {
-	if ((isset($_REQUEST['billboard_url2']) && $_REQUEST['billboard_url2'] !== "") || (isset($_REQUEST['billboard_img2']) && $_REQUEST['billboard_img2'] != "")) {
 		$billboard_url2 = $_REQUEST['billboard_url2'];
 		$billboard_image2 = $_REQUEST['billboard_img2'];
 		$billboard_ad2 = "<div style=\"margin-top:7px;width:100%;\"><a href=\"$billboard_url2\" name=\"Bottom Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:300px;border: none;\" alt=\"$advertiser_name2\" width=\"300\" height=\"250\" border=\"0\" /></a>$pixel_tracker2</div>\n";
 	}
-	else {
-		$liveintent_billboard2 = true;
-		$billboard_url2 = null;
-		$billboard_image2 = null;
-		//list of newsletters that use the bottom ad slot
-		switch($headlines_type) {
-			case "econundrums_new":
-				$billboard_ad2 = "\n$econundrums_billboard2\n";
-				break;
-			case "in_the_mix_new":
-				$billboard_ad2 = "\n$inthemix_billboard2\n";
-				break;
-			case "political_mojo_new":
-				$billboard_ad2 = "\n$politicalmojo_billboard2\n";
-				break;
-		}
+}
+else {
+	$liveintent_billboard2 = true;
+	$billboard_url2 = null;
+	$billboard_image2 = null;
+	//list of newsletters that use the bottom ad slot
+	switch($headlines_type) {
+		case "econundrums_new":
+			$billboard_ad2 = "\n$econundrums_billboard2\n";
+			break;
+		case "in_the_mix_new":
+			$billboard_ad2 = "\n$inthemix_billboard2\n";
+			break;
+		case "political_mojo_new":
+			$billboard_ad2 = "\n$politicalmojo_billboard2\n";
+			break;
+		case "trumpocracy":
+			break;
+		default:
+			if(isset($sub_code) && $sub_code !== "") {
+				$billboard_ad2 = $small_sub_ad;
+			}
+			else if((isset($sub_url) && $sub_url !== "") || (isset($sub_image) && $sub_image !== "") || (isset($sub_text) && $sub_text !== "")) {
+				$billboard_ad2 = $small_sub_ad;
+			}
+			else {
+				if($headlines_type === "food_for_thought_redesign") {
+					$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p>" . $fft_redesign_billboard2;
+				}
+				else {
+					$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p>" . $recharge_billboard2;
+				}
+			}
+			break;
 	}
 }
 /* --------------------end ad section------------------- */
@@ -361,6 +344,7 @@ print $relocate_me;
 
 //check default membership ad function
 function getDefaultAd($headlines_date) {
+	include "incs/credentials.inc";
 	$comp_date = strtotime($headlines_date);
 	
 	$db_connect = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("Can't connect to database");

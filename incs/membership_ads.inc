@@ -26,14 +26,14 @@ else {
 		$sub_url = "";
 	}
 	
-	if(isset($_REQUEST['sub_image']) && $_REQUEST['sub_image'] != null) {
+	if(isset($_REQUEST['sub_image']) && $_REQUEST['sub_image'] !== "") {
 		$sub_image = $_REQUEST['sub_image'];
 	}
 	else {
 		$sub_image = "";
 	}
 	
-	if(isset($_REQUEST['sub_text']) && $_REQUEST['sub_text'] != null) {
+	if(isset($_REQUEST['sub_text']) && $_REQUEST['sub_text'] !== "") {
 		$sub_text = $_REQUEST['sub_text'];
 	}
 	else {
@@ -43,7 +43,7 @@ else {
 	if($headlines_type === "trumpocracy") {
 		$small_sub_ad = "<a href=\"$sub_url\"><img id=\"sub_ad\" src=\"$sub_image\" style=\"width:540px;max-width:540px;Margin:0 auto 20px auto;\" width=\"540\" alt=\"$sub_text\" border=\"0\" /></a>";
 	}
-	elseif($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge") {
+	else if($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge") {
 		if($sub_url === "" || $sub_image === "") {
 			$small_sub_ad = "";
 		}
@@ -53,6 +53,21 @@ else {
 	}
 	else {
 		$small_sub_ad = "<a href=\"$sub_url\"><img id=\"sub_ad\" src=\"$sub_image\" style=\"max-width: 600px;width:600px;border: none !important;\" width=\"600\" alt=\"$sub_text\" border=\"0\" /></a>";
+	}
+	
+	if($sub_url === "" && $sub_image === "" && $sub_text === "") {
+		if($headlines_type !== "trumpocracy" || $headlines_type !== "recharge" || $headlines_type !== "food_for_thought_redesign") {
+			$ads_array = getDefaultAd($headlines_date);
+			if(isset($ads_array['sub_code']) && $ads_array['sub_code'] !== "") {
+				$small_sub_ad = $ads_array['sub_code'];
+			}
+			else {
+				$sub_url = $ads_array['sub_url'];
+				$sub_image = $ads_array['sub_image'];
+				$sub_text = $ads_array['sub_text'];
+				$small_sub_ad = "<a href=\"$sub_url\"><img id=\"sub_ad\" src=\"$sub_image\" style=\"max-width: 600px;width:600px;border: none !important;\" width=\"600\" alt=\"$sub_text\" border=\"0\" /></a>";
+			}
+		}
 	}
 }
 ?>

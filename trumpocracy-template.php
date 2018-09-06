@@ -822,7 +822,6 @@ $lift_note_section
                 $main2_section
                 <tr>
                   <td style="border-bottom: 1px solid #767676;">
-                    <p class="ad_text" style="margin-top:0;color: #767676; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;">&#8212;Advertisement&#8212;</p>
                     $billboard_ad
                     <br />
                     <!--[if (gte mso 9)|(IE)]>
