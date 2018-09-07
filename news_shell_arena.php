@@ -101,6 +101,7 @@ include "incs/header.inc";
   
   <script>
 	$(document).ready(function() {
+		createDivs("<?php print $arch_type; ?>");
 		var new_news = "<?php print $new; ?>";
 		var day_int;
 		var type_of = "<?php print $arch_type; ?>";
@@ -146,7 +147,6 @@ include "incs/header.inc";
 		  default:
 		    break;
 		}
-		createDivs("<?php print $arch_type; ?>");
 		
 		if(new_news !== "yes") {
 			CKEDITOR.on('instanceReady', getArchive("<?php print $arch_type; ?>", "<?php print $news_date; ?>"));
