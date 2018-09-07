@@ -765,10 +765,10 @@ function recharge() {
 
 		<fieldset class="sections">
 				<legend>RECHARGE ARTICLES (Above Membership slot)</legend>
-				<fieldset class="sub_sections">
+				<!--<fieldset class="sub_sections">
 					<legend>Recharge Intro Language</legend>
 					<textarea id="recharge_intro_dek" name="recharge_intro_dek" rows="10" cols="45"></textarea>
-				</fieldset>
+				</fieldset>-->
 				<fieldset class="sub_sections">
 					<legend>Headline 1:</legend>
 					<textarea id="recharge1_dek" name="recharge1_dek" rows="15" cols="45"></textarea>

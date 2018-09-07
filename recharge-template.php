@@ -280,7 +280,7 @@ $recharge_opener = "<tr>\n\t<td style=\"border-bottom: 1px solid #767676;\">\n\t
 $recharge_closer = "</td>\n\t</tr>\n";
 
 $recharge_title_format = "margin-top: 0;font-size: 16px; line-height: 21px;text-align:left;font-family:Georgia, serif;color:#000;";
-$recharge_intro_dek = modifyHTML($recharge_intro_dek, "p", "style", $recharge_title_format);
+//$recharge_intro_dek = modifyHTML($recharge_intro_dek, "p", "style", $recharge_title_format);
 
 //html replacement code
 $recharge_p_format_dek = "color: #222; font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
@@ -357,9 +357,9 @@ if($recharge1_dek !== "" || $recharge2_dek !== "" || $recharge_intro_dek !== "")
 	else {
 		$recharge2 = "";
 	}
-	
+	//$recharge_intro_dek 
 	//put together html structure of section 1 & 2 above membership ad.
-	$recharge_sec1 = $recharge_opener . $recharge_intro_dek . $recharge1 . $recharge2 . $recharge_closer;
+	$recharge_sec1 = $recharge_opener . $recharge1 . $recharge2 . $recharge_closer;
 }
 //end recharge article 1 & 2 (above ad)
 
