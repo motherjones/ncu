@@ -15,7 +15,7 @@ else {
 }
 
 if($arch_type === "food_for_thought_redesign" || $arch_type === "recharge") {
-	$ad_message .= "For <em>Food for Thought</em> and <em>Recharge</em>, the <strong>HTML (Image Map) Section</strong> will override the <strong>Image and URL only section</strong>, and either of these sections will override the Ad Bottom(2) section if there is no paid ad..";
+	$ad_message .= "For <em>Food for Thought</em> and <em>Recharge</em>, the <strong>HTML (Image Map) Section</strong> will override the <strong>Image and URL only section</strong> if there is a membership campaign running. Otherwise, please leave these two slots blank and run LiveIntent ads (if there are no paid ads).";
 }
 else {
 	$ad_message .= "The <strong>HTML (Image Map) Section</strong> will override the <strong>Image and Url only section</strong>.";
