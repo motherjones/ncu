@@ -39,7 +39,7 @@ else {
 	else {
 		$sub_text = "";
 	}
-	
+
 	if($headlines_type === "trumpocracy") {
 		$small_sub_ad = "<a href=\"$sub_url\"><img id=\"sub_ad\" src=\"$sub_image\" style=\"width:540px;max-width:540px;Margin:0 auto 20px auto;\" width=\"540\" alt=\"$sub_text\" border=\"0\" /></a>";
 	}
@@ -65,7 +65,7 @@ else {
 				$sub_url = $ads_array['sub_url'];
 				$sub_image = $ads_array['sub_image'];
 				$sub_text = $ads_array['sub_text'];
-				$small_sub_ad = "<a href=\"$sub_url\"><img id=\"sub_ad\" src=\"$sub_image\" style=\"max-width: 600px;width:600px;border: none !important;\" width=\"600\" alt=\"$sub_text\" border=\"0\" /></a>";
+				$small_sub_ad = "<a href=\"$sub_url\"><img id=\"sub_ad\" src=\"$sub_image\" style=\"max-width: 540px;width:600px;border: none !important;\" width=\"540\" alt=\"$sub_text\" border=\"0\" /></a>";
 			}
 		}
 	}

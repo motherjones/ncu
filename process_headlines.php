@@ -150,7 +150,6 @@ else {
  * 		yes: Normal ad processing
  * 		no: Run default membership ad function
  * 	then: Reassign all variables with the appropriate values
- * 	getDefaultAd($headlines_date) -- returns assoc array
  *  membership ad variables from membership_ads.inc
  * 	$sub_url = ""; $sub_image = ""; $sub_text = ""; $sub_code = "";
  */
@@ -186,9 +185,11 @@ else {
 			break;
 		default:
 			if(isset($sub_code) && $sub_code !== "") {
+				$liveintent_billboard2 = false;
 				$billboard_ad2 = $small_sub_ad;
 			}
 			else if((isset($sub_url) && $sub_url !== "") || (isset($sub_image) && $sub_image !== "") || (isset($sub_text) && $sub_text !== "")) {
+				$liveintent_billboard2 = false;
 				$billboard_ad2 = $small_sub_ad;
 			}
 			else {
