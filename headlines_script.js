@@ -734,7 +734,6 @@ function getAllAds(information_retrieval) {
 			break;
 		case "membership_d":
 			the_url = "process_ads.php?information_retrieval='membership_d'";
-			//do something here
 			break;
 		default:
 			//maybe do something here
@@ -745,7 +744,6 @@ function getAllAds(information_retrieval) {
 		success: function(data) {
 			var content_data = "";
 			$("#archive_container").html("");
-			console.log(data);
 			if(data === "None") {
 				$("#ads_mssg").html("There are no ads in the database");
 				$("#ads_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
@@ -754,29 +752,36 @@ function getAllAds(information_retrieval) {
 				data_dispersal = JSON.parse(data);		
 				
 				for(disperse in data_dispersal) {
-					content_data += "<div class=\"ads_holder\">";
+					content_data += "<div class=\"ads_holder\"><br><br><form action=\"default_membership_ad.php\" id=\"def_memb\"><button onclick=\"$('#def_memb').submit()\" style=\"text-align:left;float:left;\">Edit</button>";
 					for(information in data_dispersal[disperse]) {
-						console.log(typeof data_dispersal[disperse][information]);
 						if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null || typeof data_dispersal[disperse][information] !== 'undefined')) {
-							if(information === "id" && (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null)) {
-								content_data += "<input type=\"hidden\" id=\"id\" name=\"id\" value=\"" + data_dispersal[disperse][information] + "\">";
-							}
-							else if(information === "sub_code" && typeof data_dispersal[disperse][information] !== 'object' &&  (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null)) {
-								content_data += "<p>HTML coded ad:&nbsp;" + data_dispersal[disperse][information] + "</p>";
-							}
-							else {
-								if(information === "sub_image" && typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null)) {
-									content_data += "<img src=\"" + data_dispersal[disperse][information] + "\" style=\"max-width:200px;\">";
-								}
-								else {
-									if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null)) {
-										content_data += "<input type=\"text\" id=\"" + information + "\" name=\"" + information + "\" value=\"" + data_dispersal[disperse][information] + "\">";
+							switch(information) {
+								case "id":
+									if(information === "id" && (data_dispersal[disperse][information] !== "" && data_dispersal[disperse][information] !== null)) {
+										content_data += "<input type=\"hidden\" id=\"id\" name=\"id\" value=\"" + data_dispersal[disperse][information] + "\">";
 									}
-								}
+									break;
+								case "sub_code":
+									if(typeof data_dispersal[disperse][information] !== 'object' &&  (data_dispersal[disperse][information] !== "" && data_dispersal[disperse][information] !== null)) {
+										content_data += "<div style=\"width:450px !important;\">HTML coded ad:&nbsp;" + data_dispersal[disperse][information] + "</div>";
+										content_data += "<textarea style=\"visibility:hidden;\" id=\"sub_code\" name=\"sub_code\">" + data_dispersal[disperse][information] + "</textarea>";
+									}
+									break;
+								case "sub_image":
+									if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null)) {
+										//<img src=\"" + data_dispersal[disperse][information] + "\" style=\"max-width:250px;margin-top:15px;\">
+										content_data += "<input type=\"text\" style=\"width:300px;\" id=\"sub_image\" name=\"sub_image\" value=\"" + data_dispersal[disperse][information] + "\">";
+									}
+									break;
+								default:
+									if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" && data_dispersal[disperse][information] !== null)) {
+										content_data += "<input style=\"float:left;\" type=\"text\" id=\"" + information + "\" name=\"" + information + "\" value=\"" + data_dispersal[disperse][information] + "\">";
+									}
+									break;
 							}
 						}
 					}
-					content_data += "</div>";
+					content_data += "<input type=\"hidden\" id=\"override\" name=\"override\" value=\"yes\"></form></div>";
 				}
 			}
 			$("#archive_container").html(content_data);

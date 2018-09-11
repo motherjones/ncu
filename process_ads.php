@@ -1,6 +1,8 @@
 <?php 
 header("Content-Type: text/html;charset=UTF-8");
 
+$override = "";
+
 if(isset($_REQUEST) && $_REQUEST["ad_type"] !== "") {
 	switch($_REQUEST["ad_type"]) {
 		case "ads":
@@ -28,24 +30,32 @@ function defaultMembership() {
 		exit();
 	}
 	else {
-		if(isset($_REQUEST["start_date"]) && $_REQUEST !== "") {
+		if(isset($_REQUEST["override"]) && $_REQUEST["override"] !== "") {
+			$override = "yes";
+		}
+		
+		if(isset($_REQUEST["start_date"]) && $_REQUEST["start_date"] !== "") {
 			$start_date = $_REQUEST["start_date"];
 		}
 	
-		if(isset($_REQUEST["sub_url"]) && $_REQUEST !== "") {
+		if(isset($_REQUEST["sub_url"]) && $_REQUEST["sub_url"] !== "") {
 			$sub_url = $_REQUEST["sub_url"];
 		}
 	
-		if(isset($_REQUEST["sub_image"]) && $_REQUEST !== "") {
+		if(isset($_REQUEST["sub_image"]) && $_REQUEST["sub_image"] !== "") {
 			$sub_image = $_REQUEST["sub_image"];
 		}
 	
-		if(isset($_REQUEST["sub_text"]) && $_REQUEST !== "") {
+		if(isset($_REQUEST["sub_text"]) && $_REQUEST["sub_text"] !== "") {
 			$sub_text = $_REQUEST["sub_text"];
 		}
 	
-		if(isset($_REQUEST["sub_code"]) && $_REQUEST !== "") {
+		if(isset($_REQUEST["sub_code"]) && $_REQUEST["sub_code"] !== "") {
 			$sub_code = $_REQUEST["sub_code"];
+		}
+		
+		if(isset($_REQUEST["id"]) && $_REQUEST["id"] !="") {
+			$id = $_REQUEST["id"];
 		}
 	
 		//prepare data for db write
@@ -61,13 +71,18 @@ function defaultMembership() {
 		//check for entry with same start date
 		$find_qry = "SELECT start_date FROM membership_ads WHERE start_date = '$start_date'";
 		if($count = mysqli_num_rows(mysqli_query($db_connect, $find_qry))) {
-			if($count > 0) {
+			if($count > 0 && $override !== "yes") {
 				print "Exists";
 				exit();
 			}
 		}
 		//write new default ad to db
-		$update_default = "INSERT INTO membership_ads(start_date,sub_url,sub_image,sub_text,sub_code) VALUES('$start_date','$sub_url','$sub_image','$sub_text','$sub_code')";
+		if(isset($override) && $override === "yes") {
+			$update_default = "UPDATE membership_ads SET start_date='$start_date',sub_url='$sub_url',sub_image='$sub_image',sub_text='$sub_text',sub_code='sub_code' WHERE id=$id";
+		}
+		else {
+			$update_default = "INSERT INTO membership_ads(id,start_date,sub_url,sub_image,sub_text,sub_code) VALUES('$id','$start_date','$sub_url','$sub_image','$sub_text','$sub_code')";
+		}
 		if(mysqli_query($db_connect, $update_default)) {
 			print "Success";
 			exit();

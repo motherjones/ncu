@@ -188,9 +188,15 @@ header {max-width:100%;
 	margin: 0 5px;
 	border: 1px solid #000;
 	display: table;}
-.ads_holder {width:250px;
+.ads_holder {width:550px;
 	margin: 10px auto;
-	border:1px solid #000;}
+	border:1px solid #000;
+	padding: 5px;
+	display: table;
+	clear:both;}
+.ads_holder input, .ads_holder textarea {display:table-cell;
+	margin-top:10px;
+	clear:both;}
 /*end ads*/
 .head_types {width:1024px;}
 .block_hidden {display:none;}
