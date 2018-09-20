@@ -103,7 +103,7 @@ if ((isset($_REQUEST['billboard_url']) && $_REQUEST['billboard_url'] != null) ||
 	if($headlines_type === "food_for_thought_redesign") {
 		$billboard_ad = "<div style=\"margin-top:10px;margin-bottom:20px;width:100% !important;\"><a href=\"$billboard_url\" name=\"Top Ad - $advertiser_name\"><img id=\"bill_a\" src=\"$billboard_image\" style=\"width:540px;border: none;\" alt=\"$advertiser_name\" width=\"540\" border=\"0\" /></a>$pixel_tracker</div>\n";
 	}
-	elseif ($headlines_type === "trumpocracy" || $headlines_type === "recharge") {
+	else if ($headlines_type === "trumpocracy" || $headlines_type === "recharge") {
 		$billboard_ad = "<div style=\"margin-top:10px;margin-bottom:0;width:100% !important;text-align:center;\"><a href=\"$billboard_url\" name=\"Top Ad - $advertiser_name\"><img id=\"bill_a\" src=\"$billboard_image\" style=\"width:540px;border: none;\" alt=\"$advertiser_name\" width=\"540\" border=\"0\" /></a>$pixel_tracker</div>\n";
 	}
 	else {//default size ads
@@ -154,11 +154,18 @@ else {
  * 	$sub_url = ""; $sub_image = ""; $sub_text = ""; $sub_code = "";
  */
 
-if(isset($_REQUEST["advertiser_name2"]) && ($_REQUEST["advertiser_name2"] !== "Live Intent" && $_REQUEST["advertiser_name2"] !== "")) {
-	if($headlines_type === "food_for_thought_redesign" || $headlines_type === "Recharge" || $headlines_type === "trumpocracy") {
-		$billboard_url2 = $_REQUEST['billboard_url2'];
-		$billboard_image2 = $_REQUEST['billboard_img2'];
-		$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p><div style=\"margin-top: 10px;margin-bottom:20px;width:100%;\"><a href=\"$billboard_url2\" name=\"Bottom Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:540px;border: none !important;\" alt=\"$advertiser_name2\" width=\"540\" border=\"0\" /></a>$pixel_tracker2</div>\n";
+if((isset($_REQUEST["advertiser_name2"]) && $_REQUEST["advertiser_name2"] !== "Live Intent" && $_REQUEST["advertiser_name2"] !== "") || (isset($_REQUEST["sub_code"]) && $_REQUEST["sub_code"] !== "")) {
+	if($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge" || $headlines_type === "trumpocracy") {
+		if($_REQUEST["sub_code"] !== "") {
+			$billboard_url2 = "";
+			$billboard_image2 = "";
+			$billboard_ad2 = $_REQUEST["sub_code"];
+		}
+		else {
+			$billboard_url2 = $_REQUEST['billboard_url2'];
+			$billboard_image2 = $_REQUEST['billboard_img2'];
+			$billboard_ad2 = "<p class=\"ad_text\" style=\"margin-top:0;color: #222; text-align: center;font-family:Georgia, serif; font-size: 12px;font-style:italic;\">&#8212;Advertisement&#8212;</p><div style=\"margin-top: 10px;margin-bottom:20px;width:100%;\"><a href=\"$billboard_url2\" name=\"Bottom Ad - $advertiser_name2\"><img id=\"bill_a\" src=\"$billboard_image2\" style=\"width:540px;border: none !important;\" alt=\"$advertiser_name2\" width=\"540\" border=\"0\" /></a>$pixel_tracker2</div>\n";
+		}
 	}
 	else {
 		$billboard_url2 = $_REQUEST['billboard_url2'];
@@ -184,11 +191,7 @@ else {
 		case "trumpocracy":
 			break;
 		default:
-			if(isset($sub_code) && $sub_code !== "") {
-				$liveintent_billboard2 = false;
-				$billboard_ad2 = $small_sub_ad;
-			}
-			else if((isset($sub_url) && $sub_url !== "") || (isset($sub_image) && $sub_image !== "") || (isset($sub_text) && $sub_text !== "")) {
+			if((isset($sub_code) && $sub_code !== "") || (isset($sub_url) && $sub_url !== "") || (isset($sub_image) && $sub_image !== "") || (isset($sub_text) && $sub_text !== "")) {
 				$liveintent_billboard2 = false;
 				$billboard_ad2 = $small_sub_ad;
 			}
@@ -232,7 +235,7 @@ if(isset($close_btn) && $close_btn != "") {
 	print $close_btn;
 }
 /*get the correct template for the headlines
-get code for the HTML to add to the archives ($html_file)*/
+ get code for the HTML to add to the archives ($html_file)*/
 
 $view_code = "<p style=\"margin:0 auto;width:220px;background-color:#765;border-style: 2px inset #33f;border-radius:4px;text-align:center;padding:10px;font-size:16px;\"><button class=\"arch-btn\" onclick='location.href=\"#get_code\"'>View Code</button> | <button class=\"arch-btn\" onclick='close_window()'>Close preview</button></p>";
 
@@ -408,3 +411,4 @@ function cleanChars($wip) {
 	
 	return $wip;
 }
+?>

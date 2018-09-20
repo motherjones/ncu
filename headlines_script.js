@@ -286,7 +286,7 @@ function restoreValues(the_section) {
 		  preview_url = "archives/" + date_obj[date_name] + "-" + the_section + ".html";
 		  
 		  if(date_obj[date_name] !== undefined && date_obj[date_name] !== "undefined" && date_obj[date_name] !== "" && date_obj[date_name] !== "unknown") {
-			output_data += "<div class='display_date_p'><p class='" + date_class + "'><span>" + current_str + date_obj[date_name] + "</span></p><div class='date_btns'><button class='edit_btn' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'>edit</button> | <button class='preview_btn' onclick='window.open(\"" + preview_url + "\", \"_blank\")'>preview and get code</button></div></div>";
+			output_data += "<div class='display_date_p'><div class='" + date_class + "'><span>" + current_str + date_obj[date_name] + "</span></div><div class='date_btns'><button class='edit_btn' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'>edit</button> | <button class='preview_btn' onclick='window.open(\"" + preview_url + "\", \"_blank\")'>preview and get code</button></div></div>";
 		  }
 	  }
 	  the_div.innerHTML += output_data;
@@ -752,7 +752,7 @@ function getAllAds(information_retrieval) {
 				data_dispersal = JSON.parse(data);		
 				
 				for(disperse in data_dispersal) {
-					content_data += "<div class=\"ads_holder\"><br><br><form action=\"default_membership_ad.php\" id=\"def_memb\"><button onclick=\"$('#def_memb').submit()\" style=\"text-align:left;float:left;\">Edit</button>";
+					content_data += "<div class=\"ads_holder\"><form action=\"default_membership_ad.php\" id=\"def_memb\">";
 					for(information in data_dispersal[disperse]) {
 						if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null || typeof data_dispersal[disperse][information] !== 'undefined')) {
 							switch(information) {
@@ -763,25 +763,38 @@ function getAllAds(information_retrieval) {
 									break;
 								case "sub_code":
 									if(typeof data_dispersal[disperse][information] !== 'object' &&  (data_dispersal[disperse][information] !== "" && data_dispersal[disperse][information] !== null)) {
-										content_data += "<div style=\"width:450px !important;\">HTML coded ad:&nbsp;" + data_dispersal[disperse][information] + "</div>";
+										content_data += "<div style=\"max-width:700px !important;clear:both;float:left;\"><br><strong>HTML coded ad:</strong><br>" + data_dispersal[disperse][information] + "</div>";
 										content_data += "<textarea style=\"visibility:hidden;\" id=\"sub_code\" name=\"sub_code\">" + data_dispersal[disperse][information] + "</textarea>";
 									}
 									break;
 								case "sub_image":
-									if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null)) {
-										//<img src=\"" + data_dispersal[disperse][information] + "\" style=\"max-width:250px;margin-top:15px;\">
-										content_data += "<input type=\"text\" style=\"width:300px;\" id=\"sub_image\" name=\"sub_image\" value=\"" + data_dispersal[disperse][information] + "\">";
+									if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" && data_dispersal[disperse][information] !== null)) {
+										content_data += "<p><label for=\"sub_image\"><span class=\"labels\">Sub image:</span> " + data_dispersal[disperse][information] + "</label></p>";
+										content_data += "<input type=\"hidden\" style=\"width:300px;\" id=\"sub_image\" name=\"sub_image\" value=\"" + data_dispersal[disperse][information] + "\">";
 									}
 									break;
 								default:
 									if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" && data_dispersal[disperse][information] !== null)) {
-										content_data += "<input style=\"float:left;\" type=\"text\" id=\"" + information + "\" name=\"" + information + "\" value=\"" + data_dispersal[disperse][information] + "\">";
+										var which_one = "";
+										var start_date_fix = "";
+										if(information === "sub_url") {
+											which_one = "Sub url: ";
+										}
+										else if(information === "sub_text") {
+											which_one = "Sub text: ";
+										}
+										else {
+											which_one = "Start date: ";
+											start_date_fix = " style=\"font-size:18px;\"";
+										}
+										content_data += "<p" + start_date_fix + "><label for=\"" + information + "\">" + "<span class=\"labels\">" + which_one + "</span> " + data_dispersal[disperse][information] + "</label></p>";
+										content_data += "<input style=\"float:left;\" type=\"hidden\" id=\"" + information + "\" name=\"" + information + "\" value=\"" + data_dispersal[disperse][information] + "\">";
 									}
 									break;
 							}
 						}
 					}
-					content_data += "<input type=\"hidden\" id=\"override\" name=\"override\" value=\"yes\"></form></div>";
+					content_data += "<input type=\"hidden\" id=\"override\" name=\"override\" value=\"yes\"><br style=\"clear:both;\"><button onclick=\"$('#def_memb').submit()\" style=\"margin: 10px auto;text-align:center;clear:float;font-size:1.1em;width:75px;padding:5px 1px;\">Edit</button></form></div>";
 				}
 			}
 			$("#archive_container").html(content_data);

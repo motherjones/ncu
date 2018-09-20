@@ -85,7 +85,7 @@ header {max-width:100%;
 	margin: 20px auto;
 	padding: 10px 0;
 	display: inline-block;}
-#archives {margin: 5px auto;
+#archives {;margin: 5px auto;
 	width: 650px;}
 #stats_sect {margin: 10px auto;
 	width:640px;}
@@ -96,14 +96,15 @@ header {max-width:100%;
 	/*background-color: #eee;*/}
 .display_date {font-weight:bold;
 	font-size:1.1em;}
-.display_date_p {
+.display_date_p {display:grid;
+	grid-template-columns:50% auto;
+	grid-gap: 5px;
 	margin:5px auto;
-	padding:5px 0;
+	padding:3px 0;
 	max-width:640px;
 	width:640px;
 	text-align:center;
 	border-bottom:1px dotted #000;
-	display:table;
 	font-weight:bold;}
 .news_btn {margin:2px 6px;
 	float:left;
@@ -135,7 +136,8 @@ header {max-width:100%;
 .category {margin:0 0 0 20px;
   padding:5px 5px;
   width:380px;
-  float:right;}.category p {margin:10px 0;
+  float:right;}
+ .category p {margin:10px 0;
   padding:0 0;
   float:left;
   text-align:left;
@@ -146,13 +148,9 @@ header {max-width:100%;
 	margin-bottom: 10px;
 }
 .current_news, .future_news, .test_news, .normal_news {
-	clear:both;
 	font-size:18px;
-	display: table-cell;
 	vertical-align: bottom;
 	text-align:right;
-	width:50%;
-	max-width:50%;
 	padding-right:10px;
 	float:none;
 }
@@ -167,9 +165,7 @@ header {max-width:100%;
 	color: #999;
 }
 .date_btns {
-	float:left;
-	text-align:right;
-	display: table-cell;
+	text-align:left;
 	vertical-align: top;
 }
 /*for ads*/
@@ -188,19 +184,30 @@ header {max-width:100%;
 	margin: 0 5px;
 	border: 1px solid #000;
 	display: table;}
-.ads_holder {width:550px;
+.ads_holder {width:600px;
 	margin: 10px auto;
 	border:1px solid #000;
 	padding: 5px;
 	display: table;
+	text-align: center;
+	vertical-align:top;
 	clear:both;}
 .ads_holder input, .ads_holder textarea {display:table-cell;
 	margin-top:10px;
 	clear:both;}
+.ads_holder p {float:left;
+	text-align:left;
+	font-size: 16px;
+	word-wrap:word-break;}
+#archive_container {display:grid;
+	grid-template-columns: auto;
+	grid-gap: 5px;}
 /*end ads*/
 .head_types {width:1024px;}
 .block_hidden {display:none;}
 .block_show {display:block;}
+.labels {font-size: 1.1em;
+	font-weight: bold;}
 #items_left, #items_right {margin:10px 0 0 0;
   /*text-align:right;*/
   clear:both;}

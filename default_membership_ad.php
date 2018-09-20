@@ -13,10 +13,10 @@ else {
 }
 
 if(isset($_REQUEST["id"]) && $_REQUEST["id"] !== "") {
-	$sub_url = trim($_REQUEST["id"]);
+	$sub_id = trim($_REQUEST["id"]);
 }
 else {
-	$sub_url = "";
+	$sub_id = "";
 }
 
 if(isset($_REQUEST["sub_url"]) && $_REQUEST["sub_url"] !== "") {
@@ -45,6 +45,13 @@ if(isset($_REQUEST["sub_code"]) && $_REQUEST["sub_code"] !== "") {
 }
 else {
 	$sub_code = "";
+}
+
+if(isset($_REQUEST["override"]) && $_REQUEST["override"] !== "") {
+	$override = trim($_REQUEST["override"]);
+}
+else {
+	$override = "";
 }
 ?>
 

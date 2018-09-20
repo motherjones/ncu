@@ -1,9 +1,13 @@
 <?php
-/*Template for ReCharge newsletter
+/*Template for Recharge newsletter
  * Author: Young Kim
  * Creation Date: 4/18/2018
  * Update: 5/09/2018
  * Version: 1.02
+ * Update: 8/22/2018
+ * Version: 1.03 -- Reduced font size for Recharge tag line
+ * Update: 9/11/2018
+ * Version: 1.04 -- Eliminated the intro language from newsletter
  */
 
 //Post and Request section (get all input fields for newsletter)
@@ -357,7 +361,7 @@ if($recharge1_dek !== "" || $recharge2_dek !== "" || $recharge_intro_dek !== "")
 	else {
 		$recharge2 = "";
 	}
-	//$recharge_intro_dek 
+	//$recharge_intro_dek
 	//put together html structure of section 1 & 2 above membership ad.
 	$recharge_sec1 = $recharge_opener . $recharge1 . $recharge2 . $recharge_closer;
 }
@@ -556,7 +560,7 @@ $recharge = <<<RECHARGE
               <table class="spacing" align="center" width="580" cellpadding="0" cellspacing="20" style="max-width:580px;margin:0 auto;">
                 <tr>
                   <td align="center" style="border-bottom: 1px solid #000;">
-                    <p style="Margin-top:0;Margin-bottom: 16px;color: #000 !important;text-decoration: none !important;text-align:center;font-size: 18px;line-height:21px;font-family:Georgia, serif;font-weight:bold;font-style:italic;" id="date_line">Stories that&rsquo;ll get you through the week. <span style="color: #ff6900;">/</span> <strong>$get_date</strong></p>
+                    <p style="Margin-top:0;Margin-bottom: 16px;color: #000 !important;text-decoration: none !important;text-align:center;font-size: 16px;line-height:19px;font-family:Georgia, serif;font-weight:bold;font-style:italic;" id="date_line">Stories that&rsquo;ll get you through the week. <span style="color: #ff6900;">/</span> <strong>$get_date</strong></p>
                   </td>
                 </tr>
                 $main_section
@@ -711,6 +715,8 @@ if($exists) {
 	ad_billboard = '$billboard_image',
 	ad_name = '$advertiser_name',
 	ad_name2 = '$advertiser_name2',
+	ad_link_banner = '$billboard_url2',
+	ad_banner = '$billboard_image2',
 	sub_url = '$sub_url',
 	sub_image = '$sub_image',
 	sub_text = '$sub_text',
@@ -721,7 +727,7 @@ if($exists) {
 	WHERE hed_date='$headlines_date'";
 }
 else {
-	$run_qry = "INSERT INTO recharge(hed_date,subject_line,recharge_main_hed,recharge_main_url,recharge_main_img,recharge_main_dek,recharge_main_source,recharge_main_ital,recharge_intro_dek,recharge1_dek,recharge1_source,recharge1_ital,recharge1_url,recharge2_dek,recharge2_source,recharge2_ital,recharge2_url,recharge3_dek,recharge3_source,recharge3_ital,recharge3_url,recharge4_dek,recharge4_source,recharge4_ital,recharge4_url,recharge5_dek,recharge5_source,recharge5_ital,recharge5_url,recharge_sign_off_dek,recharge_image_dek,recharge_image_credits,ad_name,ad_name2,ad_link_bill,ad_billboard,sub_url,sub_image,sub_text,sub_code,lift_note,pixel_tracker,pixel_tracker2)
+	$run_qry = "INSERT INTO recharge(hed_date,subject_line,recharge_main_hed,recharge_main_url,recharge_main_img,recharge_main_dek,recharge_main_source,recharge_main_ital,recharge_intro_dek,recharge1_dek,recharge1_source,recharge1_ital,recharge1_url,recharge2_dek,recharge2_source,recharge2_ital,recharge2_url,recharge3_dek,recharge3_source,recharge3_ital,recharge3_url,recharge4_dek,recharge4_source,recharge4_ital,recharge4_url,recharge5_dek,recharge5_source,recharge5_ital,recharge5_url,recharge_sign_off_dek,recharge_image_dek,recharge_image_credits,ad_name,ad_name2,ad_link_bill,ad_billboard,ad_link_banner,ad_banner,sub_url,sub_image,sub_text,sub_code,lift_note,pixel_tracker,pixel_tracker2)
 	VALUES('$headlines_date',
 	'$subject_line',
 	'$recharge_main_hed',
@@ -758,6 +764,8 @@ else {
 	'$advertiser_name2',
 	'$billboard_url',
 	'$billboard_image',
+	'$billboard_url2',
+	'$billboard_image2',
 	'$sub_url',
 	'$sub_image',
 	'$sub_text',
