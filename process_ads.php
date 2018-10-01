@@ -62,7 +62,7 @@ function defaultMembership() {
 		$sub_url = trim($sub_url);
 		$sub_image = trim($sub_image);
 		$sub_text = addslashes(trim($sub_text));
-		$sub_code = addslashes(trim($sub_code));
+		$sub_code = trim($sub_code);
 	
 		/* db operations */
 		//open db connection
@@ -78,7 +78,7 @@ function defaultMembership() {
 		}
 		//write new default ad to db
 		if(isset($override) && $override === "yes") {
-			$update_default = "UPDATE membership_ads SET start_date='$start_date',sub_url='$sub_url',sub_image='$sub_image',sub_text='$sub_text',sub_code='sub_code' WHERE id=$id";
+			$update_default = "UPDATE membership_ads SET start_date='$start_date',sub_url='$sub_url',sub_image='$sub_image',sub_text='$sub_text',sub_code='$sub_code' WHERE id=$id";
 		}
 		else {
 			$update_default = "INSERT INTO membership_ads(id,start_date,sub_url,sub_image,sub_text,sub_code) VALUES('$id','$start_date','$sub_url','$sub_image','$sub_text','$sub_code')";

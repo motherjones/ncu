@@ -155,7 +155,7 @@ else {
  */
 
 if((isset($_REQUEST["advertiser_name2"]) && $_REQUEST["advertiser_name2"] !== "Live Intent" && $_REQUEST["advertiser_name2"] !== "") || (isset($_REQUEST["sub_code"]) && $_REQUEST["sub_code"] !== "")) {
-	if($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge" || $headlines_type === "trumpocracy") {
+	if($headlines_type === "food_for_thought_redesign" || $headlines_type === "recharge") {
 		if($_REQUEST["sub_code"] !== "") {
 			$billboard_url2 = "";
 			$billboard_image2 = "";
@@ -355,7 +355,7 @@ function getDefaultAd($headlines_date) {
 	$query_test = "SELECT * FROM membership_ads ORDER BY start_date DESC";
 	
 	if($get_dates = mysqli_query($db_connect, $query_test)){
-		//variable when condition is met shouldn't be empty.
+		//variable when condition is met shouldn't be empty string.
 		$trip = "";
 		while($results = mysqli_fetch_assoc($get_dates)) {
 			if($comp_date >= strtotime($results["start_date"]) && $trip === "") {

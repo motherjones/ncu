@@ -60,6 +60,7 @@ else {
 			$ads_array = getDefaultAd($headlines_date);
 			if(isset($ads_array['sub_code']) && $ads_array['sub_code'] !== "") {
 				$small_sub_ad = $ads_array['sub_code'];
+				//$small_sub_ad = "This is not correct";
 			}
 			else {
 				$sub_url = $ads_array['sub_url'];
