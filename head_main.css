@@ -10,7 +10,9 @@ button {margin-left:10px;
   padding:2px 4px;
   vertical-align:top;
   font-family: 'Times New Roman', serif;}
-button:hover {cursor:pointer;}
+button:hover {cursor:pointer;
+  color:#000;
+  background-color:#fff;}
 input {margin-left:10px;
   color:#000000;
   background-color:#ffffff;}
@@ -114,7 +116,9 @@ header {max-width:100%;
 	font-style: italic;
 	font-size:1.1em;
 	border-radius: 3px;
-  border-color: #f03;}
+  	border-color: #c03;}
+.news_btn:hover {color:#007;
+	background-color:#ffb;}
 .landf_btn {background-color: #ccc;
 	color: #000;}
 .cr_new_btn {width:230px;
