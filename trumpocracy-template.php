@@ -830,12 +830,6 @@ $lift_note_section
                   </td>
                 </tr>
                 $topnews_sec
-                <tr>
-                	<td style="border-bottom: 1px solid #767676;" align="center">
-						<p style="margin:0 0 15px 0;max-width: 90%;color: #000;font-family:Georgia, serif;font-weight:bold;text-align:center;font-size: 16px; line-height: 21px;">Keeping track</p>
-						<p style="margin:0 0 20px 0;max-width: 90%;color: #767676;font-family:Georgia, serif;text-align:center;font-size: 16px; line-height: 21px;">Follow every turn in the long, twisted, and bizarre history of the Trump-Russia scandal in the always updated <a href="http://www.motherjones.com/politics/2017/03/exhaustive-history-donald-trump-russia-scandal-timeline" style="color: #ff6900;"><em>Mother Jones</em> timeline</a>.</p>
-                  </td>
-                </tr>
 				<tr>
 					<td style="border-bottom: 1px solid #767676;" align="center">
 						<p style="margin:0 0 15px 0;max-width: 90%;color: #000;font-family:Georgia, serif;font-weight:bold;text-align:center;font-size: 16px; line-height: 21px;">Take a deep dive</p>
