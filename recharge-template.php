@@ -204,7 +204,7 @@ if(isset($_REQUEST['recharge_sign_off_dek']) && $_REQUEST['recharge_sign_off_dek
 	$recharge_sign_off_dek = trim($_REQUEST['recharge_sign_off_dek']);
 }
 else {
-	$recharge_sign_off_dek = "<strong><em>That’s it for this week. We hope that <span style='font-style:normal;'>Recharge</span> helps you in the week ahead — and brings out the hellraiser in you. Have a tip or a link? Email us at <a href=\"mailto:recharge@motherjones.com\">recharge@motherjones.com</a></em></strong>.";
+    $recharge_sign_off_dek = "<p><strong>Recharge <em>is written by me, David Beard, a contributing editor at the Poynter Institute. If you want to share this edition with someone, here&rsquo;s a <a href=\"https://www.motherjones.com/topics/recharge/\">link</a> to these stories and a sign-up form</em></strong>.</p><p><strong><em>Have a tip or a story suggestion? Email us at <a href=\"mailto:recharge@motherjones.com\">recharge@motherjones.com</a></em></strong>.</p>";
 }
 
 if(isset($_REQUEST['recharge_image_dek']) && $_REQUEST['recharge_image_dek'] !== "") {
