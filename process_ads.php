@@ -107,7 +107,7 @@ function retrieveAllAds($info_disp) {
 			//do something here
 			break;
 		case "membership_d":
-			$query_run = "SELECT * FROM membership_ads";
+			$query_run = "SELECT * FROM membership_ads ORDER BY start_date DESC";
 			if($qry_runs = mysqli_query($db_connect,$query_run)) {
 				if(mysqli_num_rows($qry_runs) < 1) {
 					print "None";

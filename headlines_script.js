@@ -5,6 +5,7 @@
   --2/10/2016: added functions to clean dirty characters, update newsletter flight 
   --3/15/2017: added refresh data functionality by modifying the getArchive() function.
   --4/20/2018: added functionality for Recharge newsletter.
+  --6/01/2018: added section to insert default membership ads
 */
 
 //function to print out the section drop down select

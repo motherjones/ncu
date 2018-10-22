@@ -22,10 +22,8 @@ include "incs/header.inc"
 		$(".news_btn").click(function() {
 			$(".news_btn").css({"background-color" : "", "color" : "", "border" : ""});
 			$(this).css({"background-color" : "#fff", "color" : "#c22", "border" : "2px inset #000"});
-			$("#archives").hide("slide", {direction:"down"}, 300);
-			$("#archives").show("slide", {direction:"up"}, 200);
-			/*$("#archives").slideUp(500);
-			$("#archives").slideDown(600);*/
+			$("#archives").hide("slide", {direction:"down"}, 100);
+			$("#archives").show("slide", {direction:"up"}, 300);
 		});
   	 });
   </script>
