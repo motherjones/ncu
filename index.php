@@ -2,7 +2,7 @@
 header("Content-Type: text/html;charset=UTF-8");
 include "incs/credentials.inc";
 $today = date("Y-m-d", time());
-include "incs/header.inc";
+include "incs/header.inc"
 ?>
 <div style="text-align:center;clear:both;">
   <nav id="button_bar">
@@ -22,6 +22,8 @@ include "incs/header.inc";
 		$(".news_btn").click(function() {
 			$(".news_btn").css({"background-color" : "", "color" : "", "border" : ""});
 			$(this).css({"background-color" : "#fff", "color" : "#c22", "border" : "2px inset #000"});
+			$("#archives").hide("slide", {direction:"down"}, 100);
+			$("#archives").show("slide", {direction:"up"}, 300);
 		});
   	 });
   </script>

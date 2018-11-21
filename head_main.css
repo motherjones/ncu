@@ -10,6 +10,9 @@ button {margin-left:10px;
   padding:2px 4px;
   vertical-align:top;
   font-family: 'Times New Roman', serif;}
+button:hover {cursor:pointer;
+  color:#000;
+  background-color:#fff;}
 input {margin-left:10px;
   color:#000000;
   background-color:#ffffff;}
@@ -23,8 +26,9 @@ fieldset {margin:0 auto;
 	border: none;}
 textarea {margin-bottom: 10px;
 	padding-bottom:10px;}
-header {width:640px;
-	max-width:100%;
+header {max-width:100%;
+	width:640px;
+	text-align:center;
 	margin: 10px auto;
 	text-align:center;}
 .arch-btn {background-color: #331;
@@ -47,6 +51,7 @@ header {width:640px;
   float:left;}
 #head_row {margin:20px auto;
   max-width:100%;
+  width:640px;
   text-align:center;
   clear:both;
   display:table;}
@@ -79,33 +84,41 @@ header {width:640px;
 	display:inline-block;
 	clear:both;}	
 #button_bar {max-width:100%;
-	margin: 5px auto;
-	padding: 5px;
+	margin: 20px auto;
+	padding: 10px 0;
 	display: inline-block;}
-#archives {margin: 5px auto;
+#archives {;margin: 5px auto;
 	width: 650px;}
 #stats_sect {margin: 10px auto;
 	width:640px;}
+#lost_found{color:#e33;}
+#news_stats {color:#296;}
+#default_memb {color:#269;}
+.header_btns {border-color:#eee;
+	/*background-color: #eee;*/}
 .display_date {font-weight:bold;
 	font-size:1.1em;}
-.display_date_p {
+.display_date_p {display:grid;
+	grid-template-columns:50% auto;
+	grid-gap: 5px;
 	margin:5px auto;
-	padding:5px 0;
+	padding:3px 0;
 	max-width:640px;
 	width:640px;
 	text-align:center;
 	border-bottom:1px dotted #000;
-	display:table;
 	font-weight:bold;}
-.news_btn {margin:2px 5px;
+.news_btn {margin:2px 6px;
 	float:left;
 	color:#004;
 	background-color:#eee;
 	font-weight:bold;
 	font-style: italic;
 	font-size:1.1em;
-	border-radius: 5px;
-  border-color: #f03;}
+	border-radius: 3px;
+  	border-color: #c03;}
+.news_btn:hover {color:#007;
+	background-color:#ffb;}
 .landf_btn {background-color: #ccc;
 	color: #000;}
 .cr_new_btn {width:230px;
@@ -139,13 +152,9 @@ header {width:640px;
 	margin-bottom: 10px;
 }
 .current_news, .future_news, .test_news, .normal_news {
-	clear:both;
 	font-size:18px;
-	display: table-cell;
 	vertical-align: bottom;
 	text-align:right;
-	width:50%;
-	max-width:50%;
 	padding-right:10px;
 	float:none;
 }
@@ -160,9 +169,7 @@ header {width:640px;
 	color: #999;
 }
 .date_btns {
-	float:left;
-	text-align:right;
-	display: table-cell;
+	text-align:left;
 	vertical-align: top;
 }
 /*for ads*/
@@ -181,10 +188,30 @@ header {width:640px;
 	margin: 0 5px;
 	border: 1px solid #000;
 	display: table;}
+.ads_holder {width:600px;
+	margin: 10px auto;
+	border:1px solid #000;
+	padding: 5px;
+	display: table;
+	text-align: center;
+	vertical-align:top;
+	clear:both;}
+.ads_holder input, .ads_holder textarea {display:table-cell;
+	margin-top:10px;
+	clear:both;}
+.ads_holder p {float:left;
+	text-align:left;
+	font-size: 16px;
+	word-wrap:word-break;}
+#archive_container {display:grid;
+	grid-template-columns: auto;
+	grid-gap: 5px;}
 /*end ads*/
 .head_types {width:1024px;}
 .block_hidden {display:none;}
 .block_show {display:block;}
+.labels {font-size: 1.1em;
+	font-weight: bold;}
 #items_left, #items_right {margin:10px 0 0 0;
   /*text-align:right;*/
   clear:both;}
@@ -252,3 +279,4 @@ td#econundrums {background-color: #33ce08;}
 td#food, td#fft_red {background-color: #69ccff;}
 td#politics {background-color: #cfb999;}
 td#in_the_mix {background-color: #ffb999;}
+//jquery.ui css
