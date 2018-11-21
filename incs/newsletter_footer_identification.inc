@@ -1,8 +1,21 @@
 <?php 
+//temp code to automate switching of newsletter identification language for 2018 year end fundraising
+$start_fund_date = "2018-11-20";
+$end_fund_date = "2018-11-24";
+$start_date_comp = strtotime($start_fund_date);
+$end_date_comp = strtotime($end_fund_date);
+$head_date_comp = strtotime($headlines_date);
+//end temp code
+
 //Newsletter identification language
 switch($headlines_type) {
 	case "econundrums_new":
-		$newsletter_info = "<p class=\"ad_text\" style=\"margin: 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; font-size: 14px; color: #000;\"><em>Econundrums</em> comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976.</p>";
+	    if($head_date_comp >= $start_date_comp && $head_date_comp <= $end_date_comp) {
+	      $newsletter_info = "<p class=\"ad_text\" style=\"margin: 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; font-size: 14px; color: #000;\"><em>Econundrums</em> comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976. So give us some money...please.</p>";  
+	    }
+	    else {
+		  $newsletter_info = "<p class=\"ad_text\" style=\"margin: 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; font-size: 14px; color: #000;\"><em>Econundrums</em> comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976.</p>";
+	    }
 		break;
 	case "in_the_mix_new":
 		$newsletter_info = "<p class=\"ad_text\" style=\"margin: 20px 0 !important; padding: 0; font-family: Verdana, sans-serif; font-size: 14px; color: #000;\"><em>In the Mix</em> comes to you from <em>Mother Jones</em>, an award-winning, investigative journalism outlet that was founded as a nonprofit magazine in 1976.</p>";
