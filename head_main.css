@@ -127,7 +127,8 @@ header {width:640px;
 .category {margin:0 0 0 20px;
   padding:5px 5px;
   width:380px;
-  float:right;}.category p {margin:10px 0;
+  float:right;}
+ .category p {margin:10px 0;
   padding:0 0;
   float:left;
   text-align:left;

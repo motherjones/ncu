@@ -5,116 +5,116 @@ include "incs/credentials.inc";
 
 //get requests from either add section button or the form to submit
 if($_REQUEST['section']) {
-  $section = $_REQUEST['section'];
-  createDivs($section);
+	$section = $_REQUEST['section'];
+	createDivs($section);
 }
 
 if($_REQUEST['existing']) {
-  $get_section = trim($_REQUEST['existing']);
-  $new_news = "no";
-  $news_date = "";
-  
-  if($_REQUEST['check_new']) {
-  	$new_news = trim($_REQUEST['check_new']);
-  }
-  if($_REQUEST['the_date']) {
-  	$news_date = trim($_REQUEST['the_date']);
-  }
-
-  checkExisting($get_section, $new_news, $news_date);
+	$get_section = trim($_REQUEST['existing']);
+	$new_news = "no";
+	$news_date = "";
+	
+	if($_REQUEST['check_new']) {
+		$new_news = trim($_REQUEST['check_new']);
+	}
+	if($_REQUEST['the_date']) {
+		$news_date = trim($_REQUEST['the_date']);
+	}
+	
+	checkExisting($get_section, $new_news, $news_date);
 }
 
 if($_REQUEST['arch_type'] && $_REQUEST['date']) {
-  $archive = $_REQUEST['arch_type'];
-  $date_arch = $_REQUEST['date'];
-  retrieveArchive($archive, $date_arch);
+	$archive = $_REQUEST['arch_type'];
+	$date_arch = $_REQUEST['date'];
+	retrieveArchive($archive, $date_arch);
 }
 
 function retrieveArchive($arch_type, $arch_date) {
-  include "incs/credentials.inc";
-  $db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("Can't connect to DB");
-  $qry_string = sprintf("SELECT * FROM %s WHERE hed_date='%s'", $arch_type, $arch_date);
-  $arch_qry = mysqli_query($db_con, $qry_string) or die("Can't run query" . mysqli_error($db_con));
-  $result = mysqli_fetch_assoc($arch_qry);
-  $data_return = json_encode($result);
-
-  print $data_return;
+	include "incs/credentials.inc";
+	$db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("Can't connect to DB");
+	$qry_string = sprintf("SELECT * FROM %s WHERE hed_date='%s'", $arch_type, $arch_date);
+	$arch_qry = mysqli_query($db_con, $qry_string) or die("Can't run query" . mysqli_error($db_con));
+	$result = mysqli_fetch_assoc($arch_qry);
+	$data_return = json_encode($result);
+	
+	print $data_return;
 }
 
 function checkExisting($section_type, $if_new, $news_date) {
-  include "incs/credentials.inc";
-  $db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb);
-
-  if($if_new === "yes") {
-  	$check_qry = sprintf("SELECT hed_date FROM %s WHERE hed_date='%s'", $section_type, $news_date);
-  	$run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
-  	if(mysqli_num_rows($run_qry) !== 0) {
-  		exit("exists");
-  	}
-  }
-  else {
-  	$check_qry = sprintf("SELECT hed_date FROM %s ORDER By hed_date DESC", $section_type);
-  	$run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
-  	$date_array = "none";
-  	
-  	if(mysqli_num_rows($run_qry) > 0) {
-  		$date_array = "";
-  		while($get_dates = mysqli_fetch_assoc($run_qry)) {
-  			if($get_dates['hed_date'] !== "" || $get_dates['hed_date'] !== null || $get_dates['hed_date'] !== "undefined") {
-  				$date_array .= $get_dates['hed_date'] . "?";
-  			}
-  		}
-  		$date_arr = explode("?", $date_array);
-  		$date_arr = array_filter($date_arr);
-  		$date_json = json_encode($date_arr);
-  		print $date_json;
-  	}
-  	else {
-  		$error->name = "unknown";
-  		$send_error = json_encode($error);
-  		print $send_error;
-  	}
-  }
-  
-  mysqli_free_result($run_qry);
-  mysqli_close($db_con);
+	include "incs/credentials.inc";
+	$db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb);
+	
+	if($if_new === "yes") {
+		$check_qry = sprintf("SELECT hed_date FROM %s WHERE hed_date='%s'", $section_type, $news_date);
+		$run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
+		if(mysqli_num_rows($run_qry) !== 0) {
+			exit("exists");
+		}
+	}
+	else {
+		$check_qry = sprintf("SELECT hed_date FROM %s ORDER By hed_date DESC", $section_type);
+		$run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
+		$date_array = "none";
+		
+		if(mysqli_num_rows($run_qry) > 0) {
+			$date_array = "";
+			while($get_dates = mysqli_fetch_assoc($run_qry)) {
+				if($get_dates['hed_date'] !== "" || $get_dates['hed_date'] !== null || $get_dates['hed_date'] !== "undefined") {
+					$date_array .= $get_dates['hed_date'] . "?";
+				}
+			}
+			$date_arr = explode("?", $date_array);
+			$date_arr = array_filter($date_arr);
+			$date_json = json_encode($date_arr);
+			print $date_json;
+		}
+		else {
+			$error->name = "unknown";
+			$send_error = json_encode($error);
+			print $send_error;
+		}
+	}
+	
+	mysqli_free_result($run_qry);
+	mysqli_close($db_con);
 }
 
 //add more divs to section (left or right side)
 function createDivs($section) {
-  $get_divs = ""; //var to hold html code for each section separated by divs
-
-  switch($section) {
-    case "econundrums_new":
-      	$get_divs = econundrum();
-      	break;
-    case "food_for_thought_redesign":
-    		$get_divs = fft_redesign();
-    		break;
-    case "in_the_mix_new":
-  		$get_divs = inthemix();
-  		break;
-	case "political_mojo_new":
-		$get_divs = politics();
-		break;
-	case "breaking_news":
-		$get_divs = breaking_news();
-		break;
-	case "trumpocracy":
-		$get_divs = trumpocracy();
-		break;
-	case "recharge":
-		$get_divs = recharge();
-		break;
-    default:
-  }
-
-  print $get_divs;
+	$get_divs = ""; //var to hold html code for each section separated by divs
+	
+	switch($section) {
+		case "econundrums_new":
+			$get_divs = econundrum();
+			break;
+		case "food_for_thought_redesign":
+			$get_divs = fft_redesign();
+			break;
+		case "in_the_mix_new":
+			$get_divs = inthemix();
+			break;
+		case "political_mojo_new":
+			$get_divs = politics();
+			break;
+		case "breaking_news":
+			$get_divs = breaking_news();
+			break;
+		case "trumpocracy":
+			$get_divs = trumpocracy();
+			break;
+		case "recharge":
+			$get_divs = recharge();
+			break;
+		default:
+	}
+	
+	print $get_divs;
 }
 
 //Breaking News
 function breaking_news() {
-$breaking_news = <<<BREAKING
+	$breaking_news = <<<BREAKING
 <div class="head_types">
   <div class="columns">
 		<div id="items_left">
@@ -150,13 +150,13 @@ $breaking_news = <<<BREAKING
   </div>
 </div>
 BREAKING;
-
-return $breaking_news;
+	
+	return $breaking_news;
 }
 
 //Econundrums
 function econundrum() {
-$econundrum = <<<ECONUNDRUM
+	$econundrum = <<<ECONUNDRUM
 <div class="head_types">
   <div class="columns">
     <div id="items_left">
@@ -193,7 +193,7 @@ $econundrum = <<<ECONUNDRUM
 					<p>Url: <input type='text' id='envirohealth3_url' name='envirohealth3_url' size='50' onblur="this.value=fixURL(this.value)"" /></p>
 				</fieldset>
 			</fieldset>
-
+			
 			<fieldset class="sections">
 				<legend>BOTTOM SECTION</legend>
 				<h4><input type="text" class="section_titles" id="moremojo_title" name="moremojo_title" value="More from MoJo"" /></h4>
@@ -211,13 +211,13 @@ $econundrum = <<<ECONUNDRUM
 	</div>
 </div>
 ECONUNDRUM;
-
-return $econundrum;
+	
+	return $econundrum;
 }
 
 //Food for Thought Redesign
 function fft_redesign() {
-$fft_redesign = <<<FFTRED
+	$fft_redesign = <<<FFTRED
 <div class="head_types">
   <div class="columns">
     <div id="items_left">
@@ -259,7 +259,7 @@ $fft_redesign = <<<FFTRED
                     <input type="text" id="fft_a2_url" name="fft_a2_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
                 </fieldset>
             </fieldset>
-					
+            
             <fieldset class="sub_sections">
                 <legend>Article 3:</legend>
                 <textarea id="fft_article_3" name="fft_article_3" rows="4" cols="45""></textarea>
@@ -275,7 +275,7 @@ $fft_redesign = <<<FFTRED
                     <input type="text" id="fft_a3_url" name="fft_a3_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
                 </fieldset>
             </fieldset>
-					
+            
             <fieldset class="sub_sections">
                 <legend>Article 4:</legend>
                 <textarea id="fft_article_4" name="fft_article_4" rows="4" cols="45""></textarea>
@@ -307,7 +307,7 @@ $fft_redesign = <<<FFTRED
                     <input type="text" id="fft_a5_url" name="fft_a5_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
                 </fieldset>
             </fieldset>
-					
+            
             <fieldset class="sub_sections">
                 <legend>Article 6:</legend>
                 <textarea id="fft_article_6" name="fft_article_6" rows="4" cols="45""></textarea>
@@ -324,7 +324,7 @@ $fft_redesign = <<<FFTRED
                 </fieldset>
             </fieldset>
         </fieldset>
-			
+        
         <fieldset class="sections">
             <legend><input type="text" id="snack_box" name="snack_box" value="One Great Tidbit" onblur="this.value=cleanstring(this.value)"" /></legend>
             <p>Body text:</p>
@@ -361,7 +361,7 @@ $fft_redesign = <<<FFTRED
                 <p>Bite episode description:</p>
                 <textarea id="fft_bite_add" name="fft_bite_add""></textarea>
             </fieldset>
-				
+            
 			<fieldset class="sub_sections">
                 <legend>Second Item:</legend>
                 <textarea id="fft_ioe_item2" name="fft_ioe_item2""></textarea>
@@ -394,7 +394,7 @@ $fft_redesign = <<<FFTRED
                 </fieldset>
             </fieldset>
         </fieldset>
-			
+        
 		<fieldset class="sections">
             <legend><input type="text" id="hidden_kitchen" name="hidden_kitchen" value="What's Cooking" onblur="this.value=cleanstring(this.value)"" /></legend>
             <fieldset class="sub_sections">
@@ -404,7 +404,7 @@ $fft_redesign = <<<FFTRED
                 <textarea id="fft_hidden_kitchen" name="fft_hidden_kitchen""></textarea>
             </fieldset>
         </fieldset>
-
+        
         <fieldset class="sections">
             <fieldset class="sub_sections">
                 <p>Image credits:</p>
@@ -415,13 +415,13 @@ $fft_redesign = <<<FFTRED
   </div>
 </div>
 FFTRED;
-
-return $fft_redesign;
+	
+	return $fft_redesign;
 }
 
 //In the Mix
 function inthemix() {
-$inthemix = <<<INTHEMIX
+	$inthemix = <<<INTHEMIX
 <div class="head_types">
   <div class="columns">
     <div id="items_left">
@@ -458,7 +458,7 @@ $inthemix = <<<INTHEMIX
 				<p>Url: <input type="text" id="morefrommix3_url" name="morefrommix3_url" size="50" onblur="this.value=fixURL(this.value)"" /></p>
 			</fieldset>
 		</fieldset>
-			
+		
 		<fieldset class="sections">
 			<legend>BOTTOM SECTION</legend>
 			<h4><input type="text" class="section_titles" id="fromarchive_title" name="fromarchive_title" value="Don't Miss"" /></h4>
@@ -476,13 +476,13 @@ $inthemix = <<<INTHEMIX
 	</div>
 </div>
 INTHEMIX;
-
-return $inthemix;
+	
+	return $inthemix;
 }
 
 //Political Mojo
 function politics() {
-$political = <<<POLITICAL
+	$political = <<<POLITICAL
 <div class="head_types">
   <div class="columns">
     <div id="items_left">
@@ -519,7 +519,7 @@ $political = <<<POLITICAL
 				<p>Url: <input type="text" id="inothernews3_url" name="inothernews3_url" size="50" onblur="this.value=fixURL(this.value)"" /></p>
 			</fieldset>
 		</fieldset>
-
+		
 		<fieldset class="sections">
 			<legend>BOTTOM SECTION</legend>
 			<h4><input class="section_titles" id="mostread_title" name="mostread_title" type="text" value="Most Read"" /></h4>
@@ -538,8 +538,8 @@ $political = <<<POLITICAL
   </div>
 </div>
 POLITICAL;
-
-return $political;
+	
+	return $political;
 }
 
 function trumpocracy() {
@@ -738,7 +738,7 @@ function trumpocracy() {
 </div>
 TRUMP;
 	
-return $trumpocracy;
+	return $trumpocracy;
 }
 
 function recharge() {
@@ -762,13 +762,13 @@ function recharge() {
 					<input type="checkbox" id="recharge_main_ital" name="recharge_main_ital" style="float:left;">
 				</fieldset>
 		</fieldset>
-
+		
 		<fieldset class="sections">
 				<legend>RECHARGE ARTICLES (Above Membership slot)</legend>
-				<fieldset class="sub_sections">
+				<!--<fieldset class="sub_sections">
 					<legend>Recharge Intro Language</legend>
 					<textarea id="recharge_intro_dek" name="recharge_intro_dek" rows="10" cols="45"></textarea>
-				</fieldset>
+				</fieldset>-->
 				<fieldset class="sub_sections">
 					<legend>Headline 1:</legend>
 					<textarea id="recharge1_dek" name="recharge1_dek" rows="15" cols="45"></textarea>
@@ -859,7 +859,7 @@ function recharge() {
 					<legend>Recharge sign off:</legend>
 					<textarea id="recharge_sign_off_dek" name="recharge_sign_off_dek" rows="15" cols="45"></textarea>
 				</fieldset>
-
+				
 				<fieldset class="sub_sections">
 					<legend>Bottom image:</legend>
 					<textarea id="recharge_image_dek" name="recharge_image_dek" rows="15" cols="45"></textarea>
@@ -875,6 +875,6 @@ function recharge() {
 </div>
 RECHARGE;
 	
-return $recharge;
+	return $recharge;
 }
 ?>

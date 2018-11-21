@@ -2,7 +2,7 @@
 header("Content-Type: text/html;charset=UTF-8");
 include "incs/credentials.inc";
 $today = date("Y-m-d", time());
-include "incs/header.inc"
+include "incs/header.inc";
 ?>
 <div style="text-align:center;clear:both;">
   <nav id="button_bar">
