@@ -380,6 +380,7 @@ else {
 }
 
 $trum_main_dek = modifyHTML($trum_main_dek, "p", "style", $main_dek_p);
+$trum_main_dek = modifyHTML($trum_main_dek, "li", "style", $main_dek_p);
 $trum_main_dek = modifyHTML($trum_main_dek, "a", "style", $url_style);
 //add source name & url
 $get_last_p = strripos($trum_main_dek, "</p>");
@@ -428,6 +429,7 @@ else {
 
 $main2_p = "text-align:left;color: #767676;font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
 $trump_main2_dek = modifyHTML($trump_main2_dek, "p", "style", $main2_p);
+$trump_main2_dek = modifyHTML($trump_main2_dek, "li", "style", $main2_p);
 $trump_main2_dek = modifyHTML($trump_main2_dek, "a", "style", $url_style);
 //add source name & url
 $get_last_p = strripos($trump_main2_dek, "</p>");
@@ -485,6 +487,7 @@ if($topnews1_dek !== "" || $topnews2_dek !== "" || $topnews3_dek !== "" || $topn
         $get_substr = "";
         //replace html entities
         $topnews1_dek = modifyHTML($topnews1_dek, "p", "style", $topnews_p_format_dek);
+        $topnews1_dek = modifyHTML($topnews1_dek, "li", "style", $topnews_p_format_dek);
         $topnews1_dek = modifyHTML($topnews1_dek, "strong", "style", $topnews_bold_format_dek);
         $topnews1_dek = modifyHTML($topnews1_dek, "a", "style", $url_style);
         
@@ -515,6 +518,7 @@ if($topnews1_dek !== "" || $topnews2_dek !== "" || $topnews3_dek !== "" || $topn
         $get_substr = "";
         //replace html entities
         $topnews2_dek = modifyHTML($topnews2_dek, "p", "style", $topnews_p_format_dek);
+        $topnews2_dek = modifyHTML($topnews2_dek, "li", "style", $topnews_p_format_dek);
         $topnews2_dek = modifyHTML($topnews2_dek, "strong", "style", $topnews_bold_format_dek);
         $topnews2_dek = modifyHTML($topnews2_dek, "a", "style", $url_style);
         //insert source and formatting
@@ -544,6 +548,7 @@ if($topnews1_dek !== "" || $topnews2_dek !== "" || $topnews3_dek !== "" || $topn
         $get_substr = "";
         //replace html entities
         $topnews3_dek = modifyHTML($topnews3_dek, "p", "style", $topnews_p_format_dek);
+        $topnews3_dek = modifyHTML($topnews3_dek, "li", "style", $topnews_p_format_dek);
         $topnews3_dek = modifyHTML($topnews3_dek, "strong", "style", $topnews_bold_format_dek);
         $topnews3_dek = modifyHTML($topnews3_dek, "a", "style", $url_style);
         //insert source and formatting
@@ -573,6 +578,7 @@ if($topnews1_dek !== "" || $topnews2_dek !== "" || $topnews3_dek !== "" || $topn
         $get_substr = "";
         //replace html entities
         $topnews4_dek = modifyHTML($topnews4_dek, "p", "style", $topnews_p_format_dek);
+        $topnews4_dek = modifyHTML($topnews4_dek, "li", "style", $topnews_p_format_dek);
         $topnews4_dek = modifyHTML($topnews4_dek, "strong", "style", $topnews_bold_format_dek);
         $topnews4_dek = modifyHTML($topnews4_dek, "a", "style", $url_style);
         //insert source and formatting
@@ -602,6 +608,7 @@ if($topnews1_dek !== "" || $topnews2_dek !== "" || $topnews3_dek !== "" || $topn
         $get_substr = "";
         //replace html entities
         $topnews5_dek = modifyHTML($topnews5_dek, "p", "style", $topnews_p_format_dek);
+        $topnews5_dek = modifyHTML($topnews5_dek, "li", "style", $topnews_p_format_dek);
         $topnews5_dek = modifyHTML($topnews5_dek, "strong", "style", $topnews_bold_format_dek);
         $topnews5_dek = modifyHTML($topnews5_dek, "a", "style", $url_style);
         //insert source and formatting
@@ -660,6 +667,7 @@ if($wors1_dek !== "" || $wors2_dek !== "" || $wors3_dek !== "" || $wors4_dek !==
         $get_substr = "";
         //replace html entities
         $wors1_dek = modifyHTML($wors1_dek, "p", "style", $wors_p_format_dek);
+        $wors1_dek = modifyHTML($wors1_dek, "li", "style", $wors_p_format_dek);
         $wors1_dek = modifyHTML($wors1_dek, "strong", "style", $wors_bold_format_dek);
         $wors1_dek = modifyHTML($wors1_dek, "a", "style", $url_style);
         //insert source and formatting
@@ -689,6 +697,7 @@ if($wors1_dek !== "" || $wors2_dek !== "" || $wors3_dek !== "" || $wors4_dek !==
         $get_substr = "";
         //replace html entities
         $wors2_dek = modifyHTML($wors2_dek, "p", "style", $wors_p_format_dek);
+        $wors2_dek = modifyHTML($wors2_dek, "li", "style", $wors_p_format_dek);
         $wors2_dek = modifyHTML($wors2_dek, "strong", "style", $wors_bold_format_dek);
         $wors2_dek = modifyHTML($wors2_dek, "a", "style", $url_style);
         //insert source and formatting
@@ -718,6 +727,7 @@ if($wors1_dek !== "" || $wors2_dek !== "" || $wors3_dek !== "" || $wors4_dek !==
         $get_substr = "";
         //replace html entities
         $wors3_dek = modifyHTML($wors3_dek, "p", "style", $wors_p_format_dek);
+        $wors3_dek = modifyHTML($wors3_dek, "li", "style", $wors_p_format_dek);
         $wors3_dek = modifyHTML($wors3_dek, "strong", "style", $wors_bold_format_dek);
         $wors3_dek = modifyHTML($wors3_dek, "a", "style", $url_style);
         //insert source and formatting
@@ -747,6 +757,7 @@ if($wors1_dek !== "" || $wors2_dek !== "" || $wors3_dek !== "" || $wors4_dek !==
         $get_substr = "";
         //replace html entities
         $wors4_dek = modifyHTML($wors4_dek, "p", "style", $wors_p_format_dek);
+        $wors4_dek = modifyHTML($wors4_dek, "li", "style", $wors_p_format_dek);
         $wors4_dek = modifyHTML($wors4_dek, "strong", "style", $wors_bold_format_dek);
         $wors4_dek = modifyHTML($wors4_dek, "a", "style", $url_style);
         //insert source and formatting

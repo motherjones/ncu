@@ -257,6 +257,7 @@ else {
 }
 
 $recharge_main_dek = modifyHTML($recharge_main_dek, "p", "style", $main_dek_p_styles);
+$recharge_main_dek = modifyHTML($recharge_main_dek, "li", "style", $main_dek_p_styles);
 $recharge_main_dek = modifyHTML($recharge_main_dek, "a", "style", $url_color);
 
 //add source name & url
@@ -300,6 +301,7 @@ if($recharge1_dek !== "" || $recharge2_dek !== "" || $recharge_intro_dek !== "")
 		$get_substr = "";
 		//replace HTML entities
 		$recharge1_dek = modifyHTML($recharge1_dek, "p", "style", $recharge_p_format_dek);
+		$recharge1_dek = modifyHTML($recharge1_dek, "li", "style", $recharge_p_format_dek);
 		$recharge1_dek = modifyHTML($recharge1_dek, "strong", "style", $recharge_bold_format_dek);
 		$recharge1_dek = modifyHTML($recharge1_dek, "a", "style", $url_color);
 		//resize inline images
@@ -334,6 +336,7 @@ if($recharge1_dek !== "" || $recharge2_dek !== "" || $recharge_intro_dek !== "")
 		$get_substr = "";
 		//replace HTML entities
 		$recharge2_dek = modifyHTML($recharge2_dek, "p", "style", $recharge_p_format_dek);
+		$recharge2_dek = modifyHTML($recharge2_dek, "li", "style", $recharge_p_format_dek);
 		$recharge2_dek = modifyHTML($recharge2_dek, "strong", "style", $recharge_bold_format_dek);
 		$recharge2_dek = modifyHTML($recharge2_dek, "a", "style", $url_color);
 		//resize inline images
@@ -376,6 +379,7 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "" || $r
 		$get_substr = "";
 		//replace HTML entities
 		$recharge3_dek = modifyHTML($recharge3_dek, "p", "style", $recharge_p_format_dek);
+		$recharge3_dek = modifyHTML($recharge3_dek, "li", "style", $recharge_p_format_dek);
 		$recharge3_dek = modifyHTML($recharge3_dek, "strong", "style", $recharge_bold_format_dek);
 		$recharge3_dek = modifyHTML($recharge3_dek, "a", "style", $url_color);
 		//resize inline images
@@ -410,6 +414,7 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "" || $r
 		$get_substr = "";
 		//replace HTML entities
 		$recharge4_dek = modifyHTML($recharge4_dek, "p", "style", $recharge_p_format_dek);
+		$recharge4_dek = modifyHTML($recharge4_dek, "li", "style", $recharge_p_format_dek);
 		$recharge4_dek = modifyHTML($recharge4_dek, "strong", "style", $recharge_bold_format_dek);
 		$recharge4_dek = modifyHTML($recharge4_dek, "a", "style", $url_color);
 		//resize inline images
@@ -443,6 +448,7 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "" || $r
 		$get_substr = "";
 		//replace HTML entities
 		$recharge5_dek = modifyHTML($recharge5_dek, "p", "style", $recharge_p_format_dek);
+		$recharge5_dek = modifyHTML($recharge5_dek, "li", "style", $recharge_p_format_dek);
 		$recharge5_dek = modifyHTML($recharge5_dek, "strong", "style", $recharge_bold_format_dek);
 		$recharge5_dek = modifyHTML($recharge5_dek, "a", "style", $url_color);
 		//resize inline images
@@ -475,6 +481,7 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "" || $r
 	if(isset($recharge_sign_off_dek) && $recharge_sign_off_dek !== "") {
 		$recharge_so_dek_p = "font-family:Georgia, serif;font-size: 16px; line-height: 21px;color:#000;";
 		$recharge_sign_off_dek = modifyHTML($recharge_sign_off_dek, "p", "style", $recharge_so_dek_p);
+		$recharge_sign_off_dek = modifyHTML($recharge_sign_off_dek, "li", "style", $recharge_so_dek_p);
 		$recharge_sign_off_dek = modifyHTML($recharge_sign_off_dek, "a", "style", $url_color);
 	}
 	else {
@@ -484,6 +491,7 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "" || $r
 	//last section after sign off where the image and text goes
 	if($recharge_image_dek !== "") {
 		$recharge_image_dek = modifyHTML($recharge_image_dek, "p", "style", $recharge_p_format_dek);
+		$recharge_image_dek = modifyHTML($recharge_image_dek, "li", "style", $recharge_p_format_dek);
 		$recharge_image_dek = modifyHTML($recharge_image_dek, "a", "style", $url_color);
 		/*resize inline image code*/
 		$recharge_image_dek = modifyHTML($recharge_image_dek, "img", $recharge_inline_img);
@@ -495,6 +503,7 @@ if($recharge3_dek !== "" || $recharge4_dek !== "" || $recharge5_dek !== "" || $r
 	//image credits at end of newsletter before newsletter info and footer
 	if($recharge_image_credits !== "") {
 		$recharge_image_credits = modifyHTML($recharge_image_credits, "p", "style", "text-align:center;font-family:Georgia, serif;font-size: 14px; line-height: 19px;font-style:italic;color: #767676;");
+		$recharge_image_credits = modifyHTML($recharge_image_credits, "li", "style", "text-align:center;font-family:Georgia, serif;font-size: 14px; line-height: 19px;font-style:italic;color: #767676;");
 		$recharge_image_credits = modifyHTML($recharge_image_credits, "a", "style", $url_color);
 	}
 	else {

@@ -401,6 +401,7 @@ $fft_article_6_content = "";
 if(isset($fft_article_1) && $fft_article_1 !== "") {
 	//replace html entities
 	$fft_article_1 = modifyHTML($fft_article_1, "p", $main_section_p);
+	$fft_article_1 = modifyHTML($fft_article_1, "li", $main_section_p);
 	$fft_article_1 = modifyHTML($fft_article_1, "strong", "style", $lead_in_bold);
 	$fft_article_1 = modifyHTML($fft_article_1, "a", "style", $url_style);
 	//add sources and formatting
@@ -423,6 +424,7 @@ if(isset($fft_article_1) && $fft_article_1 !== "") {
 if(isset($fft_article_2) && $fft_article_2 !== "") {
 	//replace html entities
 	$fft_article_2 = modifyHTML($fft_article_2, "p", $main_section_p);
+	$fft_article_2 = modifyHTML($fft_article_2, "li", $main_section_p);
 	$fft_article_2 = modifyHTML($fft_article_2, "strong", "style", $lead_in_bold);
 	$fft_article_2 = modifyHTML($fft_article_2, "a", "style", $url_style);
 	$fft_article_2 = modifyHTML($fft_article_2, "img", $fft_inline_img);
@@ -446,6 +448,7 @@ if(isset($fft_article_2) && $fft_article_2 !== "") {
 if(isset($fft_article_3) && $fft_article_3 !== "") {
 	//replace html entities
 	$fft_article_3 = modifyHTML($fft_article_3, "p", $main_section_p);
+	$fft_article_3 = modifyHTML($fft_article_3, "li", $main_section_p);
 	$fft_article_3 = modifyHTML($fft_article_3, "strong", "style", $lead_in_bold);
 	$fft_article_3 = modifyHTML($fft_article_3, "a", "style", $url_style);
 	$fft_article_3 = modifyHTML($fft_article_3, "img", $fft_inline_img);
@@ -469,6 +472,7 @@ if(isset($fft_article_3) && $fft_article_3 !== "") {
 if(isset($fft_article_4) && $fft_article_4 !== "") {
 	//replace html entities
 	$fft_article_4 = modifyHTML($fft_article_4, "p", $main_section_p);
+	$fft_article_4 = modifyHTML($fft_article_4, "li", $main_section_p);
 	$fft_article_4 = modifyHTML($fft_article_4, "strong", "style", $lead_in_bold);
 	$fft_article_4 = modifyHTML($fft_article_4, "a", "style", $url_style);
 	$fft_article_4 = modifyHTML($fft_article_4, "img", $fft_inline_img);
@@ -493,6 +497,7 @@ if(isset($fft_article_4) && $fft_article_4 !== "") {
 if(isset($fft_article_5) && $fft_article_5 !== "") {
 	//replace html entities
 	$fft_article_5 = modifyHTML($fft_article_5, "p", $main_section_p);
+	$fft_article_5 = modifyHTML($fft_article_5, "li", $main_section_p);
 	$fft_article_5 = modifyHTML($fft_article_5, "strong", "style", $lead_in_bold);
 	$fft_article_5 = modifyHTML($fft_article_5, "a", "style", $url_style);
 	$fft_article_5 = modifyHTML($fft_article_5, "img", $fft_inline_img);
@@ -516,6 +521,7 @@ if(isset($fft_article_5) && $fft_article_5 !== "") {
 if(isset($fft_article_6) && $fft_article_6 !== "") {
 	//replace html entities
 	$fft_article_6 = modifyHTML($fft_article_6, "p", $main_section_p);
+	$fft_article_6 = modifyHTML($fft_article_6, "li", $main_section_p);
 	$fft_article_6 = modifyHTML($fft_article_6, "strong", "style", $lead_in_bold);
 	$fft_article_6 = modifyHTML($fft_article_6, "a", "style", $url_style);
 	$fft_article_6 = modifyHTML($fft_article_6, "img", $fft_inline_img);
@@ -554,6 +560,7 @@ if(isset($fft_snack_box) && $fft_snack_box !== "") {
 	$snack_box_p["class"] = "mobile-format";
 	$snack_box_p["style"] = "margin: 0 0 20px 0; padding: 0; font-family: Georgia, serif; color: #222;font-size: 18px;";
 	$fft_snack_box = modifyHTML($fft_snack_box, "p", $snack_box_p);
+	$fft_snack_box = modifyHTML($fft_snack_box, "li", $snack_box_p);
 	$fft_snack_box = modifyHTML($fft_snack_box, "strong", "style", $lead_in_bold);
 	$fft_snack_box = modifyHTML($fft_snack_box, "img", $fft_inline_img);
 	$fft_snack_box = modifyHTML($fft_snack_box, "a", "style", $url_style);
@@ -573,6 +580,7 @@ else {
 
 if(isset($fft_sb_attr) && $fft_sb_attr !== "") {
 	$fft_sb_attr = modifyHTML($fft_sb_attr, "p", $main_section_p);
+	$fft_sb_attr = modifyHTML($fft_sb_attr, "li", $main_section_p);
 	$fft_sb_attr = modifyHTML($fft_sb_attr, "a", "style", $url_style);
 	$fft_sb_attr = modifyHTML($fft_sb_attr, "img", $fft_inline_img);
 	$ogt_section .= $fft_sb_attr . "\n<!--[if (gte mso 9)|(IE)]><br><br><![endif]-->";
@@ -613,6 +621,7 @@ $close_bite_anchor = "";
 if(isset($fft_ioe_item1) && $fft_ioe_item1 !== "") {
 	//replace html entities
 	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "p", $ioe_sec_p);
+	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "li", $ioe_sec_p);
 	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "strong", "style", $ioe_lead_bold);
 	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "a", "style", $url_style);
 	$fft_ioe_item1 = modifyHTML($fft_ioe_item1, "img", $fft_inline_img);
@@ -654,6 +663,7 @@ else {
 if(isset($fft_ioe_item2) && $fft_ioe_item2 !== "") {
 	//replace html entities
 	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "p", $ioe_sec_p);
+	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "li", $ioe_sec_p);
 	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "strong", "style", $ioe_lead_bold);
 	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "a", "style", $url_style);
 	$fft_ioe_item2 = modifyHTML($fft_ioe_item2, "img", $fft_inline_img);
@@ -677,6 +687,7 @@ if(isset($fft_ioe_item2) && $fft_ioe_item2 !== "") {
 if(isset($fft_ioe_item3) && $fft_ioe_item3 !== "") {
 	//replace html entities
 	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "p", $ioe_sec_p);
+	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "li", $ioe_sec_p);
 	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "strong", "style", $ioe_lead_bold);
 	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "a", "style", $url_style);
 	$fft_ioe_item3 = modifyHTML($fft_ioe_item3, "img", $fft_inline_img);
@@ -719,6 +730,7 @@ if(isset($fft_hk_leadin) && $fft_hk_leadin !== "") {
 	$fft_hk_p_format["class"] = "hk_leadin";
 	$fft_hk_p_format["style"] = "margin: 0 0 20px 0; padding: 0; font-family:Georgia, serif; font-weight: bold; color: #000; font-size: 24px;line-height:28px;";
 	$fft_hk_leadin = modifyHTML($fft_hk_leadin, "p", $fft_hk_p_format);
+	$fft_hk_leadin = modifyHTML($fft_hk_leadin, "li", $fft_hk_p_format);
 	$fft_hk_leadin = modifyHTML($fft_hk_leadin, "img", $fft_inline_img);
 }
 else {
@@ -729,6 +741,7 @@ if(isset($fft_hidden_kitchen) && $fft_hidden_kitchen !== "") {
 	$fft_hk_p_format_2["class"] = "mobile-format";
 	$fft_hk_p_format_2["style"] = "color: #222; font-family:Georgia, serif;font-size: 16px; line-height: 21px;";
 	$fft_hidden_kitchen = modifyHTML($fft_hidden_kitchen, "p", $fft_hk_p_format_2);
+	$fft_hidden_kitchen = modifyHTML($fft_hidden_kitchen, "li", $fft_hk_p_format_2);
 	$fft_hidden_kitchen = modifyHTML($fft_hidden_kitchen, "img", $fft_inline_img);
 	$fft_hidden_kitchen = modifyHTML($fft_hidden_kitchen, "a", "style", $url_style);
 	
@@ -750,6 +763,7 @@ if(isset($fft_image_creds) && $fft_image_creds !== "") {
 	$image_creds_p["class"] = "mobile-format";
 	$image_creds_p["style"] = "margin: 0 0 20px 0; padding: 0;text-align:center; font-family:Georgia, serif; color: #222;font-size: 16px;line-height:21px;";
 	$fft_image_creds = modifyHTML($fft_image_creds, "p", $image_creds_p);
+	$fft_image_creds = modifyHTML($fft_image_creds, "li", $image_creds_p);
 	$fft_image_creds = modifyHTML($fft_image_creds, "a", "style", $url_style);
 	$image_creds_sec = $fft_image_creds;
 }

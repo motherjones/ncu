@@ -5,6 +5,7 @@
   --2/10/2016: added functions to clean dirty characters, update newsletter flight 
   --3/15/2017: added refresh data functionality by modifying the getArchive() function.
   --4/20/2018: added functionality for Recharge newsletter.
+  --6/01/2018: added section to insert default membership ads
 */
 
 //function to print out the section drop down select
@@ -286,7 +287,7 @@ function restoreValues(the_section) {
 		  preview_url = "archives/" + date_obj[date_name] + "-" + the_section + ".html";
 		  
 		  if(date_obj[date_name] !== undefined && date_obj[date_name] !== "undefined" && date_obj[date_name] !== "" && date_obj[date_name] !== "unknown") {
-			output_data += "<div class='display_date_p'><p class='" + date_class + "'><span>" + current_str + date_obj[date_name] + "</span></p><div class='date_btns'><button class='edit_btn' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'>edit</button> | <button class='preview_btn' onclick='window.open(\"" + preview_url + "\", \"_blank\")'>preview and get code</button></div></div>";
+			output_data += "<div class='display_date_p'><div class='" + date_class + "'><span>" + current_str + date_obj[date_name] + "</span></div><div class='date_btns'><button class='edit_btn' onclick='location.href=\"news_shell_arena.php?newsletter_type=" + the_section + "&date=" + date_obj[date_name] + "&new=no\"'>edit</button> | <button class='preview_btn' onclick='window.open(\"" + preview_url + "\", \"_blank\")'>preview and get code</button></div></div>";
 		  }
 	  }
 	  the_div.innerHTML += output_data;
@@ -544,7 +545,7 @@ function fixURL(url_fix) {
 	var header = "https://";
 	var exists = "";
 	var utm_code_suffix = "";
-	url_fix = url_fix.replace(/\s/g,'');
+	url_fix = url_fix.trim();
 	
 	if(url_fix) {
 		if(!url_fix.match(/\?/)) {
@@ -583,7 +584,6 @@ function fixURL(url_fix) {
 	
 	if(url_fix.match("www.motherjones.com") || url_fix.match("secure.motherjones.com")) {
 		utm_code_suffix += this_news + this_email + this_campaign;
-		utm_code_suffix = utm_code_suffix.trim();
 	}
 	else {
 		utm_code_suffix = "";
@@ -595,21 +595,15 @@ function fixURL(url_fix) {
 	
 	if(url_fix) {
 		if(!/^https?:\/\//i.test(url_fix)) {
-			var temp_url = header + url_fix + utm_code_suffix;
-			return temp_url.replace(/\s/g,''); 
+			return header + url_fix + utm_code_suffix;
 		}
 		else {
-			var temp_url = url_fix + utm_code_suffix; 
-			return temp_url.replace(/\s/g,'');
+			return url_fix + utm_code_suffix;
 		}
 	}
 	else {
 		return "";
 	}
-}
-
-function deleteSpaces(url_in) {
-	return url_in.replace(/\s/g,'');
 }
 
 function preview(the_type) {
@@ -679,4 +673,136 @@ else  {
   return false;
   }
   return xmlhttp;
+}
+
+//function for members default ad input
+function callMom(call_type) {
+	var ad_data;
+	var the_url;
+	$("#membership_default").preventDefault;
+	
+	switch(call_type) {
+		case "ad":
+			//do something here with ads
+			break;
+		case "membership":
+			//do something here with regular membership ads
+		case "membership_d":
+			//do something here with default membership ads
+			ad_data = $("#membership_default").serialize();
+			the_url = "process_ads.php";
+			break;
+		default:
+			//maybe do something here also
+	}
+	
+	$.ajax({
+		url: the_url,
+		data: ad_data,
+		method: 'POST',
+		success: function(data) {
+			if(data === "Success") {
+				$("#memb_mssg").html("Ad added successfully");
+				$("#memb_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
+			}
+			else if(data === "Exists") {
+				$("#memb_mssg").html("An entry with that start date exists. Please choose another start date.");
+				$("#memb_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
+			}
+			else {
+				$("#memb_mssg").html(data.toString());
+				$("#memb_mssg").animate({backgroundColor:"#ff0000",color:"#000000",width:200}, 2000);
+			}
+		},
+		error: function(data) {
+			$("#memb_mssg").html(data.toString());
+			$("#memb_mssg").animate({backgroundColor:"#ff0000",color:"#000000",width:200}, 2000);
+		}
+	});
+}
+
+//get all ads based on input
+function getAllAds(information_retrieval) {
+	var the_url;
+	var data_dispersal;
+	
+	switch(information_retrieval) {
+		case "ads":
+			//do something here
+			break;
+		case "membership":
+			//do something here
+			break;
+		case "membership_d":
+			the_url = "process_ads.php?information_retrieval='membership_d'";
+			break;
+		default:
+			//maybe do something here
+	}
+	$.ajax({
+		url: the_url,
+		method: 'POST',
+		success: function(data) {
+			var content_data = "";
+			$("#archive_container").html("");
+			if(data === "None") {
+				$("#ads_mssg").html("There are no ads in the database");
+				$("#ads_mssg").animate({backgroundColor:"#00ff66",color:"#b90066",width:200}, 2000);
+			}
+			else {
+				data_dispersal = JSON.parse(data);		
+				
+				for(disperse in data_dispersal) {
+					content_data += "<div class=\"ads_holder\"><form action=\"default_membership_ad.php\" id=\"def_memb\">";
+					for(information in data_dispersal[disperse]) {
+						if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" || data_dispersal[disperse][information] !== null || typeof data_dispersal[disperse][information] !== 'undefined')) {
+							switch(information) {
+								case "id":
+									if(information === "id" && (data_dispersal[disperse][information] !== "" && data_dispersal[disperse][information] !== null)) {
+										content_data += "<input type=\"hidden\" id=\"id\" name=\"id\" value=\"" + data_dispersal[disperse][information] + "\">";
+									}
+									break;
+								case "sub_code":
+									if(typeof data_dispersal[disperse][information] !== 'object' &&  (data_dispersal[disperse][information] !== "" && data_dispersal[disperse][information] !== null)) {
+										content_data += "<div style=\"max-width:700px !important;clear:both;float:left;\"><br><strong>HTML coded ad:</strong><br>" + data_dispersal[disperse][information] + "</div>";
+										content_data += "<textarea style=\"visibility:hidden;\" id=\"sub_code\" name=\"sub_code\">" + data_dispersal[disperse][information] + "</textarea>";
+									}
+									break;
+								case "sub_image":
+									if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" && data_dispersal[disperse][information] !== null)) {
+										content_data += "<p><label for=\"sub_image\"><span class=\"labels\">Sub image:</span> " + data_dispersal[disperse][information] + "</label></p>";
+										content_data += "<input type=\"hidden\" style=\"width:300px;\" id=\"sub_image\" name=\"sub_image\" value=\"" + data_dispersal[disperse][information] + "\">";
+									}
+									break;
+								default:
+									if(typeof data_dispersal[disperse][information] !== 'object' && (data_dispersal[disperse][information] !== "" && data_dispersal[disperse][information] !== null)) {
+										var which_one = "";
+										var start_date_fix = "";
+										if(information === "sub_url") {
+											which_one = "Sub url: ";
+										}
+										else if(information === "sub_text") {
+											which_one = "Sub text: ";
+										}
+										else {
+											which_one = "Start date: ";
+											start_date_fix = " style=\"font-size:18px;\"";
+										}
+										content_data += "<p" + start_date_fix + "><label for=\"" + information + "\">" + "<span class=\"labels\">" + which_one + "</span> " + data_dispersal[disperse][information] + "</label></p>";
+										content_data += "<input style=\"float:left;\" type=\"hidden\" id=\"" + information + "\" name=\"" + information + "\" value=\"" + data_dispersal[disperse][information] + "\">";
+									}
+									break;
+							}
+						}
+					}
+					content_data += "<input type=\"hidden\" id=\"override\" name=\"override\" value=\"yes\"><br style=\"clear:both;\"><button onclick=\"$('#def_memb').submit()\" style=\"margin: 10px auto;text-align:center;clear:float;font-size:1.1em;width:75px;padding:5px 1px;\">Edit</button></form></div>";
+				}
+			}
+			$("#archive_container").html(content_data);
+		},
+		error: function(data) {
+			$("#ads_mssg").html(data.toString());
+			$("#ads_mssg").animate({backgroundColor:"#ff0000",color:"#000000",width:200}, 2000);
+		}
+	});
 }
