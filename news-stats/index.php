@@ -11,7 +11,7 @@ include "../incs/header.inc"
 <h2>Archived Newsletter Statistics</h2>
 
 <div id="stats_sect">
-	<p><button onclick="window.open('news-stats-2017.html', 'Newsletter Stats', 'toolbar=no,width=1200,scrollbars=yes');">2017 Newsletter Stats</button></p>
+	<p><button onclick="window.open('news-stats-2018.html', 'Newsletter Stats', 'toolbar=no,width=1200,scrollbars=yes');">2018 Newsletter Stats</button>&nbsp;&nbsp;<button onclick="window.open('news-stats-2017.html', 'Newsletter Stats', 'toolbar=no,width=1200,scrollbars=yes');">2017 Newsletter Stats</button></p>
 </div>
 	</body>
 </html>

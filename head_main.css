@@ -16,8 +16,8 @@ button:hover {cursor:pointer;
 input {margin-left:10px;
   color:#000000;
   background-color:#ffffff;}
-h2 {width:250px;
-	max-width:250px;
+h2 {width:350px;
+	max-width:350px;
 	text-align:center;
 	margin:0 auto;}
 h3#head_text {color:#900;}

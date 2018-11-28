@@ -1,7 +1,7 @@
 <?php 
 //temp code to automate switching of newsletter identification language for 2018 year end fundraising
-$start_fund_date = "2018-11-20";
-$end_fund_date = "2018-11-24";
+$start_fund_date = "2018-11-26";
+$end_fund_date = "2018-12-01";
 $start_date_comp = strtotime($start_fund_date);
 $end_date_comp = strtotime($end_fund_date);
 $head_date_comp = strtotime($headlines_date);
