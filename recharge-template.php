@@ -347,7 +347,7 @@ if($recharge1_dek !== "" || $recharge2_dek !== "" || $recharge_intro_dek !== "")
 		$get_last_p = strripos($recharge2_dek, "</p>");
 		$get_substr = substr($recharge2_dek, 0, $get_last_p);
 		
-		if(isset($recharge2_source) !== "") {
+		if(isset($recharge2_source) && $recharge2_source !== "") {
 			if($recharge2_ital) {
 				$get_substr = $get_substr . " (<em><a href=\"$recharge2_url\" style=\"text-decoration:none;color: #ff6900;\">" . $recharge2_source . "</a></em>)</p>\n";
 			}
