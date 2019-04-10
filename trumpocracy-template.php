@@ -796,7 +796,7 @@ $safe_rbt = "";
 
 if($liveintent_billboard || $liveintent_banner || $liveintent_billboard2) {
     $safe_rbt = <<<SAFERBT
-<table cellpadding="0" cellspacing="0" border="0" width="40" height="6"><tbody><tr><td><img src="http://li.motherjones.com/imp?s=124867900&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867901&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867902&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867903&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867904&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867905&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867906&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867907&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867908&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867909&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867910&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867911&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867912&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867913&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867914&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867915&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867916&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867917&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867918&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867919&sz=2x1&li=trumpocracy&e={{contact.email}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td></tr></tbody></table>
+<table cellpadding="0" cellspacing="0" border="0" width="40" height="6"><tbody><tr><td><img src="http://li.motherjones.com/imp?s=124867900&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867901&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867902&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867903&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867904&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867905&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867906&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867907&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867908&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867909&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867910&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867911&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867912&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867913&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867914&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867915&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867916&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867917&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867918&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td><td><img src="http://li.motherjones.com/imp?s=124867919&sz=2x1&li=trumpocracy&m={{contact.email | md5}}&p={{campaign.id}}$timestamp" width="2" height="6" border="0" /></td></tr></tbody></table>
 SAFERBT;
 }
 //end LiveIntent section
@@ -804,6 +804,17 @@ SAFERBT;
 $anchor_subject_line = "Trumpocracy";
 
 $trumpocracy = <<<TRUMPOCRACY
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!--[if !mso]><!-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<!--<![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title></title>
+	</head>
+	<body style="min-width: 100%;background-color: #e9e9e9;margin: 0 auto;">
 <div>
 $trump_mobile
   <table width="100%" class="wrapper" align="center" style="Margin:0 auto;padding:0;background-color:#ccc;" cellpadding="0" cellspacing="0">
@@ -841,31 +852,6 @@ $lift_note_section
                   </td>
                 </tr>
                 $topnews_sec
-				<tr>
-					<td style="border-bottom: 1px solid #767676;" align="center">
-						<p style="margin:0 0 15px 0;max-width: 90%;color: #000;font-family:Georgia, serif;font-weight:bold;text-align:center;font-size: 16px; line-height: 21px;">Take a deep dive</p>
-						<p style="margin:0 0 20px 0;max-width: 90%;color: #767676;font-family:Georgia, serif;text-align:center;font-size: 16px; line-height: 21px;"><em>The Russian Connection</em> is compiled by Bill Buzenberg and Denise Clifton, who ran the election season blog <em>PutinTrump.org</em>. Visit their <a href="http://putintrump.org/" style="color: #ff6900;">archive here</a>.</p>
-					</td>
-                </tr>
-                <tr>
-                  <td style="border-bottom: 1px solid #767676;" valign="top">
-                    <!--[if (gte mso 9)|(IE)]>
-                    <br />
-                    <![endif]-->
-                    <table align="center" width="100%" style="width:100%;max-width:100%;" cellpadding="5" cellspacing="0" border="0">
-                      <tr>
-                        <td style="background-color: #e8e8e8;">
-                          $membership_slot
-                        </td>
-                      </tr>
-                    </table>
-                    <!--[if (gte mso 9)|(IE)]>
-                    <br /><br />
-                    <![endif]-->
-                    <br />
-                  </td>
-                </tr>
-                $wors_sec
                 <tr>
                   <td style="border-bottom:1px solid #767676;" align="center">
                     $small_sub_ad
@@ -906,6 +892,8 @@ $lift_note_section
     </tr>
   </table>
 </div>
+</body>
+</html>
 TRUMPOCRACY;
 
 //print out HTML template
@@ -965,6 +953,7 @@ $advertiser_name = strip_tags(addslashes($advertiser_name), "<a><br /><br><b><i>
 $ad_name = strip_tags(addslashes($advertiser_name), "<a><br /><br><b><i><em><strong><span><ol><ul><li><blockquote><img><table><tr><td>");
 $pixel_tracker = addslashes($pixel_tracker);
 $pixel_tracker2 = addslashes($pixel_tracker2);
+$lift_note = addslashes($lift_note);
 
 //check to see if data exists in db
 $check_existing = "SELECT id, hed_date FROM trumpocracy WHERE hed_date='$headlines_date'";

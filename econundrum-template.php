@@ -26,10 +26,10 @@ else {
 }
 
 if(isset($_REQUEST['conundrum_lead']) && $_REQUEST['conundrum_lead'] != "") {
-	$conun_lead = strip_tags(trim($_REQUEST['conundrum_lead']), $allowed_html);
+    $conun_lead = strip_tags(trim($_REQUEST['conundrum_lead']), $allowed_html);
 }
 else {
-	$conun_lead = "";
+    $conun_lead = "";
 }
 
 if(isset($_REQUEST['envirohealth1_hed']) && $_REQUEST['envirohealth1_hed'] != "") {
@@ -59,42 +59,42 @@ else {
 }
 
 if(isset($_REQUEST['envirohealth3_hed']) && $_REQUEST['envirohealth3_hed'] != "") {
-	$envh3_hed = trim($_REQUEST['envirohealth3_hed']);
+    $envh3_hed = trim($_REQUEST['envirohealth3_hed']);
 }
 else {
-	$envh3_hed = "";
+    $envh3_hed = "";
 }
 if(isset($_REQUEST['envirohealth3_url']) && $_REQUEST['envirohealth3_url'] != "") {
-	$envh3_url = trim($_REQUEST['envirohealth3_url']);
+    $envh3_url = trim($_REQUEST['envirohealth3_url']);
 }
 else {
-	$envh3_url = "";
+    $envh3_url = "";
 }
 
 if(isset($_REQUEST['envirohealth4_hed']) && $_REQUEST['envirohealth4_hed'] != "") {
-	$envh4_hed = trim($_REQUEST['envirohealth4_hed']);
+    $envh4_hed = trim($_REQUEST['envirohealth4_hed']);
 }
 else {
-	$envh4_hed = "";
+    $envh4_hed = "";
 }
 if(isset($_REQUEST['envirohealth4_url']) && $_REQUEST['envirohealth4_url'] != "") {
-	$envh4_url = trim($_REQUEST['envirohealth4_url']);
+    $envh4_url = trim($_REQUEST['envirohealth4_url']);
 }
 else {
-	$envh4_url = "";
+    $envh4_url = "";
 }
 
 if(isset($_REQUEST['envirohealth5_hed']) && $_REQUEST['envirohealth5_hed'] != "") {
-	$envh5_hed = trim($_REQUEST['envirohealth5_hed']);
+    $envh5_hed = trim($_REQUEST['envirohealth5_hed']);
 }
 else {
-	$envh5_hed = "";
+    $envh5_hed = "";
 }
 if(isset($_REQUEST['envirohealth5_url']) && $_REQUEST['envirohealth5_url'] != "") {
-	$envh5_url = trim($_REQUEST['envirohealth5_url']);
+    $envh5_url = trim($_REQUEST['envirohealth5_url']);
 }
 else {
-	$envh5_url = "";
+    $envh5_url = "";
 }
 
 if(isset($_REQUEST['moremojo_hed']) && $_REQUEST['moremojo_hed'] != "") {
@@ -111,55 +111,55 @@ else {
 }
 
 if(isset($_REQUEST['moremojo2_hed']) && $_REQUEST['moremojo2_hed'] != "") {
-	$moremojo2_hed = trim($_REQUEST['moremojo2_hed']);
+    $moremojo2_hed = trim($_REQUEST['moremojo2_hed']);
 }
 else {
-	$moremojo2_hed = "";
+    $moremojo2_hed = "";
 }
 if(isset($_REQUEST['moremojo2_url']) && $_REQUEST['moremojo2_url'] != "") {
-	$moremojo2_url = trim($_REQUEST['moremojo2_url']);
+    $moremojo2_url = trim($_REQUEST['moremojo2_url']);
 }
 else {
-	$moremojo2_url = "";
+    $moremojo2_url = "";
 }
 
 if(isset($_REQUEST['moremojo3_hed']) && $_REQUEST['moremojo3_hed'] != "") {
-	$moremojo3_hed = trim($_REQUEST['moremojo3_hed']);
+    $moremojo3_hed = trim($_REQUEST['moremojo3_hed']);
 }
 else {
-	$moremojo3_hed = "";
+    $moremojo3_hed = "";
 }
 if(isset($_REQUEST['moremojo3_url']) && $_REQUEST['moremojo3_url'] != "") {
-	$moremojo3_url = trim($_REQUEST['moremojo3_url']);
+    $moremojo3_url = trim($_REQUEST['moremojo3_url']);
 }
 else {
-	$moremojo3_url = "";
+    $moremojo3_url = "";
 }
 
 if(isset($_REQUEST['moremojo4_hed']) && $_REQUEST['moremojo4_hed'] != "") {
-	$moremojo4_hed = trim($_REQUEST['moremojo4_hed']);
+    $moremojo4_hed = trim($_REQUEST['moremojo4_hed']);
 }
 else {
-	$moremojo4_hed = "";
+    $moremojo4_hed = "";
 }
 if(isset($_REQUEST['moremojo4_url']) && $_REQUEST['moremojo4_url'] != "") {
-	$moremojo4_url = trim($_REQUEST['moremojo4_url']);
+    $moremojo4_url = trim($_REQUEST['moremojo4_url']);
 }
 else {
-	$moremojo4_url = "";
+    $moremojo4_url = "";
 }
 
 if(isset($_REQUEST['moremojo5_hed']) && $_REQUEST['moremojo5_hed'] != "") {
-	$moremojo5_hed = trim($_REQUEST['moremojo5_hed']);
+    $moremojo5_hed = trim($_REQUEST['moremojo5_hed']);
 }
 else {
-	$moremojo5_hed = "";
+    $moremojo5_hed = "";
 }
 if(isset($_REQUEST['moremojo5_url']) && $_REQUEST['moremojo5_url'] != "") {
-	$moremojo5_url = trim($_REQUEST['moremojo5_url']);
+    $moremojo5_url = trim($_REQUEST['moremojo5_url']);
 }
 else {
-	$moremojo5_url = "";
+    $moremojo5_url = "";
 }
 
 // This week's conundrum template setup
@@ -169,26 +169,26 @@ else {
 
 //This Week's Econundrum
 if(isset($_REQUEST['this_week']) && ($_REQUEST['this_week'] == "" || strtoupper($_REQUEST['this_week']) == "THIS WEEK'S ECONUNDRUM")) {
-	$this_week = "This Week's Econundrum";
+    $this_week = "This Week's Econundrum";
 }
 else {
-	$this_week = strtoupper(trim($_REQUEST['this_week']));
+    $this_week = strtoupper(trim($_REQUEST['this_week']));
 }
 
 //More Environment & Health
 if(isset($_REQUEST['envirohealth_title']) && ($_REQUEST['envirohealth_title'] == "" || strtoupper($_REQUEST['envirohealth_title']) == "MORE ENVIRONMENT & HEALTH")) {
-	$envirohealth_title = "More Environment & Health";
+    $envirohealth_title = "More Environment & Health";
 }
 else {
-	$envirohealth_title = strtoupper(trim($_REQUEST['envirohealth_title']));
+    $envirohealth_title = strtoupper(trim($_REQUEST['envirohealth_title']));
 }
 
 //More from MoJo
 if(isset($_REQUEST['moremojo_title']) && ($_REQUEST['moremojo_title'] == "" || strtoupper($_REQUEST['moremojo_title']) == "MORE FROM MOJO")) {
-	$moremojo_title = "More from <em>MoJo</em>";
+    $moremojo_title = "More from <em>MoJo</em>";
 }
 else {
-	$moremojo_title = strtoupper(trim($_REQUEST['moremojo_title']));
+    $moremojo_title = strtoupper(trim($_REQUEST['moremojo_title']));
 }
 //html template build section
 //environment & health section
@@ -196,59 +196,59 @@ $envirohealth_section = "";
 
 $eh_title = "<tr>\n<td style=\"$section_title\">\n<hr style=\"$separator_border\" />\n<br />\n$envirohealth_title\n</td>\n</tr>\n";
 if(isset($envh1_hed) && $envh1_hed !== "") {
-	$eh1_url = "";
-	$eh1_anchor_name = "2 - " . htmlentities( $envh1_hed, ENT_COMPAT, "UTF-8");
-	$eh1_url_close = "</a>";
-	$eh1_social_media = "";
-	
-	if(isset($envh1_url) && $envh1_url !== "") {
-		$eh1_url = "<a class=\"article_hed\" href=\"$envh1_url\" style=\"$hed_styles\" name=\"$eh1_anchor_name\">";
-	}
-	
-	$eh1_full = "<tr>\n<td style=\"$standard_td\">\n$eh1_url". $envh1_hed. "$eh1_url_close\n" . "$eh1_social_media</td>\n</tr>\n";
+    $eh1_url = "";
+    $eh1_anchor_name = "2 - " . htmlentities( $envh1_hed, ENT_COMPAT, "UTF-8");
+    $eh1_url_close = "</a>";
+    $eh1_social_media = "";
+    
+    if(isset($envh1_url) && $envh1_url !== "") {
+        $eh1_url = "<a class=\"article_hed\" href=\"$envh1_url\" style=\"$hed_styles\" name=\"$eh1_anchor_name\">";
+    }
+    
+    $eh1_full = "<tr>\n<td style=\"$standard_td\">\n$eh1_url". $envh1_hed. "$eh1_url_close\n" . "$eh1_social_media</td>\n</tr>\n";
 }
 else {
-	$eh1_full = "";
+    $eh1_full = "";
 }
 
 if(isset($envh2_hed) && $envh2_hed !== "") {
-	$eh2_url = "";
-	$eh2_anchor_name = "3 - " . htmlentities( $envh2_hed, ENT_COMPAT, "UTF-8");
-	$eh2_url_close = "</a>";
-	$eh2_social_media = "";
-	
-	if(isset($envh2_url) && $envh2_url !== "") {
-		$eh2_url = "<a class=\"article_hed\" href=\"$envh2_url\" style=\"$hed_styles\" name=\"$eh2_anchor_name\">";
-	}
-	
-	$eh2_full = "<tr>\n<td style=\"$standard_td\">\n$eh2_url". $envh2_hed . "$eh2_url_close\n" . "$eh2_social_media</td>\n</tr>\n";
+    $eh2_url = "";
+    $eh2_anchor_name = "3 - " . htmlentities( $envh2_hed, ENT_COMPAT, "UTF-8");
+    $eh2_url_close = "</a>";
+    $eh2_social_media = "";
+    
+    if(isset($envh2_url) && $envh2_url !== "") {
+        $eh2_url = "<a class=\"article_hed\" href=\"$envh2_url\" style=\"$hed_styles\" name=\"$eh2_anchor_name\">";
+    }
+    
+    $eh2_full = "<tr>\n<td style=\"$standard_td\">\n$eh2_url". $envh2_hed . "$eh2_url_close\n" . "$eh2_social_media</td>\n</tr>\n";
 }
 else {
-	$eh2_full = "";
+    $eh2_full = "";
 }
 
 if(isset($envh3_hed) && $envh3_hed !== "") {
-	$eh3_url = "";
-	$eh3_anchor_name = "4 - " . htmlentities( $envh3_hed, ENT_COMPAT, "UTF-8");
-	$eh3_url_close = "</a>";
-	$eh3_social_media = "";
-
-	if(isset($envh3_url) && $envh3_url !== "") {
-		$eh3_url = "<a class=\"article_hed\" href=\"$envh3_url\" style=\"$hed_styles\" name=\"$eh3_anchor_name\">";
-	}
-
-	$eh3_full = "<tr>\n<td style=\"$standard_td\">\n$eh3_url". $envh3_hed . "$eh3_url_close\n" . "$eh3_social_media</td>\n</tr>\n";
+    $eh3_url = "";
+    $eh3_anchor_name = "4 - " . htmlentities( $envh3_hed, ENT_COMPAT, "UTF-8");
+    $eh3_url_close = "</a>";
+    $eh3_social_media = "";
+    
+    if(isset($envh3_url) && $envh3_url !== "") {
+        $eh3_url = "<a class=\"article_hed\" href=\"$envh3_url\" style=\"$hed_styles\" name=\"$eh3_anchor_name\">";
+    }
+    
+    $eh3_full = "<tr>\n<td style=\"$standard_td\">\n$eh3_url". $envh3_hed . "$eh3_url_close\n" . "$eh3_social_media</td>\n</tr>\n";
 }
 else {
-	$eh3_full = "";
+    $eh3_full = "";
 }
 
 if($eh1_full == "" && $eh2_full == "" && $eh3_full == "") {
-	$envirohealth_section = "";
-	
+    $envirohealth_section = "";
+    
 }
 else {
-	$envirohealth_section = $eh_title . $eh1_full . $eh2_full . $eh3_full;
+    $envirohealth_section = $eh_title . $eh1_full . $eh2_full . $eh3_full;
 }
 //end environment & health section
 
@@ -260,36 +260,36 @@ $mm_full = "";
 $mm2_full = "";
 
 if(isset($moremojo_hed) && $moremojo_hed !== "") {
-	$mm_url = "";
-	$mm_anchor_name = "5 - " . htmlentities( $moremojo_hed, ENT_COMPAT, "UTF-8");
-	$mm_url_close = "</a>";
-	$mm_social_media = "";
-
-	if(isset($moremojo_url) && $moremojo_url !== "") {
-		$mm_url = "<a class=\"article_hed\" href=\"$moremojo_url\" style=\"$hed_styles\" name=\"$mm_anchor_name\">";
-	}
-
-	$mm_full = "<tr>\n<td style=\"$standard_td\">\n$mm_url". "$moremojo_hed\n" . $mm_url_close . "$mm_social_media\n</td>\n</tr>\n";
+    $mm_url = "";
+    $mm_anchor_name = "5 - " . htmlentities( $moremojo_hed, ENT_COMPAT, "UTF-8");
+    $mm_url_close = "</a>";
+    $mm_social_media = "";
+    
+    if(isset($moremojo_url) && $moremojo_url !== "") {
+        $mm_url = "<a class=\"article_hed\" href=\"$moremojo_url\" style=\"$hed_styles\" name=\"$mm_anchor_name\">";
+    }
+    
+    $mm_full = "<tr>\n<td style=\"$standard_td\">\n$mm_url". "$moremojo_hed\n" . $mm_url_close . "$mm_social_media\n</td>\n</tr>\n";
 }
 
 if(isset($moremojo2_hed) && $moremojo2_hed !== "") {
-	$mm2_url = "";
-	$mm2_anchor_name = "6 - " . htmlentities( $moremojo2_hed, ENT_COMPAT, "UTF-8");
-	$mm2_url_close = "</a>";
-	$mm2_social_media = "";
-
-	if(isset($moremojo2_url) && $moremojo2_url !== "") {
-		$mm2_url = "<a class=\"article_hed\" href=\"$moremojo2_url\" style=\"$hed_styles\" name=\"$mm2_anchor_name\">";
-	}
-
-	$mm2_full = "<tr>\n<td style=\"$standard_td\">\n$mm2_url". "$moremojo2_hed\n" . $mm2_url_close . "$mm2_social_media\n</td>\n</tr>\n";
+    $mm2_url = "";
+    $mm2_anchor_name = "6 - " . htmlentities( $moremojo2_hed, ENT_COMPAT, "UTF-8");
+    $mm2_url_close = "</a>";
+    $mm2_social_media = "";
+    
+    if(isset($moremojo2_url) && $moremojo2_url !== "") {
+        $mm2_url = "<a class=\"article_hed\" href=\"$moremojo2_url\" style=\"$hed_styles\" name=\"$mm2_anchor_name\">";
+    }
+    
+    $mm2_full = "<tr>\n<td style=\"$standard_td\">\n$mm2_url". "$moremojo2_hed\n" . $mm2_url_close . "$mm2_social_media\n</td>\n</tr>\n";
 }
 
 if($mm_full == "" && $mm2_full == "") {
-	$moremojo_section = "";
+    $moremojo_section = "";
 }
 else {
-	$moremojo_section = $mm_title . $mm_full . $mm2_full;
+    $moremojo_section = $mm_title . $mm_full . $mm2_full;
 }
 
 //end more mojo section
@@ -301,12 +301,12 @@ $liveintnet_rba = "";
 $safe_rbt = "";
 
 if($liveintent_billboard || $liveintent_banner || $liveintent_billboard2) {
-	//safe RBT
-	$safe_rbt = <<<SAFERBT
-<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"40\" height=\"6\"><tbody><tr><td><img src=\"http://li.motherjones.com/imp?s=68990&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68991&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68992&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68993&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68994&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68995&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68996&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68997&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68998&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68999&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=69000&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=69001&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399212&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399213&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399214&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399215&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399216&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399217&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399218&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399219&sz=2x1&li=econundrums&e={{contact.email}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td></tr></tbody></table>
+    //safe RBT
+    $safe_rbt = <<<SAFERBT
+<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"40\" height=\"6\"><tbody><tr><td><img src=\"http://li.motherjones.com/imp?s=68990&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68991&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68992&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68993&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68994&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68995&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68996&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68997&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68998&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=68999&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=69000&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=69001&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399212&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399213&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399214&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399215&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399216&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399217&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399218&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td><td><img src=\"http://li.motherjones.com/imp?s=123399219&sz=2x1&li=econundrums&m={{contact.email | md5}}&p={{campaign.id}}$timestamp\" width=\"2\" height=\"6\" border=\"0\" /></td></tr></tbody></table>
 SAFERBT;
-	
-$liveintent_toptags = <<<LIVETOP
+    
+    $liveintent_toptags = <<<LIVETOP
 <table align="center" cellpadding="0" cellspacing="0" border="0">
 	<tbody>
 		<tr>
@@ -320,8 +320,8 @@ $liveintent_toptags = <<<LIVETOP
 			</td>
 			<td valign="top" width="100%">
 LIVETOP;
-
-$liveintent_bottomtags = <<<LIVEBOTTOM
+    
+    $liveintent_bottomtags = <<<LIVEBOTTOM
 </td>
 			<td align="left" valign="top" width="1">
 				<table border="0" cellpadding="0" cellspacing="0">
@@ -352,7 +352,7 @@ $liveintent_bottomtags = <<<LIVEBOTTOM
 	</tbody>
 </table>
 LIVEBOTTOM;
-$liveintnet_rba = <<<LIVERBA
+    $liveintnet_rba = <<<LIVERBA
 <table cellpadding="0" cellspacing="0" border="0" width="24" height="6">
 	<tbody>
 		<tr>
@@ -522,7 +522,7 @@ else {
 
 //if data exists, update, otherwise insert data
 if($exists) {
-$run_qry = "UPDATE econundrums_new
+    $run_qry = "UPDATE econundrums_new
   SET  hed_date='$headlines_date',
   conundrum_hed='$conun_hed',
   conundrum_url='$conun_url',
@@ -558,7 +558,7 @@ $run_qry = "UPDATE econundrums_new
   WHERE hed_date='$headlines_date'";
 }
 else {
-$run_qry = "INSERT INTO econundrums_new(hed_date,conundrum_hed,conundrum_url,conundrum_dek,envirohealth1_hed,envirohealth1_url,envirohealth2_hed,envirohealth2_url,envirohealth3_hed,envirohealth3_url,moremojo_hed,moremojo_url,moremojo2_hed,moremojo2_url,ad_link_bill,ad_billboard,ad_name,ad_link_banner,ad_banner,ad_name2,this_week,envirohealth_title,moremojo_title,subject_line,conundrum_lead,sub_url,sub_image,sub_text,sub_code,lift_note,pixel_tracker,pixel_tracker2)
+    $run_qry = "INSERT INTO econundrums_new(hed_date,conundrum_hed,conundrum_url,conundrum_dek,envirohealth1_hed,envirohealth1_url,envirohealth2_hed,envirohealth2_url,envirohealth3_hed,envirohealth3_url,moremojo_hed,moremojo_url,moremojo2_hed,moremojo2_url,ad_link_bill,ad_billboard,ad_name,ad_link_banner,ad_banner,ad_name2,this_week,envirohealth_title,moremojo_title,subject_line,conundrum_lead,sub_url,sub_image,sub_text,sub_code,lift_note,pixel_tracker,pixel_tracker2)
 VALUES('$headlines_date',
        '$conun_hed',
        '$conun_url',

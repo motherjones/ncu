@@ -5,116 +5,116 @@ include "incs/credentials.inc";
 
 //get requests from either add section button or the form to submit
 if($_REQUEST['section']) {
-	$section = $_REQUEST['section'];
-	createDivs($section);
+    $section = $_REQUEST['section'];
+    createDivs($section);
 }
 
 if($_REQUEST['existing']) {
-	$get_section = trim($_REQUEST['existing']);
-	$new_news = "no";
-	$news_date = "";
-	
-	if($_REQUEST['check_new']) {
-		$new_news = trim($_REQUEST['check_new']);
-	}
-	if($_REQUEST['the_date']) {
-		$news_date = trim($_REQUEST['the_date']);
-	}
-	
-	checkExisting($get_section, $new_news, $news_date);
+    $get_section = trim($_REQUEST['existing']);
+    $new_news = "no";
+    $news_date = "";
+    
+    if($_REQUEST['check_new']) {
+        $new_news = trim($_REQUEST['check_new']);
+    }
+    if($_REQUEST['the_date']) {
+        $news_date = trim($_REQUEST['the_date']);
+    }
+    
+    checkExisting($get_section, $new_news, $news_date);
 }
 
 if($_REQUEST['arch_type'] && $_REQUEST['date']) {
-	$archive = $_REQUEST['arch_type'];
-	$date_arch = $_REQUEST['date'];
-	retrieveArchive($archive, $date_arch);
+    $archive = $_REQUEST['arch_type'];
+    $date_arch = $_REQUEST['date'];
+    retrieveArchive($archive, $date_arch);
 }
 
 function retrieveArchive($arch_type, $arch_date) {
-	include "incs/credentials.inc";
-	$db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("Can't connect to DB");
-	$qry_string = sprintf("SELECT * FROM %s WHERE hed_date='%s'", $arch_type, $arch_date);
-	$arch_qry = mysqli_query($db_con, $qry_string) or die("Can't run query" . mysqli_error($db_con));
-	$result = mysqli_fetch_assoc($arch_qry);
-	$data_return = json_encode($result);
-	
-	print $data_return;
+    include "incs/credentials.inc";
+    $db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb) or die("Can't connect to DB");
+    $qry_string = sprintf("SELECT * FROM %s WHERE hed_date='%s'", $arch_type, $arch_date);
+    $arch_qry = mysqli_query($db_con, $qry_string) or die("Can't run query" . mysqli_error($db_con));
+    $result = mysqli_fetch_assoc($arch_qry);
+    $data_return = json_encode($result);
+    
+    print $data_return;
 }
 
 function checkExisting($section_type, $if_new, $news_date) {
-	include "incs/credentials.inc";
-	$db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb);
-	
-	if($if_new === "yes") {
-		$check_qry = sprintf("SELECT hed_date FROM %s WHERE hed_date='%s'", $section_type, $news_date);
-		$run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
-		if(mysqli_num_rows($run_qry) !== 0) {
-			exit("exists");
-		}
-	}
-	else {
-		$check_qry = sprintf("SELECT hed_date FROM %s ORDER By hed_date DESC", $section_type);
-		$run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
-		$date_array = "none";
-		
-		if(mysqli_num_rows($run_qry) > 0) {
-			$date_array = "";
-			while($get_dates = mysqli_fetch_assoc($run_qry)) {
-				if($get_dates['hed_date'] !== "" || $get_dates['hed_date'] !== null || $get_dates['hed_date'] !== "undefined") {
-					$date_array .= $get_dates['hed_date'] . "?";
-				}
-			}
-			$date_arr = explode("?", $date_array);
-			$date_arr = array_filter($date_arr);
-			$date_json = json_encode($date_arr);
-			print $date_json;
-		}
-		else {
-			$error->name = "unknown";
-			$send_error = json_encode($error);
-			print $send_error;
-		}
-	}
-	
-	mysqli_free_result($run_qry);
-	mysqli_close($db_con);
+    include "incs/credentials.inc";
+    $db_con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbdb);
+    
+    if($if_new === "yes") {
+        $check_qry = sprintf("SELECT hed_date FROM %s WHERE hed_date='%s'", $section_type, $news_date);
+        $run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
+        if(mysqli_num_rows($run_qry) !== 0) {
+            exit("exists");
+        }
+    }
+    else {
+        $check_qry = sprintf("SELECT hed_date FROM %s ORDER By hed_date DESC", $section_type);
+        $run_qry = mysqli_query($db_con, $check_qry) or die("can't run query");
+        $date_array = "none";
+        
+        if(mysqli_num_rows($run_qry) > 0) {
+            $date_array = "";
+            while($get_dates = mysqli_fetch_assoc($run_qry)) {
+                if($get_dates['hed_date'] !== "" || $get_dates['hed_date'] !== null || $get_dates['hed_date'] !== "undefined") {
+                    $date_array .= $get_dates['hed_date'] . "?";
+                }
+            }
+            $date_arr = explode("?", $date_array);
+            $date_arr = array_filter($date_arr);
+            $date_json = json_encode($date_arr);
+            print $date_json;
+        }
+        else {
+            $error->name = "unknown";
+            $send_error = json_encode($error);
+            print $send_error;
+        }
+    }
+    
+    mysqli_free_result($run_qry);
+    mysqli_close($db_con);
 }
 
 //add more divs to section (left or right side)
 function createDivs($section) {
-	$get_divs = ""; //var to hold html code for each section separated by divs
-	
-	switch($section) {
-		case "econundrums_new":
-			$get_divs = econundrum();
-			break;
-		case "food_for_thought_redesign":
-			$get_divs = fft_redesign();
-			break;
-		case "in_the_mix_new":
-			$get_divs = inthemix();
-			break;
-		case "political_mojo_new":
-			$get_divs = politics();
-			break;
-		case "breaking_news":
-			$get_divs = breaking_news();
-			break;
-		case "trumpocracy":
-			$get_divs = trumpocracy();
-			break;
-		case "recharge":
-			$get_divs = recharge();
-			break;
-		default:
-	}
-	
-	print $get_divs;
+    $get_divs = ""; //var to hold html code for each section separated by divs
+    
+    switch($section) {
+        case "econundrums_new":
+            $get_divs = econundrum();
+            break;
+        case "food_for_thought_redesign":
+            $get_divs = fft_redesign();
+            break;
+        case "in_the_mix_new":
+            $get_divs = inthemix();
+            break;
+        case "political_mojo_new":
+            $get_divs = politics();
+            break;
+        case "breaking_news":
+            $get_divs = breaking_news();
+            break;
+        case "trumpocracy":
+            $get_divs = trumpocracy();
+            break;
+        case "recharge":
+            $get_divs = recharge();
+            break;
+        default:
+    }
+    
+    print $get_divs;
 }
 
 //Breaking News
 function breaking_news() {
-	$breaking_news = <<<BREAKING
+    $breaking_news = <<<BREAKING
 <div class="head_types">
   <div class="columns">
 		<div id="items_left">
@@ -150,13 +150,13 @@ function breaking_news() {
   </div>
 </div>
 BREAKING;
-	
-	return $breaking_news;
+    
+    return $breaking_news;
 }
 
 //Econundrums
 function econundrum() {
-	$econundrum = <<<ECONUNDRUM
+    $econundrum = <<<ECONUNDRUM
 <div class="head_types">
   <div class="columns">
     <div id="items_left">
@@ -211,13 +211,13 @@ function econundrum() {
 	</div>
 </div>
 ECONUNDRUM;
-	
-	return $econundrum;
+    
+    return $econundrum;
 }
 
 //Food for Thought Redesign
 function fft_redesign() {
-	$fft_redesign = <<<FFTRED
+    $fft_redesign = <<<FFTRED
 <div class="head_types">
   <div class="columns">
     <div id="items_left">
@@ -415,13 +415,13 @@ function fft_redesign() {
   </div>
 </div>
 FFTRED;
-	
-	return $fft_redesign;
+    
+    return $fft_redesign;
 }
 
 //In the Mix
 function inthemix() {
-	$inthemix = <<<INTHEMIX
+    $inthemix = <<<INTHEMIX
 <div class="head_types">
   <div class="columns">
     <div id="items_left">
@@ -476,13 +476,13 @@ function inthemix() {
 	</div>
 </div>
 INTHEMIX;
-	
-	return $inthemix;
+    
+    return $inthemix;
 }
 
 //Political Mojo
 function politics() {
-	$political = <<<POLITICAL
+    $political = <<<POLITICAL
 <div class="head_types">
   <div class="columns">
     <div id="items_left">
@@ -538,12 +538,12 @@ function politics() {
   </div>
 </div>
 POLITICAL;
-	
-	return $political;
+    
+    return $political;
 }
 
 function trumpocracy() {
-	$trumpocracy = <<<TRUMP
+    $trumpocracy = <<<TRUMP
 <div class="head_types">
 	<div class="columns">
 		<div id="items_left">
@@ -563,7 +563,7 @@ function trumpocracy() {
 					<input type="checkbox" id="trump_main_ital" name="trump_main_ital" style="float:left;">
 				</fieldset>
 			</fieldset>
-			
+			<hr style="width:100%;">
 			<fieldset class="sections">
 				<legend><input type="text" id="topnews_title" name="topnews_title" value="TOP NEWS" /></legend>
 				<fieldset class="sub_sections">
@@ -613,8 +613,30 @@ function trumpocracy() {
 						<input type="text" id="topnews3_url" name="topnews3_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
 					</fieldset>
 				</fieldset>
-				
-				<fieldset class="sub_sections">
+			</fieldset>
+		</div>
+	</div>
+	<div class="columns">
+		<div id="items_right">
+			<fieldset class="sections">
+				<legend>SECOND MAIN ARTICLE</legend>
+				<p>Headline: <input type="text" id="trump_main2_hed" name="trump_main2_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value)" spellcheck="true" /></p>
+				<p>Url: <input type="text" id="trump_main2_url" name="trump_main2_url" size="50" onblur="this.value=fixURL(this.value)" /></p>
+				<p>Image: <input type="text" id="trump_main2_img" name="trump_main2_img" size="50" onblur="this.value=fixURL(this.value)" /></p>
+				<p class="dek_sect">Dek:</p>
+				<textarea rows="15" cols="45" id="trump_main2_dek" name="trump_main2_dek"></textarea>
+				<fieldset class="sources" style="float:left;width:50%;clear:both;">
+					<legend>Source name</legend>
+					<input type="text" id="trump_main2_source" name="trump_main2_source" style="width:95%;" onblur="checkHedDate()">
+				</fieldset>
+				<fieldset class="sources" style="float:left;width:25%;">
+					<legend>Italicize source?</legend>
+					<input type="checkbox" id="trump_main2_ital" name="trump_main2_ital" style="float:left;">
+				</fieldset>
+			</fieldset>
+			<hr style="width:100%;">
+            <fieldset class="sections">
+			     <fieldset class="sub_sections">
 					<legend>Headline 4:</legend>
 					<textarea id="topnews4_dek" name="topnews4_dek" rows="15" cols="45"></textarea>
 					<fieldset class="sources" style="float:left;width:50%;clear:both;">
@@ -645,104 +667,17 @@ function trumpocracy() {
 						<input type="text" id="topnews5_url" name="topnews5_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
 					</fieldset>
 				</fieldset>
-			</fieldset>
-		</div>
-	</div>
-	<div class="columns">
-		<div id="items_right">
-			<fieldset class="sections">
-				<legend>SECOND MAIN ARTICLE</legend>
-				<p>Headline: <input type="text" id="trump_main2_hed" name="trump_main2_hed" size="50" maxlength="255" onblur="this.value=cleanstring(this.value)" spellcheck="true" /></p>
-				<p>Url: <input type="text" id="trump_main2_url" name="trump_main2_url" size="50" onblur="this.value=fixURL(this.value)" /></p>
-				<p>Image: <input type="text" id="trump_main2_img" name="trump_main2_img" size="50" onblur="this.value=fixURL(this.value)" /></p>
-				<p class="dek_sect">Dek:</p>
-				<textarea rows="15" cols="45" id="trump_main2_dek" name="trump_main2_dek"></textarea>
-				<fieldset class="sources" style="float:left;width:50%;clear:both;">
-					<legend>Source name</legend>
-					<input type="text" id="trump_main2_source" name="trump_main2_source" style="width:95%;" onblur="checkHedDate()">
-				</fieldset>
-				<fieldset class="sources" style="float:left;width:25%;">
-					<legend>Italicize source?</legend>
-					<input type="checkbox" id="trump_main2_ital" name="trump_main2_ital" style="float:left;">
-				</fieldset>
-			</fieldset>
-			
-			<fieldset class="sections">
-				<legend><input type="text" id="wors_title" name="wors_title" value="What Others are Saying" /></legend>
-				<fieldset class="sub_sections">
-					<legend>Headline 1:</legend>
-					<textarea id="wors1_dek" name="wors1_dek" rows="15" cols="45"></textarea>
-					<fieldset class="sources" style="float:left;width:50%;clear:both;">
-						<legend>Source name</legend>
-						<input type="text" id="wors1_source" name="wors1_source" style="float:left;">
-					</fieldset>
-					<fieldset class="sources" style="float:left;width:25%;">
-						<legend>Italicise source?</legend> <input type="checkbox" id="wors1_ital" name="wors1_ital" style="float:left;">
-					</fieldset>
-					<fieldset class="sources">
-						<legend>Url</legend>
-						<input type="text" id="wors1_url" name="wors1_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
-					</fieldset>
-				</fieldset>
-				
-				<fieldset class="sub_sections">
-					<legend>Headline 2:</legend>
-					<textarea id="wors2_dek" name="wors2_dek" rows="15" cols="45"></textarea>
-					<fieldset class="sources" style="float:left;width:50%;clear:both;">
-						<legend>Source name</legend>
-						<input type="text" id="wors2_source" name="wors2_source" style="float:left;">
-					</fieldset>
-					<fieldset class="sources" style="float:left;width:25%;">
-						<legend>Italicise source?</legend> <input type="checkbox" id="wors2_ital" name="wors2_ital" style="float:left;">
-					</fieldset>
-					<fieldset class="sources">
-						<legend>Url</legend>
-						<input type="text" id="wors2_url" name="wors2_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
-					</fieldset>
-				</fieldset>
-				
-				<fieldset class="sub_sections">
-					<legend>Headline 3:</legend>
-					<textarea id="wors3_dek" name="wors3_dek" rows="15" cols="45"></textarea>
-					<fieldset class="sources" style="float:left;width:50%;clear:both;">
-						<legend>Source name</legend>
-						<input type="text" id="wors3_source" name="wors3_source" style="float:left;">
-					</fieldset>
-					<fieldset class="sources" style="float:left;width:25%;">
-						<legend>Italicise source?</legend> <input type="checkbox" id="wors3_ital" name="wors3_ital" style="float:left;">
-					</fieldset>
-					<fieldset class="sources">
-						<legend>Url</legend>
-						<input type="text" id="wors3_url" name="wors3_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
-					</fieldset>
-				</fieldset>
-				
-				<fieldset class="sub_sections">
-					<legend>Headline 4:</legend>
-					<textarea id="wors4_dek" name="wors4_dek" rows="15" cols="45"></textarea>
-					<fieldset class="sources" style="float:left;width:50%;clear:both;">
-						<legend>Source name</legend>
-						<input type="text" id="wors4_source" name="wors4_source" style="float:left;">
-					</fieldset>
-					<fieldset class="sources" style="float:left;width:25%;">
-						<legend>Italicise source?</legend> <input type="checkbox" id="wors4_ital" name="wors4_ital" style="float:left;">
-					</fieldset>
-					<fieldset class="sources">
-						<legend>Url</legend>
-						<input type="text" id="wors4_url" name="wors4_url" onblur="this.value=fixURL(this.value)" style="float:left;" size="50">
-					</fieldset>
-				</fieldset>
-			</fieldset>
+            </fieldset>
 		</div>
 	</div>
 </div>
 TRUMP;
-	
-	return $trumpocracy;
+    
+    return $trumpocracy;
 }
 
 function recharge() {
-	$recharge = <<<RECHARGE
+    $recharge = <<<RECHARGE
 <div class="head_types">
 	<div class="columns">
 		<div id="items_left">
@@ -874,7 +809,7 @@ function recharge() {
 	</div>
 </div>
 RECHARGE;
-	
-	return $recharge;
+    
+    return $recharge;
 }
 ?>
